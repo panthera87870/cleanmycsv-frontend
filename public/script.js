@@ -63,7 +63,7 @@ function resetModal() {
         <h2>Nettoyer votre fichier en quelque secondes :</h2>
         <div class="upload-step">
             <h3>1. Téléversez votre CSV</h3>
-            <form id="upload-form" class="upload-area-wrapper" method="POST" action="/clean-file" enctype="multipart/form-data">
+            <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">
                 
                 <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required 
                     style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
@@ -93,7 +93,7 @@ function resetModal() {
 // --- Fonctions de téléchargement ---
 function triggerDownload(tempName, publicName) {
     console.log('Tentative de téléchargement:', publicName, 'à partir de:', tempName);
-    const url = `/download/${tempName}?publicName=${encodeURIComponent(publicName)}`;
+    const url = `https://cleanmycsv-backend-536004118248.europe-west1.run.app/download/${tempName}?publicName=${encodeURIComponent(publicName)}`;
     
     const a = document.createElement('a');
     a.href = url;
