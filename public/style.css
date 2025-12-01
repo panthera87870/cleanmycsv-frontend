@@ -1,10 +1,5 @@
-/* ==============================================
-// PUBLIC/STYLE.CSS (Corrigé et Nettoyé)
-// ============================================== */
-
 /* ======== VARIABLES & CONFIGURATION GLOBALE ======== */
 :root {
-    /* Palette de couleurs (Nettoyée) */
     --primary-purple: #ece3ff;     /* Lavande clair (pour fonds) */
     --secondary-purple: #0097b2;  /* Bleu canard (pour accents) - J'ai gardé celui-ci de votre fichier */
     --background-color: #FFFFFF;
@@ -237,6 +232,17 @@ body {
 }
 
 /* ============ STYLES DE LA MODALE ============ */
+.upload-label p strong,
+
+.cta-button span.filename-display {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: inline-block;
+    max-width: 70%; /* Réduit la largeur pour ne pas écraser le texte "Télécharger" ou l'icône */
+    vertical-align: top;
+}
+
 .modal-overlay {
     visibility: hidden; 
     opacity: 0;         

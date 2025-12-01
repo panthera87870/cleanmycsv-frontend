@@ -1,16 +1,49 @@
-// ==============================================
-// PUBLIC/SCRIPT.JS (Correction Finale Safari & Débogage)
-// Le style de l'input de fichier est corrigé pour être compatible avec Safari.
-// ==============================================
 
-// --- Constantes et Éléments DOM ---
 const modalElement = document.getElementById('upload-modal');
 const dynamicContentArea = document.getElementById('dynamic-content');
+
+// --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
+function setupDragDropProtection() {
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        document.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+}
+
+// --- FONCTION UTILITAIRE DE TRONCATURE AU MILIEU (MISE À JOUR) ---
+/**
+ * Tronque le nom du fichier au milieu pour garder le début, une partie de la fin, et l'extension visibles.
+ * @param {string} filename Le nom complet du fichier 
+ * @param {number} maxLength La longueur maximale souhaitée (30 par défaut)
+ * @returns {string} Le nom tronqué (ex: 'nom_tro...fin.csv')
+ */
+function truncateFilename(filename, maxLength = 30) {
+    if (filename.length <= maxLength) {
+        return filename;
+    }
+    
+    const MIN_END_CHARS = 5; // Nombre de caractères minimum à conserver à la fin du nom (avant l'extension)
+    const ellipsis = '...';
+    const extensionMatch = filename.match(/\.([a-zA-Z0-9]+)$/);
+    const extension = extensionMatch ? extensionMatch[0] : ''; // Ex: .csv
+    const nameWithoutExt = extensionMatch ? filename.substring(0, filename.length - extension.length) : filename;
+    const nameLength = nameWithoutExt.length;
+    const availableNameLength = maxLength - extension.length - ellipsis.length;
+    const endPartLength = Math.min(MIN_END_CHARS, nameLength - 1); // Toujours laisser au moins 1 caractère au début
+    const startPartLength = Math.max(1, availableNameLength - endPartLength); // Toujours garder au moins 1 caractère au début
+    const startPart = nameWithoutExt.substring(0, startPartLength);
+    const endPart = nameWithoutExt.substring(nameLength - endPartLength);
+
+    return startPart + ellipsis + endPart + extension;
+}
 
 // --- GESTION DU CHARGEMENT DE LA PAGE (CORRECTIF BUG DE DÉFILEMENT) ---
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Force le défilement en haut après le chargement du DOM
     setTimeout(function() {
         if (window.location.hash === "") {
             window.scrollTo({
@@ -19,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }, 0); 
+    setupDragDropProtection();
 });
 
 window.onload = function() {
@@ -50,15 +84,16 @@ function openModal() {
     modalElement.classList.add('visible');
 }
 
-function closeModal(event) {
-    if (!event || event.target === modalElement || (event.type === 'click' && event.currentTarget.classList.contains('close-btn'))) {
-        modalElement.classList.remove('visible');
-        setTimeout(resetModal, 300);
-    }
+function closeModal() {
+    modalElement.classList.remove('visible');
+    setTimeout(resetModal, 300);
+}
+
+function closeModalBtn() {
+    closeModal();
 }
 
 function resetModal() {
-    // Injecte le HTML de l'étape d'upload
     dynamicContentArea.innerHTML = `
         <h2>Nettoyer votre fichier en quelque secondes :</h2>
         <div class="upload-step">
@@ -85,10 +120,8 @@ function resetModal() {
         </p>
     `;
     
-    // Re-lier les événements après l'injection du nouveau HTML
     setupFormListeners();
 }
-
 
 // --- Fonctions de téléchargement ---
 function triggerDownload(tempName, publicName) {
@@ -118,9 +151,10 @@ function setupFormListeners() {
     // Récupération des éléments du formulaire
     const currentFileInput = document.getElementById('csv-file');
     const currentUploadForm = document.getElementById('upload-form');
-    
+    const currentUploadArea = currentUploadForm.querySelector('.upload-area');
+
     // Vérification de la présence des éléments de base
-    if (!currentFileInput || !currentUploadForm) {
+    if (!currentFileInput || !currentUploadForm || !currentUploadArea) {
         console.error('Erreur: Le fichier input (csv-file) ou le formulaire (upload-form) est introuvable.');
         return;
     }
@@ -135,30 +169,98 @@ function setupFormListeners() {
     }
     console.log('Bouton de soumission trouvé. État initial: DISABLED.');
 
+    // 1. Logique du Glisser-Déposer
+    
+    ['dragenter', 'dragover'].forEach(eventName => {
+        currentUploadArea.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentUploadArea.classList.add('highlight'); // Ajouter une classe pour le style
+        }, false);
+    });
 
-    // 1. Écouteur pour le changement de fichier (activation du bouton)
+    ['dragleave', 'drop'].forEach(eventName => {
+        currentUploadArea.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentUploadArea.classList.remove('highlight'); // Retirer la classe
+        }, false);
+    });
+
+    currentUploadArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const dt = e.dataTransfer;
+        let file;
+
+        if (dt.items) {
+            for (let i = 0; i < dt.items.length; i++) {
+                if (dt.items[i].kind === 'file' && dt.items[i].type === 'text/csv') {
+                    file = dt.items[i].getAsFile();
+                    break;
+                }
+            }
+        } else {
+            file = dt.files[0];
+        }
+
+        if (file) {
+            console.log('Fichier CSV déposé:', file.name);
+
+            if (!file.name.toLowerCase().endsWith('.csv')) {
+                 alert('Format de fichier non supporté. Seuls les fichiers .CSV sont acceptés.');
+                 return;
+            }
+            
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            currentFileInput.files = dataTransfer.files;
+            
+            const changeEvent = new Event('change');
+            currentFileInput.dispatchEvent(changeEvent);
+
+        } else {
+             alert("Seuls les fichiers CSV sont supportés ou le fichier n'a pas pu être lu.");
+        }
+    }
+
+    // 2. Écouteur pour le changement de fichier (activation du bouton)
     currentFileInput.addEventListener('change', function() {
         console.log('Événement CHANGE détecté sur l\'input fichier.');
 
         if (currentFileInput.files.length > 0) {
             console.log('Fichier sélectionné. Tentative d\'activation du bouton...');
             
+            const originalName = currentFileInput.files[0].name;
+            const truncatedName = truncateFilename(originalName, 30);
+            
             currentSubmitButton.disabled = false; // <<< LIGNE CRITIQUE : ACTIVE LE BOUTON
-            currentSubmitButton.textContent = `Nettoyer : ${currentFileInput.files[0].name}`;
+            currentSubmitButton.textContent = `Lancer le nettoyage de votre fichier`;
             
             console.log('Bouton activé et texte mis à jour.');
 
-            // Mise à jour visuelle du label
-            currentUploadLabel.innerHTML = `<i class="fa-solid fa-file-csv" style="color: var(--secondary-purple);"></i><p style="font-weight: 600;">Fichier prêt : <strong>${currentFileInput.files[0].name}</strong></p><small style="color: var(--subtext-color);">Cliquez pour changer de fichier</small>`;
+            currentUploadLabel.innerHTML = `
+                <i class=\"fa-solid fa-file-csv\" style=\"color: var(--secondary-purple);\"></i>
+                <p style=\"font-weight: 600;\">Fichier prêt : 
+                    <strong>${truncatedName}</strong>
+                </p>
+                <small style=\"color: var(--subtext-color);\">Cliquez pour changer de fichier</small>
+            `;
         } else {
             console.log('Aucun fichier sélectionné. Bouton désactivé.');
             currentSubmitButton.disabled = true;
             currentSubmitButton.textContent = 'Lancer le Nettoyage (Gratuit)';
-            currentUploadLabel.innerHTML = `<i class="fa-solid fa-cloud-arrow-up" style="color: var(--secondary-purple);"></i><p style="font-weight: 600;">Cliquez ou glissez-déposez votre fichier ici</p><small style="color: var(--subtext-color);">Fichiers supportés : .CSV uniquement</small>`;
+            currentUploadLabel.innerHTML = `
+            <i class="fa-solid fa-cloud-arrow-up" style="color: var(--secondary-purple);"></i>
+            <p style="font-weight: 600;">Cliquez ou glissez-déposez votre fichier ici</p>
+            <small style="color: var(--subtext-color);">Fichiers supportés : .CSV uniquement</small>`;
         }
     });
 
-    // 2. Écouteur pour la soumission du formulaire
+    // 3. Écouteur pour la soumission du formulaire
     currentUploadForm.addEventListener('submit', handleFormSubmit);
     console.log('--- setupFormListeners() terminé ---');
 }
@@ -207,6 +309,9 @@ function displaySuccessView(data) {
     const csvDownloadName = data.downloadName;
     const jsonDownloadName = data.reportDownloadName;
 
+    const truncatedCsvName = truncateFilename(csvDownloadName, 30);
+    const truncatedJsonName = truncateFilename(jsonDownloadName, 30);
+
     dynamicContentArea.innerHTML = `
         <div style="text-align: center; padding: 0 0 15px 0; border-bottom: 1px solid var(--color-border);">
             <i class="fa-solid fa-circle-check" style="color: var(--color-success); font-size: 3rem;"></i>
@@ -237,7 +342,9 @@ function displaySuccessView(data) {
         </label>
         <div style="margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--color-border);">
             <button id="downloadAllBtn" class="cta-button download-btn-success" style="width: 100%;">
-                <i class="fa-solid fa-download"></i> Télécharger le CSV Nettoyé (${csvDownloadName})
+                <i class="fa-solid fa-download"></i> 
+                Télécharger le CSV Nettoyé 
+                <span class="filename-display">(${truncatedCsvName})</span>
             </button>
         </div>
     `;
@@ -249,11 +356,19 @@ function displaySuccessView(data) {
     jsonCheckbox.addEventListener('change', () => {
         jsonAttempted = false;
         if (jsonCheckbox.checked) {
-            downloadBtn.textContent = `Télécharger le CSV Nettoyé (1/2)`;
+            downloadBtn.innerHTML = `
+            <i class=\"fa-solid fa-download\"></i> 
+            Télécharger le CSV Nettoyé (1/2) 
+            <span class=\"filename-display\">(${truncatedCsvName})</span>
+            `;
             downloadBtn.classList.remove('download-btn-json');
             downloadBtn.classList.add('download-btn-success');
         } else {
-            downloadBtn.textContent = `Télécharger le CSV Nettoyé (${csvDownloadName})`;
+            downloadBtn.innerHTML = `
+            <i class=\"fa-solid fa-download\"></i> 
+            Télécharger le CSV Nettoyé 
+            <span class=\"filename-display\">(${truncatedCsvName})</span>
+            `;
             downloadBtn.classList.remove('download-btn-json');
             downloadBtn.classList.add('download-btn-success');
         }
@@ -267,7 +382,11 @@ function displaySuccessView(data) {
             setTimeout(closeModal, 100);
         } else if (includeJson && !jsonAttempted) {
             triggerDownload(csvTempName, csvDownloadName);
-            downloadBtn.textContent = `Télécharger le Rapport JSON (2/2) (${jsonDownloadName})`;
+            downloadBtn.innerHTML = `
+                <i class="fa-solid fa-download"></i> 
+                Télécharger le Rapport JSON (2/2) 
+                <span class="filename-display">(${truncatedJsonName})</span>
+            `;
             downloadBtn.classList.remove('download-btn-success');
             downloadBtn.classList.add('download-btn-json');
             jsonAttempted = true;
