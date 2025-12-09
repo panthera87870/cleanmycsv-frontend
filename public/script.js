@@ -309,19 +309,17 @@ function displaySuccessView(data) {
     const csvDownloadName = data.downloadName;
     const jsonDownloadName = data.reportDownloadName;
 
-    const truncatedCsvName = truncateFilename(csvDownloadName, 30);
-    const truncatedJsonName = truncateFilename(jsonDownloadName, 30);
+    // const truncatedCsvName = truncateFilename(csvDownloadName, 30);
+    // const truncatedJsonName = truncateFilename(jsonDownloadName, 30);
 
     dynamicContentArea.innerHTML = `
-        <div style="text-align: center; padding: 0 0 15px 0; border-bottom: 1px solid var(--color-border);">
-            <i class="fa-solid fa-circle-check" style="color: var(--color-success); font-size: 3rem;"></i>
-            <h2 style="margin-top: 10px; font-weight: 800; font-size: 1.8rem;">Votre fichier est prêt ! 🥳</h2>
+        <div style="text-align: center; padding: 0 0 15px 0;">
+            <i class="fa-solid fa-circle-check" style="color: var(--teal-blue); font-size: 3rem;"></i>
+            <h2 style="margin-top: 10px; font-weight: 800; font-size: 1.8rem;">Votre fichier est prêt !</h2>
         </div>
         <div style="padding: 15px 0;">
             <h3 style="font-weight: 700; color: var(--secondary-purple); margin-bottom: 10px; font-size: 1.25rem;">Rapport de Nettoyage</h3>
-            <div class="result-summary-box">
-                <div id="humanSummary">${summary.humanSummary}</div>
-            </div>
+
             <div class="metric-container">
                 <div class="metric-item">
                     <p class="metric-value" id="metric-affected">${summary.totalRowsAffected}</p>
@@ -332,19 +330,20 @@ function displaySuccessView(data) {
                     <p class="metric-label">Lignes / Doublons retirés</p>
                 </div>
             </div>
-            <p style="text-align: center; font-size: 0.8em; color: var(--subtext-color); margin-top: 10px;">
-                Fichier original : ${summary.originalRowsCount} lignes &rarr; ${summary.cleanedRowsCount} lignes nettoyées.
-            </p>
+            
+            <div class="result-summary-box">
+                <div id="humanSummary">${summary.humanSummary}</div>
+            </div>
+            
         </div>
         <label for="includeJson" class="checkbox-wrapper">
             <input type="checkbox" id="includeJson">
             <label for="includeJson" style="font-weight: 500;">Je veux aussi le <strong>rapport détaillé JSON</strong> des corrections (pour les experts).</label>
         </label>
-        <div style="margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--color-border);">
+        <div style="margin-top: 20px; padding-top: 10px;">
             <button id="downloadAllBtn" class="cta-button download-btn-success" style="width: 100%;">
                 <i class="fa-solid fa-download"></i> 
-                Télécharger le CSV Nettoyé 
-                <span class="filename-display">(${truncatedCsvName})</span>
+                Télécharger le CSV Nettoyé
             </button>
         </div>
     `;
@@ -359,7 +358,6 @@ function displaySuccessView(data) {
             downloadBtn.innerHTML = `
             <i class=\"fa-solid fa-download\"></i> 
             Télécharger le CSV Nettoyé (1/2) 
-            <span class=\"filename-display\">(${truncatedCsvName})</span>
             `;
             downloadBtn.classList.remove('download-btn-json');
             downloadBtn.classList.add('download-btn-success');
@@ -367,7 +365,6 @@ function displaySuccessView(data) {
             downloadBtn.innerHTML = `
             <i class=\"fa-solid fa-download\"></i> 
             Télécharger le CSV Nettoyé 
-            <span class=\"filename-display\">(${truncatedCsvName})</span>
             `;
             downloadBtn.classList.remove('download-btn-json');
             downloadBtn.classList.add('download-btn-success');
@@ -379,20 +376,23 @@ function displaySuccessView(data) {
         
         if (!includeJson) {
             triggerDownload(csvTempName, csvDownloadName);
-            setTimeout(closeModal, 100);
+            setTimeout(() => {
+                displayPostDownloadView();
+            }, 300);
         } else if (includeJson && !jsonAttempted) {
             triggerDownload(csvTempName, csvDownloadName);
             downloadBtn.innerHTML = `
                 <i class="fa-solid fa-download"></i> 
                 Télécharger le Rapport JSON (2/2) 
-                <span class="filename-display">(${truncatedJsonName})</span>
             `;
             downloadBtn.classList.remove('download-btn-success');
             downloadBtn.classList.add('download-btn-json');
             jsonAttempted = true;
         } else if (includeJson && jsonAttempted) {
             triggerDownload(reportTempName, jsonDownloadName);
-            setTimeout(closeModal, 100);
+            setTimeout(() => {
+                displayPostDownloadView();
+            }, 1500);
         }
     });
 }
@@ -408,3 +408,53 @@ function displayErrorView(errorMessage) {
             </button>
         </div>`;
 }
+
+function displayPostDownloadView() {
+    dynamicContentArea.innerHTML = `
+        <div class="final-success-view">
+            <i class="fa-solid fa-circle-check main-icon"></i>
+            
+            <h2>Mission Accomplie !</h2>
+            <p>
+                Votre fichier nettoyé est maintenant disponible dans vos téléchargements.
+            </p>
+            
+            <div class="action-buttons">
+
+                <button class="btn-secondary" onclick="closeModal()">
+                    <i class="fa-solid fa-house"></i> Terminer et retourner au site
+                </button>
+
+                <button class="cta-button-again" onclick="resetModal()">
+                    <i class="fa-solid fa-rotate-right"></i> Nettoyer un autre fichier
+                </button>
+
+            </div>
+            
+            <div style="margin-top: 30px; font-size: 0.9rem;">
+                Vos données originales ont été effacées de nos serveurs par sécurité.
+            </div>
+        </div>
+    `;
+}
+
+// ... (Toutes les fonctions existantes de script.js) ...
+
+// --- GESTION DU HEADER LORS DU DÉFILEMENT (VERSION SIMPLIFIÉE) ---
+function setupHeaderScroll() {
+    const header = document.querySelector('.main-header');
+    
+    if (header) { // Vérifie si l'élément header existe
+        window.addEventListener('scroll', () => {
+            // Déclenche la classe 'scrolled' après 50px de défilement
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+}
+
+// Appelez la fonction pour initialiser l'écouteur d'événement
+setupHeaderScroll();

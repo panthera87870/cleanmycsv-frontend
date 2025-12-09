@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité - CleanMyCSV</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b2f23a8fce.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="sticky-wrapper">
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
+                    </a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
+                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
+                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
+                    <button class="cta-button-nav" onclick="openModal()">Essayer</button>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <section class="page-content-wrapper">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <h1>Politique de Confidentialité</h1>
+            <p class="section-subtext" style="text-align: center;">
+                Votre confiance est notre priorité. Voici comment nous traitons (et surtout supprimons) vos données.
+            </p>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-database"></i> 1. Données collectées</h4>
+                <p>Dans le cadre de l'utilisation de CleanMyCSV, nous sommes amenés à traiter temporairement :</p>
+                <ul>
+                    <li>Les fichiers <strong>CSV</strong> que vous téléversez.</li>
+                    <li>Les métadonnées techniques nécessaires à la connexion (adresse IP, logs de connexion) gérées par nos hébergeurs.</li>
+                </ul>
+                <p>Nous ne demandons aucune inscription, aucun nom, ni aucun email pour utiliser le service de base.</p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-stopwatch"></i> 2. Durée de conservation (Règle des 30 minutes)</h4>
+                <p>Notre politique est stricte : <strong>nous ne sommes pas un service de stockage.</strong></p>
+                <ul>
+                    <li><strong>Suppression immédiate :</strong> Dès que vous téléchargez votre fichier nettoyé, le fichier original et le fichier résultat sont supprimés de nos serveurs.</li>
+                    <li><strong>Nettoyage automatique :</strong> Si vous ne téléchargez pas le fichier, un script automatisé supprime définitivement toutes les données (entrée et sortie) au bout de <strong>30 minutes</strong> maximum.</li>
+                </ul>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-shield-halved"></i> 3. Sécurité et Sous-traitants</h4>
+                <p>Vos fichiers transitent de manière chiffrée (HTTPS/TLS) vers nos serveurs sécurisés.</p>
+                <p>Le traitement est effectué sur les infrastructures de <strong>Google Cloud Platform</strong> (notre sous-traitant technique). CleanMyCSV garantit que vos fichiers ne sont :</p>
+                <ul>
+                    <li>Jamais vendus.</li>
+                    <li>Jamais partagés à des tiers publicitaires.</li>
+                    <li>Jamais ouverts par un humain (sauf obligation légale stricte ou débogage technique critique à votre demande).</li>
+                </ul>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-user-check"></i> 4. Vos droits (RGPD)</h4>
+                <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.</p>
+                <p>Cependant, étant donné que nous supprimons vos données automatiquement sous 30 minutes, <strong>l'exercice du droit à l'oubli est effectué par défaut</strong> pour chaque utilisateur.</p>
+                <p>Pour toute question spécifique : <a href="mailto:contact@cleanmycsv.fr" style="color: var(--teal-blue); font-weight: bold;">contact@cleanmycsv.fr</a></p>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-primary">
+                <div class="footer-right">
+                    <a href="cgu.html">CGU</a>
+                    <a href="legal.html">Mentions Légales</a>
+                    <a href="security.html">Confidentialité</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright">&copy; 2025 CleanMyCSV. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

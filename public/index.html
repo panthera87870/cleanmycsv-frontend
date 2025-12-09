@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CleanMyCSV - Nettoyez vos CSV</title>
+    <title>CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes</title>
+
+    <meta name="description" content="CleanMyCSV harmonise vos fichiers CSV en quelques secondes. Corrigez les formats incohérents, les doublons et les erreurs. Rapide, simple et sécurisé.">
+
+    <meta property="og:title" content="CleanMyCSV – Nettoyez vos CSV en un instant">
+    <meta property="og:description" content="Un outil simple et rapide pour nettoyer vos fichiers CSV. Gain de temps garanti.">
+    <meta property="og:image" content="assets/images/og-image.png">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/b2f23a8fce.js" crossorigin="anonymous"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <div id="top"></div>
@@ -17,39 +27,50 @@
     <div id="upload-modal" class="modal-overlay">
         <div class="modal-content" id="modal-container" onclick="event.stopPropagation()">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            <div id="dynamic-content">
-                </div>
+            <div id="dynamic-content"></div>
         </div>
     </div>
 
-    <header class="main-header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="#top" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-                    <img src="assets/images/logo.png" alt="Logo" class="logo-icon">
-                    <span>CLEANMYCSV</span>
-                </a>
-            </div>
-            <div class="nav-right-links">
-                <a href="#how-it-works" class="nav-link-uppercase" onclick="scrollToSection(event, 'how-it-works')">COMMENT ÇA MARCHE ?</a>
-                <button class="cta-button-nav" onclick="openModal()">Essayer</button>
-            </div>
-        </nav>
-    </header>
+    <div class="sticky-wrapper">
+        <div class="top-banner">
+            Avant les fêtes, gagnez du temps sur ce qui compte vraiment.
+        </div>
+
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#top" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                        <!--img src="assets/images/logo.png" alt="Logo" class="logo-icon"-->
+                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
+                    </a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
+                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
+                    <button class="cta-button-nav" onclick="openModal()">Essayer</button>
+                </div>
+            </nav>
+        </header>
+    </div>
 
     <main class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Vos CSV propres. En quelques secondes.</h1>
-                <p>Sans formules. Sans erreurs. Sans stress.</p>
+                <h1>Des fichiers CSV propres. En un instant.</h1>
+                <p class="section-subtext">
+                    Sans formules. Sans erreurs. Sans perte de temps.
+                </p>
                 <div class="cta-wrapper">
                     <button class="cta-button hero-cta" onclick="openModal()">
-                        Essayer gratuitement
+                        Nettoyer mon fichier
                     </button>
                 </div>
+                <span class="hero-subtext">
+                    <i class="fas fa-check-circle"></i> C'est 100% gratuit.
+                </span>
             </div>
             <div class="hero-visuals">
-                <img src="assets/images/icons.png" alt="Icônes représentant les sources de données à nettoyer" id="collage-final" class="visual-content-element" onerror="this.style.display='none'; this.after(document.createTextNode('Visuals Placeholder'))">
+                <img src="assets/images/icon_noel_lavande.png" alt="Icônes représentant les sources de données à nettoyer - version Noël" id="collage-final" class="visual-content-element" onerror="this.style.display='none'; this.after(document.createTextNode('Visuals Placeholder'))">
                 <img src="assets/images/swirl.png" alt="Tourbillon" class="visual-bg-element" id="tourbillon-anim" onerror="this.style.display='none'; this.after(document.createTextNode('Background Swirl'))">
             </div>
         </div>
@@ -57,124 +78,141 @@
 
     <section class="hidden-cost-section">
         <div class="container">
-            <h2>Le coût caché de vos données brutes</h2>
-            <p class="section-subtext">Avant même de commencer votre analyse, vous perdez un temps précieux à jouer les gardiens du format. CleanMyCSV vous sauve de ces trois cauchemars quotidiens:</p>
+            <h2>Les données brutes cachent souvent plus de problèmes qu’on ne l’imagine.</h2>
+            <p class="section-subtext">
+                Un simple fichier CSV peut contenir des dizaines de petites irrégularités. <br>
+                Individuellement, elles semblent anodines. Ensemble, elles vous font perdre du temps et faussent vos résultats.
+            </p>
             <div class="cost-grid">
                 <div class="cost-card card-purple">
-                    <h3>La folie de la normalisation</h3>
+                    <h3>Formats incohérents</h3>
                     <p>
-                        Des formats mélangés, des séparateurs différents, des majuscules qui traînent...<br><br>
-                        <strong>Votre tableau devient un casse-tête avant même l'analyse.</strong>
+                        Dates différentes, séparateurs instables, majuscules aléatoires…  
+                        Votre fichier perd sa cohérence.
                     </p>
                 </div>
                 <div class="cost-card card-purple">
-                    <h3>Les doublons qui ruinent tout</h3>
-                    <p>Des lignes en double, des champs vides, des incohérences: vos insights perdent en fiabilité.</p>
+                    <h3>Doublons silencieux</h3>
+                    <p>
+                        Des lignes identiques ou similaires perturbent vos totaux sans que vous les remarquiez.
+                    </p>
                 </div>
                 <div class="cost-card card-purple">
-                    <h3>Le stress de l'erreur humaine</h3>
+                    <h3>Décalages de structure</h3>
                     <p>
-                        Un copier-coller mal placé peut fausser tout un rapport.<br><br>
-                        <strong>Corriger à la main coûte du temps (et des erreurs).</strong>
+                        Une colonne décalée ou une valeur mal alignée suffit à casser la logique du tableau.
                     </p>
                 </div>
             </div>
-            <p class="cost-cta-text"><b>STOP.</b> Il est temps d'automatiser cette corvée. <br>Voici comment CleanMyCSV vous libère en cinq points.</p>
+            <p class="cost-cta-text">
+                CleanMyCSV repère ces irrégularités et remet votre fichier en ordre, automatiquement.
+            </p>
         </div>
     </section>
 
     <section class="trust-benefits-section">
         <div class="container">
-            <h2>Votre fichier est confidentiel. Votre temps est précieux.</h2>
+            <h2>Un traitement clair, rapide et méthodique.</h2>
+            <p class="section-subtext">
+                Ce que CleanMyCSV remet en place pour vous :
+            </p>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <div class="benefit-content">
-                        <h3>Nettoyage intelligent</h3>
-                        <p>L'IA détecte et corrige les formats incohérents et les doublons, sans toucher à vos données fiables.</p>
+                        <h3>Harmonisation automatique</h3>
+                        <p>Dates, nombres et séparateurs suivent enfin les mêmes règles.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <div class="benefit-content">
+                        <h3>Corrections ciblées</h3>
+                        <p>Les erreurs sont ajustées sans toucher aux données fiables.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div class="benefit-content">
-                        <h3>Ultra rapide</h3>
-                        <p>Quelques secondes suffisent, quel que soit la taille du fichier.</p>
+                        <h3>Traitement rapide</h3>
+                        <p>Votre fichier retrouve une structure cohérente en quelques secondes.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-gear"></i>
                     <div class="benefit-content">
                         <h3>Compatibilité universelle</h3>
-                        <p>Tous vos fichiers CSV sont pris en charge, peu importe la source.</p>
+                        <p>Tout CSV est accepté, quelle que soit sa source.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div class="benefit-content">
-                        <h3>Sécurité et confidentialité</h3>
-                        <p>Vos fichiers sont supprimés après traitement. Conformité RGPD garantie.</p>
+                        <h3>Confidentialité assurée</h3>
+                        <p>Vos fichiers sont supprimés après traitement.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div class="benefit-content">
-                        <h3>Transparence</h3>
-                        <p>Vous recevez un rapport clair de chaque modification.</p>
+                        <h3>Rapport clair</h3>
+                        <p>Vous visualisez clairement chaque ajustement.</p>
                     </div>
                 </div>
             </div>
+            <p class="lien-vers-documentation">
+                En savoir plus sur CleanMyCSV : consultez notre <a href="manual.html" style="color: var(--black); font-weight: 700;">Documentation</a>.
+            </p>
         </div>
     </section>
 
     <section class="how-it-works-section" id="how-it-works">
         <div class="container">
-            <h2>Comment ça marche?</h2>
-            <p class="section-subtext">Laissez l'algorithme se charger du travail fastidieux. Notre promesse est simple: <strong>vous téléversez, nous nettoyons, vous téléchargez.</strong></p>
-            
-            <div class="process-flow">
-                <div class="flow-step">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                </div>
-                <i class="fa-solid fa-arrow-right flow-arrow"></i>
-                <div class="flow-step">
-                    <i class="fa-solid fa-spinner fa-spin-pulse"></i>
-                </div>
-                <i class="fa-solid fa-arrow-right flow-arrow"></i>
-                <div class="flow-step">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-            </div>
+            <h2>En trois étapes. Une routine simple, portée par une technologie rigoureuse.</h2>
 
             <div class="process-cards-grid">
-                <div class="process-card card-lavender">
-                    <h3>Étape 1: Téléversez votre fichier</h3>
-                    <p>Glissez votre fichier. C'est 100% sécurisé.</p>
+                <div class="process-card">
+                    <i class="fa-solid fa-cloud-arrow-up process-icon"></i>
+                    <h3>Étape 1: Déposez votre fichier</h3>
+                    <p>Glissez votre CSV. Le transfert est sécurisé.</p>
                 </div>
-                <div class="process-card card-lavender">
-                    <h3>Étape 2: L'IA nettoie vos données</h3>
-                    <p>Formats, doublons, erreurs: tout est corrigé automatiquement.</p>
+                <div class="process-card">
+                    <i class="fa-solid fa-spinner fa-spin-pulse process-icon"></i>
+                    <h3>Étape 2: Nettoyage structuré</h3>
+                    <p>Formats stabilisés, doublons retirés, erreurs corrigées.</p>
                 </div>
-                <div class="process-card card-lavender">
-                    <h3>Étape 3: Téléchargez vos résultats</h3>
-                    <p>Obtenez un CSV prêt à l'analyse (et un rapport JSON si vous le souhaitez).</p>
+                <div class="process-card">
+                    <i class="fa-solid fa-circle-check process-icon"></i>
+                    <h3>Étape 3: Téléchargez votre fichier propre</h3>
+                    <p>Un CSV cohérent, accompagné d’un rapport si besoin.</p>
                 </div>
             </div>
             
-            <button class="cta-button last-cta" onclick="openModal()">Essayez CleanMyCSV gratuitement</button>
+            <button class="cta-button last-cta" onclick="openModal()">
+                Gagnez du temps. <br>Essayez CleanMyCSV gratuitement
+            </button>
         </div>
     </section>
 
+    <div class="container">
+        <div class="special-end-year">
+            Une fin d’année plus claire. <br>Un début d’année mieux organisé.
+        </div>
+    </div>
+
     <footer class="main-footer">
         <div class="container footer-content">
-            <div class="footer-left">
-                <span class="footer-logo">CLEANMYCSV</span>
-                <p class="copyright">&copy; 2025 CleanMyCSV. Tous droits réservés.</p>
-            </div>
-            <div class="footer-right">
-                <a href="#">FAQ</a>
-                <a href="#">Conditions Générales de Vente</a>
-                <a href="#">Politique de Confidentialité</a>
-                <a href="#">Contact</a>
+            <div class="footer-primary">
+                <div class="footer-right">
+                    <a href="cgu.html">CGU</a>
+                    <a href="legal.html">Mentions Légales</a>
+                    <a href="security.html">Confidentialité</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright">&copy; 2025 CleanMyCSV. Tous droits réservés.</p>
+                </div>
             </div>
         </div>
     </footer>

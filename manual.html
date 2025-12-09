@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nettoyage de Données CSV : Manuel Détaillé, Normalisation et Correction | CleanMyCSV</title>
+    <meta name="description" content="Découvrez le moteur de nettoyage CleanMyCSV : processus détaillé pour l'harmonisation, la correction des formats incohérents, la suppression des doublons et l'alignement des colonnes de vos fichiers CSV.">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b2f23a8fce.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="sticky-wrapper">
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
+                    </a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
+                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
+                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
+                    <button class="cta-button-nav" onclick="window.location.href='index.html';">Essayer l'outil</button>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main class="page-content-wrapper">
+        <div class="container">
+            <h1>Comprendre le nettoyage de vos CSV</h1>
+
+            <section class="section-why">
+                <h2>Pourquoi nettoyer un CSV ?</h2>
+                <p class="section-subtext">
+                    Un fichier CSV peut sembler simple : des lignes, des colonnes, des valeurs.<br>
+                    Mais en réalité, chaque export a sa propre manière d’écrire les dates, les nombres ou les séparateurs.<br><br>
+                    Ces variations créent des incohérences invisibles qui :
+                </p>
+                <ul class="manual-list-why">
+                    <li>faussent les calculs ou l'analyse de données,</li>
+                    <li>cassent les imports dans Excel ou un logiciel comptable,</li>
+                    <li>ralentissent le travail manuel de correction,</li>
+                    <li>ou bloquent une automatisation critique.</li>
+                </ul>
+                <p class="section-subtext">
+                    CleanMyCSV organise et standardise ces données pour que vous puissiez travailler sans friction.
+                </p>
+            </section>
+
+            <section class="manual-steps">
+                <h2>Comment fonctionne CleanMyCSV ?</h2>
+
+                <section class="manual-step-1">
+                    <h3>Étape 1 — Analyse du fichier</h3>
+                    <p class="section-subtext">
+                        Lorsque vous déposez votre CSV, CleanMyCSV commence par comprendre sa structure.
+                    </p>
+
+                    <div class="encoding">
+                        <h4><i class="fa-solid fa-check"></i>Détection automatique de l'encodage</h4>
+                        <p class="section-subtext">
+                            Tous les fichiers ne sont pas encodés de la même manière (UTF-8, ISO-8859-1, Windows-1252…).<br>
+                            CleanMyCSV utilise <strong>chardet</strong> pour repérer l’encodage puis <strong>icon-lite</strong> pour convertir proprement le fichier.<br><br>
+                            Cela évite :
+                        </p>
+                        <ul>
+                            <li>les caractères “�”,</li>
+                            <li>les accents illisibles,</li>
+                            <li>les colonnes décalées.</li>
+                        </ul>
+                    </div>
+
+                    <div class="separator">
+                        <h4><i class="fa-solid fa-check"></i>Détection du séparateur réel</h4>
+                        <p class="section-subtext">
+                            Les CSV peuvent utiliser : virgule, point-virgule, tabulation, pipe…<br><br>
+                            CleanMyCSV teste les structures possibles pour choisir le <strong>bon séparateur</strong>, même si :
+                        </p>
+                        <ul>
+                            <li>le fichier n’a pas d’extension,</li>
+                            <li>il a été exporté d’un logiciel exotique,</li>
+                            <li>il mélange plusieurs types.</li>
+                        </ul>
+                        <p class="section-subtext">
+                            Résultat : le fichier est prêt à être analysé sans erreur.
+                        </p>
+                        <div class="before-after-example">
+                            <div class="code-item-wrapper">
+                                <span class="label">Avant</span>
+                                <div class="code-content">
+                                    <pre>date, montant; description , categorie
+04/12/23; 1.200,50; "Achat test" ; frais</pre>
+                                </div>
+                            </div>
+                            <div class="code-item-wrapper">
+                                <span class="label">Après</span>
+                                <div class="code-content">
+                                    <pre>date;montant;description;categorie
+04/12/2023;1200.50;Achat test;frais</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="manual-step-2">
+                    <h3>Étape 2 — Lecture et validation des lignes</h3>
+                    <p class="section-subtext">
+                        Le fichier est ensuite décodé et analysé ligne par ligne via <strong>PapaParse</strong>, un parseur très robuste.<br><br>
+                        CleanMyCSV vérifie :
+                    </p>
+                    <ul>
+                        <li>le nombre de colonnes attendu,</li>
+                        <li>les lignes vides,</li>
+                        <li>les champs décalés,</li>
+                        <li>les valeurs non conformes.</li>
+                    </ul>
+                    <p class="section-subtext">
+                        Toutes les irrégularités sont consignées dans un rapport.
+                    </p>
+                </section>
+
+                <section class="manual-step-3">
+                    <h3>Étape 3 — Normalisation des données</h3>
+                    <p class="section-subtext">
+                        C’est ici que CleanMyCSV agit vraiment comme un “nettoyeur”.
+                    </p>
+
+                    <div class="normalise-date">
+                        <h4><i class="fa-solid fa-check"></i>Normalisation des dates (normalizeDate)</h4>
+                        <p class="section-subtext">
+                            Les dates sont souvent le problème n°1 des CSV.<br><br>
+                            CleanMyCSV détecte le format, puis :
+                        </p>
+                        <ul>
+                            <li>convertit la date dans un format unifié,</li>
+                            <li>enlève l’heure inutile,</li>
+                            <li>corrige les inversions jour/mois quand c’est détectable,</li>
+                            <li>repère les dates impossibles (ex. “32/20/2040”).</li>
+                        </ul>
+                        <div class="before-after-example">
+                            <div class="code-item-wrapper">
+                                <span class="label">Avant</span>
+                                <div class="code-content">
+                                    <pre>02/01/23
+2023-02-01 00:00:00
+02.01.2023
+1 Feb 2023</pre>
+                                </div>
+                            </div>
+                            <div class="code-item-wrapper">
+                                <span class="label">Après</span>
+                                <div class="code-content">
+                                    <pre>2023-02-01
+2023-02-01
+2023-02-01
+2023-02-01</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="normalise-amount">
+                        <h4><i class="fa-solid fa-check"></i>Normalisation des montants (normalizeAmount)</h4>
+                        <p class="section-subtext">
+                            Les montants peuvent venir sous des formes multiples.<br><br>
+                            CleanMyCSV :
+                        </p>
+                        <ul>
+                            <li>supprime les espaces parasites,</li>
+                            <li>détecte automatiquement la convention utilisée,</li>
+                            <li>unifie les décimales,</li>
+                            <li>detecte et ajoute une colonne devise,</li>
+                            <li>convertit tout en un format numérique cohérent.</li>
+                        </ul>
+                        <p class="section-subtext">
+                            Résultat : tous les montants sont stables et exploitables.
+                        </p>
+                        <div class="before-after-example">
+                            <div class="code-item-wrapper">
+                                <span class="label">Avant</span>
+                                <div class="code-content">
+                                    <pre>1.200,50
+€1 200.50
+- 1200,5
+1200</pre>
+                                </div>
+                            </div>
+                            <div class="code-item-wrapper">
+                                <span class="label">Après</span>
+                                <div class="code-content">
+                                    <pre>1200.50
+1200.50;€;
+-1200.50
+1200.00</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="structurel">
+                        <h4><i class="fa-solid fa-check"></i>Nettoyage structurel</h4>
+                        <p class="section-subtext">
+                            CleanMyCSV reconstruit chaque ligne de façon cohérente :
+                        </p>
+                        <ul>
+                            <li>colonnes alignées</li>
+                            <li>guillemets retirés lorsqu’ils ne sont pas nécessaires</li>
+                            <li>lignes vides supprimées</li>
+                            <li>champs incomplets signalés</li>
+                            <li>corrections regroupées dans le rapport</li>
+                        </ul>
+                        <div class="before-after-example">
+                            <h5 class="example-title">Exemple de correction : champ manquant</h5>                            <div class="code-item-wrapper">
+                                <span class="label">Avant</span>
+                                <div class="code-content">
+                                    <pre>date;montant;catégorie
+04/12/23;1200.50</pre>
+                                </div>
+                            </div>
+                            <div class="code-item-wrapper">
+                                <span class="label">Après</span>
+                                <div class="code-content">
+                                    <pre>date;montant;catégorie
+04/12/2023;1200.50;""</pre>
+                                </div>
+                            </div>
+                            <h5 class="example-title">Exemple de correction : doublon silencieux</h5>
+                            <div class="code-item-wrapper">
+                                <span class="label">Avant</span>
+                                <div class="code-content">
+                                    <pre>04/12/2023;1200.50;frais
+04/12/2023; 1200.50 ; frais</pre>
+                                </div>
+                            </div>
+                            <div class="code-item-wrapper">
+                                <span class="label">Après</span>
+                                <div class="code-content">
+                                    <pre>04/12/2023;1200.50;frais</pre>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+
+                <section class="manual-step-4">
+                    <h3>Étape 4 — Rapport détaillé</h3>
+                    <p class="section-subtext">
+                        Une fois le fichier nettoyé, CleanMyCSV génère un rapport clair contenant :
+                    </p>
+                    <ul>
+                        <li>nombre de lignes analysées</li>
+                        <li>nombre d’erreurs trouvées</li>
+                        <li>types d’erreurs détectées</li>
+                        <li>valeurs corrigées</li>
+                        <li>format final choisi</li>
+                    </ul>
+                    <p class="section-subtext">
+                        Le rapport ne cherche pas à être “technique pour les experts”, mais <strong>compréhensible pour tous</strong>, y compris si vous n’avez jamais touché un CSV auparavant.
+                    </p>
+                </section>
+
+                <section class="manual-step-5">
+                    <h3>Étape 5 — Export propre et cohérent</h3>
+                    <p class="section-subtext">
+                        Le fichier final est généré avec :
+                    </p>
+                    <ul>
+                        <li>un encodage propre (UTF-8)</li>
+                        <li>un séparateur stable</li>
+                        <li>des valeurs harmonisées</li>
+                        <li>des colonnes alignées</li>
+                        <li>des montants normalisés</li>
+                        <li>des dates cohérentes</li>
+                    </ul>
+                    <p class="section-subtext">
+                        Vous obtenez un CSV immédiatement exploitable dans Excel, Google Sheets, un logiciel comptable, ou dans un script automatisé.
+                    </p>
+                </section>
+
+            </section>
+
+            <section class="security">
+                <h2>Sécurité des données et confidentialité</h2>
+                <p class="section-subtext">
+                   <strong>
+                    Tout fichier déposé est supprimé après traitement.<br>
+                    Aucune donnée n’est conservée.<br>
+                    Aucun fichier n’est analysé à des fins externes. <br><br>
+                   </strong>
+                    Pour en savoir plus sur la protection de vos données, veuillez consulter notre <a href="security.html" style="color: var(--black); font-weight: 700;">Politique de Confidentialité</a>.
+                </p>
+            </section>
+
+            <section class="resume">
+                <h2>En résumé :</h2>
+                <p class="section-subtext">CleanMyCSV :</p>
+                <ol>
+                    <li>détecte l’encodage et le séparateur,</li>
+                    <li>analyse la structure,</li>
+                    <li>normalise montants et dates,</li>
+                    <li>corrige erreurs et incohérences,</li>
+                    <li>génère un rapport clair,</li>
+                    <li>vous renvoie un CSV propre.</li>
+                </ol>
+                <p class="section-subtext">
+                    Tout cela <strong>en quelques secondes</strong>.
+                </p>
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-primary">
+                <div class="footer-right">
+                    <a href="cgu.html">CGU</a>
+                    <a href="legal.html">Mentions Légales</a>
+                    <a href="security.html">Confidentialité</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright">&copy; 2025 CleanMyCSV. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>

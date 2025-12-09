@@ -1,24 +1,36 @@
-/* ======== VARIABLES & CONFIGURATION GLOBALE ======== */
+/* ==============================================
+// PUBLIC/STYLE.CSS
+// ============================================== */
+
+/* 1. VARIABLES & CONFIGURATION
+   ============================================== */
 :root {
-    --primary-purple: #ece3ff;     /* Lavande clair (pour fonds) */
-    --secondary-purple: #0097b2;  /* Bleu canard (pour accents) - J'ai gardé celui-ci de votre fichier */
+    /* --- Palette de couleurs --- */
+    --lavender-purple: #ece3ff;    /* Lavande clair */
+    --teal-blue:       #7d3fff;    /* Couleur principale (Indigo/Violet vibrant) */
+    --user-indigo:     #4F46E5;    /* Couleur secondaire (Bouton JSON) */
     --background-color: #FFFFFF;
-    --text-color: #000000;
-    --subtext-color: #000000;      /* Texte normal, noir */
-    --black: #000000;
-    --white: #FFFFFF;
     
-    /* Couleurs de Statut */
-    --color-success: #10B981;     /* Vert pour succès */
-    --color-danger: #EF4444;      /* Rouge pour erreurs */
-    --color-border: #E0E0E0;      /* Gris clair pour bordures */
-    --color-info-bg: #F7F7F9;    /* Gris très clair pour fonds (upload) */
+    /* --- Textes --- */
+    --text-color:      #000000;
+    --subtext-color:   #000000;    /* Noté: actuellement noir, modifiable ici si besoin */
+    --black:           #000000;
+    --white:           #FFFFFF;
     
-    /* Couleurs Boutons Modale */
-    --user-indigo: #4F46E5;       /* Indigo pour bouton JSON */
+    /* --- États & UI --- */
+    --color-success:   #40b58efc;    /* Vert succès */
+    --color-success-click: #42c79bde;
+    --color-danger:    #EF4444;    /* Rouge erreur */
+    --color-border:    #E0E0E0;    /* Bordures */
+    --color-info-bg:   #F7F7F9;    /* Fond gris clair (upload) */
+
+    /* --- Footer --- */
+    --footer-bg:         var(--black);
+    --footer-text-color: var(--white);
 }
 
-/* Réinitialisation de base (Reset) */
+/* 2. RESET & BASE
+   ============================================== */
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +38,7 @@
 }
 
 body {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Raleway', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -36,18 +48,126 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* ======== HEADER / BARRE DE NAVIGATION ======== */
+/* 3. COMPOSANTS RÉUTILISABLES (BOUTONS)
+   ============================================== */
+
+/* Style de base partagé pour tous les boutons CTA */
+.cta-button, .cta-button-nav, .start-clean-btn,
+.last-cta, .btn-secondary, .cta-button-again {
+    display: inline-block;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    text-align: center;
+    font-family: inherit;
+}
+
+/* Effet de survol partagé (Zoom) */
+.cta-button:hover, .cta-button-nav:hover, .last-cta:hover,
+.cta-button-again:hover, .btn-secondary:hover {
+    transform: scale(1.05);
+}
+
+/* -- Variantes de boutons -- */
+
+/* 1. Bouton Principal (Teal/Violet) */
+.cta-button.hero-cta, .cta-button-nav, .last-cta,
+.start-clean-btn, .cta-button-again {
+    background-color: var(--teal-blue);
+    color: var(--white);
+}
+
+.cta-button-nav { padding: 10px 20px; font-size: 0.9rem; }
+
+.cta-button {
+    padding: 16px 32px;
+    font-size: 1.25rem;
+}
+
+/* Bouton Succès (Vert) */
+.cta-button.download-btn-success {
+    background-color: var(--color-success);
+    color: var(--white);
+    width: 100%;
+    border-radius: 50px; /* Exception : moins arrondi */
+    font-size: 1rem;
+}
+.cta-button.download-btn-success:hover {
+    background-color: var(--color-success);
+    transform: none; /* Pas de zoom sur celui-ci */
+}
+
+/* Bouton JSON (Indigo) */
+.cta-button.download-btn-json {
+    background-color: var(--teal-blue);
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 1rem;
+}
+.cta-button.download-btn-json:hover {
+    background-color: var(--teal-blue);
+    transform: none;
+}
+
+/* Bouton Start Clean (dans la modale) */
+.start-clean-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+.start-clean-btn:hover:not(:disabled) {
+    transform: none;
+}
+.start-clean-btn:disabled {
+    background-color: var(--lavender-purple);
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.btn-secondary {
+    background-color: var(--lavender-purple);
+}
+
+/* -------- SAISONIERE ------ */
+.special-end-year {
+    background-color: var(--background-color); /* noir profond */
+    color: #ad7e2c;
+    text-align: right;
+    font-size: 2rem; 
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding: 40px 0;
+}
+
+/* 4. HEADER & NAVIGATION
+   ============================================== */
+.sticky-wrapper { position: sticky; top: 0; z-index: 50; }
+.top-banner {
+    background-color: var(--footer-bg); /* noir profond */
+    color: var(--footer-text-color);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 8px 0;
+}
 .main-header {
     width: 100%;
-    padding: 24px 0;
-    position: sticky;
-    top: 0;
+    padding: 15px 0;
     background-color: var(--background-color);
-    z-index: 10;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
+.main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.85); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+}
 .navbar {
     width: 90%;
     max-width: 1200px;
@@ -55,646 +175,560 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 10px 0; 
 }
-
 .logo {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 800;
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--secondary-purple); /* Couleur du logo */
+    color: var(--black); 
 }
-
-.logo a { /* Assure que le lien du logo hérite de la couleur */
+.logo a {
     text-decoration: none;
     color: inherit;
     display: flex;
     align-items: center;
 }
-
-.logo-icon {
-    width: 25px;
-    height: 25px;
+.logo-accent {
+    color: var(--teal-blue); 
 }
-
 .nav-right-links {
     display: flex;
     align-items: center;
     gap: 25px;
 }
-
 .nav-right-links .nav-link-uppercase {
     text-transform: uppercase;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
 }
-
 .nav-right-links .nav-link-uppercase:hover {
-    color: var(--secondary-purple);
+    color: var(--teal-blue);
 }
 
-/* Classe unifiée pour les boutons CTA */
-.cta-button {
-    display: inline-block;
-    padding: 16px 32px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: transform 0.2s ease;
-    border: none;
-    cursor: pointer;
-}
-.cta-button:hover {
-    transform: scale(1.05);
-}
-
-/* Style pour le bouton du Héros */
-.cta-button.hero-cta {
-    background-color: var(--primary-purple);
-    color: var(--black);
-}
-
-/* Style pour le bouton de la Nav (noir) */
-.cta-button-nav {
-    background-color: var(--black);
-    color: var(--white);
-    padding: 10px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: transform 0.2s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.cta-button-nav:hover {
-    transform: scale(1.05);
-}
-
-/* Style pour le bouton CTA Final (en bas) */
-.last-cta {
-    background-color: var(--primary-purple); 
-    color: var(--black);
-    font-weight: 700;
-    border-radius: 50px;
-} 
-
-/* ======== SECTION PRINCIPALE (HÉROS) ======== */
+/* 5. HERO SECTION (ACCUEIL)
+   ============================================== */
 .hero-section {
-    width: 100%;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    padding-bottom: 50px;
-    /* Vous pouvez ajouter un fond ici si vous le souhaitez */
-    /* background-color: #fdfcff; */
+    width: 100%; min-height: 70vh;
+    display: flex; align-items: center;
+    padding-bottom: 40px;
 }
-
 .hero-container {
-    width: 90%;
-    max-width: 1200px;
+    width: 90%; max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     gap: 40px;
 }
 
+/* Contenu Gauche */
 .hero-content {
-    flex-basis: 50%;
-    flex-grow: 1;
+    flex-basis: 50%; flex-grow: 1;
     min-width: 300px;
     padding-top: 80px;
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
 }
-
 .hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 40px;
-    margin-top: 0;
+    font-size: 2.8rem; font-weight: 800;
+    margin-bottom: 40px; margin-top: 0;
 }
-
 .hero-content p {
-    font-size: 1.25rem;
-    color: var(--subtext-color);
-    margin-bottom: 60px;
+    font-size: 1.7rem; color: var(--subtext-color);
+    margin-bottom: 50px;
     max-width: 500px;
 }
-
-/* ======== COLONNE DE DROITE (VISUELS) ======== */
-.hero-visuals {
-    flex-basis: 50%;
-    flex-grow: 1;
-    min-height: 500px;
-    position: relative;
+.hero-content .cta-button {
+    margin-top: 30px; 
+    display: block; 
+    margin-left: auto; margin-right: auto;
 }
-
-@keyframes spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+.hero-subtext {
+    margin-top: 15px;
+    font-size: 1.1rem; font-weight: 100; color: var(--black);
+    text-align: center; display: block;
 }
+.hero-subtext i { margin-right: 5px; }
 
+/* Visuels Droite & Animations */
+.hero-visuals { flex-basis: 50%; flex-grow: 1; position: relative; }
 #collage-final { 
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 130%;
-    height: auto; 
-    max-width: 700px;
+    width: 100%; height: auto; 
+    max-width: 500px;
     z-index: 2;
 }
-
 #tourbillon-anim {
     position: absolute;
-    top: 50%; 
-    left: 50%; 
+    top: 50%; left: 50%; 
     transform: translate(-50%, -50%); 
-    width: 100%; 
-    height: auto; 
+    width: 85%; height: auto; 
     object-fit: contain;
     z-index: 1; 
     animation: spin 30s linear infinite;
 }
-
-/* ============ STYLES DE LA MODALE ============ */
-.upload-label p strong,
-
-.cta-button span.filename-display {
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    display: inline-block;
-    max-width: 70%; /* Réduit la largeur pour ne pas écraser le texte "Télécharger" ou l'icône */
-    vertical-align: top;
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+/* 6. MODALE, SUCCES & UPLOAD
+   ============================================== */
 .modal-overlay {
-    visibility: hidden; 
-    opacity: 0;         
+    visibility: hidden; opacity: 0;         
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     overflow: auto;
+    padding: 20px 0;
     background-color: rgba(0, 0, 0, 0.6);
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: flex-start;
 }
-
-.modal-overlay.visible {
-    visibility: visible;
-    opacity: 1;
-}
-
+.modal-overlay.visible { visibility: visible; opacity: 1; }
 .modal-content {
     background-color: var(--white);
-    padding: 40px;
+    padding: 40px; margin: auto;
     border-radius: 12px;
     position: relative;
-    width: 90%;
-    max-width: 600px;
+    width: 90%; max-width: 600px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transform: scale(0.95);
     transition: transform 0.3s ease-out;
 }
-.modal-overlay.visible .modal-content {
-    transform: scale(1);
-}
-
+.modal-overlay.visible .modal-content { transform: scale(1); }
 .close-btn {
     position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 30px;
-    font-weight: 300;
-    color: var(--black);
-    cursor: pointer;
-    background: none;
-    border: none;
+    top: 15px; right: 25px;
+    font-size: 30px; font-weight: 300; color: var(--black);
+    cursor: pointer; background: none; border: none;
     line-height: 1;
 }
-.close-btn:hover {
-    color: var(--secondary-purple);
-}
+.close-btn:hover { color: var(--teal-blue); }
 
-/* Zone de téléversement (glisser-déposer) */
+/* Zone d'upload */
 .upload-area {
-    border: 2px dashed var(--color-border);
-    border-radius: 8px;
-    padding: 30px;
+    border: 2px dashed var(--color-border); border-radius: 8px;
+    padding: 30px; margin-bottom: 20px;
     text-align: center;
     cursor: pointer;
     transition: border-color 0.3s ease;
-    margin-bottom: 20px;
     background-color: var(--color-info-bg);
 }
-.upload-area:hover {
-    border-color: var(--secondary-purple);
+.upload-area:hover { border-color: var(--teal-blue); }
+.upload-label { display: block; cursor: pointer; }
+.upload-label i { font-size: 3rem; color: var(--teal-blue); margin-bottom: 10px; }
+.upload-label p { font-weight: 600; margin: 5px 0; color: var(--text-color); }
+.upload-label small { color: var(--subtext-color); font-size: 0.8rem; }
+.upload-label p strong {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: inline-block;
+    max-width: 70%; 
+    vertical-align: top;
 }
-
-.upload-label {
-    display: block;
-    cursor: pointer;
-}
-.upload-label i {
-    font-size: 3rem;
-    color: var(--secondary-purple);
-    margin-bottom: 10px;
-}
-.upload-label p {
-    font-weight: 600;
-    margin: 5px 0;
-    color: var(--text-color);
-}
-.upload-label small {
-    color: var(--subtext-color);
-    font-size: 0.8rem;
-}
-
-/* Bouton de lancement */
-.start-clean-btn {
-    margin-top: 20px;
-    width: 100%;
-    background-color: var(--secondary-purple); 
-    color: var(--white);
-    padding: 14px 24px; 
-    border-radius: 8px; 
-    font-size: 1rem;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-}
-.start-clean-btn:hover:not(:disabled) {
-    background-color: #007a9b; /* Version plus foncée du bleu canard */
-    transform: none; 
-    box-shadow: none;
-}
-.start-clean-btn:disabled {
-    background-color: #a0dce6; /* Version plus claire */
-    cursor: not-allowed;
-    opacity: 0.8;
-}
-
 .security-note {
     font-size: 0.9rem;
     color: #666;
     text-align: center;
     margin-top: 20px;
 }
-.security-note i {
-    margin-right: 5px;
-    color: var(--color-success);
-}
-
+.security-note i { margin-right: 5px; color: var(--color-success); }
 .upload-step h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--secondary-purple);
+    font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; color: var(--teal-blue);
 }
 
-/* ============ NOUVEAUX STYLES MODALE (Spin, Succès) ============ */
-
+/* Spinner */
+.spinner-custom {
+    border: 4px solid var(--lavender-purple);
+    border-top: 4px solid var(--teal-blue);
+    border-radius: 50%;
+    width: 40px; height: 40px;
+    animation: spin-custom 1s linear infinite;
+    margin: 20px auto;
+}
 @keyframes spin-custom {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-.spinner-custom {
-    border: 4px solid var(--primary-purple);
-    border-top: 4px solid var(--secondary-purple);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin-custom 1s linear infinite;
-    margin: 20px auto;
-}
 
-/* Boutons de téléchargement dynamiques */
-.cta-button.download-btn-success {
-    background-color: var(--color-success);
-    color: var(--white);
-    padding: 14px 24px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 700;
-    width: 100%;
+/* Résultats */
+.result-summary-box {
+    background-color: var(--lavender-purple);
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 15px; margin-bottom: 10px;
+    font-size: 0.9em; line-height: 1.5; color: var(--text-color);
 }
-.cta-button.download-btn-success:hover {
-    background-color: #0d9d6e; 
-    transform: none;
-    box-shadow: none;
+.metric-container {
+    display: flex; justify-content: space-around;
+    text-align: center; 
+    margin-bottom: 10px;
 }
-.cta-button.download-btn-json {
-    background-color: var(--user-indigo);
-    color: var(--white);
-}
-.cta-button.download-btn-json:hover {
-    background-color: #4338CA;
-    transform: none;
-    box-shadow: none;
-}
+.metric-item { flex: 1; padding: 10px 8px; }
+.metric-item:first-child { border-right: 1px solid var(--color-border); }
+.metric-value { font-size: 1.8rem; font-weight: 800; color: var(--teal-blue); line-height: 1.2; }
+.metric-label { font-size: 0.75rem; color: var(--subtext-color); text-transform: uppercase; margin-top: 2px; }
 
-/* Case à cocher JSON */
 .checkbox-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    margin: 15px 0;
+    display: flex; align-items: center;
+    padding: 12px; margin: 15px 0;
     background-color: var(--color-info-bg);
     border-radius: 8px;
     border: 1px solid var(--color-border);
     cursor: pointer;
 }
 .checkbox-wrapper input[type="checkbox"] {
-    margin-right: 10px;
-    min-width: 18px;
-    min-height: 18px;
-    cursor: pointer;
-    accent-color: var(--user-indigo);
+    margin-right: 10px; min-width: 18px; min-height: 18px;
+    cursor: pointer; accent-color: var(--user-indigo);
 }
-.checkbox-wrapper label {
-    flex-grow: 1;
-    font-size: 0.95em;
-    color: var(--text-color);
-    cursor: pointer;
-}
+.checkbox-wrapper label { flex-grow: 1; font-size: 0.95em; color: var(--text-color); cursor: pointer; }
 
-/* Zone de résumé */
-.result-summary-box {
-    background-color: var(--primary-purple);
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 0.9em;
-    line-height: 1.5;
-    color: var(--text-color);
+/* Succès */
+.final-success-view { text-align: center; padding: 30px 20px; animation: fadeIn 0.5s ease; }
+.final-success-view i.main-icon {
+    font-size: 5rem; color: var(--teal-blue);
+    margin-bottom: 25px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.metric-container {
-    display: flex; 
-    justify-content: space-around;
-    text-align: center; 
-    margin-bottom: 10px;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-}
-.metric-item { 
-    flex: 1; 
-    padding: 10px 8px;
-}
-.metric-item:first-child { 
-    border-right: 1px solid var(--color-border); 
-}
-.metric-value { 
-    font-size: 1.8rem; 
-    font-weight: 800; 
-    color: var(--secondary-purple);
-    line-height: 1.2; 
-}
-.metric-label { 
-    font-size: 0.75rem; 
-    color: var(--subtext-color); 
-    text-transform: uppercase; 
-    margin-top: 2px;
-}
+.final-success-view h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: var(--black); }
+.final-success-view p { color: var(--subtext-color); margin-bottom: 30px; font-size: 1.1rem; }
+.action-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+.action-buttons button { padding: 12px 15px; font-size: 1rem; }
 
-/* ============ SECTION 1 : COÛT CACHÉ (HIDDEN COST) ============ */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+
+/* 7. SECTIONS DE CONTENU
+   ============================================== */
+
+/* --- Section 1: Coût Caché --- */
 .hidden-cost-section {
-    width: 100%;
-    padding: 100px 0; 
+    width: 100%; padding: 60px 0; 
     background-color: var(--background-color); 
     text-align: left;
 }
-.hidden-cost-section h2 {
-    font-size: 2.8rem; 
-    font-weight: 800;
+.hidden-cost-section h2, .trust-benefits-section h2, .how-it-works-section h2 {
+    font-size: 2.2rem; font-weight: 800; color: var(--text-color);
     margin-bottom: 20px;
-    color: var(--text-color);
 }
-.hidden-cost-section .section-subtext {
-    font-size: 1.1rem;
+.hidden-cost-section .section-subtext,
+.trust-benefits-section .section-subtext {
+    font-size: 1.3rem;
     color: var(--subtext-color);
-    margin-bottom: 50px; 
+    margin-bottom: 40px; 
     max-width: 1000px;
+    text-align: left;
 }
 .cost-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-bottom: 50px; 
 }
 .cost-card {
     padding: 45px 25px;
-    border-radius: 50px;
-    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    border: 1px solid var(--lavender-purple);
+    background-color: var(--lavender-purple);
     height: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
-.card-purple {
-    background-color: var(--primary-purple); 
-    border-color: var(--primary-purple);
-}
-.cost-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--text-color);
-    text-align: center;
-}
-.cost-card p {
-    font-size: 0.95rem;
-    color: var(--subtext-color);
-    line-height: 1.6;
-    text-align: left;
-}
+.cost-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--text-color); text-align: center; }
+.cost-card p { font-size: 0.95rem; color: var(--subtext-color); line-height: 1.6; text-align: left; }
 .cost-cta-text {
-    font-size: 1.25rem;
-    color: var(--text-color);
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.4;
-    text-align: center;
+    font-size: 1.25rem; color: var(--text-color); font-weight: 700;
+    max-width: 800px; margin: 0 auto;
+    line-height: 1.4; text-align: center;
 }
 
-/* ============ SECTION 2 : AVANTAGES DE CONFIANCE (TRUST BENEFITS) ============ */
+/* --- Section 2: Avantages (Trust) --- */
 .trust-benefits-section {
     width: 100%;
-    padding: 100px 0 60px 0;
+    padding: 40px 0 60px 0;
     background-color: var(--background-color); 
-    text-align: center;
+    text-align: left;
 }
-.trust-benefits-section h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 50px;
-    color: var(--text-color); 
-}
+.trust-benefits-section h2 { margin-bottom: 40px; }
 .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr; 
+    display: grid; grid-template-columns: 1fr; 
     gap: 40px;
     text-align: left; 
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 90%; max-width: 800px;
+    margin: 0 auto; margin-bottom: 40px;
 }
-.benefits-grid .benefit-item {
-    display: flex;
-    align-items: flex-start; 
-    gap: 25px;
-}
+.benefits-grid .benefit-item { display: flex; align-items: flex-start; gap: 25px; }
 .benefits-grid .benefit-item i {
-    font-size: 2.2rem;
-    color: var(--secondary-purple); 
-    min-width: 35px;
-    margin-top: 5px;
+    font-size: 2.2rem; color: var(--teal-blue); 
+    min-width: 35px; margin-top: 5px;
 }
-.benefits-grid .benefit-content h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: var(--text-color);
-}
-.benefits-grid .benefit-content p {
-    font-size: 1rem;
-    color: var(--subtext-color);
-    line-height: 1.6;
-}
-
-/* ============ SECTION 3 : COMMENT ÇA MARCHE ? (PROCESS) ============ */
-.how-it-works-section {
-    width: 100%;
-    padding: 80px 0 100px 0; 
-    background-color: var(--background-color); 
+.benefits-grid .benefit-content h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; color: var(--text-color); }
+.benefits-grid .benefit-content p { font-size: 1rem; color: var(--subtext-color); line-height: 1.6; }
+.lien-vers-documentation {
+    font-size: 0.9rem;
     text-align: center;
 }
-.how-it-works-section h2 {
-    font-size: 2.8rem; 
-    font-weight: 800;
-    margin-bottom: 20px;
-    color: var(--text-color); 
-}
-.how-it-works-section .section-subtext {
-    font-size: 1.1rem;
-    color: var(--subtext-color);
-    margin-bottom: 70px; 
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-.process-flow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px; 
-    margin-bottom: 50px;
-}
-.flow-step i {
-    font-size: 4rem; 
-    color: var(--secondary-purple); 
-}
-.flow-step .fa-spinner {
-    color: var(--subtext-color);
-}
-.flow-arrow {
-    font-size: 2.5rem;
-    color: var(--black);
-}
-
-.process-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 50px;
-    margin-bottom: 60px;
+/* --- Section 3: Comment ça marche (Process) --- */
+.how-it-works-section {
+    width: 100%;
+    padding: 60px 0 80px 0; 
+    background-color: var(--background-color); 
     text-align: left;
+}
+.how-it-works-section .last-cta { margin-top: 45px; display: block; margin-left: auto; margin-right: auto; }
+
+/* Grille Processus */
+.process-cards-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    text-align: left; 
+    position: relative; 
 }
 .process-card {
     padding: 40px 30px;
-    border-radius: 50px;
+    border-radius: 20px; 
     border: 1px solid var(--color-border);
+    background-color: var(--lavender-purple); 
+    border-color: var(--lavender-purple);
     height: 100%;
+    position: relative;
+    padding-top: 80px; /* Espace pour l'icône */
 }
-.card-lavender {
-    background-color: var(--primary-purple); 
-    border-color: var(--primary-purple);
+.process-card .process-icon {
+    position: absolute;
+    top: 25px; left: 50%; width: 60px;
+    margin-left: -30px; 
+    text-align: center; font-size: 3rem; color: var(--black);
 }
-.process-card h3 {
+.process-card h3 { text-align: center; font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: var(--text-color); }
+.process-card p { font-size: 0.95rem; color: var(--subtext-color); line-height: 1.6; text-align: center; }
+
+
+/* 8. PAGES GÉNÉRIQUES (CONTACT, MANUEL) 
+   ============================================== */
+.page-content-wrapper {
+    padding: 80px 0;
+    min-height: 80vh;
+    text-align: left; 
+}
+
+.page-content-wrapper h2 {
+    font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;
+    text-align: center;
+} 
+.page-content-wrapper h3 { font-size: 1.5rem; font-weight: 700; margin-top: 30px; margin-bottom: 15px; }
+.page-content-wrapper p, .page-content-wrapper ul { font-size: 1rem; line-height: 1.8; color: var(--subtext-color); margin-bottom: 15px; } 
+.page-content-wrapper ul { list-style: disc; margin-left: 20px; }
+
+/* --------Manuel Cards */
+
+/* ==============================================
+   STYLES SPÉCIFIQUES POUR MANUAL.HTML (Maquette)
+   ============================================== */
+
+/* 1. Structure et Typographie de base du Manuel */
+.page-content-wrapper { background-color: var(--background-color); }
+.page-content-wrapper h1 {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.5rem; font-weight: 800;
+}
+.page-content-wrapper h2 {
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 2.2rem; font-weight: 800;
+}
+.section-why, .security {
+    text-align: left;
+    margin-bottom: 80px; margin-top: 80px;
+    margin-left: auto; margin-right: auto;
+}
+
+.manual-steps > section > h3 {
+    font-size: 1.8rem; font-weight: 800;
+    margin-top: 60px; margin-bottom: 25px;
+    color: var(--text-color);
+    padding-left: 10px; 
+}
+.encoding, 
+.separator, 
+.normalise-date, 
+.normalise-amount, 
+.structurel {
+    background-color: var(--lavender-purple);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.encoding h4, 
+.separator h4, 
+.normalise-date h4, 
+.normalise-amount h4, 
+.structurel h4 {
+    font-size: 1.3rem; font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--black);
+}
+
+.encoding h4 i, 
+.separator h4 i, 
+.normalise-date h4 i, 
+.normalise-amount h4 i, 
+.structurel h4 i {
+    color: var(--text-color);
     font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 5px;
+}
+
+.manual-steps ul, 
+.resume ul,
+.resume ol {
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.manual-steps ul li,
+.resume ul li,
+.resume ol li {
+    margin-bottom: 8px;
+    color: var(--subtext-color);
+    font-weight: 500;
+}
+
+.manual-step-2 h3, 
+.manual-step-4 h3, 
+.manual-step-5 h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* 3. Blocs de Code "Avant / Après" (Style Noir Arrondi) */
+.before-after-example {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.example-title {
+    padding-left: 0;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--text-color);
+    margin-top: 20px; margin-bottom: 0px;
+}
+
+.code-item-wrapper {
+    display: flex; flex-direction: column;
+    margin-left: 30px;
+}
+
+.code-item-wrapper .label {
+    display: block;
+    margin-top: 3px; margin-bottom: 8px; 
+    padding-left: 5px; 
+    font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 0.9rem;
     color: var(--text-color);
 }
-.process-card p {
-    font-size: 0.95rem;
-    color: var(--subtext-color);
-    line-height: 1.6;
+
+.code-content {
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 20px 25px;
+    font-family: 'Courier New', Courier, monospace; 
 }
 
+.code-content pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.90rem;
+    line-height: 1.5;
+}
 
-/* ============ FOOTER ============ */
+/* 4. Section Résumé (Spécifique) */
+.resume {
+    border: 2px solid transparent;
+    max-width: 600px;
+    background-color: var(--lavender-purple);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 40px auto;
+}
+.resume h2 { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
+.resume ol { counter-reset: my-counter; list-style: none; padding-left: 0; }
+.resume ol li { position: relative; padding-left: 30px; margin-bottom: 10px; }
+.resume ol li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--teal-blue);
+    font-weight: bold;
+}
+
+/* 9. FOOTER
+   ============================================== */
 .main-footer {
     width: 100%;
-    padding: 60px 0;
-    background-color: var(--background-color);
-    border-top: 1px solid var(--color-border);
+    padding: 0; 
+    background-color: var(--footer-bg); 
+    border-top: none; 
+    overflow: hidden; 
+    margin-top: 30px; 
 }
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    padding: 40px 0 20px 0;
+    display: flex; flex-direction: column; align-items: center; 
+    width: 90%; max-width: 1200px; margin: 0 auto;
+}
+.footer-primary {
+    display: flex; justify-content: space-between;
+    width: 100%; margin-bottom: 0px;
+    align-items: flex-end;
+    flex-direction: row-reverse;
 }
 .footer-left {
+    display: flex; flex-direction: column;
     text-align: left;
+    justify-content: flex-end;
 }
-.footer-logo {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--secondary-purple);
-    display: block;
+.footer-logo { 
+    color: var(--footer-text-color);
+    font-weight: 700; font-size: 1rem;
     margin-bottom: 5px;
 }
 .copyright {
-    font-size: 0.85rem;
-    color: var(--subtext-color);
-    margin: 0;
+    color: var(--footer-text-color); 
+    font-size: 0.85rem; margin: 0; text-align: left; opacity: 0.8;
 }
-.footer-right {
-    display: flex;
-    gap: 20px;
-}
+.footer-right { display: flex; gap: 4px; flex-direction: column; align-items: flex-end; text-align: right; justify-content: flex-end; }
 .footer-right a {
-    font-size: 0.9rem;
-    color: var(--subtext-color);
-    text-decoration: none;
-    transition: color 0.3s;
+    color: var(--footer-text-color); 
+    text-decoration: none; transition: color 0.3s;
+    font-size: 0.95rem;
 }
-.footer-right a:hover {
-    color: var(--secondary-purple);
-}
+.footer-right a:hover { color: var(--teal-blue); }
 
-/* ============ MEDIA QUERIES (RESPONSIVE) ============ */
+/* 10. MEDIA QUERIES (RESPONSIVE)
+   ============================================== */
 
-/* Desktop only - pour la grille des 5 avantages */
+/* Desktop only - Grille avantages */
 @media (min-width: 769px) {
     .benefits-grid {
         grid-template-columns: repeat(2, 1fr); 
@@ -704,113 +738,78 @@ body {
 
 /* Tablette et Mobile */
 @media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap; 
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .logo {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 15px; 
-    }
-    
-    .nav-right-links {
-        gap: 15px; 
-        width: 100%;
-        justify-content: center;
-    }
-    .nav-right-links a {
-        font-size: 0.9rem;
-    }
-    .nav-right-links .cta-button-nav {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
 
-    /* Hero */
-    .hero-container { 
-        flex-direction: column;
-        text-align: center; 
-    } 
-    .hero-content { 
-        padding-top: 40px; 
-        order: 2;
-    } 
-    .hero-content h1 { 
-        font-size: 2.5rem;
-        margin-bottom: 20px; 
-    } 
-    .hero-content p { 
-        font-size: 1rem; 
-        margin-bottom: 30px; 
-        max-width: 100%;
-    } 
+    /* HEADER + BANNER */
+    .top-banner { font-size: 0.85rem; }
+    .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; }
+    .logo { width: auto; justify-content: flex-start; margin-bottom: 0; }
+    .nav-right-links .nav-link-uppercase { font-size: 0.85rem; }
+    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 10px; }
+    .nav-right-links a { font-size: 0.9rem; }
+    .nav-right-links .cta-button-nav { padding: 8px 15px; font-size: 0.9rem; }
+
+    /* HERO */
+    .hero-section { min-height: auto; align-items: flex-start; padding-top: 40px; }
+    .hero-container { flex-direction: column; text-align: center; } 
+    .hero-content { padding-top: 0; order: 1; text-align: center; } 
+    .hero-content h1 { font-size: 2.2rem; margin-bottom: 15px; } 
+    .hero-content p { font-size: 1rem; margin-bottom: 20px; max-width: 100%; } 
     .hero-visuals { 
-        min-height: 300px; 
-        order: 1; 
+        min-height: auto; 
+        order: 2; 
+        width: 90%; max-width: 400px;
+        margin: 0 auto 20px auto; 
+        position: relative; 
+        height: 0; padding-bottom: 75%; 
     } 
-
-    /* Modale */
-    .modal-content { 
-        padding: 25px;
-    } 
-
-    /* Coût Caché */
-    .hidden-cost-section {
-        text-align: center;
-    }
-    .hidden-cost-section .section-subtext {
-        max-width: 100%;
-    }
-    .cost-grid {
-        gap: 20px;
-    }
-    .cost-cta-text {
-        font-size: 1.1rem;
+    #collage-final, #tourbillon-anim {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: block; margin: 0;
     }
 
-    /* Processus */
-    .process-flow {
-        flex-direction: column;
-        gap: 15px;
+    /* MODALE (Scrollable) */
+    .modal-overlay { align-items: flex-start; overflow-y: auto; padding: 20px 0; }
+    .modal-content { padding: 25px; margin: 0 auto; }
+
+    /* SECTIONS */
+    .hidden-cost-section { text-align: center; }
+    .hidden-cost-section .section-subtext { max-width: 100%; }
+    .cost-grid, .process-cards-grid, .manual-step-grid {
+        grid-template-columns: 1fr; gap: 20px; 
     }
-    .flow-arrow {
-        transform: rotate(90deg);
-        margin: 10px 0;
+    .cost-cta-text { font-size: 1.1rem; }
+    
+    /* PROCESS CARDS MOBILE */
+    .how-it-works-section { padding: 40px 0; }
+    .how-it-works-section h2, .how-it-works-section .section-subtext { text-align: left; }
+    .process-card {
+        padding: 30px 20px; 
+        border-radius: 25px; 
+        text-align: center; padding-top: 80px; 
     }
-    .process-cards-grid {
-        gap: 20px;
+    .process-card .process-icon {
+        position: absolute; top: 25px; left: 50%;
+        display: block; 
     }
 
-    /* Footer */
-    .footer-content {
-        flex-direction: column; 
-        align-items: center;
-        text-align: center;
+    /* AUTRE HTML */
+    .page-content-wrapper { padding: 50px 0; }
+    .page-content-wrapper h2 { font-size: 2rem; }
+    .encoding, .separator, .normalise-date, .normalise-amount, .structurel, .resume {
+        padding: 25px; 
+        border-radius: 20px;
     }
-    .footer-left {
-        margin-bottom: 30px;
-    }
-    .footer-right {
-        flex-direction: column; 
-        gap: 15px;
-        align-items: center;
-    }
-    .footer-right a {
-        font-size: 1rem;
-    }
-}
+    .manual-steps > section > h3 { font-size: 1.5rem; margin-top: 40px; }
 
-/* ============ CORRECTION BUG DÉFILEMENT ============ */
-
-/* CORRECTION CSS : Ne pas appliquer de padding global à <html> */
-/* html {
-    scroll-padding-top: 80px;  <-- C'EST ÇA QUI FAISAIT BOUGER LE SITE
-} */
-
-/* CORRECTION CSS : Appliquer la marge de défilement UNIQUEMENT à l'ancre */
-#how-it-works {
-    scroll-margin-top: 80px; /* 80px = hauteur approx du header */
+    /* FOOTER */
+    .main-footer { margin-top: 20px; }
+    .footer-content { padding: 30px 0 20px 0; }
+    .footer-primary { flex-direction: row-reverse; align-items: flex-end; margin-bottom: 0px; gap: 15px;}
+    .footer-left { margin-bottom: 0px; text-align: left; flex-shrink: 0;}
+    .footer-right { gap: 3px; align-items: flex-end; text-align: right; flex-shrink: 0; }
+    .footer-logo { font-size: 0.95rem; }
+    .footer-right a { font-size: 0.8rem; }
+    .copyright { font-size: 0.75rem; opacity: 0.7; }
 }

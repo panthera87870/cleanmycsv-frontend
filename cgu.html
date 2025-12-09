@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGU - CleanMyCSV</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b2f23a8fce.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="sticky-wrapper">
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
+                    </a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
+                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
+                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
+                    <button class="cta-button-nav" onclick="openModal()">Essayer</button>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <section class="page-content-wrapper">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <h1>Conditions Générales d'Utilisation</h1>
+            
+            <div class="structurel">
+                <h4><i class="fa-solid fa-handshake"></i> 1. Objet</h4>
+                <p>Les présentes CGU régissent l'utilisation du service <strong>CleanMyCSV</strong>. L'utilisation du site implique l'acceptation pleine et entière de ces conditions. Le service est proposé gratuitement aux particuliers et professionnels.</p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-triangle-exclamation"></i> 2. Limitation de Responsabilité</h4>
+                <p>Le service CleanMyCSV est un outil automatisé de traitement de données ("Software as a Service").</p>
+                <p><strong>Clause de non-garantie :</strong> Le service est fourni "tel quel". Bien que nous nous efforcions d'assurer la fiabilité de nos algorithmes, CleanMyCSV ne saurait être tenu responsable :</p>
+                <ul>
+                    <li>D'une perte de données survenue lors du transfert.</li>
+                    <li>D'une modification non désirée de la structure de vos fichiers CSV.</li>
+                    <li>De l'indisponibilité temporaire du site (maintenance, panne Vercel/Google Cloud).</li>
+                </ul>
+                <p><strong>Il appartient à l'utilisateur de toujours conserver une copie originale de ses fichiers avant traitement.</strong></p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-gavel"></i> 3. Engagements de l'Utilisateur</h4>
+                <p>En utilisant CleanMyCSV, vous vous engagez à :</p>
+                <ul>
+                    <li>Ne pas téléverser de fichiers contenant des virus ou des scripts malveillants.</li>
+                    <li>Ne pas utiliser le service pour traiter des données illégales ou interdites par la loi française.</li>
+                    <li>Ne pas tenter de contourner les sécurités du site.</li>
+                </ul>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-scale-balanced"></i> 4. Droit applicable</h4>
+                <p>
+                    Le présent service est soumis au <strong>droit français</strong>.<br>
+                    En cas de litige concernant l'interprétation ou l'exécution des présentes Conditions Générales d'Utilisation, et après une tentative de résolution amiable, la juridiction exclusivement compétente est celle des <strong>tribunaux du ressort de l'adresse du siège social de l'entreprise éditrice</strong>, telle que détaillée dans les <a href="legal.html" style="color: var(--black); font-weight: 700;">Mentions Légales</a>.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-primary">
+                <div class="footer-right">
+                    <a href="cgu.html">CGU</a>
+                    <a href="legal.html">Mentions Légales</a>
+                    <a href="security.html">Confidentialité</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright">&copy; 2025 CleanMyCSV. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
