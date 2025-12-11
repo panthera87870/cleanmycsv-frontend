@@ -13,6 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content" id="modal-container" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="dynamic-content"></div>
+        </div>
+    </div>
     
     <div class="sticky-wrapper">
         <header class="main-header">
@@ -26,7 +33,7 @@
                     <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
                     <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
                     <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
-                    <button class="cta-button-nav" onclick="window.location.href='index.html';">Essayer l'outil</button>
+                    <button class="cta-button-nav" onclick="openModal()">Essayer</button>
                 </div>
             </nav>
         </header>

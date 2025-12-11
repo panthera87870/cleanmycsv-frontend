@@ -11,6 +11,13 @@
 </head>
 <body>
 
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content" id="modal-container" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="dynamic-content"></div>
+        </div>
+    </div>
+
     <div class="sticky-wrapper">
         <header class="main-header">
             <nav class="navbar">
