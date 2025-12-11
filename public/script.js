@@ -44,6 +44,28 @@ function truncateFilename(filename, maxLength = 30) {
 // --- GESTION DU CHARGEMENT DE LA PAGE (CORRECTIF BUG DE DÉFILEMENT) ---
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. GESTION DES CLICS (Remplacement des onclick HTML)
+    // On sélectionne tous les boutons qui doivent ouvrir la modale
+    const openButtons = document.querySelectorAll('.js-open-modal');
+    openButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); // Empêche le comportement par défaut
+            openModal();
+        });
+    });
+
+    // On gère le bouton de fermeture (la croix)
+    const closeBtn = document.querySelector('.js-close-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal();
+        });
+    }
+
+    // 2. LE RESTE DE TON CODE EXISTANT
+    // Force le défilement en haut après le chargement du DOM
     setTimeout(function() {
         if (window.location.hash === "") {
             window.scrollTo({
@@ -52,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }, 0); 
+
+    // --- NOUVEL APPEL ---
     setupDragDropProtection();
 });
 
@@ -95,13 +119,13 @@ function closeModalBtn() {
 
 function resetModal() {
     dynamicContentArea.innerHTML = `
-        <h2>Nettoyer votre fichier en quelque secondes :</h2>
+        <h2>Nettoyez votre fichier en quelques secondes :</h2>
         <div class="upload-step">
             <h3>1. Téléversez votre CSV</h3>
-            <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">
+            <form id="upload-form" class="upload-area-wrapper" method="POST" action="/clean-file" enctype="multipart/form-data">
                 
                 <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required 
-                    style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+                    class="visually-hidden">
                 
                 <div class="upload-area">
                     <label for="csv-file" class="upload-label">
@@ -243,20 +267,21 @@ function setupFormListeners() {
             console.log('Bouton activé et texte mis à jour.');
 
             currentUploadLabel.innerHTML = `
-                <i class=\"fa-solid fa-file-csv\" style=\"color: var(--secondary-purple);\"></i>
-                <p style=\"font-weight: 600;\">Fichier prêt : 
+                <i class="fa-solid fa-file-csv icon-purple"></i>
+                <p class="text-bold">Fichier prêt : 
                     <strong>${truncatedName}</strong>
                 </p>
-                <small style=\"color: var(--subtext-color);\">Cliquez pour changer de fichier</small>
+                <small class="text-muted">Cliquez pour changer de fichier</small>
             `;
         } else {
             console.log('Aucun fichier sélectionné. Bouton désactivé.');
             currentSubmitButton.disabled = true;
             currentSubmitButton.textContent = 'Lancer le Nettoyage (Gratuit)';
             currentUploadLabel.innerHTML = `
-            <i class="fa-solid fa-cloud-arrow-up" style="color: var(--secondary-purple);"></i>
-            <p style="font-weight: 600;">Cliquez ou glissez-déposez votre fichier ici</p>
-            <small style="color: var(--subtext-color);">Fichiers supportés : .CSV uniquement</small>`;
+                <i class="fa-solid fa-cloud-arrow-up icon-purple"></i>
+                <p class="text-bold">Cliquez ou glissez-déposez votre fichier ici</p>
+                <small class="text-muted">Fichiers supportés : .CSV uniquement</small>
+            `;   
         }
     });
 
@@ -271,11 +296,11 @@ async function handleFormSubmit(e) {
     const form = e.currentTarget;
     
     dynamicContentArea.innerHTML = `
-        <div style="text-align: center; padding: 50px 20px;">
+        <div class="modal-center-view">
             <h2>Nettoyage en cours...</h2>
-            <p style="color: var(--subtext-color);">Envoi du fichier à votre script de nettoyage...</p>
+            <p class="text-muted">Envoi du fichier à votre script de nettoyage...</p>
             <div class="spinner-custom"></div> 
-            <p style="margin-top: 20px; color: var(--subtext-color); font-size: 0.9rem;"><i class="fa-solid fa-clock"></i> Cela prendra juste un instant !</p>
+            <p class="text-muted-small"><i class="fa-solid fa-clock"></i> Cela prendra juste un instant !</p>
         </div>
     `;
     
@@ -313,12 +338,12 @@ function displaySuccessView(data) {
     // const truncatedJsonName = truncateFilename(jsonDownloadName, 30);
 
     dynamicContentArea.innerHTML = `
-        <div style="text-align: center; padding: 0 0 15px 0;">
-            <i class="fa-solid fa-circle-check" style="color: var(--teal-blue); font-size: 3rem;"></i>
-            <h2 style="margin-top: 10px; font-weight: 800; font-size: 1.8rem;">Votre fichier est prêt !</h2>
+        <div class="modal-header-center">
+            <i class="fa-solid fa-circle-check icon-success-lg"></i>
+            <h2 class="modal-title">Votre fichier est prêt !</h2>
         </div>
-        <div style="padding: 15px 0;">
-            <h3 style="font-weight: 700; color: var(--secondary-purple); margin-bottom: 10px; font-size: 1.25rem;">Rapport de Nettoyage</h3>
+        <div class="modal-section">
+            <h3 class="modal-subtitle">Rapport de Nettoyage</h3>
 
             <div class="metric-container">
                 <div class="metric-item">
@@ -338,10 +363,10 @@ function displaySuccessView(data) {
         </div>
         <label for="includeJson" class="checkbox-wrapper">
             <input type="checkbox" id="includeJson">
-            <label for="includeJson" style="font-weight: 500;">Je veux aussi le <strong>rapport détaillé JSON</strong> des corrections (pour les experts).</label>
+            <label for="includeJson" class="text-medium">Je veux aussi le <strong>rapport détaillé JSON</strong> des corrections (pour les experts).</label>
         </label>
-        <div style="margin-top: 20px; padding-top: 10px;">
-            <button id="downloadAllBtn" class="cta-button download-btn-success" style="width: 100%;">
+        <div class="mt-20 pt-10">
+            <button id="downloadAllBtn" class="cta-button download-btn-success w-100">
                 <i class="fa-solid fa-download"></i> 
                 Télécharger le CSV Nettoyé
             </button>
@@ -357,14 +382,14 @@ function displaySuccessView(data) {
         if (jsonCheckbox.checked) {
             downloadBtn.innerHTML = `
             <i class=\"fa-solid fa-download\"></i> 
-            Télécharger le CSV Nettoyé (1/2) 
+            Télécharger le CSV Nettoyé (1/2)
             `;
             downloadBtn.classList.remove('download-btn-json');
             downloadBtn.classList.add('download-btn-success');
         } else {
             downloadBtn.innerHTML = `
             <i class=\"fa-solid fa-download\"></i> 
-            Télécharger le CSV Nettoyé 
+            Télécharger le CSV Nettoyé
             `;
             downloadBtn.classList.remove('download-btn-json');
             downloadBtn.classList.add('download-btn-success');
@@ -398,18 +423,26 @@ function displaySuccessView(data) {
 }
 
 function displayErrorView(errorMessage) {
+     // 1. On injecte le HTML (sans onclick, mais avec un ID)
      dynamicContentArea.innerHTML = `
-        <div style="text-align: center; padding: 50px 20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-danger); font-size: 3rem;"></i>
-            <h2 style="font-weight: 800; font-size: 1.8rem; margin-top: 10px;">Oups, Erreur !</h2>
-            <p style="color: var(--subtext-color); margin-bottom: 15px;">Désolé, une erreur est survenue : <strong>${errorMessage}</strong></p>
-            <button class="cta-button" style="background-color: var(--secondary-purple); color: var(--white); padding: 10px 20px; border-radius: 8px;" onclick="closeModal()">
+        <div class="modal-center-view">
+            <i class="fa-solid fa-triangle-exclamation icon-danger-lg"></i>
+            <h2 class="modal-title">Oups, Erreur !</h2>
+            <p class="text-muted mb-15">Désolé, une erreur est survenue : <strong>${errorMessage}</strong></p>
+            <button id="btn-error-retry" class="cta-button btn-secondary">
                 Fermer et réessayer
             </button>
         </div>`;
+    
+    // 2. On attache l'événement JS sur le bouton qu'on vient de créer
+    const retryBtn = document.getElementById('btn-error-retry');
+    if (retryBtn) {
+        retryBtn.addEventListener('click', closeModal);
+    }
 }
 
 function displayPostDownloadView() {
+    // 1. Injection HTML (Classes CSS + IDs, pas de styles/scripts inline)
     dynamicContentArea.innerHTML = `
         <div class="final-success-view">
             <i class="fa-solid fa-circle-check main-icon"></i>
@@ -420,25 +453,36 @@ function displayPostDownloadView() {
             </p>
             
             <div class="action-buttons">
-
-                <button class="btn-secondary" onclick="closeModal()">
+                <button id="btn-finish-home" class="btn-secondary">
                     <i class="fa-solid fa-house"></i> Terminer et retourner au site
                 </button>
 
-                <button class="cta-button-again" onclick="resetModal()">
+                <button id="btn-new-clean" class="cta-button-again">
                     <i class="fa-solid fa-rotate-right"></i> Nettoyer un autre fichier
                 </button>
-
             </div>
             
-            <div style="margin-top: 30px; font-size: 0.9rem;">
+            <div class="text-muted-small mt-20">
                 Vos données originales ont été effacées de nos serveurs par sécurité.
             </div>
         </div>
     `;
+
+    // 2. Attachement des événements
+    
+    // Bouton "Terminer" -> Ferme la modale
+    const finishBtn = document.getElementById('btn-finish-home');
+    if (finishBtn) {
+        finishBtn.addEventListener('click', closeModal);
+    }
+
+    // Bouton "Nettoyer un autre" -> Relance le formulaire (resetModal)
+    const restartBtn = document.getElementById('btn-new-clean');
+    if (restartBtn) {
+        restartBtn.addEventListener('click', resetModal);
+    }
 }
 
-// ... (Toutes les fonctions existantes de script.js) ...
 
 // --- GESTION DU HEADER LORS DU DÉFILEMENT (VERSION SIMPLIFIÉE) ---
 function setupHeaderScroll() {

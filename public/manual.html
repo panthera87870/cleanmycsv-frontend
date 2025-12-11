@@ -7,7 +7,7 @@
     <meta name="description" content="Découvrez le moteur de nettoyage CleanMyCSV : processus détaillé pour l'harmonisation, la correction des formats incohérents, la suppression des doublons et l'alignement des colonnes de vos fichiers CSV.">
     
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/b2f23a8fce.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
 <body>
 
     <div id="upload-modal" class="modal-overlay">
-        <div class="modal-content" id="modal-container" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div class="modal-content" id="modal-container">
+            <button class="close-btn js-close-modal">&times;</button>
             <div id="dynamic-content"></div>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <header class="main-header">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <a href="index.html">
                         <span>CLEANMY<span class="logo-accent">CSV</span></span>
                     </a>
                 </div>
@@ -33,7 +33,7 @@
                     <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
                     <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
                     <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
-                    <button class="cta-button-nav" onclick="openModal()">Essayer</button>
+                    <button class="cta-button-nav js-open-modal">Essayer</button>
                 </div>
             </nav>
         </header>
@@ -304,7 +304,7 @@
                     Aucune donnée n’est conservée.<br>
                     Aucun fichier n’est analysé à des fins externes. <br><br>
                    </strong>
-                    Pour en savoir plus sur la protection de vos données, veuillez consulter notre <a href="security.html" style="color: var(--black); font-weight: 700;">Politique de Confidentialité</a>.
+                    Pour en savoir plus sur la protection de vos données, veuillez consulter notre <a href="security.html" class="doc-link">Politique de Confidentialité</a>.
                 </p>
             </section>
 
