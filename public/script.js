@@ -122,8 +122,7 @@ function resetModal() {
         <h2>Nettoyez votre fichier en quelques secondes :</h2>
         <div class="upload-step">
             <h3>1. Téléversez votre CSV</h3>
-            <form id="upload-form" class="upload-area-wrapper" method="POST" action="/clean-file" enctype="multipart/form-data">
-                
+            <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">                
                 <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required 
                     class="visually-hidden">
                 
