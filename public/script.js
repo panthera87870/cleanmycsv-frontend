@@ -483,17 +483,24 @@ function displayPostDownloadView() {
 }
 
 
-// --- GESTION DU HEADER LORS DU DÉFILEMENT (VERSION SIMPLIFIÉE) ---
+// --- GESTION DU HEADER LORS DU DÉFILEMENT (OPTIMISÉE) ---
 function setupHeaderScroll() {
     const header = document.querySelector('.main-header');
-    
-    if (header) { // Vérifie si l'élément header existe
+    let ticking = false; // Variable pour éviter de surcharger le navigateur
+
+    if (header) {
         window.addEventListener('scroll', () => {
-            // Déclenche la classe 'scrolled' après 50px de défilement
-            if (window.scrollY > 50) { 
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    // Cette logique ne s'exécutera que quand le navigateur est prêt
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
     }
