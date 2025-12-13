@@ -1,5 +1,5 @@
 /* ==============================================
-// PUBLIC/STYLE.CSS
+// PUBLIC/STYLE.CSS - OPTIMISÉ & ALIGNÉ (CORRIGÉ)
 // ============================================== */
 
 /* 1. VARIABLES & CONFIGURATION
@@ -7,23 +7,23 @@
 :root {
     /* --- Palette de couleurs --- */
     --lavender-purple: #ece3ff;    /* Lavande clair */
-    --teal-blue:       #7d3fff;    /* Couleur principale (Indigo/Violet vibrant) */
-    --user-indigo:     #4F46E5;    /* Couleur secondaire (Bouton JSON) */
-    --background-color: #FFFFFF;
+    --deeper-purple:   #7d3fff;    /* Couleur principale */
+    --user-indigo:     #4F46E5;    /* Couleur secondaire */
     
+    /* --- UI & États --- */
+    --background-color: #FFFFFF;
+    --color-success:    #40b58efc;
+    --color-success-click: #42c79bde;
+    --color-danger:     #EF4444;
+    --color-border:     #E0E0E0;
+    --color-info-bg:    #F7F7F9;
+
     /* --- Textes --- */
     --text-color:      #000000;
-    --subtext-color:   #000000;    /* Noté: actuellement noir, modifiable ici si besoin */
+    --subtext-color:   #000000;
     --black:           #000000;
     --white:           #FFFFFF;
     
-    /* --- États & UI --- */
-    --color-success:   #40b58efc;    /* Vert succès */
-    --color-success-click: #42c79bde;
-    --color-danger:    #EF4444;    /* Rouge erreur */
-    --color-border:    #E0E0E0;    /* Bordures */
-    --color-info-bg:   #F7F7F9;    /* Fond gris clair (upload) */
-
     /* --- Footer --- */
     --footer-bg:         var(--black);
     --footer-text-color: var(--white);
@@ -31,11 +31,7 @@
 
 /* 2. RESET & BASE
    ============================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Raleway', sans-serif;
@@ -44,19 +40,19 @@ body {
     line-height: 1.6;
 }
 
+/* LE CONTENEUR MAÎTRE (C'est lui qui aligne tout) */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
     padding: 0 15px;
 }
 
 /* 3. COMPOSANTS RÉUTILISABLES (BOUTONS)
    ============================================== */
-
-/* Style de base partagé pour tous les boutons CTA */
 .cta-button, .cta-button-nav, .start-clean-btn,
-.last-cta, .btn-secondary, .cta-button-again {
+.last-cta, .btn-secondary, .cta-button-again, 
+.download-btn-success, .download-btn-json, .contact-cta {
     display: inline-block;
     border: none;
     border-radius: 50px;
@@ -68,864 +64,375 @@ body {
     font-family: inherit;
 }
 
-/* Effet de survol partagé (Zoom) */
 .cta-button:hover, .cta-button-nav:hover, .last-cta:hover,
-.cta-button-again:hover, .btn-secondary:hover {
+.cta-button-again:hover, .btn-secondary:hover, .contact-cta:hover {
     transform: scale(1.05);
 }
 
-/* -- Variantes de boutons -- */
-
-/* 1. Bouton Principal (Teal/Violet) */
+/* --- Couleurs --- */
 .cta-button.hero-cta, .cta-button-nav, .last-cta,
-.start-clean-btn, .cta-button-again {
-    background-color: var(--teal-blue);
-    color: var(--white);
+.start-clean-btn, .cta-button-again, .download-btn-json, .contact-cta {
+    background-color: var(--deeper-purple); color: var(--white);
 }
+.btn-secondary { background-color: var(--lavender-purple); }
 
-.cta-button-nav { padding: 10px 20px; font-size: 0.9rem; }
-
-.cta-button {
-    padding: 16px 32px;
-    font-size: 1.25rem;
-}
-
-/* Bouton Succès (Vert) */
 .cta-button.download-btn-success {
-    background-color: var(--color-success);
-    color: var(--white);
-    width: 100%;
-    border-radius: 50px; /* Exception : moins arrondi */
-    font-size: 1rem;
+    background-color: var(--color-success); color: var(--white);
+    width: 100%; border-radius: 50px; font-size: 1rem;
 }
-.cta-button.download-btn-success:hover {
-    background-color: var(--color-success);
-    transform: none; /* Pas de zoom sur celui-ci */
-}
+.cta-button.download-btn-success:hover { background-color: var(--color-success); transform: none; }
 
-/* Bouton JSON (Indigo) */
-.cta-button.download-btn-json {
-    background-color: var(--teal-blue);
-    color: var(--white);
-    border-radius: 50px;
-    font-size: 1rem;
-}
-.cta-button.download-btn-json:hover {
-    background-color: var(--teal-blue);
-    transform: none;
-}
+.cta-button.download-btn-json { border-radius: 50px; font-size: 1rem; }
+.cta-button.download-btn-json:hover { background-color: var(--deeper-purple); transform: none; }
 
-/* Bouton Start Clean (dans la modale) */
-.start-clean-btn {
-    margin-top: 20px;
-    width: 100%;
-    padding: 14px 24px;
-    border-radius: 50px;
-    font-size: 1rem;
-}
-.start-clean-btn:hover:not(:disabled) {
-    transform: none;
-}
-.start-clean-btn:disabled {
-    background-color: var(--lavender-purple);
-    cursor: not-allowed;
-    opacity: 0.8;
-}
+/* --- Tailles --- */
+.cta-button { padding: 16px 32px; font-size: 1.25rem; }
+.cta-button-nav { padding: 10px 20px; font-size: 0.9rem; }
+.start-clean-btn { margin-top: 20px; width: 100%; padding: 14px 24px; font-size: 1rem; }
+.start-clean-btn:disabled { background-color: var(--lavender-purple); cursor: not-allowed; opacity: 0.8; }
+.start-clean-btn:hover:not(:disabled) { transform: none; }
 
-.btn-secondary {
-    background-color: var(--lavender-purple);
-}
-
-/* -------- SAISONIERE ------ */
 .special-end-year {
-    background-color: var(--background-color); /* noir profond */
-    color: #ad7e2c;
-    text-align: right;
-    font-size: 2rem; 
-    font-weight: 800;
-    margin-bottom: 20px;
-    padding: 40px 0;
+    background-color: var(--background-color); color: #ad7e2c; text-align: right;
+    font-size: 2rem; font-weight: 800; margin-bottom: 20px; padding: 40px 0;
 }
 
 /* 4. HEADER & NAVIGATION
    ============================================== */
 .sticky-wrapper { position: sticky; top: 0; z-index: 50; }
 .top-banner {
-    background-color: var(--footer-bg); /* noir profond */
-    color: var(--footer-text-color);
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 400;
-    padding: 8px 0;
+    background-color: var(--footer-bg); color: var(--footer-text-color);
+    text-align: center; font-size: 1.1rem; font-weight: 400; padding: 8px 0;
 }
 .main-header {
-    width: 100%;
-    padding: 15px 0;
-    background-color: var(--background-color);
+    width: 100%; padding: 15px 0; background-color: var(--background-color);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .main-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.85); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    background-color: rgba(255, 255, 255, 0.85); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
 }
 .navbar {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0; 
+    width: 90%; max-width: 1200px; margin: 0 auto; /* Alignement Header */
+    display: flex; justify-content: space-between; align-items: center; padding: 10px 0; 
 }
-.logo {
-    font-size: 1.3rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--black); 
-}
-.logo a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
-}
-.logo-accent {
-    color: var(--teal-blue); 
-}
-.nav-right-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-.nav-right-links .nav-link-uppercase {
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 1rem;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.nav-right-links .nav-link-uppercase:hover {
-    color: var(--teal-blue);
-}
+.logo { font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; gap: 8px; color: var(--black); }
+.logo a { text-decoration: none; color: inherit; display: flex; align-items: center; }
+.logo-accent { color: var(--deeper-purple); }
 
-/* 5. HERO SECTION (ACCUEIL)
+.nav-right-links { display: flex; align-items: center; gap: 25px; }
+.nav-right-links .nav-link-uppercase {
+    text-transform: uppercase; font-weight: 500; font-size: 1rem;
+    color: var(--text-color); text-decoration: none; transition: color 0.3s;
+}
+.nav-right-links .nav-link-uppercase:hover { color: var(--deeper-purple); }
+
+/* 5. HERO SECTION
    ============================================== */
 .hero-section {
-    width: 100%; min-height: 70vh;
-    display: flex; align-items: center;
-    padding-bottom: 40px;
+    width: 100%; 
+    padding: 60px 0; /* Padding identique aux autres sections */
+    display: block;
 }
 .hero-container {
-    width: 90%; max-width: 1200px;
-    margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 40px;
+    width: 90%; max-width: 1200px; margin: 0 auto; /* Alignement Hero */
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
 }
-
-/* Contenu Gauche */
 .hero-content {
-    flex-basis: 50%; flex-grow: 1;
-    min-width: 300px;
-    padding-top: 80px;
-    display: flex; flex-direction: column;
+    flex-basis: 50%; flex-grow: 1; min-width: 300px; padding-top: 80px; display: flex; flex-direction: column;
 }
-.hero-content h1 {
-    font-size: 2.8rem; font-weight: 800;
-    margin-bottom: 40px; margin-top: 0;
-}
-.hero-content p {
-    font-size: 1.7rem; color: var(--subtext-color);
-    margin-bottom: 50px;
-    max-width: 500px;
-}
-.hero-content .cta-button {
-    margin-top: 30px; 
-    display: block; 
-    margin-left: auto; margin-right: auto;
-}
+.hero-content h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 40px; margin-top: 0; }
+.hero-content p { font-size: 1.7rem; color: var(--subtext-color); margin-bottom: 50px; max-width: 500px; }
+.hero-content .cta-button { margin-top: 30px; display: block; margin-left: auto; margin-right: auto; }
 .hero-subtext {
-    margin-top: 15px;
-    font-size: 1.1rem; font-weight: 100; color: var(--black);
+    margin-top: 15px; font-size: 1.1rem; font-weight: 100; color: var(--black);
     text-align: center; display: block;
 }
 .hero-subtext i { margin-right: 5px; }
-
-/* Visuels Droite & Animations */
-.hero-visuals { flex-basis: 50%; flex-grow: 1; position: relative; }
+.hero-visuals { flex-basis: 50%; flex-grow: 1; position: relative; min-height: 400px; }
 #collage-final { 
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; height: auto; 
-    max-width: 500px;
-    z-index: 2;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 100%; height: auto; max-width: 500px; z-index: 2;
 }
 #tourbillon-anim {
-    position: absolute;
-    top: 50%; left: 50%; 
-    transform: translate(-50%, -50%); 
-    width: 85%; height: auto; 
-    object-fit: contain;
-    z-index: 1; 
-    animation: spin 30s linear infinite;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    width: 85%; height: auto; object-fit: contain; z-index: 1; animation: spin 30s linear infinite;
 }
-@keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
+@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-/* 6. MODALE, SUCCES & UPLOAD
+/* 6. MODALE & UPLOAD
    ============================================== */
 .modal-overlay {
-    visibility: hidden; opacity: 0;         
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    overflow: auto;
-    padding: 20px 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    display: flex; justify-content: center; align-items: flex-start;
+    visibility: hidden; opacity: 0; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto; padding: 20px 0; background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.3s ease, visibility 0.3s ease; display: flex; justify-content: center; align-items: flex-start;
 }
 .modal-overlay.visible { visibility: visible; opacity: 1; }
 .modal-content {
-    background-color: var(--white);
-    padding: 40px; margin: auto;
-    border-radius: 12px;
-    position: relative;
-    width: 90%; max-width: 600px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transform: scale(0.95);
-    transition: transform 0.3s ease-out;
+    background-color: var(--white); padding: 40px; margin: auto; border-radius: 12px; position: relative;
+    width: 90%; max-width: 600px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transform: scale(0.95); transition: transform 0.3s ease-out;
 }
 .modal-overlay.visible .modal-content { transform: scale(1); }
 .close-btn {
-    position: absolute;
-    top: 15px; right: 25px;
-    font-size: 30px; font-weight: 300; color: var(--black);
-    cursor: pointer; background: none; border: none;
-    line-height: 1;
+    position: absolute; top: 15px; right: 25px; font-size: 30px; font-weight: 300; color: var(--black);
+    cursor: pointer; background: none; border: none; line-height: 1;
 }
-.close-btn:hover { color: var(--teal-blue); }
+.close-btn:hover { color: var(--deeper-purple); }
 
-/* Zone d'upload */
 .upload-area {
-    border: 2px dashed var(--color-border); border-radius: 8px;
-    padding: 30px; margin-bottom: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-    background-color: var(--color-info-bg);
+    border: 2px dashed var(--color-border); border-radius: 8px; padding: 30px; margin-bottom: 20px; text-align: center; cursor: pointer;
+    transition: border-color 0.3s ease; background-color: var(--color-info-bg);
 }
-.upload-area:hover { border-color: var(--teal-blue); }
+.upload-area:hover { border-color: var(--deeper-purple); }
 .upload-label { display: block; cursor: pointer; }
-.upload-label i { font-size: 3rem; color: var(--teal-blue); margin-bottom: 10px; }
+.upload-label i { font-size: 3rem; color: var(--deeper-purple); margin-bottom: 10px; }
 .upload-label p { font-weight: 600; margin: 5px 0; color: var(--text-color); }
 .upload-label small { color: var(--subtext-color); font-size: 0.8rem; }
 .upload-label p strong {
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    display: inline-block;
-    max-width: 70%; 
-    vertical-align: top;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 70%; vertical-align: top;
 }
-.security-note {
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-    margin-top: 20px;
-}
+.security-note { font-size: 0.9rem; color: #666; text-align: center; margin-top: 20px; }
 .security-note i { margin-right: 5px; color: var(--color-success); }
-.upload-step h3 {
-    font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; color: var(--teal-blue);
-}
+.upload-step h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; color: var(--deeper-purple); }
 
-/* ==============================================
-   CLASSES DYNAMIQUES (POUR SCRIPT.JS)
-   ============================================== */
-
-/* 1. Utilitaires Généraux Modale */
-.modal-center-view {
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.modal-header-center {
-    text-align: center;
-    padding: 0 0 15px 0;
-}
-
-/* 2. Typographie & Icônes */
-.modal-title {
-    font-weight: 800;
-    font-size: 1.8rem;
-    margin-top: 10px;
-}
-
-.modal-subtitle {
-    font-weight: 700;
-    color: var(--teal-blue); /* Ou --secondary-purple selon ton goût */
-    margin-bottom: 10px;
-    font-size: 1.25rem;
-}
-
-.text-bold {
-    font-weight: 600;
-}
-
-.text-medium {
-    font-weight: 500;
-}
-
-.text-muted {
-    color: var(--subtext-color);
-}
-
-.text-muted-small {
-    color: var(--subtext-color);
-    font-size: 0.9rem;
-    margin-top: 20px;
-}
-
-/* 3. Couleurs d'icônes */
-.icon-purple {
-    color: var(--teal-blue); /* Remplacement de secondary-purple */
-}
-
-.icon-success-lg {
-    color: var(--teal-blue);
-    font-size: 3rem;
-}
-
-.icon-danger-lg {
-    color: var(--color-danger);
-    font-size: 3rem;
-}
-
-/* 4. Input Fichier Caché (Accessible) */
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-/* ==============================================
-   UTILITAIRES D'ESPACEMENT (Pour Script.js)
-   ============================================== */
+/* Utilitaires JS */
+.modal-center-view { text-align: center; padding: 50px 20px; }
+.modal-header-center { text-align: center; padding: 0 0 15px 0; }
+.modal-title { font-weight: 800; font-size: 1.8rem; margin-top: 10px; }
+.modal-subtitle { font-weight: 700; color: var(--deeper-purple); margin-bottom: 10px; font-size: 1.25rem; }
+.text-bold { font-weight: 600; }
+.text-medium { font-weight: 500; }
+.text-muted { color: var(--subtext-color); }
+.text-muted-small { color: var(--subtext-color); font-size: 0.9rem; margin-top: 20px; }
+.icon-purple { color: var(--deeper-purple); }
+.icon-success-lg { color: var(--deeper-purple); font-size: 3rem; }
+.icon-danger-lg { color: var(--color-danger); font-size: 3rem; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
 .modal-section { padding: 15px 0; }
 .w-100 { width: 100%; }
 .mt-20 { margin-top: 20px; }
 .mb-15 { margin-bottom: 15px; }
 .pt-10 { padding-top: 10px; }
 
-/* Spinner */
 .spinner-custom {
-    border: 4px solid var(--lavender-purple);
-    border-top: 4px solid var(--teal-blue);
-    border-radius: 50%;
-    width: 40px; height: 40px;
-    animation: spin-custom 1s linear infinite;
-    margin: 20px auto;
+    border: 4px solid var(--lavender-purple); border-top: 4px solid var(--deeper-purple); border-radius: 50%;
+    width: 40px; height: 40px; animation: spin-custom 1s linear infinite; margin: 20px auto;
 }
-@keyframes spin-custom {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+@keyframes spin-custom { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* Résultats */
 .result-summary-box {
-    background-color: var(--lavender-purple);
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 15px; margin-bottom: 10px;
-    font-size: 0.9em; line-height: 1.5; color: var(--text-color);
+    background-color: var(--lavender-purple); padding: 30px; border-radius: 20px;
+    margin-top: 15px; margin-bottom: 10px; font-size: 0.9em; line-height: 1.5; color: var(--text-color);
 }
-.metric-container {
-    display: flex; justify-content: space-around;
-    text-align: center; 
-    margin-bottom: 10px;
-}
+.metric-container { display: flex; justify-content: space-around; text-align: center; margin-bottom: 10px; }
 .metric-item { flex: 1; padding: 10px 8px; }
 .metric-item:first-child { border-right: 1px solid var(--color-border); }
-.metric-value { font-size: 1.8rem; font-weight: 800; color: var(--teal-blue); line-height: 1.2; }
+.metric-value { font-size: 1.8rem; font-weight: 800; color: var(--deeper-purple); line-height: 1.2; }
 .metric-label { font-size: 0.75rem; color: var(--subtext-color); text-transform: uppercase; margin-top: 2px; }
 
 .checkbox-wrapper {
-    display: flex; align-items: center;
-    padding: 12px; margin: 15px 0;
-    background-color: var(--color-info-bg);
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-    cursor: pointer;
+    display: flex; align-items: center; padding: 12px; margin: 15px 0; background-color: var(--color-info-bg);
+    border-radius: 8px; border: 1px solid var(--color-border); cursor: pointer;
 }
-.checkbox-wrapper input[type="checkbox"] {
-    margin-right: 10px; min-width: 18px; min-height: 18px;
-    cursor: pointer; accent-color: var(--user-indigo);
-}
+.checkbox-wrapper input[type="checkbox"] { margin-right: 10px; min-width: 18px; min-height: 18px; cursor: pointer; accent-color: var(--user-indigo); }
 .checkbox-wrapper label { flex-grow: 1; font-size: 0.95em; color: var(--text-color); cursor: pointer; }
 
-/* Succès */
 .final-success-view { text-align: center; padding: 30px 20px; animation: fadeIn 0.5s ease; }
 .final-success-view i.main-icon {
-    font-size: 5rem; color: var(--teal-blue);
-    margin-bottom: 25px;
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 5rem; color: var(--deeper-purple); margin-bottom: 25px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .final-success-view h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: var(--black); }
 .final-success-view p { color: var(--subtext-color); margin-bottom: 30px; font-size: 1.1rem; }
 .action-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
 .action-buttons button { padding: 12px 15px; font-size: 1rem; }
-
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 
-/* 7. SECTIONS DE CONTENU
+/* 7. SECTIONS DE CONTENU (LANDING & PAGES)
    ============================================== */
+.hidden-cost-section, .trust-benefits-section, .how-it-works-section, .page-content-wrapper {
+    width: 100%; background-color: var(--background-color); text-align: left;
+}
 
-/* --- Section 1: Coût Caché --- */
-.hidden-cost-section {
-    width: 100%; padding: 60px 0; 
-    background-color: var(--background-color); 
-    text-align: left;
+/* Titres & Sous-titres 
+   IMPORTANT : On ne force plus la largeur ici pour éviter les doubles marges avec .container */
+.hidden-cost-section h2, .trust-benefits-section h2, .how-it-works-section h2, 
+.page-content-wrapper h2 {
+    font-size: 2.2rem; font-weight: 800; color: var(--text-color); margin-bottom: 20px;
 }
-.hidden-cost-section h2, .trust-benefits-section h2, .how-it-works-section h2 {
-    font-size: 2.2rem; font-weight: 800; color: var(--text-color);
-    margin-bottom: 20px;
+.section-subtext {
+    font-size: 1.3rem; color: var(--subtext-color); margin-bottom: 40px; 
+    max-width: 1000px; text-align: left;
 }
-.hidden-cost-section .section-subtext,
-.trust-benefits-section .section-subtext {
-    font-size: 1.3rem;
-    color: var(--subtext-color);
-    margin-bottom: 40px; 
-    max-width: 1000px;
-    text-align: left;
-}
-.cost-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 50px; 
-}
+
+/* Coût Caché */
+.hidden-cost-section { padding: 60px 0; }
+.cost-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 50px; }
 .cost-card {
-    padding: 45px 25px;
-    border-radius: 20px;
-    border: 1px solid var(--lavender-purple);
-    background-color: var(--lavender-purple);
-    height: 100%;
+    padding: 45px 25px; border-radius: 20px;
+    border: 1px solid var(--lavender-purple); background-color: var(--lavender-purple); height: 100%;
 }
 .cost-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--text-color); text-align: center; }
 .cost-card p { font-size: 0.95rem; color: var(--subtext-color); line-height: 1.6; text-align: left; }
 .cost-cta-text {
     font-size: 1.25rem; color: var(--text-color); font-weight: 700;
-    max-width: 800px; margin: 0 auto;
-    line-height: 1.4; text-align: center;
+    max-width: 800px; margin: 0 auto; line-height: 1.4; text-align: center;
 }
 
-/* --- Section 2: Avantages (Trust) --- */
-.trust-benefits-section {
-    width: 100%;
-    padding: 40px 0 60px 0;
-    background-color: var(--background-color); 
-    text-align: left;
-}
+/* Benefits (Trust) */
+.trust-benefits-section { padding: 40px 0 60px 0; }
 .trust-benefits-section h2 { margin-bottom: 40px; }
 .benefits-grid {
-    display: grid; grid-template-columns: 1fr; 
-    gap: 40px;
-    text-align: left; 
-    width: 90%; max-width: 800px;
-    margin: 0 auto; margin-bottom: 40px;
+    display: grid; grid-template-columns: 1fr; gap: 40px;
+    text-align: left; margin-bottom: 40px; 
+    /* Pas de width/margin ici car le parent .container s'en charge */
+    max-width: 800px; margin-left: auto; margin-right: auto; /* Exception pour centrer la grille elle-même si plus petite */
 }
 .benefits-grid .benefit-item { display: flex; align-items: flex-start; gap: 25px; }
 .benefits-grid .benefit-item i {
-    font-size: 2.2rem; color: var(--teal-blue); 
-    min-width: 35px; margin-top: 5px;
+    font-size: 2.2rem; color: var(--deeper-purple); min-width: 35px; margin-top: 5px;
 }
 .benefits-grid .benefit-content h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; color: var(--text-color); }
 .benefits-grid .benefit-content p { font-size: 1rem; color: var(--subtext-color); line-height: 1.6; }
-.lien-vers-documentation {
-    font-size: 0.9rem;
-    text-align: center;
-}
-/* Lien Documentation (Page d'accueil) */
+.lien-vers-documentation { font-size: 0.9rem; text-align: center; }
 .doc-link { color: var(--black); font-weight: 700; }
 
-/* --- Section 3: Comment ça marche (Process) --- */
-.how-it-works-section {
-    width: 100%;
-    padding: 60px 0 80px 0; 
-    background-color: var(--background-color); 
-    text-align: left;
-}
+/* Process */
+.how-it-works-section { padding: 60px 0 80px 0; }
 .how-it-works-section .last-cta { margin-top: 45px; display: block; margin-left: auto; margin-right: auto; }
-
-/* Grille Processus */
 .process-cards-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 40px;
-    text-align: left; 
-    position: relative; 
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+    margin-bottom: 40px; text-align: left; position: relative; 
 }
 .process-card {
-    padding: 40px 30px;
-    border-radius: 20px; 
-    border: 1px solid var(--color-border);
-    background-color: var(--lavender-purple); 
-    border-color: var(--lavender-purple);
-    height: 100%;
-    position: relative;
-    padding-top: 80px; /* Espace pour l'icône */
+    padding: 40px 30px; border-radius: 20px; border: 1px solid var(--color-border);
+    background-color: var(--lavender-purple); border-color: var(--lavender-purple);
+    height: 100%; position: relative; padding-top: 80px;
 }
 .process-card .process-icon {
-    position: absolute;
-    top: 25px; left: 50%; width: 60px;
-    margin-left: -30px; 
+    position: absolute; top: 25px; left: 50%; width: 60px; margin-left: -30px; 
     text-align: center; font-size: 3rem; color: var(--black);
 }
 .process-card h3 { text-align: center; font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: var(--text-color); }
 .process-card p { font-size: 0.95rem; color: var(--subtext-color); line-height: 1.6; text-align: center; }
 
-
-/* 8. PAGES GÉNÉRIQUES (CONTACT, MANUEL) 
-   ============================================== */
-.page-content-wrapper {
-    padding: 80px 0;
-    min-height: 80vh;
-    text-align: left; 
-}
-
-.page-content-wrapper h2 {
-    font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;
-    text-align: center;
-} 
+/* Pages Génériques */
+.page-content-wrapper { padding: 80px 0; min-height: 80vh; }
+.page-content-wrapper h1 { text-align: center; margin-bottom: 60px; font-size: 2.5rem; font-weight: 800; }
+.page-content-wrapper h2 { text-align: left; margin-bottom: 40px; font-size: 2.2rem; font-weight: 800; }
 .page-content-wrapper h3 { font-size: 1.5rem; font-weight: 700; margin-top: 30px; margin-bottom: 15px; }
-.page-content-wrapper p, .page-content-wrapper ul { font-size: 1rem; line-height: 1.8; color: var(--subtext-color); margin-bottom: 15px; } 
+.page-content-wrapper p, .page-content-wrapper ul { font-size: 1rem; line-height: 1.8; color: var(--subtext-color); margin-bottom: 15px; }
 .page-content-wrapper ul { list-style: disc; margin-left: 20px; }
 
-/* --------Manuel Cards */
+/* Manuel Spécifique */
+.manual-steps > section > h3 { font-size: 1.8rem; font-weight: 800; margin-top: 60px; margin-bottom: 25px; color: var(--text-color); padding-left: 10px; }
+.encoding, .separator, .normalise-date, .normalise-amount, .structurel {
+    background-color: var(--lavender-purple); border-radius: 20px; padding: 40px; max-width: 900px; margin: 40px auto;
+}
+.encoding h4, .separator h4, .normalise-date h4, .normalise-amount h4, .structurel h4 {
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--black);
+}
+.encoding h4 i, .separator h4 i, .normalise-date h4 i, .structurel h4 i { color: var(--text-color); font-size: 1.1rem; }
 
-/* ==============================================
-   STYLES SPÉCIFIQUES POUR MANUAL.HTML (Maquette)
-   ============================================== */
-
-/* 1. Structure et Typographie de base du Manuel */
-.page-content-wrapper { background-color: var(--background-color); }
-.page-content-wrapper h1 {
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 2.5rem; font-weight: 800;
-}
-.page-content-wrapper h2 {
-    text-align: left;
-    margin-bottom: 40px;
-    font-size: 2.2rem; font-weight: 800;
-}
-.section-why, .security {
-    text-align: left;
-    margin-bottom: 80px; margin-top: 80px;
-    margin-left: auto; margin-right: auto;
-}
-
-.manual-steps > section > h3 {
-    font-size: 1.8rem; font-weight: 800;
-    margin-top: 60px; margin-bottom: 25px;
-    color: var(--text-color);
-    padding-left: 10px; 
-}
-.encoding, 
-.separator, 
-.normalise-date, 
-.normalise-amount, 
-.structurel {
-    background-color: var(--lavender-purple);
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 900px;
-    margin: 40px auto;
-}
-
-.encoding h4, 
-.separator h4, 
-.normalise-date h4, 
-.normalise-amount h4, 
-.structurel h4 {
-    font-size: 1.3rem; font-weight: 700;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--black);
-}
-
-.encoding h4 i, 
-.separator h4 i, 
-.normalise-date h4 i, 
-.normalise-amount h4 i, 
-.structurel h4 i {
-    color: var(--text-color);
-    font-size: 1.1rem;
-}
-
-.manual-steps ul, 
-.resume ul,
-.resume ol {
-    margin-left: 20px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.manual-steps ul li,
-.resume ul li,
-.resume ol li {
-    margin-bottom: 8px;
-    color: var(--subtext-color);
-    font-weight: 500;
-}
-
-.manual-step-2 h3, 
-.manual-step-4 h3, 
-.manual-step-5 h3 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-/* 3. Blocs de Code "Avant / Après" (Style Noir Arrondi) */
-.before-after-example {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column; 
-    gap: 10px;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-.example-title {
-    padding-left: 0;
-    font-size: 1.1rem; font-weight: 600;
-    color: var(--text-color);
-    margin-top: 20px; margin-bottom: 0px;
-}
-
-.code-item-wrapper {
-    display: flex; flex-direction: column;
-    margin-left: 30px;
-}
-
+.before-after-example { margin-top: 10px; display: flex; flex-direction: column; gap: 10px; margin-left: auto; margin-right: auto; }
+.example-title { padding-left: 0; font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin-top: 20px; margin-bottom: 0px; }
+.code-item-wrapper { display: flex; flex-direction: column; margin-left: 30px; }
 .code-item-wrapper .label {
-    display: block;
-    margin-top: 3px; margin-bottom: 8px; 
-    padding-left: 5px; 
-    font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 0.9rem;
-    color: var(--text-color);
+    display: block; margin-top: 3px; margin-bottom: 8px; padding-left: 5px; 
+    font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 0.9rem; color: var(--text-color);
 }
-
 .code-content {
-    background-color: var(--black);
-    color: var(--white);
-    border-radius: 16px;
-    padding: 20px 25px;
+    background-color: var(--black); color: var(--white); border-radius: 16px; padding: 20px 25px;
     font-family: 'Courier New', Courier, monospace; 
 }
+.code-content pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-size: 0.90rem; line-height: 1.5; }
 
-.code-content pre {
-    margin: 0;
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-size: 0.90rem;
-    line-height: 1.5;
-}
-
-/* 4. Section Résumé (Spécifique) */
 .resume {
-    border: 2px solid transparent;
-    max-width: 600px;
-    background-color: var(--lavender-purple);
-    border-radius: 20px;
-    padding: 30px;
-    margin: 40px auto;
+    border: 2px solid transparent; max-width: 600px; background-color: var(--lavender-purple);
+    border-radius: 20px; padding: 30px; margin: 40px auto;
 }
 .resume h2 { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
 .resume ol { counter-reset: my-counter; list-style: none; padding-left: 0; }
 .resume ol li { position: relative; padding-left: 30px; margin-bottom: 10px; }
-.resume ol li::before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    color: var(--teal-blue);
-    font-weight: bold;
-}
+.resume ol li::before { content: "✔"; position: absolute; left: 0; color: var(--deeper-purple); font-weight: bold; }
 
-/* ==============================================
-   CONTACT
-   ============================================== */
-
-/* Page Contact */
-.contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-
+/* PAGE CONTACT */
+.contact-container { max-width: 600px; margin: 0 auto; text-align: center; }
 .contact-box {
-    margin-top: 40px;
-    padding: 40px 30px;
+    background-color: var(--lavender-purple); border-radius: 20px; margin-top: 40px; padding: 40px 30px;
 }
-
-.contact-icon {
-    font-size: 3rem;
-    color: var(--teal-blue);
-    margin-bottom: 20px;
-}
-
+.contact-icon { font-size: 3rem; color: var(--deeper-purple); margin-bottom: 20px; }
 .contact-cta {
-    background-color: var(--teal-blue);
-    color: var(--white);
-    width: 100%;
-    max-width: 300px;
-    display: inline-block;
-    text-decoration: none;
+    background-color: var(--deeper-purple); color: var(--white); width: 100%; max-width: 300px;
+    display: inline-block; text-decoration: none; padding: 16px 32px; border-radius: 50px;
 }
-
-.contact-note {
-    font-size: 0.95rem;
-    margin-top: 20px;
-    color: var(--subtext-color);
-}
+.contact-note { font-size: 0.95rem; margin-top: 20px; color: var(--subtext-color); }
 
 /* 9. FOOTER
    ============================================== */
 .main-footer {
-    width: 100%;
-    padding: 0; 
-    background-color: var(--footer-bg); 
-    border-top: none; 
-    overflow: hidden; 
-    margin-top: 30px; 
+    width: 100%; padding: 0; background-color: var(--footer-bg); border-top: none; overflow: hidden; margin-top: 30px; 
 }
 .footer-content {
-    padding: 40px 0 20px 0;
-    display: flex; flex-direction: column; align-items: center; 
+    padding: 40px 0 20px 0; display: flex; flex-direction: column; align-items: center; 
     width: 90%; max-width: 1200px; margin: 0 auto;
 }
 .footer-primary {
-    display: flex; justify-content: space-between;
-    width: 100%; margin-bottom: 0px;
-    align-items: flex-end;
-    flex-direction: row-reverse;
+    display: flex; justify-content: space-between; width: 100%; margin-bottom: 0px; align-items: flex-end; flex-direction: row-reverse;
 }
-.footer-left {
-    display: flex; flex-direction: column;
-    text-align: left;
-    justify-content: flex-end;
-}
-.footer-logo { 
-    color: var(--footer-text-color);
-    font-weight: 700; font-size: 1rem;
-    margin-bottom: 5px;
-}
-.copyright {
-    color: var(--footer-text-color); 
-    font-size: 0.85rem; margin: 0; text-align: left; opacity: 0.8;
-}
+.footer-left { display: flex; flex-direction: column; text-align: left; justify-content: flex-end; }
+.footer-logo { color: var(--footer-text-color); font-weight: 700; font-size: 1rem; margin-bottom: 5px; }
+.copyright { color: var(--footer-text-color); font-size: 0.85rem; margin: 0; text-align: left; opacity: 0.8; }
 .footer-right { display: flex; gap: 4px; flex-direction: column; align-items: flex-end; text-align: right; justify-content: flex-end; }
-.footer-right a {
-    color: var(--footer-text-color); 
-    text-decoration: none; transition: color 0.3s;
-    font-size: 0.95rem;
-}
-.footer-right a:hover { color: var(--teal-blue); }
+.footer-right a { color: var(--footer-text-color); text-decoration: none; transition: color 0.3s; font-size: 0.95rem; }
+.footer-right a:hover { color: var(--deeper-purple); }
 
-/* 10. MEDIA QUERIES (RESPONSIVE)
+/* 10. MEDIA QUERIES
    ============================================== */
-
-/* Desktop only - Grille avantages */
 @media (min-width: 769px) {
-    .benefits-grid {
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 60px 40px; 
-    }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 60px 40px; }
 }
 
-/* Tablette et Mobile */
 @media (max-width: 768px) {
-
-    /* HEADER + BANNER */
     .top-banner { font-size: 0.85rem; }
     .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; }
     .logo { width: auto; justify-content: flex-start; margin-bottom: 0; }
-    .nav-right-links .nav-link-uppercase { font-size: 0.85rem; }
     .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 10px; }
+    .nav-right-links .nav-link-uppercase { font-size: 0.85rem; }
     .nav-right-links a { font-size: 0.9rem; }
     .nav-right-links .cta-button-nav { padding: 8px 15px; font-size: 0.9rem; }
 
-    /* HERO */
     .hero-section { min-height: auto; align-items: flex-start; padding-top: 40px; }
     .hero-container { flex-direction: column; text-align: center; } 
     .hero-content { padding-top: 0; order: 1; text-align: center; } 
     .hero-content h1 { font-size: 2.2rem; margin-bottom: 15px; } 
     .hero-content p { font-size: 1rem; margin-bottom: 20px; max-width: 100%; } 
     .hero-visuals { 
-        min-height: auto; 
-        order: 2; 
-        width: 90%; max-width: 400px;
-        margin: 0 auto 20px auto; 
-        position: relative; 
-        height: 0; padding-bottom: 75%; 
+        min-height: auto; order: 2; width: 90%; max-width: 400px;
+        margin: 0 auto 20px auto; position: relative; height: 0; padding-bottom: 75%; 
     } 
-    #collage-final, #tourbillon-anim {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        display: block; margin: 0;
-    }
+    #collage-final, #tourbillon-anim { display: block; margin: 0; }
 
-    /* MODALE (Scrollable) */
     .modal-overlay { align-items: flex-start; overflow-y: auto; padding: 20px 0; }
     .modal-content { padding: 25px; margin: 0 auto; }
 
-    /* SECTIONS */
     .hidden-cost-section { text-align: center; }
-    .hidden-cost-section .section-subtext { max-width: 100%; }
-    .cost-grid, .process-cards-grid, .manual-step-grid {
-        grid-template-columns: 1fr; gap: 20px; 
-    }
+    /* Correction : le texte s'aligne à gauche sur le conteneur centré */
+    .hidden-cost-section .section-subtext { max-width: 100%; text-align: left; }
+    
+    .cost-grid, .process-cards-grid, .manual-step-grid { grid-template-columns: 1fr; gap: 20px; }
     .cost-cta-text { font-size: 1.1rem; }
     
-    /* PROCESS CARDS MOBILE */
     .how-it-works-section { padding: 40px 0; }
     .how-it-works-section h2, .how-it-works-section .section-subtext { text-align: left; }
-    .process-card {
-        padding: 30px 20px; 
-        border-radius: 25px; 
-        text-align: center; padding-top: 80px; 
-    }
-    .process-card .process-icon {
-        position: absolute; top: 25px; left: 50%;
-        display: block; 
-    }
+    .process-card { padding: 30px 20px; border-radius: 25px; text-align: center; padding-top: 80px; }
+    .process-card .process-icon { position: absolute; top: 25px; left: 50%; display: block; }
 
-    /* AUTRE HTML */
     .page-content-wrapper { padding: 50px 0; }
     .page-content-wrapper h2 { font-size: 2rem; }
-    .encoding, .separator, .normalise-date, .normalise-amount, .structurel, .resume {
-        padding: 25px; 
-        border-radius: 20px;
-    }
+    .encoding, .separator, .normalise-date, .normalise-amount, .structurel, .resume { padding: 25px; border-radius: 20px; }
     .manual-steps > section > h3 { font-size: 1.5rem; margin-top: 40px; }
 
-    /* FOOTER */
     .main-footer { margin-top: 20px; }
     .footer-content { padding: 30px 0 20px 0; }
     .footer-primary { flex-direction: row-reverse; align-items: flex-end; margin-bottom: 0px; gap: 15px;}
