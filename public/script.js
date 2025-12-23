@@ -157,7 +157,7 @@ function triggerDownload(url, publicName) {
     // Note : L'attribut 'download' fonctionne mal en cross-origin (Google vs ton site),
     // mais ce n'est pas grave car le Backend a forcé le nom via 'promptSaveAs'.
     a.download = publicName; 
-    a.target = "_blank"; // Sécurité pour éviter de fermer la modale
+    // a.target = "_blank"; // Sécurité pour éviter de fermer la modale
     a.style.display = 'none';
     
     document.body.appendChild(a);
