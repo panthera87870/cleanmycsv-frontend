@@ -146,21 +146,25 @@ function resetModal() {
     setupFormListeners();
 }
 
-// --- Fonctions de téléchargement ---
-function triggerDownload(tempName, publicName) {
-    console.log('Tentative de téléchargement:', publicName, 'à partir de:', tempName);
-    const url = `https://cleanmycsv-backend-536004118248.europe-west1.run.app/download/${tempName}?publicName=${encodeURIComponent(publicName)}`;
+// --- Fonctions de téléchargement (MODIFIÉE POUR CLOUD STORAGE) ---
+function triggerDownload(url, publicName) {
+    console.log('Téléchargement lancé pour :', publicName);
     
+    // On crée un lien invisible qui pointe vers l'URL signée de Google
     const a = document.createElement('a');
-    a.href = url;
-    a.download = publicName;
+    a.href = url; 
+    
+    // Note : L'attribut 'download' fonctionne mal en cross-origin (Google vs ton site),
+    // mais ce n'est pas grave car le Backend a forcé le nom via 'promptSaveAs'.
+    a.download = publicName; 
+    a.target = "_blank"; // Sécurité pour éviter de fermer la modale
     a.style.display = 'none';
+    
     document.body.appendChild(a);
     a.click();
     
     setTimeout(() => {
          document.body.removeChild(a);
-         console.log('Lien de téléchargement temporaire supprimé.');
     }, 100);
 }
 
@@ -327,15 +331,15 @@ async function handleFormSubmit(e) {
 
 // --- Vues de la Modale (Succès / Erreur) ---
 function displaySuccessView(data) {
-    const summary = data.summary;
-    const csvTempName = data.csvTempName;
-    const reportTempName = data.reportTempName;
-    const csvDownloadName = data.downloadName;
-    const jsonDownloadName = data.reportDownloadName;
-
-    // const truncatedCsvName = truncateFilename(csvDownloadName, 30);
-    // const truncatedJsonName = truncateFilename(jsonDownloadName, 30);
-
+const summary = data.summary;
+    
+    // --- MODIF ICI : On récupère les URLs complètes ---
+    const csvDownloadUrl = data.downloadUrl;       // L'URL signée Google pour le CSV
+    const csvDownloadName = data.downloadName;     // Le joli nom "mon-fichier-clean.csv"
+    
+    const jsonDownloadUrl = data.reportDownloadUrl; // L'URL signée Google pour le JSON
+    const jsonDownloadName = data.reportDownloadName; // Le joli nom "mon-fichier-report.json"
+    
     dynamicContentArea.innerHTML = `
         <div class="modal-header-center">
             <i class="fa-solid fa-circle-check icon-success-lg"></i>
@@ -399,12 +403,12 @@ function displaySuccessView(data) {
         const includeJson = jsonCheckbox.checked;
         
         if (!includeJson) {
-            triggerDownload(csvTempName, csvDownloadName);
+            triggerDownload(csvDownloadUrl, csvDownloadName);
             setTimeout(() => {
                 displayPostDownloadView();
             }, 300);
         } else if (includeJson && !jsonAttempted) {
-            triggerDownload(csvTempName, csvDownloadName);
+            triggerDownload(csvDownloadUrl, csvDownloadName);
             downloadBtn.innerHTML = `
                 <i class="fa-solid fa-download"></i> 
                 Télécharger le Rapport JSON (2/2) 
@@ -413,7 +417,7 @@ function displaySuccessView(data) {
             downloadBtn.classList.add('download-btn-json');
             jsonAttempted = true;
         } else if (includeJson && jsonAttempted) {
-            triggerDownload(reportTempName, jsonDownloadName);
+            triggerDownload(jsonDownloadUrl, jsonDownloadName);
             setTimeout(() => {
                 displayPostDownloadView();
             }, 1500);
