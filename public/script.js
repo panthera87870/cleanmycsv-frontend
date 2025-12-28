@@ -297,6 +297,15 @@ function setupFormListeners() {
 async function handleFormSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
+
+    // --- 📊 MARKETING : TRACKING DÉBUT NETTOYAGE ---
+    if (typeof gtag === 'function') {
+        gtag('event', 'start_cleaning', {
+            'event_category': 'Engagement',
+            'event_label': 'CSV Upload'
+        });
+        console.log('Event Analytics: start_cleaning envoyé');
+    }
     
     dynamicContentArea.innerHTML = `
         <div class="modal-center-view">
@@ -401,6 +410,16 @@ const summary = data.summary;
 
     downloadBtn.addEventListener('click', () => {
         const includeJson = jsonCheckbox.checked;
+        
+        // --- 📊 MARKETING : TRACKING TÉLÉCHARGEMENT ---
+        if (typeof gtag === 'function') {
+            gtag('event', 'download_file', {
+                'event_category': 'Conversion',
+                'event_label': includeJson ? 'CSV + JSON' : 'CSV Only',
+                'file_type': 'csv'
+            });
+            console.log('Event Analytics: download_file envoyé');
+        }
         
         if (!includeJson) {
             triggerDownload(csvDownloadUrl, csvDownloadName);
