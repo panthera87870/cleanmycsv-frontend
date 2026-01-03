@@ -55,49 +55,45 @@
     </div>
 
     <section class="page-content-wrapper">
-        <div class="container" style="max-width: 800px; margin: 0 auto;">
-            <h1>Politique de Confidentialité</h1>
-            <p class="section-subtext" style="text-align: center;">
-                Votre confiance est notre priorité. Voici comment nous traitons (et surtout supprimons) vos données.
+        <div class="container">
+            <h1>Confidentialité & Protection des Données</h1>
+            <p class="section-subtext text-center">
+                Chez CleanMyCSV, nous traitons vos fichiers comme s'il s'agissait des nôtres : avec une sécurité maximale et une durée de vie minimale.
             </p>
 
             <div class="structurel">
-                <h4><i class="fa-solid fa-database"></i> 1. Données collectées</h4>
-                <p>Dans le cadre de l'utilisation de CleanMyCSV, nous sommes amenés à traiter temporairement :</p>
+                <h4><i class="fa-solid fa-cloud-shield"></i> 1. Architecture "Privacy by Design"</h4>
+                <p>Notre infrastructure est conçue pour qu'aucune donnée sensible ne puisse être interceptée ou conservée durablement.</p>
                 <ul>
-                    <li>Les fichiers <strong>CSV</strong> que vous téléversez.</li>
-                    <li>Les métadonnées techniques nécessaires à la connexion (adresse IP, logs de connexion) gérées par nos hébergeurs.</li>
-                </ul>
-                <p>Nous ne demandons aucune inscription, aucun nom, ni aucun email pour utiliser le service de base.</p>
-            </div>
-
-            <div class="structurel">
-                <h4><i class="fa-solid fa-stopwatch"></i> 2. Durée de conservation (Règle des 30 minutes)</h4>
-                <p>Notre politique est stricte : <strong>nous ne sommes pas un service de stockage.</strong></p>
-                <ul>
-                    <li><strong>Suppression immédiate :</strong> Dès que vous téléchargez votre fichier nettoyé, le fichier original et le fichier résultat sont supprimés de nos serveurs.</li>
-                    <li><strong>Nettoyage automatique :</strong> Si vous ne téléchargez pas le fichier, un script automatisé supprime définitivement toutes les données (entrée et sortie) au bout de <strong>30 minutes</strong> maximum.</li>
+                    <li><strong>Traitement en mémoire vive (RAM) :</strong> Votre fichier est nettoyé "au vol" dans la mémoire de nos serveurs Cloud Run sans être écrit sur un disque dur durant l'opération.</li>
+                    <li><strong>Chiffrement de bout en bout :</strong> Tous les échanges sont protégés par le protocole HTTPS (TLS) et une politique de sécurité stricte (HSTS).</li>
+                    <li><strong>Sécurité :</strong> Nous utilisons des protections avancées contre les attaques (Rate Limiting, Helmet) pour garantir la disponibilité du service.</li>
                 </ul>
             </div>
 
             <div class="structurel">
-                <h4><i class="fa-solid fa-shield-halved"></i> 3. Sécurité et Sous-traitants</h4>
-                <p>Vos fichiers transitent de manière chiffrée (HTTPS/TLS) vers nos serveurs sécurisés.</p>
-                <p>Le traitement est effectué sur les infrastructures de <strong>Google Cloud Platform</strong> (notre sous-traitant technique). CleanMyCSV garantit que vos fichiers ne sont :</p>
+                <h4><i class="fa-solid fa-clock-rotate-left"></i> 2. Cycle de vie éphémère (15 minutes)</h4>
+                <p>Contrairement aux services de stockage, nous sommes une unité de traitement. Votre droit à l'oubli est automatisé par le code :</p>
                 <ul>
-                    <li>Jamais vendus.</li>
-                    <li>Jamais partagés à des tiers publicitaires.</li>
-                    <li>Jamais ouverts par un humain (sauf obligation légale stricte ou débogage technique critique à votre demande).</li>
+                    <li><strong>Suppression automatique :</strong> Une fois le nettoyage terminé, votre fichier propre et son rapport sont placés dans un espace de stockage sécurisé (Google Cloud Storage).</li>
+                    <li><strong>Lien sécurisé à usage unique :</strong> Le lien de téléchargement qui vous est fourni expire mathématiquement après <strong>15 minutes</strong>.</li>
+                    <li><strong>Destruction définitive :</strong> Passé ce délai, les fichiers sont supprimés de nos serveurs. Personne, pas même notre équipe technique, ne peut les récupérer.</li>
                 </ul>
             </div>
 
             <div class="structurel">
-                <h4><i class="fa-solid fa-user-check"></i> 4. Vos droits (RGPD)</h4>
-                <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.</p>
-                <p>Cependant, étant donné que nous supprimons vos données automatiquement sous 30 minutes, <strong>l'exercice du droit à l'oubli est effectué par défaut</strong> pour chaque utilisateur.</p>
-                <p>Pour toute question spécifique : <a href="mailto:contact@cleanmycsv.fr" class="doc-link">contact@cleanmycsv.fr</a></p>
+                <h4><i class="fa-solid fa-cookie-bite"></i> 3. Mesure d'audience & Cookies</h4>
+                <p>Pour améliorer l'outil, nous utilisons Google Analytics de manière responsable :</p>
+                <ul>
+                    <li><strong>Données Anonymisées :</strong> Nous collectons des statistiques globales (nombre de fichiers traités, erreurs de parsing) sans jamais lier ces infos à votre identité.</li>
+                    <li><strong>Gestion des Cookies :</strong> Seuls les cookies nécessaires au bon fonctionnement et à la mesure d'audience anonyme sont utilisés. Vous pouvez les gérer via les réglages de votre navigateur.</li>
+                </ul>
             </div>
-            
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-shield-virus"></i> 4. Protection Anti-Injection</h4>
+                <p>En plus de protéger vos données, nous protégeons votre ordinateur. Notre algorithme neutralise les formules malveillantes (CSV Injection) en ajoutant une apostrophe de sécurité devant les cellules suspectes.</p>
+            </div>
         </div>
     </section>
 
@@ -112,7 +108,7 @@
                 </div>
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright">&copy; 2025 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
             </div>
         </div>

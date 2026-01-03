@@ -119,7 +119,7 @@ function closeModalBtn() {
 
 function resetModal() {
     dynamicContentArea.innerHTML = `
-        <h2>Nettoyez votre fichier en quelques secondes :</h2>
+        <h2>Nettoyez votre fichier en un instant :</h2>
         <div class="upload-step">
             <h3>1. Téléversez votre CSV</h3>
             <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">                
@@ -420,7 +420,7 @@ const summary = data.summary;
             });
             console.log('Event Analytics: download_file envoyé');
         }
-        
+
         if (!includeJson) {
             triggerDownload(csvDownloadUrl, csvDownloadName);
             setTimeout(() => {
