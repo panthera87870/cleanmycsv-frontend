@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         guiOptions: {
             consentModal: {
                 layout: 'box', // Plus pro que 'cloud' pour un SaaS
-                position: 'bottom right',
+                position: 'bottom center',
                 equalWeightButtons: true,
                 flipButtons: false
             },
@@ -58,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         description: 'Nous utilisons des cookies pour optimiser votre expérience et analyser le trafic. Vous pouvez choisir de tout accepter ou de personnaliser vos choix.',
                         acceptAllBtn: 'Tout accepter',
                         acceptNecessaryBtn: 'Tout refuser',
-                        showPreferencesBtn: 'Gérer mes choix',
-                        footer: `
-                            <a href="/privacy-policy">Politique de confidentialité</a>
-                        `
+                        showPreferencesBtn: 'Gérer mes choix'
                     },
                     settingsModal: {
                         title: 'Préférences des cookies',
@@ -113,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // On force l'ouverture si l'utilisateur clique sur un lien avec l'attribut data-cc="show-settings"
 document.addEventListener('click', (e) => {
-    if (e.target.dataset.cc === 'show-settings') {
+    if (e.target.innerText === 'Gérer mes choix') {
         CookieConsent.showSettings();
     }
 });
