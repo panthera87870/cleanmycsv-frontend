@@ -38,14 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Définition des catégories
         categories: {
-            necessary: {
-                enabled: true,
-                readOnly: true // L'utilisateur ne peut pas les désactiver
-            },
-            analytics: {
-                enabled: false, // Désactivé par défaut (Obligation légale)
-                readOnly: false
-            }
+            necessary: { enabled: true, readOnly: true },
+            analytics: { enabled: false, readOnly: false }
         },
 
         // 3. Textes complets (Français)
@@ -108,10 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// On force l'ouverture si l'utilisateur clique sur un lien avec l'attribut data-cc="show-settings"
+// ✅ CORRECTIF TECHNIQUE : On utilise le bon nom de fonction 'showPreferences'
 document.addEventListener('click', (e) => {
-    if (e.target.innerText === 'Gérer mes choix') {
-        CookieConsent.showSettings();
+    if (e.target.innerText === 'Gérer mes choix' || e.target.dataset.cc === 'show-preferences') {
+        if (typeof CookieConsent !== 'undefined') {
+            CookieConsent.showPreferences(); 
+        }
     }
 });
 
