@@ -1,57 +1,77 @@
-// --- CONFIGURATION DES COOKIES (Placer au début du fichier) ---
-function startCookieConsent() {
+// --- CONFIGURATION DES COOKIES (Version Ultra-Stable) ---
+window.addEventListener('load', function() {
     if (typeof CookieConsent !== 'undefined') {
         CookieConsent.run({
-            // Suppression des options complexes pour tester la stabilité
+            autoClearCookies: true, // Aide à la stabilité
+            manageScriptTag: true,  // Gère automatiquement les scripts GA
+            
             guiOptions: {
-                consentModal: { layout: 'box', position: 'bottom right' },
-                settingsModal: { layout: 'box', position: 'left' }
+                consentModal: {
+                    layout: 'box',
+                    position: 'bottom right'
+                },
+                settingsModal: {
+                    layout: 'box',
+                    position: 'left'
+                }
             },
+
             categories: {
-                necessary: { enabled: true, readOnly: true },
-                analytics: { enabled: false, readOnly: false }
+                necessary: {
+                    enabled: true,
+                    readOnly: true
+                },
+                analytics: {
+                    enabled: false,
+                    readOnly: false
+                }
             },
+
             language: {
                 default: 'fr',
                 translations: {
                     fr: {
                         consentModal: {
-                            title: 'Gestion des cookies 🍪',
-                            description: 'Nous utilisons des cookies pour optimiser votre expérience.',
+                            title: 'Gestion des cookies',
+                            description: 'Nous utilisons des cookies pour mesurer l\'audience.',
                             acceptAllBtn: 'Tout accepter',
-                            acceptNecessaryBtn: 'Tout refuser',
-                            showPreferencesBtn: 'Gérer mes choix'
+                            acceptNecessaryBtn: 'Refuser',
+                            showPreferencesBtn: 'Gérer mes choix' // Ce bouton déclenche la settingsModal
                         },
                         settingsModal: {
                             title: 'Préférences des cookies',
                             acceptAllBtn: 'Tout accepter',
                             acceptNecessaryBtn: 'Tout refuser',
-                            saveSettingsBtn: 'Enregistrer mes choix',
+                            saveSettingsBtn: 'Enregistrer',
                             closeIconLabel: 'Fermer',
                             sections: [
-                                { title: 'Utilisation des cookies', description: 'Essentiels au site.' },
-                                { title: 'Cookies nécessaires', linkedCategory: 'necessary' },
-                                { title: 'Analyse', linkedCategory: 'analytics' }
+                                {
+                                    title: 'Cookies strictement nécessaires',
+                                    description: 'Ces cookies sont essentiels.',
+                                    linkedCategory: 'necessary'
+                                },
+                                {
+                                    title: 'Analyse et Performance',
+                                    description: 'Ces cookies nous permettent de mesurer l\'audience.',
+                                    linkedCategory: 'analytics'
+                                }
                             ]
                         }
                     }
                 }
             },
-            onConsent: ({ cookie }) => { handleConsent(cookie); },
-            onChange: ({ cookie }) => { handleConsent(cookie); }
+
+            onConsent: ({ cookie }) => handleConsent(cookie),
+            onChange: ({ cookie }) => handleConsent(cookie)
         });
     }
-}
-
-// On attend que la page soit totalement chargée + 200ms de sécurité
-window.addEventListener('load', () => {
-    setTimeout(startCookieConsent, 200);
 });
 
 function handleConsent(cookie) {
     if (typeof gtag === 'function') {
         const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
         gtag('consent', 'update', { 'analytics_storage': status });
+        console.log("Consentement mis à jour :", status);
     }
 }
 
