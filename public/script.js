@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         guiOptions: {
             consentModal: {
                 layout: 'box',
-                position: 'bottom center',
+                position: 'bottom',
                 equalWeightButtons: true
             },
             settingsModal: {
