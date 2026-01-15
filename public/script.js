@@ -2,6 +2,24 @@
 const modalElement = document.getElementById('upload-modal');
 const dynamicContentArea = document.getElementById('dynamic-content');
 
+// --- FONCTION DE WARM-UP ---
+// On réveille le backend Cloud Run dès que l'utilisateur arrive sur le site
+(function wakeUpServer() {
+    // Remplace l'URL ci-dessous par l'URL réelle de ton backend Cloud Run
+    const BACKEND_URL = "https://cleanmycsv-backend-536004118248.europe-west1.run.app"; 
+
+    fetch(`${BACKEND_URL}/wakeup`, { method: 'GET' })
+        .then(response => {
+            if (response.ok) {
+                console.log("🚀 Serveur réveillé avec succès en arrière-plan.");
+            }
+        })
+        .catch(err => {
+            // On ne fait rien en cas d'erreur, c'est invisible pour l'utilisateur
+            console.log("Note: Le réveil anticipé a échoué (pas grave)", err);
+        });
+})();
+
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
