@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         title: 'Préférences des cookies',
                         acceptAllBtn: 'Tout accepter',
                         acceptNecessaryBtn: 'Tout refuser',
-                        saveSettinsBtn: 'Enregistrer mes choix',
+                        saveSettingsBtn: 'Enregistrer mes choix',
                         closeIconLabel: 'Fermer',
                         sections: [
                             {
@@ -102,14 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ✅ CORRECTIF TECHNIQUE : On utilise le bon nom de fonction 'showPreferences'
-document.addEventListener('click', (e) => {
-    if (e.target.innerText === 'Gérer mes choix' || e.target.dataset.cc === 'show-preferences') {
-        if (typeof CookieConsent !== 'undefined') {
-            CookieConsent.showPreferences(); 
-        }
-    }
-});
 
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
