@@ -1,10 +1,13 @@
-// --- CONFIGURATION DES COOKIES (Version Isolée) ---
-const initCC = () => {
+// --- CONFIGURATION DES COOKIES (MODE SIMPLIFIÉ 3H DU MATIN) ---
+window.addEventListener('load', () => {
     if (typeof CookieConsent !== 'undefined') {
         CookieConsent.run({
             guiOptions: {
-                consentModal: { layout: 'box', position: 'bottom right' },
-                settingsModal: { layout: 'box', position: 'left' }
+                consentModal: {
+                    layout: 'box',
+                    position: 'bottom right',
+                    equalWeightButtons: true
+                }
             },
             categories: {
                 necessary: { enabled: true, readOnly: true },
@@ -15,43 +18,24 @@ const initCC = () => {
                 translations: {
                     fr: {
                         consentModal: {
-                            title: 'Gestion des cookies 🍪',
-                            description: 'Nous utilisons des cookies pour optimiser votre expérience.',
-                            acceptAllBtn: 'Tout accepter',
-                            acceptNecessaryBtn: 'Tout refuser',
-                            showPreferencesBtn: 'Gérer mes choix'
-                        },
-                        settingsModal: {
-                            title: 'Préférences des cookies',
-                            acceptAllBtn: 'Tout accepter',
-                            acceptNecessaryBtn: 'Tout refuser',
-                            saveSettingsBtn: 'Enregistrer mes choix',
-                            closeIconLabel: 'Fermer',
-                            sections: [
-                                { title: 'Utilisation des cookies', description: 'Cookies de base.' },
-                                { title: 'Analyse', linkedCategory: 'analytics' }
-                            ]
+                            title: 'Cookies 🍪',
+                            description: 'On utilise Google Analytics pour voir si le site plaît. Ok pour vous ?',
+                            acceptAllBtn: 'Accepter',
+                            acceptNecessaryBtn: 'Refuser',
+                            // On ne met PAS de showPreferencesBtn ici
                         }
                     }
                 }
             },
-            onConsent: ({ cookie }) => handleConsent(cookie),
-            onChange: ({ cookie }) => handleConsent(cookie)
+            onConsent: ({ cookie }) => {
+                const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': status });
+                }
+            }
         });
     }
-};
-
-// On utilise setTimeout pour s'assurer que window.onload (resetModal) est passé
-window.addEventListener('load', () => {
-    setTimeout(initCC, 100);
 });
-
-function handleConsent(cookie) {
-    if (typeof gtag === 'function') {
-        const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
-        gtag('consent', 'update', { 'analytics_storage': status });
-    }
-}
 
 const modalElement = document.getElementById('upload-modal');
 const dynamicContentArea = document.getElementById('dynamic-content');
