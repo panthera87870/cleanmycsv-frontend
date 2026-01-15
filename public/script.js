@@ -18,85 +18,88 @@ const dynamicContentArea = document.getElementById('dynamic-content');
 })();
 
 // cookies
+// --- CONFIGURATION DES COOKIES ---
 document.addEventListener('DOMContentLoaded', () => {
-    CookieConsent.run({
-        guiOptions: {
-            consentModal: {
-                layout: 'box',
-                position: 'bottom',
-                equalWeightButtons: true
+    // On s'assure que CookieConsent est bien chargé
+    if (typeof CookieConsent !== 'undefined') {
+        const cc = CookieConsent;
+
+        cc.run({
+            guiOptions: {
+                consentModal: {
+                    layout: 'box',
+                    position: 'bottom right', // Position plus standard
+                    equalWeightButtons: true
+                },
+                settingsModal: {
+                    layout: 'box',
+                    position: 'left',
+                    equalWeightButtons: true
+                }
             },
-            settingsModal: {
-                layout: 'box', // Changé 'bar' en 'box' pour plus de stabilité
-                position: 'left',
-                equalWeightButtons: true
-            }
-        },
 
-        categories: {
-            necessary: { enabled: true, readOnly: true },
-            analytics: { enabled: false, readOnly: false }
-        },
+            categories: {
+                necessary: { enabled: true, readOnly: true },
+                analytics: { enabled: false, readOnly: false }
+            },
 
-        language: {
-            default: 'fr',
-            translations: {
-                fr: {
-                    consentModal: {
-                        title: 'Gestion des cookies 🍪',
-                        description: 'Nous utilisons des cookies pour optimiser votre expérience.',
-                        acceptAllBtn: 'Tout accepter',
-                        acceptNecessaryBtn: 'Tout refuser',
-                        showPreferencesBtn: 'Gérer mes choix'
-                    },
-                    settingsModal: {
-                        title: 'Préférences des cookies',
-                        acceptAllBtn: 'Tout accepter',
-                        acceptNecessaryBtn: 'Tout refuser',
-                        saveSettingsBtn: 'Enregistrer mes choix',
-                        closeIconLabel: 'Fermer',
-                        sections: [
-                            {
-                                title: 'Utilisation des cookies',
-                                description: 'Nous utilisons des cookies pour assurer les fonctions de base du site.'
-                            },
-                            {
-                                title: 'Cookies strictement nécessaires',
-                                description: 'Ces cookies sont essentiels au bon fonctionnement du site.',
-                                linkedCategory: 'necessary'
-                            },
-                            {
-                                title: 'Analyse et Performance',
-                                description: 'Ces cookies nous permettent de mesurer l\'audience.',
-                                linkedCategory: 'analytics'
-                            }
-                        ]
+            language: {
+                default: 'fr',
+                translations: {
+                    fr: {
+                        consentModal: {
+                            title: 'Gestion des cookies 🍪',
+                            description: 'Nous utilisons des cookies pour optimiser votre expérience.',
+                            acceptAllBtn: 'Tout accepter',
+                            acceptNecessaryBtn: 'Tout refuser',
+                            showPreferencesBtn: 'Gérer mes choix'
+                        },
+                        settingsModal: {
+                            title: 'Préférences des cookies',
+                            acceptAllBtn: 'Tout accepter',
+                            acceptNecessaryBtn: 'Tout refuser',
+                            saveSettingsBtn: 'Enregistrer mes choix',
+                            closeIconLabel: 'Fermer',
+                            sections: [
+                                {
+                                    title: 'Utilisation des cookies',
+                                    description: 'Nous utilisons des cookies pour assurer les fonctions de base du site.'
+                                },
+                                {
+                                    title: 'Cookies strictement nécessaires',
+                                    description: 'Ces cookies sont essentiels au bon fonctionnement du site.',
+                                    linkedCategory: 'necessary'
+                                },
+                                {
+                                    title: 'Analyse et Performance',
+                                    description: 'Ces cookies nous permettent de mesurer l\'audience.',
+                                    linkedCategory: 'analytics'
+                                }
+                            ]
+                        }
                     }
                 }
+            },
+
+            onConsent: ({ cookie }) => {
+                handleConsent(cookie);
+            },
+
+            onChange: ({ cookie }) => {
+                handleConsent(cookie);
             }
-        },
-
-        // Se déclenche à la première décision
-        onConsent: ({ cookie }) => {
-            handleConsent(cookie);
-        },
-
-        // Se déclenche quand l'utilisateur change ses choix via "Gérer mes choix"
-        onChange: ({ cookie }) => {
-            handleConsent(cookie);
-        }
-    });
+        });
+    }
 });
 
-// Fonction utilitaire pour activer/désactiver Google Analytics
+// Fonction de gestion GA (Inchangée mais vérifiez la présence de gtag)
 function handleConsent(cookie) {
-    if (cookie.categories.includes('analytics')) {
-        console.log("Analytics autorisé.");
-        if (typeof gtag === 'function') {
+    if (typeof gtag === 'function') {
+        if (cookie.categories.includes('analytics')) {
+            console.log("Analytics autorisé.");
             gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        }
-    } else {
-        if (typeof gtag === 'function') {
+        } else {
+            console.log("Analytics refusé.");
             gtag('consent', 'update', { 'analytics_storage': 'denied' });
         }
     }
