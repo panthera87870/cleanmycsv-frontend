@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             {
                                 title: 'Cookies strictement nécessaires',
                                 description: 'Ces cookies sont essentiels au bon fonctionnement du site (ex: sécurité, session).',
-                                linkedCategory: 'necessary'
                             },
                             {
                                 title: 'Analyse et Performance',
