@@ -1,77 +1,55 @@
-// --- CONFIGURATION DES COOKIES (Version Ultra-Stable) ---
-window.addEventListener('load', function() {
+// --- CONFIGURATION DES COOKIES (Version Isolée) ---
+const initCC = () => {
     if (typeof CookieConsent !== 'undefined') {
         CookieConsent.run({
-            autoClearCookies: true, // Aide à la stabilité
-            manageScriptTag: true,  // Gère automatiquement les scripts GA
-            
             guiOptions: {
-                consentModal: {
-                    layout: 'box',
-                    position: 'bottom right'
-                },
-                settingsModal: {
-                    layout: 'box',
-                    position: 'left'
-                }
+                consentModal: { layout: 'box', position: 'bottom right' },
+                settingsModal: { layout: 'box', position: 'left' }
             },
-
             categories: {
-                necessary: {
-                    enabled: true,
-                    readOnly: true
-                },
-                analytics: {
-                    enabled: false,
-                    readOnly: false
-                }
+                necessary: { enabled: true, readOnly: true },
+                analytics: { enabled: false, readOnly: false }
             },
-
             language: {
                 default: 'fr',
                 translations: {
                     fr: {
                         consentModal: {
-                            title: 'Gestion des cookies',
-                            description: 'Nous utilisons des cookies pour mesurer l\'audience.',
+                            title: 'Gestion des cookies 🍪',
+                            description: 'Nous utilisons des cookies pour optimiser votre expérience.',
                             acceptAllBtn: 'Tout accepter',
-                            acceptNecessaryBtn: 'Refuser',
-                            showPreferencesBtn: 'Gérer mes choix' // Ce bouton déclenche la settingsModal
+                            acceptNecessaryBtn: 'Tout refuser',
+                            showPreferencesBtn: 'Gérer mes choix'
                         },
                         settingsModal: {
                             title: 'Préférences des cookies',
                             acceptAllBtn: 'Tout accepter',
                             acceptNecessaryBtn: 'Tout refuser',
-                            saveSettingsBtn: 'Enregistrer',
+                            saveSettingsBtn: 'Enregistrer mes choix',
                             closeIconLabel: 'Fermer',
                             sections: [
-                                {
-                                    title: 'Cookies strictement nécessaires',
-                                    description: 'Ces cookies sont essentiels.',
-                                    linkedCategory: 'necessary'
-                                },
-                                {
-                                    title: 'Analyse et Performance',
-                                    description: 'Ces cookies nous permettent de mesurer l\'audience.',
-                                    linkedCategory: 'analytics'
-                                }
+                                { title: 'Utilisation des cookies', description: 'Cookies de base.' },
+                                { title: 'Analyse', linkedCategory: 'analytics' }
                             ]
                         }
                     }
                 }
             },
-
             onConsent: ({ cookie }) => handleConsent(cookie),
             onChange: ({ cookie }) => handleConsent(cookie)
         });
     }
+};
+
+// On utilise setTimeout pour s'assurer que window.onload (resetModal) est passé
+window.addEventListener('load', () => {
+    setTimeout(initCC, 100);
 });
 
 function handleConsent(cookie) {
     if (typeof gtag === 'function') {
         const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
         gtag('consent', 'update', { 'analytics_storage': status });
-        console.log("Consentement mis à jour :", status);
     }
 }
 
