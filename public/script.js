@@ -84,18 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. Activation réelle de Google Analytics
         onConsent: ({ cookie }) => {
             if (cookie.categories.includes('analytics')) {
-                console.log("Analytics autorisé par l'utilisateur.");
-                // Si tu utilises gtag.js, décommente la ligne ci-dessous :
-                // window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
-            }
-        },
-
-        onChange: ({ cookie, changedCategories }) => {
-            if (changedCategories.includes('analytics')) {
-                if (cookie.categories.includes('analytics')) {
-                    // window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
-                } else {
-                    // window.gtag('consent', 'update', { 'analytics_storage': 'denied' });
+                console.log("Analytics autorisé.");
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'granted' });
                 }
             }
         }
