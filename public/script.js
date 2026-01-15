@@ -21,36 +21,91 @@ const dynamicContentArea = document.getElementById('dynamic-content');
 
 document.addEventListener('DOMContentLoaded', () => {
     CookieConsent.run({
+        // 1. Options Visuelles (Design Pro)
         guiOptions: {
             consentModal: {
-                layout: 'cloud',
-                position: 'bottom center',
+                layout: 'box', // Plus pro que 'cloud' pour un SaaS
+                position: 'bottom right',
+                equalWeightButtons: true,
+                flipButtons: false
+            },
+            settingsModal: {
+                layout: 'bar',
+                position: 'left',
                 equalWeightButtons: true
             }
         },
+
+        // 2. Définition des catégories
         categories: {
-            necessary: { enabled: true },
-            analytics: {} // On définit la catégorie pour Google Analytics
+            necessary: {
+                enabled: true,
+                readOnly: true // L'utilisateur ne peut pas les désactiver
+            },
+            analytics: {
+                enabled: false, // Désactivé par défaut (Obligation légale)
+                readOnly: false
+            }
         },
+
+        // 3. Textes complets (Français)
         language: {
             default: 'fr',
             translations: {
                 fr: {
                     consentModal: {
-                        title: 'Nous utilisons des cookies 🍪',
-                        description: 'Pour comprendre comment vous utilisez l\'outil et l\'améliorer.',
+                        title: 'Gestion des cookies 🍪',
+                        description: 'Nous utilisons des cookies pour optimiser votre expérience et analyser le trafic. Vous pouvez choisir de tout accepter ou de personnaliser vos choix.',
                         acceptAllBtn: 'Tout accepter',
-                        acceptNecessaryBtn: 'Refuser',
-                        showPreferencesBtn: 'Gérer'
+                        acceptNecessaryBtn: 'Tout refuser',
+                        showPreferencesBtn: 'Gérer mes choix',
+                        footer: `
+                            <a href="/privacy-policy">Politique de confidentialité</a>
+                        `
+                    },
+                    settingsModal: {
+                        title: 'Préférences des cookies',
+                        acceptAllBtn: 'Tout accepter',
+                        acceptNecessaryBtn: 'Tout refuser',
+                        saveSettinsBtn: 'Enregistrer mes choix',
+                        closeIconLabel: 'Fermer',
+                        sections: [
+                            {
+                                title: 'Utilisation des cookies',
+                                description: 'Nous utilisons des cookies pour assurer les fonctions de base du site et pour améliorer votre expérience.'
+                            },
+                            {
+                                title: 'Cookies strictement nécessaires',
+                                description: 'Ces cookies sont essentiels au bon fonctionnement du site (ex: sécurité, session).',
+                                linkedCategory: 'necessary'
+                            },
+                            {
+                                title: 'Analyse et Performance',
+                                description: 'Ces cookies nous permettent de compter les visites et les sources de trafic afin de mesurer et d\'améliorer les performances de notre site.',
+                                linkedCategory: 'analytics'
+                            }
+                        ]
                     }
                 }
             }
         },
-        onFirstConsent: ({ cookie }) => {
+
+        // 4. Activation réelle de Google Analytics
+        onConsent: ({ cookie }) => {
             if (cookie.categories.includes('analytics')) {
-                // ✅ ICI : Active ton Google Analytics seulement si accepté
-                console.log("Analytics activé !");
-                // gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                console.log("Analytics autorisé par l'utilisateur.");
+                // Si tu utilises gtag.js, décommente la ligne ci-dessous :
+                // window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            }
+        },
+
+        onChange: ({ cookie, changedCategories }) => {
+            if (changedCategories.includes('analytics')) {
+                if (cookie.categories.includes('analytics')) {
+                    // window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                } else {
+                    // window.gtag('consent', 'update', { 'analytics_storage': 'denied' });
+                }
             }
         }
     });
