@@ -8,16 +8,12 @@ const dynamicContentArea = document.getElementById('dynamic-content');
     // Remplace l'URL ci-dessous par l'URL réelle de ton backend Cloud Run
     const BACKEND_URL = "https://cleanmycsv-backend-536004118248.europe-west1.run.app"; 
 
-    fetch(`${BACKEND_URL}/wakeup`, { method: 'GET' })
-        .then(response => {
-            if (response.ok) {
-                console.log("🚀 Serveur réveillé avec succès en arrière-plan.");
-            }
-        })
-        .catch(err => {
-            // On ne fait rien en cas d'erreur, c'est invisible pour l'utilisateur
-            console.log("Note: Le réveil anticipé a échoué (pas grave)", err);
-        });
+    fetch(`${BACKEND_URL}/wakeup`, { 
+    method: 'GET',
+    headers: {
+        'X-Warmup-Key': 'warmup_cleanmyCSV_26_!' // Une clé simple
+    }
+})
 })();
 
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
