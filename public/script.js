@@ -18,11 +18,10 @@ window.addEventListener('load', () => {
                 translations: {
                     fr: {
                         consentModal: {
-                            title: 'Cookies 🍪',
-                            description: 'On utilise Google Analytics pour voir si le site plaît. Ok pour vous ?',
-                            acceptAllBtn: 'Accepter',
-                            acceptNecessaryBtn: 'Refuser',
-                            // On ne met PAS de showPreferencesBtn ici
+                            title: 'Protection de votre vie privée',
+                            description: 'Nous utilisons des cookies pour mesurer l\'audience et améliorer votre expérience sur CleanMyCSV. Ces données nous aident à optimiser nos outils de traitement de données.',
+                            acceptAllBtn: 'Accepter l\'utilisation',
+                            acceptNecessaryBtn: 'Continuer sans accepter',
                         }
                     }
                 }
