@@ -2,6 +2,7 @@
 const modalElement = document.getElementById('upload-modal');
 const dynamicContentArea = document.getElementById('dynamic-content');
 
+
 // --- FONCTION DE WARM-UP ---
 // On réveille le backend Cloud Run dès que l'utilisateur arrive sur le site
 (function wakeUpServer() {
@@ -15,6 +16,45 @@ const dynamicContentArea = document.getElementById('dynamic-content');
     }
 })
 })();
+
+// cookies
+
+document.addEventListener('DOMContentLoaded', () => {
+    CookieConsent.run({
+        guiOptions: {
+            consentModal: {
+                layout: 'cloud',
+                position: 'bottom center',
+                equalWeightButtons: true
+            }
+        },
+        categories: {
+            necessary: { enabled: true },
+            analytics: {} // On définit la catégorie pour Google Analytics
+        },
+        language: {
+            default: 'fr',
+            translations: {
+                fr: {
+                    consentModal: {
+                        title: 'Nous utilisons des cookies 🍪',
+                        description: 'Pour comprendre comment vous utilisez l\'outil et l\'améliorer.',
+                        acceptAllBtn: 'Tout accepter',
+                        acceptNecessaryBtn: 'Refuser',
+                        showPreferencesBtn: 'Gérer'
+                    }
+                }
+            }
+        },
+        onFirstConsent: ({ cookie }) => {
+            if (cookie.categories.includes('analytics')) {
+                // ✅ ICI : Active ton Google Analytics seulement si accepté
+                console.log("Analytics activé !");
+                // gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            }
+        }
+    });
+});
 
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
