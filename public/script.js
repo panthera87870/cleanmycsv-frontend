@@ -111,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// On force l'ouverture si l'utilisateur clique sur un lien avec l'attribut data-cc="show-settings"
+document.addEventListener('click', (e) => {
+    if (e.target.dataset.cc === 'show-settings') {
+        CookieConsent.showSettings();
+    }
+});
+
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
