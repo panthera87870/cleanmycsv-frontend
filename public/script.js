@@ -19,16 +19,17 @@ const dynamicContentArea = document.getElementById('dynamic-content');
 
 // cookies
 // --- CONFIGURATION DES COOKIES ---
-document.addEventListener('DOMContentLoaded', () => {
-    // On s'assure que CookieConsent est bien chargé
+// --- CONFIGURATION DES COOKIES ---
+function initCookieConsent() {
     if (typeof CookieConsent !== 'undefined') {
-        const cc = CookieConsent;
-
-        cc.run({
+        CookieConsent.run({
+            // On force le mode auto-clear pour éviter les conflits
+            autoClearCookies: true,
+            
             guiOptions: {
                 consentModal: {
                     layout: 'box',
-                    position: 'bottom right', // Position plus standard
+                    position: 'bottom right',
                     equalWeightButtons: true
                 },
                 settingsModal: {
@@ -89,22 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 handleConsent(cookie);
             }
         });
-    }
-});
-
-// Fonction de gestion GA (Inchangée mais vérifiez la présence de gtag)
-function handleConsent(cookie) {
-    if (typeof gtag === 'function') {
-        if (cookie.categories.includes('analytics')) {
-            console.log("Analytics autorisé.");
-            gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        } else {
-            console.log("Analytics refusé.");
-            gtag('consent', 'update', { 'analytics_storage': 'denied' });
-        }
+    } else {
+        // Si la bibliothèque n'est pas encore là, on réessaie dans 100ms
+        setTimeout(initCookieConsent, 100);
     }
 }
 
+// Appeler l'initialisation
+initCookieConsent();
+
+// Fonction utilitaire GA
+function handleConsent(cookie) {
+    const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
+    console.log("Consentement Analytics :", status);
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', { 'analytics_storage': status });
+    }
+}
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
