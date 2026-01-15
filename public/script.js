@@ -1,3 +1,59 @@
+// --- CONFIGURATION DES COOKIES (Placer au début du fichier) ---
+function startCookieConsent() {
+    if (typeof CookieConsent !== 'undefined') {
+        CookieConsent.run({
+            // Suppression des options complexes pour tester la stabilité
+            guiOptions: {
+                consentModal: { layout: 'box', position: 'bottom right' },
+                settingsModal: { layout: 'box', position: 'left' }
+            },
+            categories: {
+                necessary: { enabled: true, readOnly: true },
+                analytics: { enabled: false, readOnly: false }
+            },
+            language: {
+                default: 'fr',
+                translations: {
+                    fr: {
+                        consentModal: {
+                            title: 'Gestion des cookies 🍪',
+                            description: 'Nous utilisons des cookies pour optimiser votre expérience.',
+                            acceptAllBtn: 'Tout accepter',
+                            acceptNecessaryBtn: 'Tout refuser',
+                            showPreferencesBtn: 'Gérer mes choix'
+                        },
+                        settingsModal: {
+                            title: 'Préférences des cookies',
+                            acceptAllBtn: 'Tout accepter',
+                            acceptNecessaryBtn: 'Tout refuser',
+                            saveSettingsBtn: 'Enregistrer mes choix',
+                            closeIconLabel: 'Fermer',
+                            sections: [
+                                { title: 'Utilisation des cookies', description: 'Essentiels au site.' },
+                                { title: 'Cookies nécessaires', linkedCategory: 'necessary' },
+                                { title: 'Analyse', linkedCategory: 'analytics' }
+                            ]
+                        }
+                    }
+                }
+            },
+            onConsent: ({ cookie }) => { handleConsent(cookie); },
+            onChange: ({ cookie }) => { handleConsent(cookie); }
+        });
+    }
+}
+
+// On attend que la page soit totalement chargée + 200ms de sécurité
+window.addEventListener('load', () => {
+    setTimeout(startCookieConsent, 200);
+});
+
+function handleConsent(cookie) {
+    if (typeof gtag === 'function') {
+        const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
+        gtag('consent', 'update', { 'analytics_storage': status });
+    }
+}
 
 const modalElement = document.getElementById('upload-modal');
 const dynamicContentArea = document.getElementById('dynamic-content');
@@ -17,96 +73,6 @@ const dynamicContentArea = document.getElementById('dynamic-content');
 })
 })();
 
-// cookies
-// --- CONFIGURATION DES COOKIES ---
-// --- CONFIGURATION DES COOKIES ---
-function initCookieConsent() {
-    if (typeof CookieConsent !== 'undefined') {
-        CookieConsent.run({
-            // On force le mode auto-clear pour éviter les conflits
-            autoClearCookies: true,
-            
-            guiOptions: {
-                consentModal: {
-                    layout: 'box',
-                    position: 'bottom right',
-                    equalWeightButtons: true
-                },
-                settingsModal: {
-                    layout: 'box',
-                    position: 'left',
-                    equalWeightButtons: true
-                }
-            },
-
-            categories: {
-                necessary: { enabled: true, readOnly: true },
-                analytics: { enabled: false, readOnly: false }
-            },
-
-            language: {
-                default: 'fr',
-                translations: {
-                    fr: {
-                        consentModal: {
-                            title: 'Gestion des cookies 🍪',
-                            description: 'Nous utilisons des cookies pour optimiser votre expérience.',
-                            acceptAllBtn: 'Tout accepter',
-                            acceptNecessaryBtn: 'Tout refuser',
-                            showPreferencesBtn: 'Gérer mes choix'
-                        },
-                        settingsModal: {
-                            title: 'Préférences des cookies',
-                            acceptAllBtn: 'Tout accepter',
-                            acceptNecessaryBtn: 'Tout refuser',
-                            saveSettingsBtn: 'Enregistrer mes choix',
-                            closeIconLabel: 'Fermer',
-                            sections: [
-                                {
-                                    title: 'Utilisation des cookies',
-                                    description: 'Nous utilisons des cookies pour assurer les fonctions de base du site.'
-                                },
-                                {
-                                    title: 'Cookies strictement nécessaires',
-                                    description: 'Ces cookies sont essentiels au bon fonctionnement du site.',
-                                    linkedCategory: 'necessary'
-                                },
-                                {
-                                    title: 'Analyse et Performance',
-                                    description: 'Ces cookies nous permettent de mesurer l\'audience.',
-                                    linkedCategory: 'analytics'
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-
-            onConsent: ({ cookie }) => {
-                handleConsent(cookie);
-            },
-
-            onChange: ({ cookie }) => {
-                handleConsent(cookie);
-            }
-        });
-    } else {
-        // Si la bibliothèque n'est pas encore là, on réessaie dans 100ms
-        setTimeout(initCookieConsent, 100);
-    }
-}
-
-// Appeler l'initialisation
-initCookieConsent();
-
-// Fonction utilitaire GA
-function handleConsent(cookie) {
-    const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
-    console.log("Consentement Analytics :", status);
-    if (typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': status });
-    }
-}
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
