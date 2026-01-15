@@ -30,8 +30,15 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  
+  // 1. Définir le consentement par défaut comme REFUSÉ
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'wait_for_update': 500
+  });
 
+  gtag('js', new Date());
   gtag('config', 'G-Z6D4HMV5LP');
 </script>
 

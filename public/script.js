@@ -18,38 +18,33 @@ const dynamicContentArea = document.getElementById('dynamic-content');
 })();
 
 // cookies
-
 document.addEventListener('DOMContentLoaded', () => {
     CookieConsent.run({
-        // 1. Options Visuelles (Design Pro)
         guiOptions: {
             consentModal: {
-                layout: 'box', // Plus pro que 'cloud' pour un SaaS
+                layout: 'box',
                 position: 'bottom center',
-                equalWeightButtons: true,
-                flipButtons: false
+                equalWeightButtons: true
             },
             settingsModal: {
-                layout: 'bar',
+                layout: 'box', // Changé 'bar' en 'box' pour plus de stabilité
                 position: 'left',
                 equalWeightButtons: true
             }
         },
 
-        // 2. Définition des catégories
         categories: {
             necessary: { enabled: true, readOnly: true },
             analytics: { enabled: false, readOnly: false }
         },
 
-        // 3. Textes complets (Français)
         language: {
             default: 'fr',
             translations: {
                 fr: {
                     consentModal: {
                         title: 'Gestion des cookies 🍪',
-                        description: 'Nous utilisons des cookies pour optimiser votre expérience et analyser le trafic. Vous pouvez choisir de tout accepter ou de personnaliser vos choix.',
+                        description: 'Nous utilisons des cookies pour optimiser votre expérience.',
                         acceptAllBtn: 'Tout accepter',
                         acceptNecessaryBtn: 'Tout refuser',
                         showPreferencesBtn: 'Gérer mes choix'
@@ -63,15 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         sections: [
                             {
                                 title: 'Utilisation des cookies',
-                                description: 'Nous utilisons des cookies pour assurer les fonctions de base du site et pour améliorer votre expérience.'
+                                description: 'Nous utilisons des cookies pour assurer les fonctions de base du site.'
                             },
                             {
                                 title: 'Cookies strictement nécessaires',
-                                description: 'Ces cookies sont essentiels au bon fonctionnement du site (ex: sécurité, session).'
+                                description: 'Ces cookies sont essentiels au bon fonctionnement du site.',
+                                linkedCategory: 'necessary'
                             },
                             {
                                 title: 'Analyse et Performance',
-                                description: 'Ces cookies nous permettent de compter les visites et les sources de trafic afin de mesurer et d\'améliorer les performances de notre site.',
+                                description: 'Ces cookies nous permettent de mesurer l\'audience.',
                                 linkedCategory: 'analytics'
                             }
                         ]
@@ -80,18 +76,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
 
-        // 4. Activation réelle de Google Analytics
+        // Se déclenche à la première décision
         onConsent: ({ cookie }) => {
-            if (cookie.categories.includes('analytics')) {
-                console.log("Analytics autorisé.");
-                if (typeof gtag === 'function') {
-                    gtag('consent', 'update', { 'analytics_storage': 'granted' });
-                }
-            }
+            handleConsent(cookie);
+        },
+
+        // Se déclenche quand l'utilisateur change ses choix via "Gérer mes choix"
+        onChange: ({ cookie }) => {
+            handleConsent(cookie);
         }
     });
 });
 
+// Fonction utilitaire pour activer/désactiver Google Analytics
+function handleConsent(cookie) {
+    if (cookie.categories.includes('analytics')) {
+        console.log("Analytics autorisé.");
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+    } else {
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }
+    }
+}
 
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL (ANTI-NAVIGATION) ---
 function setupDragDropProtection() {
