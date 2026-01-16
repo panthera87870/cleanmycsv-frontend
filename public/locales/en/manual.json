@@ -1,0 +1,124 @@
+{
+  "meta_title": "CSV Cleaning Guides: Accents, Dates & Security | CleanMyCSV",
+  "meta_desc": "Discover how CleanMyCSV fixes your files: accent correction (Ã©), zip code zero recovery, ISO date normalization, and anti-injection security.",
+  
+  "nav_home": "BACK TO MENU",
+  "nav_contact": "CONTACT",
+  "nav_try": "Try It",
+
+  "sidebar_title": "Cleaning Guide",
+  "sidebar_encoding": "<i class=\"fa-solid fa-language\"></i> Accents & Encoding",
+  "sidebar_structure": "<i class=\"fa-solid fa-table-columns\"></i> Separators & Structure",
+  "sidebar_dates": "<i class=\"fa-solid fa-calendar-days\"></i> Standardized Dates",
+  "sidebar_finance": "<i class=\"fa-solid fa-coins\"></i> Amounts & Currencies",
+  "sidebar_crm": "<i class=\"fa-solid fa-address-book\"></i> Contacts (Email, Phone, Zip)",
+  "sidebar_security": "<i class=\"fa-solid fa-shield-halved\"></i> Anti-Injection Protection",
+  "sidebar_report": "<i class=\"fa-solid fa-file-code\"></i> The Cleaning Report",
+  "sidebar_faq": "<i class=\"fa-solid fa-circle-question\"></i> Frequently Asked Questions",
+
+  "hero_title": "Technical Documentation & Cleaning Guide",
+  "hero_subtext": "CleanMyCSV is not just a simple filter: it is an intelligent normalization engine that repairs structural errors in your data files to make them immediately actionable.",
+
+  "art1_title": "1. Accent Recovery (Smart Encoding)",
+  "art1_p": "The issue of unreadable characters (e.g., <code>Ã©</code> instead of <code>é</code>) stems from a conflict between Windows, Mac, and Web standards.",
+  "art1_feature": "<strong>How does it work?</strong> Our engine analyzes your file on three levels: it first attempts <strong>UTF-8</strong> decoding, then switches to <strong>Windows-1252</strong> or <strong>MacRoman</strong> if errors are detected. This ensures perfect readability of your text, regardless of the source tool.",
+  "label_before_corrupt": "Before (Corrupt Encoding)",
+  "label_after_utf8": "After (UTF-8 Conversion)",
+
+  "art2_title": "2. Separator Detection and Deduplication",
+  "art2_p": "A CSV file can use commas, semicolons, or tabs. Choosing the wrong separator when opening it can dump your entire table into a single column.",
+  "art2_feature": "<strong>Automation:</strong> CleanMyCSV statistically calculates the most probable separator by analyzing the first 10,000 characters. Additionally, the tool automatically removes empty lines and perfect duplicates to lighten your database.",
+
+  "art3_title": "3. Date Harmonization to ISO Format",
+  "art3_p": "Software like Salesforce or HubSpot often requires a strict date format (YYYY-MM-DD). However, human-created files often mix formats.",
+  "art3_feature": "<strong>The Solution:</strong> Our algorithm unifies everything to the <code>YYYY-MM-DD</code> standard. It even handles months written in French/English (Jan, Feb, Dec...) and corrects the \"pivot rule\" for two-digit years (e.g., 24 becomes 2024).",
+  "label_before_mixed": "Before (Mixed Formats)",
+  "label_after_std": "After (Standardized)",
+
+  "art4_title": "4. Amount Cleaning and Currency Extraction",
+  "art4_p": "It is impossible to sum cells containing \"150,00 €\". For Excel, that is text, not a number.",
+  "art4_feature": "<strong>Financial Intelligence:</strong> CleanMyCSV extracts the currency symbol ($, €, £, CAD...), places it in a dedicated new column called <strong>\"Currency\"</strong>, and transforms the amount into a pure number (decimal point format).",
+  "label_before": "Before",
+  "label_after_calc": "After (Ready for Calculation)",
+
+  "art5_title": "5. Contact Data Optimization (CRM Ready)",
+  "art5_p": "Cleaning emails and phone numbers is the tool's strong suit for marketing teams.",
+  "art5_li1": "<strong>Emails:</strong> Removal of stray spaces and systematic conversion to lowercase.",
+  "art5_li2": "<strong>Phones:</strong> Normalization to international format (e.g., <code>+33</code> for France).",
+  "art5_li3": "<strong>Zip Codes:</strong> Restoration of the initial <code>0</code> often deleted by Excel (e.g., 06100).",
+  "art5_li4": "<strong>Names:</strong> Smart capitalization respecting particles (e.g., \"Jean de la Fontaine\").",
+
+  "art6_title": "6. Security: CSV Injection Protection",
+  "art6_p": "A CSV file can be a security vulnerability if it contains cells starting with <code>=</code>, <code>+</code>, or <code>-</code>. These characters can force Excel to execute malicious commands.",
+  "art6_feature": "<strong>Native Shield:</strong> CleanMyCSV detects these suspicious formulas and neutralizes them by adding a security apostrophe (<code>'</code>). Your computer and corporate network remain protected.",
+
+  "art7_title": "7. The Cleaning Report: Total Transparency",
+  "art7_p": "Unlike \"black box\" tools, we provide you with a detailed log (JSON format) of every modification made.",
+  "art7_feature": "<strong>Traceability:</strong> This report allows you to verify exactly which cell was modified, what its original value was, and why it was corrected.",
+  "label_report_ex": "Report Example",
+
+  "faq_title": "FAQ: Answers to Your Technical Questions",
+  "faq_q1": "What is the maximum file size accepted?",
+  "faq_a1": "The tool accepts files up to <strong>15 MB</strong>, which typically represents several hundred thousand rows.",
+  "faq_q2": "Is my data stored?",
+  "faq_a2": "No. Files are processed in the server's RAM and stored temporarily (15 minutes maximum) in a secure space before total deletion.",
+  "faq_q3": "Why did a \"Currency\" column appear?",
+  "faq_a3": "If the tool detects currency symbols in your amount column, it automatically creates this column so that your figures remain pure numbers usable by your Excel formulas.",
+
+  "final_cta_text": "Ready to get impeccable data?",
+  "final_cta_btn": "Clean my file now",
+
+  "footer_cgu": "Terms of Service",
+  "footer_legal": "Legal Notice",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "footer_copyright": "&copy; 2026 CleanMyCSV. All rights reserved.",
+  
+  "cookie": {
+    "title": "Privacy Protection",
+    "description": "We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.",
+    "accept_all": "Accept cookies",
+    "accept_necessary": "Continue without accepting"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Clean your file instantly:",
+      "step_1": "1. Upload your CSV",
+      "drag_drop_text": "Click or drag & drop your file here",
+      "supported_files": "Supported files: .CSV only",
+      "btn_start_disabled": "Start Cleaning (Free)",
+      "btn_start_ready": "Start cleaning your file",
+      "security_note": "Your data is secure and processed anonymously.",
+      "file_ready": "File ready:",
+      "change_file": "Click to change file",
+      "format_error": "Unsupported file format. Only .CSV files are accepted.",
+      "general_error": "Only CSV files are supported or the file could not be read."
+    },
+    "processing": {
+      "title": "Cleaning in progress...",
+      "sending": "Sending file to your cleaning script...",
+      "wait": "This will just take a moment!"
+    },
+    "success": {
+      "title": "Your file is ready!",
+      "subtitle": "Cleaning Report",
+      "rows_affected": "Rows affected",
+      "rows_removed": "Rows / Duplicates removed",
+      "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
+      "btn_download_csv": "Download Cleaned CSV",
+      "btn_download_json": "Download JSON Report"
+    },
+    "post_download": {
+      "title": "Mission Accomplished!",
+      "desc": "Your cleaned file is now available in your downloads.",
+      "btn_finish": "Finish and return to site",
+      "btn_again": "Clean another file",
+      "security_delete": "Your original data has been deleted from our servers for security."
+    },
+    "error": {
+      "title": "Oops, Error!",
+      "prefix": "Sorry, an error occurred:",
+      "btn_retry": "Close and retry"
+    }
+  }
+}

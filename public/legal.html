@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-]    <title>Mentions Légales - CleanMyCSV</title>
+    <title data-i18n="meta_title">Mentions Légales - CleanMyCSV</title>
     <meta name="robots" content="noindex">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
@@ -55,10 +55,18 @@
                     </a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
-                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
-                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
-                    <button class="cta-button-nav js-open-modal">Essayer</button>
+                    <a href="index.html" class="nav-link-uppercase" data-i18n="nav_home">RETOUR AU MENU</a>
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav_docs">DOCUMENTATION</a>
+                    <a href="contact.html" class="nav-link-uppercase" data-i18n="nav_contact">CONTACT</a>
+                    
+                    <div class="lang-selector">
+                        <i class="fa-solid fa-globe lang-icon"></i>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav_try">Essayer</button>
                 </div>
             </nav>
         </header>
@@ -66,35 +74,35 @@
 
     <section class="page-content-wrapper">
         <div class="container">
-            <h1>Mentions Légales</h1>
-            <p class="section-subtext text-center">
+            <h1 data-i18n="hero_title">Mentions Légales</h1>
+            <p class="section-subtext text-center" data-i18n="hero_subtext">
                 Transparence totale sur l'édition et l'hébergement du service.
             </p>
 
             <div class="structurel">
-                <h4><i class="fa-solid fa-user-tie"></i> 1. Éditeur du Service</h4>
-                <p>Le site <strong>CleanMyCSV.fr</strong> est édité par :</p>
+                <h4 data-i18n="sect1_title"><i class="fa-solid fa-user-tie"></i> 1. Éditeur du Service</h4>
+                <p data-i18n="sect1_intro">Le site <strong>CleanMyCSV.fr</strong> est édité par :</p>
                 <ul>
-                    <li><strong>Propriétaire :</strong> Métrot Léa, Entrepreneur Individuel (EI).</li>
-                    <li><strong>SIRET :</strong> 98037891300019.</li>
-                    <li><strong>Siège Social :</strong> 55 Place Paul Vigne D'Octon, 34070 Montpellier, France.</li>
-                    <li><strong>Directeur de la publication :</strong> Métrot Léa.</li>
+                    <li data-i18n="sect1_li1"><strong>Propriétaire :</strong> Métrot Léa, Entrepreneur Individuel (EI).</li>
+                    <li data-i18n="sect1_li2"><strong>SIRET :</strong> 98037891300019.</li>
+                    <li data-i18n="sect1_li3"><strong>Siège Social :</strong> 55 Place Paul Vigne D'Octon, 34070 Montpellier, France.</li>
+                    <li data-i18n="sect1_li4"><strong>Directeur de la publication :</strong> Métrot Léa.</li>
                 </ul>
             </div>
 
             <div class="structurel">
-                <h4><i class="fa-solid fa-server"></i> 2. Hébergement & Infrastructure</h4>
-                <p>Pour garantir une sécurité de niveau bancaire, nous nous appuyons sur des leaders mondiaux dont les serveurs de traitement sont localisés en Europe :</p>
+                <h4 data-i18n="sect2_title"><i class="fa-solid fa-server"></i> 2. Hébergement & Infrastructure</h4>
+                <p data-i18n="sect2_intro">Pour garantir une sécurité de niveau bancaire, nous nous appuyons sur des leaders mondiaux dont les serveurs de traitement sont localisés en Europe :</p>
                 <ul>
-                    <li><strong>Traitement & Stockage Temporaire :</strong> Google Cloud Platform (GCP). Région : Belgique/Pays-Bas (Europe).</li>
-                    <li><strong>Interface Web (Frontend) :</strong> Vercel Inc., 340 S Lemon Ave, Walnut, CA 91789, USA.</li>
-                    <li><strong>Nom de Domaine :</strong> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</li>
+                    <li data-i18n="sect2_li1"><strong>Traitement & Stockage Temporaire :</strong> Google Cloud Platform (GCP). Région : Belgique/Pays-Bas (Europe).</li>
+                    <li data-i18n="sect2_li2"><strong>Interface Web (Frontend) :</strong> Vercel Inc., 340 S Lemon Ave, Walnut, CA 91789, USA.</li>
+                    <li data-i18n="sect2_li3"><strong>Nom de Domaine :</strong> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</li>
                 </ul>
             </div>
 
             <div class="structurel">
-                <h4><i class="fa-solid fa-gavel"></i> 3. Propriété Intellectuelle</h4>
-                <p>L'ensemble du site (design, textes, logos) ainsi que les algorithmes de nettoyage développés spécifiquement pour CleanMyCSV sont la propriété exclusive de l'éditeur. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
+                <h4 data-i18n="sect3_title"><i class="fa-solid fa-gavel"></i> 3. Propriété Intellectuelle</h4>
+                <p data-i18n="sect3_p">L'ensemble du site (design, textes, logos) ainsi que les algorithmes de nettoyage développés spécifiquement pour CleanMyCSV sont la propriété exclusive de l'éditeur. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
             </div>
         </div>
     </section>
@@ -103,20 +111,21 @@
         <div class="container footer-content">
             <div class="footer-primary">
                 <div class="footer-right">
-                    <a href="cgu.html">CGU</a>
-                    <a href="legal.html">Mentions Légales</a>
-                    <a href="security.html">Confidentialité</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="cgu.html" data-i18n="footer_cgu">CGU</a>
+                    <a href="legal.html" data-i18n="footer_legal">Mentions Légales</a>
+                    <a href="security.html" data-i18n="footer_privacy">Confidentialité</a>
+                    <a href="contact.html" data-i18n="footer_contact">Contact</a>
                 </div>
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer_copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="i18n-loader.js"></script>
 
 </body>
 </html>

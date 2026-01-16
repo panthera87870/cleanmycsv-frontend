@@ -1,0 +1,113 @@
+{
+  "meta_title": "CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes",
+  "meta_desc": "CleanMyCSV harmonise vos fichiers CSV en quelques secondes. Corrigez les formats incohérents, les doublons et les erreurs.",
+  "og_title": "CleanMyCSV – Nettoyez vos CSV en un instant",
+  "og_desc": "Un outil simple et rapide pour nettoyer vos fichiers CSV. Gain de temps garanti.",
+  
+  "top_banner": "En 2026, gagnez du temps sur ce qui compte vraiment.",
+  
+  "nav_home": "RETOUR AU MENU",
+  "nav_docs": "DOCUMENTATION",
+  "nav_contact": "CONTACT",
+  "nav_cta": "Essayer",
+  
+  "hero_title": "Des fichiers CSV propres. En un instant.",
+  "hero_subtext": "Sans formules. Sans erreurs. Sans perte de temps.",
+  "hero_cta": "Nettoyer mon fichier",
+  "hero_free_badge": "<i class=\"fas fa-check-circle\"></i> C'est 100% gratuit.",
+  "hero_img_alt": "Icônes représentant les sources de données à nettoyer",
+  
+  "costs_title": "Les données brutes cachent souvent plus de problèmes qu’on ne l’imagine.",
+  "costs_subtext": "Un simple fichier CSV peut contenir des dizaines de petites irrégularités. <br> Individuellement, elles semblent anodines. Ensemble, elles vous font perdre du temps et faussent vos résultats.",
+  
+  "cost_1_title": "Formats incohérents",
+  "cost_1_desc": "Dates différentes, séparateurs instables, majuscules aléatoires… Votre fichier perd sa cohérence.",
+  "cost_2_title": "Doublons silencieux",
+  "cost_2_desc": "Des lignes identiques ou similaires perturbent vos totaux sans que vous les remarquiez.",
+  "cost_3_title": "Décalages de structure",
+  "cost_3_desc": "Une colonne décalée ou une valeur mal alignée suffit à casser la logique du tableau.",
+  
+  "costs_cta_text": "CleanMyCSV repère ces irrégularités et remet votre fichier en ordre, automatiquement.",
+  
+  "benefits_title": "Un traitement clair, rapide et méthodique.",
+  "benefits_subtext": "Ce que CleanMyCSV remet en place pour vous :",
+  
+  "ben_1_title": "Harmonisation automatique",
+  "ben_1_desc": "Dates, nombres et séparateurs suivent enfin les mêmes règles.",
+  "ben_2_title": "Corrections ciblées",
+  "ben_2_desc": "Les erreurs sont ajustées sans toucher aux données fiables.",
+  "ben_3_title": "Traitement rapide",
+  "ben_3_desc": "Votre fichier retrouve une structure cohérente en quelques secondes.",
+  "ben_4_title": "Compatibilité universelle",
+  "ben_4_desc": "Tout CSV est accepté, quelle que soit sa source.",
+  "ben_5_title": "Confidentialité assurée",
+  "ben_5_desc": "Vos fichiers sont supprimés après traitement.",
+  "ben_6_title": "Rapport clair",
+  "ben_6_desc": "Vous visualisez clairement chaque ajustement.",
+  
+  "doc_link_full": "En savoir plus sur CleanMyCSV : consultez notre <a href=\"manual.html\" class=\"doc-link\">Documentation</a>.",
+  
+  "steps_main_title": "En trois étapes. Une routine simple, portée par une technologie rigoureuse.",
+  "step_1_title": "Étape 1: Déposez votre fichier",
+  "step_1_desc": "Glissez votre CSV. Le transfert est sécurisé.",
+  "step_2_title": "Étape 2: Nettoyage structuré",
+  "step_2_desc": "Formats stabilisés, doublons retirés, erreurs corrigées.",
+  "step_3_title": "Étape 3: Téléchargez votre fichier propre",
+  "step_3_desc": "Un CSV cohérent, accompagné d’un rapport si besoin.",
+  
+  "cta_last": "Gagnez du temps. <br>Essayez CleanMyCSV gratuitement",
+  
+  "footer_cgu": "CGU",
+  "footer_legal": "Mentions Légales",
+  "footer_privacy": "Confidentialité",
+  "footer_contact": "Contact",
+  "footer_rights": "&copy; 2026 CleanMyCSV. Tous droits réservés.",
+  
+  "cookie": {
+    "title": "Protection de votre vie privée",
+    "description": "Nous utilisons des cookies pour mesurer l'audience et améliorer votre expérience sur CleanMyCSV. Ces données nous aident à optimiser nos outils de traitement de données.",
+    "accept_all": "Accepter l'utilisation",
+    "accept_necessary": "Continuer sans accepter"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Nettoyez votre fichier en un instant :",
+      "step_1": "1. Téléversez votre CSV",
+      "drag_drop_text": "Cliquez ou glissez-déposez votre fichier ici",
+      "supported_files": "Fichiers supportés : .CSV uniquement",
+      "btn_start_disabled": "Lancer le Nettoyage (Gratuit)",
+      "btn_start_ready": "Lancer le nettoyage de votre fichier",
+      "security_note": "Vos données sont sécurisées et traitées de manière anonyme.",
+      "file_ready": "Fichiers prêt :",
+      "change_file": "Cliquez pour changer de fichier",
+      "format_error": "Format de fichier non supporté. Seuls les fichiers .CSV sont acceptés.",
+      "general_error": "Seuls les fichiers CSV sont supportés ou le fichier n'a pas pu être lu."
+    },
+    "processing": {
+      "title": "Nettoyage en cours...",
+      "sending": "Envoi du fichier à votre script de nettoyage...",
+      "wait": "Cela prendra juste un instant !"
+    },
+    "success": {
+      "title": "Votre fichier est prêt !",
+      "subtitle": "Rapport de Nettoyage",
+      "rows_affected": "Lignes affectées",
+      "rows_removed": "Lignes / Doublons retirés",
+      "checkbox_json": "Je veux aussi le <strong>rapport détaillé JSON</strong> des corrections (pour les experts).",
+      "btn_download_csv": "Télécharger le CSV Nettoyé",
+      "btn_download_json": "Télécharger le Rapport JSON"
+    },
+    "post_download": {
+      "title": "Mission Accomplie !",
+      "desc": "Votre fichier nettoyé est maintenant disponible dans vos téléchargements.",
+      "btn_finish": "Terminer et retourner au site",
+      "btn_again": "Nettoyer un autre fichier",
+      "security_delete": "Vos données originales ont été effacées de nos serveurs par sécurité."
+    },
+    "error": {
+      "title": "Oups, Erreur !",
+      "prefix": "Désolé, une erreur est survenue :",
+      "btn_retry": "Fermer et réessayer"
+    }
+  }
+}

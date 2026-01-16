@@ -1,0 +1,69 @@
+{
+  "meta_title": "Contact & Support - CleanMyCSV",
+  
+  "nav_home": "BACK TO MENU",
+  "nav_docs": "DOCUMENTATION",
+  "nav_contact": "CONTACT",
+  "nav_try": "Try It",
+
+  "hero_title": "Contact & Customer Support",
+  "hero_subtext": "Have a question about how the tool works or a specific request for your company? Even though CleanMyCSV is designed to be self-service, we are here to help. Whatever your need, please do not hesitate to reach out.",
+
+  "contact_box_title": "Have a Question? Write to Us!",
+  "contact_btn": "Contact Us: contact@cleanmycsv.fr",
+  "contact_note": "Our team is committed to providing a detailed response within 24 business hours.",
+
+  "footer_cgu": "Terms of Service",
+  "footer_legal": "Legal Notice",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "footer_copyright": "&copy; 2026 CleanMyCSV. All rights reserved.",
+  
+  "cookie": {
+    "title": "Privacy Protection",
+    "description": "We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.",
+    "accept_all": "Accept cookies",
+    "accept_necessary": "Continue without accepting"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Clean your file instantly:",
+      "step_1": "1. Upload your CSV",
+      "drag_drop_text": "Click or drag & drop your file here",
+      "supported_files": "Supported files: .CSV only",
+      "btn_start_disabled": "Start Cleaning (Free)",
+      "btn_start_ready": "Start cleaning your file",
+      "security_note": "Your data is secure and processed anonymously.",
+      "file_ready": "File ready:",
+      "change_file": "Click to change file",
+      "format_error": "Unsupported file format. Only .CSV files are accepted.",
+      "general_error": "Only CSV files are supported or the file could not be read."
+    },
+    "processing": {
+      "title": "Cleaning in progress...",
+      "sending": "Sending file to your cleaning script...",
+      "wait": "This will just take a moment!"
+    },
+    "success": {
+      "title": "Your file is ready!",
+      "subtitle": "Cleaning Report",
+      "rows_affected": "Rows affected",
+      "rows_removed": "Rows / Duplicates removed",
+      "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
+      "btn_download_csv": "Download Cleaned CSV",
+      "btn_download_json": "Download JSON Report"
+    },
+    "post_download": {
+      "title": "Mission Accomplished!",
+      "desc": "Your cleaned file is now available in your downloads.",
+      "btn_finish": "Finish and return to site",
+      "btn_again": "Clean another file",
+      "security_delete": "Your original data has been deleted from our servers for security."
+    },
+    "error": {
+      "title": "Oops, Error!",
+      "prefix": "Sorry, an error occurred:",
+      "btn_retry": "Close and retry"
+    }
+  }
+}

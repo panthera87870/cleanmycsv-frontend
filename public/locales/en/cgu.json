@@ -1,0 +1,79 @@
+{
+  "meta_title": "Terms of Service - CleanMyCSV",
+  
+  "nav_home": "BACK TO MENU",
+  "nav_docs": "DOCUMENTATION",
+  "nav_contact": "CONTACT",
+  "nav_try": "Try It",
+
+  "hero_title": "Terms of Service",
+  
+  "sect1_title": "<i class=\"fa-solid fa-file-contract\"></i> 1. Purpose",
+  "sect1_p": "The purpose of these Terms of Service (ToS) is to define the terms and conditions for the provision of CleanMyCSV services and the conditions of use of the Service by the User.",
+
+  "sect2_title": "<i class=\"fa-solid fa-server\"></i> 2. Access to Service",
+  "sect2_p": "The Service is accessible free of charge to any User with internet access. All costs related to accessing the Service, whether hardware, software, or internet access fees, are exclusively the responsibility of the user. The publisher uses all reasonable means at its disposal to ensure quality access to the Service but is under no obligation to do so.",
+
+  "sect3_title": "<i class=\"fa-solid fa-shield-cat\"></i> 3. Liability",
+  "sect3_intro": "The user agrees to comply with the following rules when using the data cleaning tool:",
+  "sect3_li1": "<strong>Professional Use:</strong> CleanMyCSV is a technical tool designed to facilitate file processing. The user is solely responsible for the final verification of the data.",
+  "sect3_li2": "<strong>Lawful Use:</strong> Do not upload files containing malicious code or data obtained illegally.",
+  "sect3_li3": "<strong>Security:</strong> Do not attempt to bypass rate limits or compromise the infrastructure.",
+
+  "sect4_title": "<i class=\"fa-solid fa-scale-balanced\"></i> 4. Applicable Law",
+  "sect4_p": "These Terms are governed by French law. In the event of a dispute, and after an attempt at mediation, exclusive jurisdiction is assigned to the courts of Montpellier.",
+
+  "footer_cgu": "Terms of Service",
+  "footer_legal": "Legal Notice",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "footer_copyright": "&copy; 2026 CleanMyCSV. All rights reserved.",
+  
+  "cookie": {
+    "title": "Privacy Protection",
+    "description": "We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.",
+    "accept_all": "Accept cookies",
+    "accept_necessary": "Continue without accepting"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Clean your file instantly:",
+      "step_1": "1. Upload your CSV",
+      "drag_drop_text": "Click or drag & drop your file here",
+      "supported_files": "Supported files: .CSV only",
+      "btn_start_disabled": "Start Cleaning (Free)",
+      "btn_start_ready": "Start cleaning your file",
+      "security_note": "Your data is secure and processed anonymously.",
+      "file_ready": "File ready:",
+      "change_file": "Click to change file",
+      "format_error": "Unsupported file format. Only .CSV files are accepted.",
+      "general_error": "Only CSV files are supported or the file could not be read."
+    },
+    "processing": {
+      "title": "Cleaning in progress...",
+      "sending": "Sending file to your cleaning script...",
+      "wait": "This will just take a moment!"
+    },
+    "success": {
+      "title": "Your file is ready!",
+      "subtitle": "Cleaning Report",
+      "rows_affected": "Rows affected",
+      "rows_removed": "Rows / Duplicates removed",
+      "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
+      "btn_download_csv": "Download Cleaned CSV",
+      "btn_download_json": "Download JSON Report"
+    },
+    "post_download": {
+      "title": "Mission Accomplished!",
+      "desc": "Your cleaned file is now available in your downloads.",
+      "btn_finish": "Finish and return to site",
+      "btn_again": "Clean another file",
+      "security_delete": "Your original data has been deleted from our servers for security."
+    },
+    "error": {
+      "title": "Oops, Error!",
+      "prefix": "Sorry, an error occurred:",
+      "btn_retry": "Close and retry"
+    }
+  }
+}

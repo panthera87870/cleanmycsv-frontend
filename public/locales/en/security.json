@@ -1,0 +1,85 @@
+{
+  "meta_title": "Privacy Policy - CleanMyCSV",
+  
+  "nav_home": "BACK TO MENU",
+  "nav_docs": "DOCUMENTATION",
+  "nav_contact": "CONTACT",
+  "nav_try": "Try It",
+
+  "hero_title": "Privacy & Data Protection",
+  "hero_subtext": "At CleanMyCSV, we treat your files as if they were our own: with maximum security and minimum lifespan.",
+
+  "sect1_title": "<i class=\"fa-solid fa-cloud-shield\"></i> 1. \"Privacy by Design\" Architecture",
+  "sect1_p": "Our infrastructure is designed so that no sensitive data can be intercepted or stored permanently.",
+  "sect1_li1": "<strong>In-Memory Processing (RAM):</strong> Your file is cleaned \"on the fly\" in the memory of our Cloud Run servers without ever being written to a hard drive during the operation.",
+  "sect1_li2": "<strong>End-to-End Encryption:</strong> All exchanges are protected by the HTTPS protocol (TLS) and a strict security policy (HSTS).",
+  "sect1_li3": "<strong>Security:</strong> We use advanced protections against attacks (Rate Limiting, Helmet) to ensure service availability.",
+
+  "sect2_title": "<i class=\"fa-solid fa-clock-rotate-left\"></i> 2. Ephemeral Lifecycle (15 minutes)",
+  "sect2_p": "Unlike storage services, we are a processing unit. Your right to be forgotten is automated by code:",
+  "sect2_li1": "<strong>Automatic Deletion:</strong> Once cleaning is complete, your clean file and its report are placed in secure storage (Google Cloud Storage).",
+  "sect2_li2": "<strong>One-Time Secure Link:</strong> The download link provided to you mathematically expires after <strong>15 minutes</strong>.",
+  "sect2_li3": "<strong>Permanent Destruction:</strong> After this period, files are deleted from our servers. No one, not even our technical team, can recover them.",
+
+  "sect3_title": "<i class=\"fa-solid fa-cookie-bite\"></i> 3. Audience Measurement & Cookies",
+  "sect3_p": "To improve the tool, we use Google Analytics responsibly:",
+  "sect3_li1": "<strong>Anonymized Data:</strong> We collect global statistics (number of files processed, parsing errors) without ever linking this info to your identity.",
+  "sect3_li2": "<strong>Cookie Management:</strong> Only cookies necessary for proper functioning and anonymous audience measurement are used. You can manage them via your browser settings.",
+
+  "sect4_title": "<i class=\"fa-solid fa-shield-virus\"></i> 4. Anti-Injection Protection",
+  "sect4_p": "In addition to protecting your data, we protect your computer. Our algorithm neutralizes malicious formulas (CSV Injection) by adding a safety apostrophe in front of suspicious cells.",
+
+  "footer_cgu": "Terms of Service",
+  "footer_legal": "Legal Notice",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "footer_copyright": "&copy; 2026 CleanMyCSV. All rights reserved.",
+  
+  "cookie": {
+    "title": "Privacy Protection",
+    "description": "We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.",
+    "accept_all": "Accept cookies",
+    "accept_necessary": "Continue without accepting"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Clean your file instantly:",
+      "step_1": "1. Upload your CSV",
+      "drag_drop_text": "Click or drag & drop your file here",
+      "supported_files": "Supported files: .CSV only",
+      "btn_start_disabled": "Start Cleaning (Free)",
+      "btn_start_ready": "Start cleaning your file",
+      "security_note": "Your data is secure and processed anonymously.",
+      "file_ready": "File ready:",
+      "change_file": "Click to change file",
+      "format_error": "Unsupported file format. Only .CSV files are accepted.",
+      "general_error": "Only CSV files are supported or the file could not be read."
+    },
+    "processing": {
+      "title": "Cleaning in progress...",
+      "sending": "Sending file to your cleaning script...",
+      "wait": "This will just take a moment!"
+    },
+    "success": {
+      "title": "Your file is ready!",
+      "subtitle": "Cleaning Report",
+      "rows_affected": "Rows affected",
+      "rows_removed": "Rows / Duplicates removed",
+      "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
+      "btn_download_csv": "Download Cleaned CSV",
+      "btn_download_json": "Download JSON Report"
+    },
+    "post_download": {
+      "title": "Mission Accomplished!",
+      "desc": "Your cleaned file is now available in your downloads.",
+      "btn_finish": "Finish and return to site",
+      "btn_again": "Clean another file",
+      "security_delete": "Your original data has been deleted from our servers for security."
+    },
+    "error": {
+      "title": "Oops, Error!",
+      "prefix": "Sorry, an error occurred:",
+      "btn_retry": "Close and retry"
+    }
+  }
+}

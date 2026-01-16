@@ -1,0 +1,81 @@
+{
+  "meta_title": "Legal Notice - CleanMyCSV",
+  
+  "nav_home": "BACK TO MENU",
+  "nav_docs": "DOCUMENTATION",
+  "nav_contact": "CONTACT",
+  "nav_try": "Try It",
+
+  "hero_title": "Legal Notice",
+  "hero_subtext": "Total transparency regarding the publishing and hosting of the service.",
+
+  "sect1_title": "<i class=\"fa-solid fa-user-tie\"></i> 1. Service Publisher",
+  "sect1_intro": "The website <strong>CleanMyCSV.fr</strong> is published by:",
+  "sect1_li1": "<strong>Owner:</strong> Métrot Léa, Sole Proprietorship (EI).",
+  "sect1_li2": "<strong>SIRET:</strong> 98037891300019.",
+  "sect1_li3": "<strong>Headquarters:</strong> 55 Place Paul Vigne D'Octon, 34070 Montpellier, France.",
+  "sect1_li4": "<strong>Publication Director:</strong> Métrot Léa.",
+
+  "sect2_title": "<i class=\"fa-solid fa-server\"></i> 2. Hosting & Infrastructure",
+  "sect2_intro": "To ensure bank-level security, we rely on global leaders whose processing servers are located in Europe:",
+  "sect2_li1": "<strong>Processing & Temporary Storage:</strong> Google Cloud Platform (GCP). Region: Belgium/Netherlands (Europe).",
+  "sect2_li2": "<strong>Web Interface (Frontend):</strong> Vercel Inc., 340 S Lemon Ave, Walnut, CA 91789, USA.",
+  "sect2_li3": "<strong>Domain Name:</strong> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.",
+
+  "sect3_title": "<i class=\"fa-solid fa-gavel\"></i> 3. Intellectual Property",
+  "sect3_p": "The entire site (design, texts, logos) as well as the cleaning algorithms developed specifically for CleanMyCSV are the exclusive property of the publisher. Any reproduction, even partial, is prohibited without prior authorization.",
+
+  "footer_cgu": "Terms of Service",
+  "footer_legal": "Legal Notice",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "footer_copyright": "&copy; 2026 CleanMyCSV. All rights reserved.",
+  
+  "cookie": {
+    "title": "Privacy Protection",
+    "description": "We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.",
+    "accept_all": "Accept cookies",
+    "accept_necessary": "Continue without accepting"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Clean your file instantly:",
+      "step_1": "1. Upload your CSV",
+      "drag_drop_text": "Click or drag & drop your file here",
+      "supported_files": "Supported files: .CSV only",
+      "btn_start_disabled": "Start Cleaning (Free)",
+      "btn_start_ready": "Start cleaning your file",
+      "security_note": "Your data is secure and processed anonymously.",
+      "file_ready": "File ready:",
+      "change_file": "Click to change file",
+      "format_error": "Unsupported file format. Only .CSV files are accepted.",
+      "general_error": "Only CSV files are supported or the file could not be read."
+    },
+    "processing": {
+      "title": "Cleaning in progress...",
+      "sending": "Sending file to your cleaning script...",
+      "wait": "This will just take a moment!"
+    },
+    "success": {
+      "title": "Your file is ready!",
+      "subtitle": "Cleaning Report",
+      "rows_affected": "Rows affected",
+      "rows_removed": "Rows / Duplicates removed",
+      "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
+      "btn_download_csv": "Download Cleaned CSV",
+      "btn_download_json": "Download JSON Report"
+    },
+    "post_download": {
+      "title": "Mission Accomplished!",
+      "desc": "Your cleaned file is now available in your downloads.",
+      "btn_finish": "Finish and return to site",
+      "btn_again": "Clean another file",
+      "security_delete": "Your original data has been deleted from our servers for security."
+    },
+    "error": {
+      "title": "Oops, Error!",
+      "prefix": "Sorry, an error occurred:",
+      "btn_retry": "Close and retry"
+    }
+  }
+}

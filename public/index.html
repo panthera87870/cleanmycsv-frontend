@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title>CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes</title>
-    <meta name="description" content="CleanMyCSV harmonise vos fichiers CSV en quelques secondes. Corrigez les formats incohérents, les doublons et les erreurs. Rapide, simple et sécurisé.">
+    <title data-i18n="meta_title">CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes</title>
+    <meta name="description" data-i18n="meta_desc" content="CleanMyCSV harmonise vos fichiers CSV...">
 
-    <meta property="og:title" content="CleanMyCSV – Nettoyez vos CSV en un instant">
-    <meta property="og:description" content="Un outil simple et rapide pour nettoyer vos fichiers CSV. Gain de temps garanti.">
+    <meta property="og:title" data-i18n="og_title" content="CleanMyCSV – Nettoyez vos CSV en un instant">
+    <meta property="og:description" data-i18n="og_desc" content="Un outil simple et rapide...">
     <meta property="og:image" content="assets/images/og-image.png">
     <meta property="og:type" content="website">
 
@@ -54,21 +54,27 @@
     </div>
 
     <div class="sticky-wrapper">
-        <div class="top-banner">
+        <div class="top-banner" data-i18n="top_banner">
             En 2026, gagnez du temps sur ce qui compte vraiment.
         </div>
 
         <header class="main-header">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="#top" >
+                    <a href="#top">
                         <span>CLEANMY<span class="logo-accent">CSV</span></span>
                     </a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
-                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
-                    <button class="cta-button-nav js-open-modal">Essayer</button>
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav_docs">DOCUMENTATION</a>
+                    <a href="contact.html" class="nav-link-uppercase" data-i18n="nav_contact">CONTACT</a>
+                    <div class="lang-selector">
+                        <i class="fa-solid fa-globe lang-icon"></i>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav_cta">Essayer</button>
                 </div>
             </nav>
         </header>
@@ -77,21 +83,22 @@
     <main class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Des fichiers CSV propres. En un instant.</h1>
-                <p class="section-subtext">
+                <h1 data-i18n="hero_title">Des fichiers CSV propres. En un instant.</h1>
+                <p class="section-subtext" data-i18n="hero_subtext">
                     Sans formules. Sans erreurs. Sans perte de temps.
                 </p>
                 <div class="cta-wrapper">
-                    <button class="cta-button hero-cta js-open-modal">
+                    <button class="cta-button hero-cta js-open-modal" data-i18n="hero_cta">
                         Nettoyer mon fichier
                     </button>
                 </div>
-                <span class="hero-subtext">
+                <span class="hero-subtext" data-i18n="hero_free_badge">
                     <i class="fas fa-check-circle"></i> C'est 100% gratuit.
                 </span>
             </div>
             <div class="hero-visuals">
                 <img src="assets/images/cmcsv_lavender-icon.webp" 
+                    data-i18n="hero_img_alt"
                     alt="Icônes représentant les sources de données à nettoyer" 
                     id="collage-final" 
                     class="visual-content-element"
@@ -99,7 +106,7 @@
                     fetchpriority="high">
 
                 <img src="assets/images/swirl.webp" 
-                    alt="Tourbillon" 
+                    alt="" 
                     class="visual-bg-element" 
                     id="tourbillon-anim"
                     width="496" height="426"
@@ -111,33 +118,25 @@
 
     <section class="hidden-cost-section">
         <div class="container">
-            <h2>Les données brutes cachent souvent plus de problèmes qu’on ne l’imagine.</h2>
-            <p class="section-subtext">
-                Un simple fichier CSV peut contenir des dizaines de petites irrégularités. <br>
-                Individuellement, elles semblent anodines. Ensemble, elles vous font perdre du temps et faussent vos résultats.
+            <h2 data-i18n="costs_title">Les données brutes cachent souvent plus de problèmes qu’on ne l’imagine.</h2>
+            <p class="section-subtext" data-i18n="costs_subtext">
+                Un simple fichier CSV peut contenir des dizaines de petites irrégularités...
             </p>
             <div class="cost-grid">
                 <div class="cost-card card-purple">
-                    <h3>Formats incohérents</h3>
-                    <p>
-                        Dates différentes, séparateurs instables, majuscules aléatoires…  
-                        Votre fichier perd sa cohérence.
-                    </p>
+                    <h3 data-i18n="cost_1_title">Formats incohérents</h3>
+                    <p data-i18n="cost_1_desc">Dates différentes, séparateurs instables...</p>
                 </div>
                 <div class="cost-card card-purple">
-                    <h3>Doublons silencieux</h3>
-                    <p>
-                        Des lignes identiques ou similaires perturbent vos totaux sans que vous les remarquiez.
-                    </p>
+                    <h3 data-i18n="cost_2_title">Doublons silencieux</h3>
+                    <p data-i18n="cost_2_desc">Des lignes identiques ou similaires perturbent vos totaux...</p>
                 </div>
                 <div class="cost-card card-purple">
-                    <h3>Décalages de structure</h3>
-                    <p>
-                        Une colonne décalée ou une valeur mal alignée suffit à casser la logique du tableau.
-                    </p>
+                    <h3 data-i18n="cost_3_title">Décalages de structure</h3>
+                    <p data-i18n="cost_3_desc">Une colonne décalée ou une valeur mal alignée...</p>
                 </div>
             </div>
-            <p class="cost-cta-text">
+            <p class="cost-cta-text" data-i18n="costs_cta_text">
                 CleanMyCSV repère ces irrégularités et remet votre fichier en ordre, automatiquement.
             </p>
         </div>
@@ -145,55 +144,55 @@
 
     <section class="trust-benefits-section">
         <div class="container">
-            <h2>Un traitement clair, rapide et méthodique.</h2>
-            <p class="section-subtext">
+            <h2 data-i18n="benefits_title">Un traitement clair, rapide et méthodique.</h2>
+            <p class="section-subtext" data-i18n="benefits_subtext">
                 Ce que CleanMyCSV remet en place pour vous :
             </p>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <div class="benefit-content">
-                        <h3>Harmonisation automatique</h3>
-                        <p>Dates, nombres et séparateurs suivent enfin les mêmes règles.</p>
+                        <h3 data-i18n="ben_1_title">Harmonisation automatique</h3>
+                        <p data-i18n="ben_1_desc">Dates, nombres et séparateurs suivent enfin les mêmes règles.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-bullseye"></i>
                     <div class="benefit-content">
-                        <h3>Corrections ciblées</h3>
-                        <p>Les erreurs sont ajustées sans toucher aux données fiables.</p>
+                        <h3 data-i18n="ben_2_title">Corrections ciblées</h3>
+                        <p data-i18n="ben_2_desc">Les erreurs sont ajustées sans toucher aux données fiables.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div class="benefit-content">
-                        <h3>Traitement rapide</h3>
-                        <p>Votre fichier retrouve une structure cohérente en quelques secondes.</p>
+                        <h3 data-i18n="ben_3_title">Traitement rapide</h3>
+                        <p data-i18n="ben_3_desc">Votre fichier retrouve une structure cohérente en quelques secondes.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-gear"></i>
                     <div class="benefit-content">
-                        <h3>Compatibilité universelle</h3>
-                        <p>Tout CSV est accepté, quelle que soit sa source.</p>
+                        <h3 data-i18n="ben_4_title">Compatibilité universelle</h3>
+                        <p data-i18n="ben_4_desc">Tout CSV est accepté, quelle que soit sa source.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div class="benefit-content">
-                        <h3>Confidentialité assurée</h3>
-                        <p>Vos fichiers sont supprimés après traitement.</p>
+                        <h3 data-i18n="ben_5_title">Confidentialité assurée</h3>
+                        <p data-i18n="ben_5_desc">Vos fichiers sont supprimés après traitement.</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div class="benefit-content">
-                        <h3>Rapport clair</h3>
-                        <p>Vous visualisez clairement chaque ajustement.</p>
+                        <h3 data-i18n="ben_6_title">Rapport clair</h3>
+                        <p data-i18n="ben_6_desc">Vous visualisez clairement chaque ajustement.</p>
                     </div>
                 </div>
             </div>
-            <p class="lien-vers-documentation">
+            <p class="lien-vers-documentation" data-i18n="doc_link_full">
                 En savoir plus sur CleanMyCSV : consultez notre <a href="manual.html" class="doc-link">Documentation</a>.
             </p>
         </div>
@@ -201,27 +200,27 @@
 
     <section class="how-it-works-section" id="how-it-works">
         <div class="container">
-            <h2>En trois étapes. Une routine simple, portée par une technologie rigoureuse.</h2>
+            <h2 data-i18n="steps_main_title">En trois étapes. Une routine simple, portée par une technologie rigoureuse.</h2>
 
             <div class="process-cards-grid">
                 <div class="process-card">
                     <i class="fa-solid fa-cloud-arrow-up process-icon"></i>
-                    <h3>Étape 1: Déposez votre fichier</h3>
-                    <p>Glissez votre CSV. Le transfert est sécurisé.</p>
+                    <h3 data-i18n="step_1_title">Étape 1: Déposez votre fichier</h3>
+                    <p data-i18n="step_1_desc">Glissez votre CSV. Le transfert est sécurisé.</p>
                 </div>
                 <div class="process-card">
                     <i class="fa-solid fa-spinner fa-spin-pulse process-icon"></i>
-                    <h3>Étape 2: Nettoyage structuré</h3>
-                    <p>Formats stabilisés, doublons retirés, erreurs corrigées.</p>
+                    <h3 data-i18n="step_2_title">Étape 2: Nettoyage structuré</h3>
+                    <p data-i18n="step_2_desc">Formats stabilisés, doublons retirés, erreurs corrigées.</p>
                 </div>
                 <div class="process-card">
                     <i class="fa-solid fa-circle-check process-icon"></i>
-                    <h3>Étape 3: Téléchargez votre fichier propre</h3>
-                    <p>Un CSV cohérent, accompagné d’un rapport si besoin.</p>
+                    <h3 data-i18n="step_3_title">Étape 3: Téléchargez votre fichier propre</h3>
+                    <p data-i18n="step_3_desc">Un CSV cohérent, accompagné d’un rapport si besoin.</p>
                 </div>
             </div>
             
-            <button class="cta-button last-cta js-open-modal">
+            <button class="cta-button last-cta js-open-modal" data-i18n="cta_last">
                 Gagnez du temps. <br>Essayez CleanMyCSV gratuitement
             </button>
         </div>
@@ -231,20 +230,21 @@
         <div class="container footer-content">
             <div class="footer-primary">
                 <div class="footer-right">
-                    <a href="cgu.html">CGU</a>
-                    <a href="legal.html">Mentions Légales</a>
-                    <a href="security.html">Confidentialité</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="cgu.html" data-i18n="footer_cgu">CGU</a>
+                    <a href="legal.html" data-i18n="footer_legal">Mentions Légales</a>
+                    <a href="security.html" data-i18n="footer_privacy">Confidentialité</a>
+                    <a href="contact.html" data-i18n="footer_contact">Contact</a>
                 </div>
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer_rights">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="i18n-loader.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,113 @@
+{
+  "meta_title": "CleanMyCSV - Clean your CSV files in seconds",
+  "meta_desc": "CleanMyCSV harmonizes your CSV files in seconds. Fix inconsistent formats, duplicates, and errors. Fast, simple, and secure.",
+  "og_title": "CleanMyCSV – Clean your CSVs instantly",
+  "og_desc": "A simple and fast tool to clean your CSV files. Save time guaranteed.",
+  
+  "top_banner": "In 2026, save time on what really matters.",
+  
+  "nav_home": "HOME",
+  "nav_docs": "DOCUMENTATION",
+  "nav_contact": "CONTACT",
+  "nav_cta": "Try it",
+  
+  "hero_title": "Clean CSV files. In an instant.",
+  "hero_subtext": "No formulas. No errors. No wasted time.",
+  "hero_cta": "Clean my file",
+  "hero_free_badge": "<i class=\"fas fa-check-circle\"></i> It's 100% free.",
+  "hero_img_alt": "Icons representing data sources to be cleaned",
+  
+  "costs_title": "Raw data hides more problems than you imagine.",
+  "costs_subtext": "A simple CSV file can contain dozens of small irregularities. <br> Individually, they seem harmless. Together, they waste your time and skew your results.",
+  
+  "cost_1_title": "Inconsistent Formats",
+  "cost_1_desc": "Different date formats, unstable separators, random capitalization… Your file loses its consistency.",
+  "cost_2_title": "Silent Duplicates",
+  "cost_2_desc": "Identical or similar rows mess up your totals without you noticing.",
+  "cost_3_title": "Structural Shifts",
+  "cost_3_desc": "A shifted column or misaligned value is enough to break the table's logic.",
+  
+  "costs_cta_text": "CleanMyCSV spots these irregularities and puts your file back in order, automatically.",
+  
+  "benefits_title": "Clear, fast, and methodical processing.",
+  "benefits_subtext": "What CleanMyCSV fixes for you:",
+  
+  "ben_1_title": "Automatic Harmonization",
+  "ben_1_desc": "Dates, numbers, and separators finally follow the same rules.",
+  "ben_2_title": "Targeted Corrections",
+  "ben_2_desc": "Errors are adjusted without touching reliable data.",
+  "ben_3_title": "Fast Processing",
+  "ben_3_desc": "Your file regains a consistent structure in seconds.",
+  "ben_4_title": "Universal Compatibility",
+  "ben_4_desc": "Any CSV is accepted, whatever its source.",
+  "ben_5_title": "Guaranteed Privacy",
+  "ben_5_desc": "Your files are deleted immediately after processing.",
+  "ben_6_title": "Clear Report",
+  "ben_6_desc": "You clearly visualize every single adjustment.",
+  
+  "doc_link_full": "Learn more about CleanMyCSV: check our <a href=\"manual.html\" class=\"doc-link\">Documentation</a>.",
+  
+  "steps_main_title": "Three steps. A simple routine, backed by rigorous technology.",
+  "step_1_title": "Step 1: Upload your file",
+  "step_1_desc": "Drag & drop your CSV. The transfer is secure.",
+  "step_2_title": "Step 2: Structured Cleaning",
+  "step_2_desc": "Stabilized formats, duplicates removed, errors fixed.",
+  "step_3_title": "Step 3: Download your clean file",
+  "step_3_desc": "A consistent CSV, accompanied by a report if needed.",
+  
+  "cta_last": "Save time. <br>Try CleanMyCSV for free",
+  
+  "footer_cgu": "Terms of Use",
+  "footer_legal": "Legal Notice",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "footer_rights": "&copy; 2026 CleanMyCSV. All rights reserved.",
+  
+  "cookie": {
+    "title": "Privacy Protection",
+    "description": "We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.",
+    "accept_all": "Accept cookies",
+    "accept_necessary": "Continue without accepting"
+  },
+  "modal": {
+    "upload": {
+      "main_title": "Clean your file instantly:",
+      "step_1": "1. Upload your CSV",
+      "drag_drop_text": "Click or drag & drop your file here",
+      "supported_files": "Supported files: .CSV only",
+      "btn_start_disabled": "Start Cleaning (Free)",
+      "btn_start_ready": "Start cleaning your file",
+      "security_note": "Your data is secure and processed anonymously.",
+      "file_ready": "File ready:",
+      "change_file": "Click to change file",
+      "format_error": "Unsupported file format. Only .CSV files are accepted.",
+      "general_error": "Only CSV files are supported or the file could not be read."
+    },
+    "processing": {
+      "title": "Cleaning in progress...",
+      "sending": "Sending file to your cleaning script...",
+      "wait": "This will just take a moment!"
+    },
+    "success": {
+      "title": "Your file is ready!",
+      "subtitle": "Cleaning Report",
+      "rows_affected": "Rows affected",
+      "rows_removed": "Rows / Duplicates removed",
+      "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
+      "btn_download_csv": "Download Cleaned CSV",
+      "btn_download_json": "Download JSON Report"
+    },
+    "post_download": {
+      "title": "Mission Accomplished!",
+      "desc": "Your cleaned file is now available in your downloads.",
+      "btn_finish": "Finish and return to site",
+      "btn_again": "Clean another file",
+      "security_delete": "Your original data has been deleted from our servers for security."
+    },
+    "error": {
+      "title": "Oops, Error!",
+      "prefix": "Sorry, an error occurred:",
+      "btn_retry": "Close and retry"
+    }
+  }
+}

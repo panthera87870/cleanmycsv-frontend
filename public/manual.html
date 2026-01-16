@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title>Guides de nettoyage CSV : Accents, Dates et Sécurité | CleanMyCSV</title>
-    <meta name="description" content="Découvrez comment CleanMyCSV répare vos fichiers : correction des accents (Ã©), récupération des zéros de codes postaux, normalisation de dates ISO et sécurité anti-injection.">
-     
+    <title data-i18n="meta_title">Guides de nettoyage CSV : Accents, Dates et Sécurité | CleanMyCSV</title>
+    <meta name="description" data-i18n="meta_desc" content="Découvrez comment CleanMyCSV répare vos fichiers : correction des accents (Ã©), récupération des zéros de codes postaux, normalisation de dates ISO et sécurité anti-injection.">
+        
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
     <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -45,7 +45,6 @@
             <div id="dynamic-content"></div>
         </div>
     </div>
-    
     <div class="sticky-wrapper">
         <header class="main-header">
             <nav class="navbar">
@@ -55,10 +54,17 @@
                     </a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="index.html" class="nav-link-uppercase">RETOUR AU MENU</a>
-                    <a href="manual.html" class="nav-link-uppercase">DOCUMENTATION</a>
-                    <a href="contact.html" class="nav-link-uppercase">CONTACT</a>
-                    <button class="cta-button-nav js-open-modal">Essayer</button>
+                    <a href="index.html" class="nav-link-uppercase" data-i18n="nav_home">RETOUR AU MENU</a>
+                    <a href="contact.html" class="nav-link-uppercase" data-i18n="nav_contact">CONTACT</a>
+                    
+                    <div class="lang-selector">
+                        <i class="fa-solid fa-globe lang-icon"></i>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav_try">Essayer</button>
                 </div>
             </nav>
         </header>
@@ -68,83 +74,83 @@
     <div class="container docs-container">
         <aside class="docs-sidebar">
             <nav>
-                <h4>Guide de Nettoyage</h4>
+                <h4 data-i18n="sidebar_title">Guide de Nettoyage</h4>
                 <ul>
-                    <li><a href="#encodage"><i class="fa-solid fa-language"></i> Accents & Encodage</a></li>
-                    <li><a href="#structure"><i class="fa-solid fa-table-columns"></i> Séparateurs & Structure</a></li>
-                    <li><a href="#dates-iso"><i class="fa-solid fa-calendar-days"></i> Dates Standardisées</a></li>
-                    <li><a href="#finance"><i class="fa-solid fa-coins"></i> Montants & Devises</a></li>
-                    <li><a href="#crm-data"><i class="fa-solid fa-address-book"></i> Contacts (Email, Tel, CP)</a></li>
-                    <li><a href="#securite-pro"><i class="fa-solid fa-shield-halved"></i> Protection Anti-Injection</a></li>
-                    <li><a href="#rapport-json"><i class="fa-solid fa-file-code"></i> Le Rapport de Nettoyage</a></li>
-                    <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> Questions Fréquentes</a></li>
+                    <li><a href="#encodage" data-i18n="sidebar_encoding"><i class="fa-solid fa-language"></i> Accents & Encodage</a></li>
+                    <li><a href="#structure" data-i18n="sidebar_structure"><i class="fa-solid fa-table-columns"></i> Séparateurs & Structure</a></li>
+                    <li><a href="#dates-iso" data-i18n="sidebar_dates"><i class="fa-solid fa-calendar-days"></i> Dates Standardisées</a></li>
+                    <li><a href="#finance" data-i18n="sidebar_finance"><i class="fa-solid fa-coins"></i> Montants & Devises</a></li>
+                    <li><a href="#crm-data" data-i18n="sidebar_crm"><i class="fa-solid fa-address-book"></i> Contacts (Email, Tel, CP)</a></li>
+                    <li><a href="#securite-pro" data-i18n="sidebar_security"><i class="fa-solid fa-shield-halved"></i> Protection Anti-Injection</a></li>
+                    <li><a href="#rapport-json" data-i18n="sidebar_report"><i class="fa-solid fa-file-code"></i> Le Rapport de Nettoyage</a></li>
+                    <li><a href="#faq" data-i18n="sidebar_faq"><i class="fa-solid fa-circle-question"></i> Questions Fréquentes</a></li>
                 </ul>
             </nav>
         </aside>
 
         <section class="docs-content">
-            <h1 id="introduction">Documentation Technique & Guide de Nettoyage</h1>
-            <p class="section-subtext">
+            <h1 id="introduction" data-i18n="hero_title">Documentation Technique & Guide de Nettoyage</h1>
+            <p class="section-subtext" data-i18n="hero_subtext">
                 CleanMyCSV n'est pas qu'un simple filtre : c'est un moteur de normalisation intelligent qui répare les erreurs structurelles de vos fichiers de données pour les rendre immédiatement exploitables.
             </p>
 
             <article id="encodage" class="doc-article">
-                <h2>1. Récupération des accents (Encodage intelligent)</h2>
-                <p>Le problème des caractères illisibles (ex: <code>Ã©</code> au lieu de <code>é</code>) provient d'un conflit entre les formats Windows, Mac et le standard Web.</p>
+                <h2 data-i18n="art1_title">1. Récupération des accents (Encodage intelligent)</h2>
+                <p data-i18n="art1_p">Le problème des caractères illisibles (ex: <code>Ã©</code> au lieu de <code>é</code>) provient d'un conflit entre les formats Windows, Mac et le standard Web.</p>
                 <div class="feature-card">
-                    <p><strong>Comment ça marche ?</strong> Notre moteur analyse votre fichier sur trois niveaux : il tente d'abord un décodage <strong>UTF-8</strong>, puis bascule sur <strong>Windows-1252</strong> ou <strong>MacRoman</strong> s'il détecte des erreurs. Cela garantit une lisibilité parfaite de vos textes, quel que soit l'outil d'origine.</p>
+                    <p data-i18n="art1_feature"><strong>Comment ça marche ?</strong> Notre moteur analyse votre fichier sur trois niveaux : il tente d'abord un décodage <strong>UTF-8</strong>, puis bascule sur <strong>Windows-1252</strong> ou <strong>MacRoman</strong> s'il détecte des erreurs. Cela garantit une lisibilité parfaite de vos textes, quel que soit l'outil d'origine.</p>
                 </div>
                 <div class="before-after-example">
                     <div class="code-item-wrapper">
-                        <span class="label">Avant (Encodage corrompu)</span>
+                        <span class="label" data-i18n="label_before_corrupt">Avant (Encodage corrompu)</span>
                         <div class="code-content"><pre>AndrÃ©;NÃ®mes;ChargÃ© de clientÃ¨le</pre></div>
                     </div>
                     <div class="code-item-wrapper">
-                        <span class="label">Après (Conversion UTF-8)</span>
+                        <span class="label" data-i18n="label_after_utf8">Après (Conversion UTF-8)</span>
                         <div class="code-content"><pre>André;Nîmes;Chargé de clientèle</pre></div>
                     </div>
                 </div>
             </article>
 
             <article id="structure" class="doc-article">
-                <h2>2. Détection du séparateur et suppression des doublons</h2>
-                <p>Un fichier CSV peut utiliser des virgules, des points-virgules ou des tabulations. Un mauvais choix de séparateur lors de l'ouverture et tout votre tableau se retrouve dans une seule colonne.</p>
+                <h2 data-i18n="art2_title">2. Détection du séparateur et suppression des doublons</h2>
+                <p data-i18n="art2_p">Un fichier CSV peut utiliser des virgules, des points-virgules ou des tabulations. Un mauvais choix de séparateur lors de l'ouverture et tout votre tableau se retrouve dans une seule colonne.</p>
                 <div class="feature-card">
-                    <p><strong>Automatisation :</strong> CleanMyCSV calcule statistiquement le séparateur le plus probable en analysant les 10 000 premiers caractères. De plus, l'outil supprime automatiquement les lignes vides et les doublons parfaits pour alléger votre base de données.</p>
+                    <p data-i18n="art2_feature"><strong>Automatisation :</strong> CleanMyCSV calcule statistiquement le séparateur le plus probable en analysant les 10 000 premiers caractères. De plus, l'outil supprime automatiquement les lignes vides et les doublons parfaits pour alléger votre base de données.</p>
                 </div>
             </article>
 
             <article id="dates-iso" class="doc-article">
-                <h2>3. Harmonisation des dates au format ISO</h2>
-                <p>Les logiciels comme Salesforce ou HubSpot exigent souvent un format de date strict (AAAA-MM-JJ). Or, les fichiers humains mélangent souvent les formats.</p>
+                <h2 data-i18n="art3_title">3. Harmonisation des dates au format ISO</h2>
+                <p data-i18n="art3_p">Les logiciels comme Salesforce ou HubSpot exigent souvent un format de date strict (AAAA-MM-JJ). Or, les fichiers humains mélangent souvent les formats.</p>
                 <div class="feature-card">
-                    <p><strong>La solution :</strong> Notre algorithme unifie tout vers le standard <code>YYYY-MM-DD</code>. Il gère même les mois écrits en français (Jan, Fév, Déc...) et corrige la "règle du pivot" pour les années à deux chiffres (ex: 24 devient 2024).</p>
+                    <p data-i18n="art3_feature"><strong>La solution :</strong> Notre algorithme unifie tout vers le standard <code>YYYY-MM-DD</code>. Il gère même les mois écrits en français (Jan, Fév, Déc...) et corrige la "règle du pivot" pour les années à deux chiffres (ex: 24 devient 2024).</p>
                 </div>
                 <div class="before-after-example">
                     <div class="code-item-wrapper">
-                        <span class="label">Avant (Formats mixtes)</span>
+                        <span class="label" data-i18n="label_before_mixed">Avant (Formats mixtes)</span>
                         <div class="code-content"><pre>12/05/2023 | 2023.05.12 | 12 MAI 23</pre></div>
                     </div>
                     <div class="code-item-wrapper">
-                        <span class="label">Après (Standardisé)</span>
+                        <span class="label" data-i18n="label_after_std">Après (Standardisé)</span>
                         <div class="code-content"><pre>2023-05-12 | 2023-05-12 | 2023-05-12</pre></div>
                     </div>
                 </div>
             </article>
 
             <article id="finance" class="doc-article">
-                <h2>4. Nettoyage des montants et extraction des devises</h2>
-                <p>Il est impossible d'additionner des cellules contenant "150,00 €". Pour Excel, c'est du texte, pas un nombre.</p>
+                <h2 data-i18n="art4_title">4. Nettoyage des montants et extraction des devises</h2>
+                <p data-i18n="art4_p">Il est impossible d'additionner des cellules contenant "150,00 €". Pour Excel, c'est du texte, pas un nombre.</p>
                 <div class="feature-card">
-                    <p><strong>Intelligence financière :</strong> CleanMyCSV extrait le symbole monétaire ($, €, £, CAD...), le place dans une nouvelle colonne dédiée appelée <strong>"Devise"</strong>, et transforme le montant en nombre pur (format décimal à point).</p>
+                    <p data-i18n="art4_feature"><strong>Intelligence financière :</strong> CleanMyCSV extrait le symbole monétaire ($, €, £, CAD...), le place dans une nouvelle colonne dédiée appelée <strong>"Devise"</strong>, et transforme le montant en nombre pur (format décimal à point).</p>
                 </div>
                 <div class="before-after-example">
                     <div class="code-item-wrapper">
-                        <span class="label">Avant</span>
+                        <span class="label" data-i18n="label_before">Avant</span>
                         <div class="code-content"><pre>1 250,50 € | $ 45.00</pre></div>
                     </div>
                     <div class="code-item-wrapper">
-                        <span class="label">Après (Prêt pour calculs)</span>
+                        <span class="label" data-i18n="label_after_calc">Après (Prêt pour calculs)</span>
                         <div class="code-content"><pre>Montant;Devise
 1250.50;EUR
 45.00;USD</pre></div>
@@ -153,32 +159,32 @@
             </article>
 
             <article id="crm-data" class="doc-article">
-                <h2>5. Optimisation des données de contact (CRM Ready)</h2>
-                <p>Le nettoyage des emails et téléphones est le point fort de l'outil pour les équipes marketing.</p>
+                <h2 data-i18n="art5_title">5. Optimisation des données de contact (CRM Ready)</h2>
+                <p data-i18n="art5_p">Le nettoyage des emails et téléphones est le point fort de l'outil pour les équipes marketing.</p>
                 <ul>
-                    <li><strong>Emails :</strong> Suppression des espaces parasites et passage en minuscules systématique.</li>
-                    <li><strong>Téléphones :</strong> Normalisation au format international <code>+33</code> pour la France.</li>
-                    <li><strong>Codes Postaux :</strong> Restauration du <code>0</code> initial souvent supprimé par Excel (ex: 06100).</li>
-                    <li><strong>Noms :</strong> Capitalisation intelligente respectant les particules (ex: "Jean de la Fontaine").</li>
+                    <li data-i18n="art5_li1"><strong>Emails :</strong> Suppression des espaces parasites et passage en minuscules systématique.</li>
+                    <li data-i18n="art5_li2"><strong>Téléphones :</strong> Normalisation au format international <code>+33</code> pour la France.</li>
+                    <li data-i18n="art5_li3"><strong>Codes Postaux :</strong> Restauration du <code>0</code> initial souvent supprimé par Excel (ex: 06100).</li>
+                    <li data-i18n="art5_li4"><strong>Noms :</strong> Capitalisation intelligente respectant les particules (ex: "Jean de la Fontaine").</li>
                 </ul>
             </article>
 
             <article id="securite-pro" class="doc-article">
-                <h2>6. Sécurité : Protection contre l'injection CSV</h2>
-                <p>Un fichier CSV peut être une faille de sécurité s'il contient des cellules commençant par <code>=</code>, <code>+</code> ou <code>-</code>. Ces caractères peuvent forcer Excel à exécuter des commandes malveillantes.</p>
+                <h2 data-i18n="art6_title">6. Sécurité : Protection contre l'injection CSV</h2>
+                <p data-i18n="art6_p">Un fichier CSV peut être une faille de sécurité s'il contient des cellules commençant par <code>=</code>, <code>+</code> ou <code>-</code>. Ces caractères peuvent forcer Excel à exécuter des commandes malveillantes.</p>
                 <div class="feature-card">
-                    <p><strong>Bouclier Natif :</strong> CleanMyCSV détecte ces formules suspectes et les neutralise en ajoutant une apostrophe de sécurité (<code>'</code>). Votre ordinateur et votre réseau d'entreprise restent protégés.</p>
+                    <p data-i18n="art6_feature"><strong>Bouclier Natif :</strong> CleanMyCSV détecte ces formules suspectes et les neutralise en ajoutant une apostrophe de sécurité (<code>'</code>). Votre ordinateur et votre réseau d'entreprise restent protégés.</p>
                 </div>
             </article>
 
             <article id="rapport-json" class="doc-article">
-                <h2>7. Le Rapport de Nettoyage : Une transparence totale</h2>
-                <p>Contrairement aux outils "boîte noire", nous vous fournissons un journal détaillé (format JSON) de chaque modification effectuée.</p>
+                <h2 data-i18n="art7_title">7. Le Rapport de Nettoyage : Une transparence totale</h2>
+                <p data-i18n="art7_p">Contrairement aux outils "boîte noire", nous vous fournissons un journal détaillé (format JSON) de chaque modification effectuée.</p>
                 <div class="feature-card">
-                    <p><strong>Traçabilité :</strong> Ce rapport vous permet de vérifier exactement quelle cellule a été modifiée, quelle était sa valeur d'origine et pourquoi elle a été corrigée.</p>
+                    <p data-i18n="art7_feature"><strong>Traçabilité :</strong> Ce rapport vous permet de vérifier exactement quelle cellule a été modifiée, quelle était sa valeur d'origine et pourquoi elle a été corrigée.</p>
                 </div>
                 <div class="code-item-wrapper mt-20">
-                    <span class="label">Exemple de rapport</span>
+                    <span class="label" data-i18n="label_report_ex">Exemple de rapport</span>
                     <div class="code-content">
 <pre>[
   {
@@ -199,24 +205,24 @@
             </article>
 
             <article id="faq" class="doc-article">
-                <h2>FAQ : Réponses à vos questions techniques</h2>
+                <h2 data-i18n="faq_title">FAQ : Réponses à vos questions techniques</h2>
                 <div class="faq-item">
-                    <h3>Quelle est la taille maximale acceptée ?</h3>
-                    <p>L'outil accepte des fichiers allant jusqu'à <strong>15 Mo</strong>, ce qui représente généralement plusieurs centaines de milliers de lignes.</p>
+                    <h3 data-i18n="faq_q1">Quelle est la taille maximale acceptée ?</h3>
+                    <p data-i18n="faq_a1">L'outil accepte des fichiers allant jusqu'à <strong>15 Mo</strong>, ce qui représente généralement plusieurs centaines de milliers de lignes.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Mes données sont-elles stockées ?</h3>
-                    <p>Non. Les fichiers sont traités dans la mémoire vive du serveur et stockés de manière éphémère (15 minutes maximum) dans un espace sécurisé avant suppression totale.</p>
+                    <h3 data-i18n="faq_q2">Mes données sont-elles stockées ?</h3>
+                    <p data-i18n="faq_a2">Non. Les fichiers sont traités dans la mémoire vive du serveur et stockés de manière éphémère (15 minutes maximum) dans un espace sécurisé avant suppression totale.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Pourquoi ma colonne "Devise" est-elle apparue ?</h3>
-                    <p>Si l'outil détecte des symboles monétaires dans votre colonne de montants, il crée automatiquement cette colonne pour que vos chiffres restent de purs nombres exploitables par vos formules Excel.</p>
+                    <h3 data-i18n="faq_q3">Pourquoi ma colonne "Devise" est-elle apparue ?</h3>
+                    <p data-i18n="faq_a3">Si l'outil détecte des symboles monétaires dans votre colonne de montants, il crée automatiquement cette colonne pour que vos chiffres restent de purs nombres exploitables par vos formules Excel.</p>
                 </div>
             </article>
 
             <div class="final-cta-docs">
-                <h3>Prêt à récupérer des données impeccables ?</h3>
-                <button class="cta-button last-cta js-open-modal">Nettoyer mon fichier maintenant</button>
+                <h3 data-i18n="final_cta_text">Prêt à récupérer des données impeccables ?</h3>
+                <button class="cta-button last-cta js-open-modal" data-i18n="final_cta_btn">Nettoyer mon fichier maintenant</button>
             </div>
         </section>
     </div>
@@ -226,19 +232,20 @@
         <div class="container footer-content">
             <div class="footer-primary">
                 <div class="footer-right">
-                    <a href="cgu.html">CGU</a>
-                    <a href="legal.html">Mentions Légales</a>
-                    <a href="security.html">Confidentialité</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="cgu.html" data-i18n="footer_cgu">CGU</a>
+                    <a href="legal.html" data-i18n="footer_legal">Mentions Légales</a>
+                    <a href="security.html" data-i18n="footer_privacy">Confidentialité</a>
+                    <a href="contact.html" data-i18n="footer_contact">Contact</a>
                 </div>
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer_copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
             </div>
         </div>
     </footer>
     
     <script src="script.js"></script>
+    <script src="i18n-loader.js"></script>
 </body>
 </html>
