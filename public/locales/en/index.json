@@ -39,7 +39,7 @@
   "ben_3_title": "Fast Processing",
   "ben_3_desc": "Your file regains a consistent structure in seconds.",
   "ben_4_title": "Universal Compatibility",
-  "ben_4_desc": "Any CSV is accepted, whatever its source.",
+  "ben_4_desc": "Any CSV is accepted, regardless of its source.",
   "ben_5_title": "Guaranteed Privacy",
   "ben_5_desc": "Your files are deleted immediately after processing.",
   "ben_6_title": "Clear Report",
@@ -47,7 +47,7 @@
   
   "doc_link_full": "Learn more about CleanMyCSV: check our <a href=\"manual.html\" class=\"doc-link\">Documentation</a>.",
   
-  "steps_main_title": "Three steps. A simple routine, backed by rigorous technology.",
+  "steps_main_title": "Three steps. A simple routine, backed by advanced technology.",
   "step_1_title": "Step 1: Upload your file",
   "step_1_desc": "Drag & drop your CSV. The transfer is secure.",
   "step_2_title": "Step 2: Structured Cleaning",

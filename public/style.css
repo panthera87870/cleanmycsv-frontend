@@ -450,9 +450,10 @@ body {
 
 @media (max-width: 768px) {
     .top-banner { font-size: 0.85rem; }
-    .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; }
+    .navbar { position: relative; flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; }
+    .lang-selector { position: absolute; top: 12px; right: 15px; margin-right: 0; }
     .logo { width: auto; justify-content: flex-start; margin-bottom: 0; }
-    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 10px; }
+    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 15px; }
     .nav-right-links .nav-link-uppercase { font-size: 0.85rem; }
     .nav-right-links a { font-size: 0.9rem; }
     .nav-right-links .cta-button-nav { padding: 8px 15px; font-size: 0.9rem; }
