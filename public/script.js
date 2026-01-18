@@ -330,7 +330,15 @@ async function handleFormSubmit(e) {
     const formData = new FormData(form);
     
     try {
-        const response = await fetch(form.action, { method: 'POST', body: formData });
+        // 1. Récupère la langue actuelle (celle de la balise HTML)
+        const currentLang = document.documentElement.lang || 'en'; 
+
+        // 2. Ajoute-la dans l'URL d'envoi
+        const response = await fetch(`${form.action}?lang=${currentLang}`, { 
+            method: 'POST', 
+            body: formData 
+        });
+
         const data = await response.json();
 
         if (response.ok && data.success) {
