@@ -108,6 +108,10 @@
       "title": "Oops, Error!",
       "prefix": "Sorry, an error occurred:",
       "btn_retry": "Close and retry"
-    }
+    },
+    "logic_title": "File format:",
+    "logic_eu": "🇪🇺 Europe",
+    "logic_us": "🇺🇸 USA",
+    "logic_tooltip": "🇪🇺 Europe: Semicolon separator (;), Decimal comma (,)\n🇺🇸 USA: Comma separator (,), Decimal point (.)"
   }
 }

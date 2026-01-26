@@ -170,19 +170,22 @@ function closeModalBtn() {
     closeModal();
 }
 
-// --- FONCTION PRINCIPALE : RESET MODAL (TRADUIT) ---
+// --- FONCTION PRINCIPALE : RESET MODAL (AVEC SÉLECTEUR LOGIQUE) ---
 function resetModal() {
     // Utilisation de window.t() défini dans i18n-loader.js
-    // Si window.t n'est pas encore prêt, on utilise une fonction fallback
     const t = window.t || ((k) => k);
+
+    // 1. Détection de la langue pour le choix par défaut
+    const currentLang = document.documentElement.lang || 'fr';
+    const isFr = currentLang === 'fr';
 
     dynamicContentArea.innerHTML = `
         <h2>${t('modal.upload.main_title')}</h2>
         <div class="upload-step">
             <h3>${t('modal.upload.step_1')}</h3>
+            
             <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">                
-                <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required 
-                    class="visually-hidden">
+                <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required class="visually-hidden">
                 
                 <div class="upload-area">
                     <label for="csv-file" class="upload-label">
@@ -190,6 +193,27 @@ function resetModal() {
                         <p>${t('modal.upload.drag_drop_text')}</p>
                         <small>${t('modal.upload.supported_files')}</small>
                     </label>
+                </div>
+
+                <div class="logic-selector-container">
+                    <span class="logic-title" style="font-weight:bold; margin-right:10px;">${t('modal.logic_title') || 'Format :'}</span>
+                    
+                    <div class="logic-group">
+                        <label class="radio-label">
+                            <input type="radio" name="cleaningLogic" value="fr" ${isFr ? 'checked' : ''}>
+                            <span>${t('modal.logic_eu') || '🇪🇺 Europe'}</span>
+                        </label>
+
+                        <label class="radio-label">
+                            <input type="radio" name="cleaningLogic" value="en" ${!isFr ? 'checked' : ''}>
+                            <span>${t('modal.logic_us') || '🇺🇸 USA'}</span>
+                        </label>
+                    </div>
+
+                    <div class="tooltip-wrapper" style="margin-left: 10px;">
+                        <i class="fa-regular fa-circle-question info-icon"></i>
+                        <span class="tooltip-text">${t('modal.logic_tooltip') || 'Info format...'}</span>
+                    </div>
                 </div>
                 <button type="submit" class="cta-button start-clean-btn" disabled>
                     ${t('modal.upload.btn_start_disabled')}
@@ -330,11 +354,11 @@ async function handleFormSubmit(e) {
     const formData = new FormData(form);
     
     try {
-        // 1. Récupère la langue actuelle (celle de la balise HTML)
-        const currentLang = document.documentElement.lang || 'en'; 
-
+        // On récupère la logique choisie dans le formulaire (value "fr" ou "en")
+        // Si jamais c'est vide (impossible normalement), on fallback sur la langue du site
+        const selectedLogic = formData.get('cleaningLogic') || document.documentElement.lang || 'fr';
         // 2. Ajoute-la dans l'URL d'envoi
-        const response = await fetch(`${form.action}?lang=${currentLang}`, { 
+        const response = await fetch(`${form.action}?lang=${selectedLogic}`, { 
             method: 'POST', 
             body: formData 
         });

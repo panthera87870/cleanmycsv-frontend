@@ -108,6 +108,10 @@
       "title": "Oups, Erreur !",
       "prefix": "Désolé, une erreur est survenue :",
       "btn_retry": "Fermer et réessayer"
-    }
+    },
+    "logic_title": "Format :",
+    "logic_eu": "🇪🇺 Europe",
+    "logic_us": "🇺🇸 USA",
+    "logic_tooltip": "🇪🇺 Europe : Séparateur point-virgule (;), Décimal virgule (,)\n🇺🇸 USA : Séparateur virgule (,), Décimal point (.)"
   }
 }

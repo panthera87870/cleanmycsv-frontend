@@ -499,3 +499,70 @@ body {
     .footer-right a { font-size: 0.8rem; }
     .copyright { font-size: 0.75rem; opacity: 0.7; }
 }
+
+/* --- Selecteur Logique (Modal) --- */
+.logic-selector-container {
+    margin: 15px 0; /* Espace entre la dropzone et le bouton */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.logic-group {
+    display: flex;
+    gap: 15px;
+    background: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 20px; /* Bord arrondi style "pill" */
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.radio-label input {
+    cursor: pointer;
+    accent-color: var(--deeper-purple); /* Ta couleur violette */
+}
+
+/* Tooltip */
+.tooltip-wrapper {
+    position: relative;
+    cursor: help;
+}
+
+.info-icon {
+    color: var(--deeper-purple);
+    font-size: 1.1rem;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 10;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
