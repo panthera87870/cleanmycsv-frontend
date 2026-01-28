@@ -110,14 +110,13 @@
       "btn_retry": "Fermer et réessayer"
     },
     "preview": {
-    "title": "Aperçu",
-    "original_label": "Avant",
-    "cleaned_label": "Après",
-    "legend_modified": "Cellule modifiée"
+    "title": "Aperçu des 5 premières lignes",
+    "legend_old": "Valeur originale",
+    "legend_new": "Valeur corrigée"
     },
     "logic_title": "Format :",
-    "logic_eu": "🇪🇺 Europe",
-    "logic_us": "🇺🇸 USA",
-    "logic_tooltip": "🇪🇺 Europe : Séparateur point-virgule (;), Décimal virgule (,)\n🇺🇸 USA : Séparateur virgule (,), Décimal point (.)"
+    "logic_eu": "Europe",
+    "logic_us": "USA",
+    "logic_tooltip": "Europe : Séparateur point-virgule (;), Décimal virgule (,)\nUSA : Séparateur virgule (,), Décimal point (.)"
   }
 }

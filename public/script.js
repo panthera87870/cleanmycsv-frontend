@@ -380,71 +380,91 @@ async function handleFormSubmit(e) {
  * Génère le HTML pour la preview Avant/Après
  * @param {Array} previewRows - Les données renvoyées par le backend
  */
+/**
+ * Génère le HTML pour la preview en mode "Smart Diff"
+ */
 function generatePreviewHTML(previewRows) {
     if (!previewRows || previewRows.length === 0) return '';
 
-    // Récupération des textes (supposant que 't' est ta fonction de traduction)
-    const labelTitle = t('preview.title') || "Preview";
-    const labelOrig = t('preview.original_label') || "Original";
-    const labelClean = t('preview.cleaned_label') || "Cleaned";
-    const labelLegend = t('preview.legend_modified') || "Modified";
+    // Textes (avec fallbacks)
+    const title = t('preview.title') || "Aperçu des corrections";
+    const legendOld = t('preview.legend_old') || "Avant";
+    const legendNew = t('preview.legend_new') || "Après";
 
     let html = `
     <div class="preview-wrapper animate-fade-in">
         <div class="preview-header">
-            <span><i class="fa-solid fa-table-columns"></i> ${labelTitle}</span>
-            <span class="preview-legend">
-                <span class="legend-dot"></span> ${labelLegend}
-            </span>
+            <div class="preview-title">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--deeper-purple)"></i> 
+                ${title}
+            </div>
+            <div class="preview-legend">
+                <span class="legend-item"><span class="dot-old"></span> ${legendOld}</span>
+                <span class="legend-item"><span class="dot-new"></span> ${legendNew}</span>
+            </div>
         </div>
         <div class="table-responsive">
             <table class="preview-table">
+                <thead>`;
+
+    // --- 1. GESTION DU HEADER (Ligne 0) ---
+    // On suppose que la première ligne du preview est le header
+    if (previewRows.length > 0) {
+        const headerRow = previewRows[0].cleaned; // On prend les headers nettoyés
+        html += `<tr>`;
+        // Petite colonne index pour se repérer
+        html += `<th style="width:40px; text-align:center; color:#9ca3af;">#</th>`;
+        
+        headerRow.forEach(colName => {
+            html += `<th>${colName}</th>`;
+        });
+        html += `</tr>`;
+    }
+
+    html += `   </thead>
                 <tbody>`;
 
-    // On boucle sur chaque ligne (row 0 est souvent le header)
-    previewRows.forEach((row, index) => {
-        const isHeader = index === 0;
-        const originalCols = row.original;
-        const cleanedCols = row.cleaned;
-
-        // Si c'est le header, on l'affiche juste une fois proprement
-        if (isHeader) {
-             html += `<tr class="tr-header"><td class="row-label">HEADER</td>`;
-             cleanedCols.forEach(col => {
-                 html += `<th><strong>${col}</strong></th>`;
-             });
-             html += `</tr>`;
-             return; 
-        }
-
-        // --- Ligne ORIGINAL (grisée) ---
-        html += `<tr class="tr-original">
-                    <td class="row-label">${labelOrig} ${index}</td>`;
+    // --- 2. GESTION DES DONNÉES (Lignes 1 à 5) ---
+    // On commence à i=1 pour sauter le header
+    for (let i = 1; i < previewRows.length; i++) {
+        const rowData = previewRows[i];
+        const original = rowData.original;
+        const cleaned = rowData.cleaned;
         
-        // On s'assure d'avoir assez de colonnes même si le CSV était cassé
-        const maxCols = Math.max(originalCols.length, cleanedCols.length);
+        html += `<tr>`;
+        // Numéro de ligne (index CSV réel approximatif)
+        html += `<td style="color:#9ca3af; font-size:0.7rem; text-align:center;">${i}</td>`;
 
-        for (let i = 0; i < maxCols; i++) {
-            html += `<td>${originalCols[i] || ''}</td>`;
+        // On boucle sur les colonnes. On prend le max de colonnes pour éviter les décalages.
+        const maxCols = Math.max(original.length, cleaned.length);
+
+        for (let col = 0; col < maxCols; col++) {
+            const valOrig = (original[col] || '').toString(); // Conversion string safe
+            const valClean = (cleaned[col] || '').toString();
+
+            // DÉTECTION DE CHANGEMENT
+            // On trim pour éviter de flagger juste des espaces si ce n'est pas voulu, 
+            // mais pour un nettoyeur, les espaces comptent. Faisons une comparaison stricte.
+            const isModified = valOrig !== valClean;
+
+            if (isModified) {
+                // CAS : CELLULE MODIFIÉE -> Affiche l'ancien et le nouveau
+                const displayOrig = valOrig === '' ? '<span class="diff-empty-old"></span>' : valOrig;
+                const displayClean = valClean === '' ? '<i class="fa-solid fa-trash" style="font-size:0.7rem"></i>' : valClean; // Icône poubelle si supprimé
+
+                html += `<td>
+                            <div class="diff-cell">
+                                <span class="diff-old">${displayOrig}</span>
+                                <span class="diff-new">${displayClean}</span>
+                            </div>
+                         </td>`;
+            } else {
+                // CAS : IDENTIQUE -> Affiche juste la valeur
+                html += `<td>${valClean}</td>`;
+            }
         }
         html += `</tr>`;
-
-        // --- Ligne CLEANED (blanche + highlight) ---
-        html += `<tr class="tr-cleaned">
-                    <td class="row-label" style="border-bottom: 2px solid #e0e0e0;">${labelClean} ${index}</td>`;
-        
-        for (let i = 0; i < maxCols; i++) {
-            const valOrig = originalCols[i] || '';
-            const valClean = cleanedCols[i] || '';
-            
-            // Comparaison simple : si différent, on ajoute la classe CSS 'cell-modified'
-            const isDiff = valOrig.trim() !== valClean.trim(); 
-            const cssClass = isDiff ? 'cell-modified' : '';
-
-            html += `<td class="${cssClass}" style="border-bottom: 2px solid #e0e0e0;">${valClean}</td>`;
-        }
-        html += `</tr>`;
-    });
+    }
 
     html += `   </tbody>
             </table>

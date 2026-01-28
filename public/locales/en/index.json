@@ -110,10 +110,9 @@
       "btn_retry": "Close and retry"
     },
     "preview": {
-    "title": "Aperçu",
-    "original_label": "Before",
-    "cleaned_label": "After",
-    "legend_modified": "Cellule modified"
+    "title": "Preview (First 5 rows)",
+    "legend_old": "Original value",
+    "legend_new": "Corrected value"
     },
     "logic_title": "File format:",
     "logic_eu": "🇪🇺 Europe",

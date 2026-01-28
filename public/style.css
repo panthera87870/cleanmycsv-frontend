@@ -567,46 +567,54 @@ body {
     opacity: 1;
 }
 
-/* --- Preview Container --- */
+/* --- PREVIEW CONTAINER (Carte Blanche) --- */
 .preview-wrapper {
-    margin: 25px 0;
-    text-align: left;
-    background: #fff;
-    border: 1px solid var(--color-border);
+    margin: 20px 0 30px 0;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif; /* Police propre pour les données */
 }
 
+/* Header de la boite de preview */
 .preview-header {
-    background: var(--color-info-bg);
+    background: #f9fafb;
     padding: 12px 20px;
-    border-bottom: 1px solid var(--color-border);
-    font-weight: 700;
-    font-size: 0.95rem;
+    border-bottom: 1px solid #e5e7eb;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.preview-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Légende discrète */
 .preview-legend {
-    font-size: 0.8rem;
-    font-weight: normal;
+    display: flex;
+    gap: 15px;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.legend-item {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.legend-dot {
-    width: 10px;
-    height: 10px;
-    background-color: #dcfce7; /* Vert clair */
-    border: 1px solid #22c55e;
-    border-radius: 50%;
-    display: inline-block;
-}
+.dot-old { width: 8px; height: 8px; background: #fee2e2; border-radius: 50%; border: 1px solid #ef4444; }
+.dot-new { width: 8px; height: 8px; background: #dcfce7; border-radius: 50%; border: 1px solid #22c55e; }
 
-/* --- Table Styles --- */
+/* --- TABLEAU STYLE SAAS --- */
 .table-responsive {
     overflow-x: auto;
     width: 100%;
@@ -616,46 +624,73 @@ body {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.85rem;
-    font-family: 'Courier New', monospace; /* Police monospace pour bien aligner les données */
+    text-align: left;
 }
 
-.preview-table th, .preview-table td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee;
+/* En-têtes du CSV */
+.preview-table thead th {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 2px solid #e5e7eb;
     white-space: nowrap;
-    max-width: 250px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* Cellules standard */
+.preview-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #1f2937;
+    vertical-align: middle;
+    white-space: nowrap;
+    max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Colonne "Avant/Après" sticky à gauche */
-.preview-table td.row-label {
-    position: sticky;
-    left: 0;
-    background: #fff;
+/* Lignes paires légèrement grisées pour la lisibilité */
+.preview-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* --- CELLULES MODIFIÉES (La Magie) --- */
+
+/* Conteneur quand il y a une différence */
+.diff-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+}
+
+/* Ancienne valeur (Barrée et rouge) */
+.diff-old {
+    text-decoration: line-through;
+    color: #ef4444; /* Rouge doux */
+    font-size: 0.7rem;
+    opacity: 0.8;
+    background: #fef2f2;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+/* Nouvelle valeur (Verte et grasse) */
+.diff-new {
+    color: #15803d; /* Vert pro */
     font-weight: 700;
-    font-family: 'Raleway', sans-serif;
-    border-right: 2px solid #f0f0f0;
-    color: var(--subtext-color);
-    font-size: 0.75rem;
-    z-index: 10;
+    background: #dcfce7;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #bbf7d0;
 }
 
-/* Ligne "Original" - un peu effacée */
-.tr-original td:not(.row-label) {
-    color: #999;
-    background-color: #fafafa;
-    font-style: italic;
-}
-
-/* Ligne "Cleaned" */
-.tr-cleaned td {
-    color: var(--black);
-}
-
-/* La cellule modifiée (Magie !) */
-.cell-modified {
-    background-color: #dcfce7 !important; /* Fond vert clair */
-    color: #15803d !important; /* Texte vert foncé */
-    font-weight: 700;
+/* Cas où c'était vide avant (Ajout) */
+.diff-empty-old::before {
+    content: "∅";
+    opacity: 0.5;
 }
