@@ -379,14 +379,19 @@ async function handleFormSubmit(e) {
 /**
  * Génère le HTML pour la preview Avant/Après
  * @param {Array} previewRows - Les données renvoyées par le backend
+ * @param {Function} t - La fonction de traduction
  */
-function generatePreviewHTML(previewRows, t) {
+// 1. AJOUTE 't' ICI DANS LES PARENTHÈSES
+function generatePreviewHTML(previewRows, t) { 
     if (!previewRows || previewRows.length === 0) return '';
 
-    // Textes (avec fallbacks)
-    const title = t('preview.title') || "Aperçu des corrections";
-    const legendOld = t('preview.legend_old') || "Avant";
-    const legendNew = t('preview.legend_new') || "Après";
+    // Sécurité au cas où t n'est pas passé
+    const translate = t || ((k) => k);
+
+    // Textes (On utilise translate au lieu de t directement pour la sécurité)
+    const title = translate('preview.title');
+    const legendOld = translate('preview.original_label') || translate('preview.legend_old'); // J'ai mis tes deux clés possibles par sécurité
+    const legendNew = translate('preview.cleaned_label') || translate('preview.legend_new');
 
     let html = `
     <div class="preview-wrapper animate-fade-in">
@@ -404,14 +409,16 @@ function generatePreviewHTML(previewRows, t) {
             <table class="preview-table">
                 <thead>`;
 
+    // ... LE RESTE DU CODE NE CHANGE PAS ...
+    
+    // (Copie le reste de ta fonction existante ici, 
+    // assure-toi juste de fermer l'accolade à la fin)
+    
     // --- 1. GESTION DU HEADER (Ligne 0) ---
-    // On suppose que la première ligne du preview est le header
     if (previewRows.length > 0) {
-        const headerRow = previewRows[0].cleaned; // On prend les headers nettoyés
+        const headerRow = previewRows[0].cleaned; 
         html += `<tr>`;
-        // Petite colonne index pour se repérer
         html += `<th style="width:40px; text-align:center; color:#9ca3af;">#</th>`;
-        
         headerRow.forEach(colName => {
             html += `<th>${colName}</th>`;
         });
@@ -421,33 +428,25 @@ function generatePreviewHTML(previewRows, t) {
     html += `   </thead>
                 <tbody>`;
 
-    // --- 2. GESTION DES DONNÉES (Lignes 1 à 5) ---
-    // On commence à i=1 pour sauter le header
     for (let i = 1; i < previewRows.length; i++) {
         const rowData = previewRows[i];
         const original = rowData.original;
         const cleaned = rowData.cleaned;
         
         html += `<tr>`;
-        // Numéro de ligne (index CSV réel approximatif)
         html += `<td style="color:#9ca3af; font-size:0.7rem; text-align:center;">${i}</td>`;
 
-        // On boucle sur les colonnes. On prend le max de colonnes pour éviter les décalages.
         const maxCols = Math.max(original.length, cleaned.length);
 
         for (let col = 0; col < maxCols; col++) {
-            const valOrig = (original[col] || '').toString(); // Conversion string safe
+            const valOrig = (original[col] || '').toString(); 
             const valClean = (cleaned[col] || '').toString();
 
-            // DÉTECTION DE CHANGEMENT
-            // On trim pour éviter de flagger juste des espaces si ce n'est pas voulu, 
-            // mais pour un nettoyeur, les espaces comptent. Faisons une comparaison stricte.
             const isModified = valOrig !== valClean;
 
             if (isModified) {
-                // CAS : CELLULE MODIFIÉE -> Affiche l'ancien et le nouveau
                 const displayOrig = valOrig === '' ? '<span class="diff-empty-old"></span>' : valOrig;
-                const displayClean = valClean === '' ? '<i class="fa-solid fa-trash" style="font-size:0.7rem"></i>' : valClean; // Icône poubelle si supprimé
+                const displayClean = valClean === '' ? '<i class="fa-solid fa-trash" style="font-size:0.7rem"></i>' : valClean;
 
                 html += `<td>
                             <div class="diff-cell">
@@ -456,7 +455,6 @@ function generatePreviewHTML(previewRows, t) {
                             </div>
                          </td>`;
             } else {
-                // CAS : IDENTIQUE -> Affiche juste la valeur
                 html += `<td>${valClean}</td>`;
             }
         }
