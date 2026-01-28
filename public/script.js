@@ -380,10 +380,7 @@ async function handleFormSubmit(e) {
  * Génère le HTML pour la preview Avant/Après
  * @param {Array} previewRows - Les données renvoyées par le backend
  */
-/**
- * Génère le HTML pour la preview en mode "Smart Diff"
- */
-function generatePreviewHTML(previewRows) {
+function generatePreviewHTML(previewRows, t) {
     if (!previewRows || previewRows.length === 0) return '';
 
     // Textes (avec fallbacks)
@@ -483,7 +480,7 @@ function displaySuccessView(data) {
     const jsonDownloadUrl = data.reportDownloadUrl;
     const jsonDownloadName = data.reportDownloadName;
     // Génération de la preview
-    const previewHtml = generatePreviewHTML(data.preview);
+    const previewHtml = generatePreviewHTML(data.preview, t);
     
     // Note: summary.humanSummary vient du backend, il sera peut-être en français si le backend n'est pas traduit.
     // L'idéal est que le backend renvoie des codes d'erreur ou des chiffres, mais pour l'instant on garde tel quel.
