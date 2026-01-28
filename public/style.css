@@ -566,3 +566,96 @@ body {
     visibility: visible;
     opacity: 1;
 }
+
+/* --- Preview Container --- */
+.preview-wrapper {
+    margin: 25px 0;
+    text-align: left;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.preview-header {
+    background: var(--color-info-bg);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--color-border);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-legend {
+    font-size: 0.8rem;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #dcfce7; /* Vert clair */
+    border: 1px solid #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* --- Table Styles --- */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace; /* Police monospace pour bien aligner les données */
+}
+
+.preview-table th, .preview-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Colonne "Avant/Après" sticky à gauche */
+.preview-table td.row-label {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    border-right: 2px solid #f0f0f0;
+    color: var(--subtext-color);
+    font-size: 0.75rem;
+    z-index: 10;
+}
+
+/* Ligne "Original" - un peu effacée */
+.tr-original td:not(.row-label) {
+    color: #999;
+    background-color: #fafafa;
+    font-style: italic;
+}
+
+/* Ligne "Cleaned" */
+.tr-cleaned td {
+    color: var(--black);
+}
+
+/* La cellule modifiée (Magie !) */
+.cell-modified {
+    background-color: #dcfce7 !important; /* Fond vert clair */
+    color: #15803d !important; /* Texte vert foncé */
+    font-weight: 700;
+}

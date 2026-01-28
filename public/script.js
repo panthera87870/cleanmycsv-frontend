@@ -376,6 +376,84 @@ async function handleFormSubmit(e) {
     }
 }
 
+/**
+ * Génère le HTML pour la preview Avant/Après
+ * @param {Array} previewRows - Les données renvoyées par le backend
+ */
+function generatePreviewHTML(previewRows) {
+    if (!previewRows || previewRows.length === 0) return '';
+
+    // Récupération des textes (supposant que 't' est ta fonction de traduction)
+    const labelTitle = t('preview.title') || "Preview";
+    const labelOrig = t('preview.original_label') || "Original";
+    const labelClean = t('preview.cleaned_label') || "Cleaned";
+    const labelLegend = t('preview.legend_modified') || "Modified";
+
+    let html = `
+    <div class="preview-wrapper animate-fade-in">
+        <div class="preview-header">
+            <span><i class="fa-solid fa-table-columns"></i> ${labelTitle}</span>
+            <span class="preview-legend">
+                <span class="legend-dot"></span> ${labelLegend}
+            </span>
+        </div>
+        <div class="table-responsive">
+            <table class="preview-table">
+                <tbody>`;
+
+    // On boucle sur chaque ligne (row 0 est souvent le header)
+    previewRows.forEach((row, index) => {
+        const isHeader = index === 0;
+        const originalCols = row.original;
+        const cleanedCols = row.cleaned;
+
+        // Si c'est le header, on l'affiche juste une fois proprement
+        if (isHeader) {
+             html += `<tr class="tr-header"><td class="row-label">HEADER</td>`;
+             cleanedCols.forEach(col => {
+                 html += `<th><strong>${col}</strong></th>`;
+             });
+             html += `</tr>`;
+             return; 
+        }
+
+        // --- Ligne ORIGINAL (grisée) ---
+        html += `<tr class="tr-original">
+                    <td class="row-label">${labelOrig} ${index}</td>`;
+        
+        // On s'assure d'avoir assez de colonnes même si le CSV était cassé
+        const maxCols = Math.max(originalCols.length, cleanedCols.length);
+
+        for (let i = 0; i < maxCols; i++) {
+            html += `<td>${originalCols[i] || ''}</td>`;
+        }
+        html += `</tr>`;
+
+        // --- Ligne CLEANED (blanche + highlight) ---
+        html += `<tr class="tr-cleaned">
+                    <td class="row-label" style="border-bottom: 2px solid #e0e0e0;">${labelClean} ${index}</td>`;
+        
+        for (let i = 0; i < maxCols; i++) {
+            const valOrig = originalCols[i] || '';
+            const valClean = cleanedCols[i] || '';
+            
+            // Comparaison simple : si différent, on ajoute la classe CSS 'cell-modified'
+            const isDiff = valOrig.trim() !== valClean.trim(); 
+            const cssClass = isDiff ? 'cell-modified' : '';
+
+            html += `<td class="${cssClass}" style="border-bottom: 2px solid #e0e0e0;">${valClean}</td>`;
+        }
+        html += `</tr>`;
+    });
+
+    html += `   </tbody>
+            </table>
+        </div>
+    </div>`;
+
+    return html;
+}
+
 // --- Vues de la Modale (Succès) ---
 function displaySuccessView(data) {
     const t = window.t || ((k) => k);
@@ -384,6 +462,8 @@ function displaySuccessView(data) {
     const csvDownloadName = data.downloadName;
     const jsonDownloadUrl = data.reportDownloadUrl;
     const jsonDownloadName = data.reportDownloadName;
+    // Génération de la preview
+    const previewHtml = generatePreviewHTML(data.preview);
     
     // Note: summary.humanSummary vient du backend, il sera peut-être en français si le backend n'est pas traduit.
     // L'idéal est que le backend renvoie des codes d'erreur ou des chiffres, mais pour l'instant on garde tel quel.
@@ -411,6 +491,12 @@ function displaySuccessView(data) {
                 <div id="humanSummary">${summary.humanSummary}</div>
             </div>
             
+        </div>
+        <div class="success-content">
+             ${previewHtml}
+
+             <div class="button-group">
+                 </div>
         </div>
         <label for="includeJson" class="checkbox-wrapper">
             <input type="checkbox" id="includeJson">

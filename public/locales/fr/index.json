@@ -109,6 +109,12 @@
       "prefix": "Désolé, une erreur est survenue :",
       "btn_retry": "Fermer et réessayer"
     },
+    "preview": {
+    "title": "Aperçu",
+    "original_label": "Avant",
+    "cleaned_label": "Après",
+    "legend_modified": "Cellule modifiée"
+    },
     "logic_title": "Format :",
     "logic_eu": "🇪🇺 Europe",
     "logic_us": "🇺🇸 USA",

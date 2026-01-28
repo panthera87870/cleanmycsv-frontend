@@ -109,6 +109,12 @@
       "prefix": "Sorry, an error occurred:",
       "btn_retry": "Close and retry"
     },
+    "preview": {
+    "title": "Aperçu",
+    "original_label": "Before",
+    "cleaned_label": "After",
+    "legend_modified": "Cellule modified"
+    },
     "logic_title": "File format:",
     "logic_eu": "🇪🇺 Europe",
     "logic_us": "🇺🇸 USA",
