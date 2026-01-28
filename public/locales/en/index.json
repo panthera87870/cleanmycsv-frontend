@@ -115,8 +115,8 @@
     "legend_new": "Corrected value"
     },
     "logic_title": "File format:",
-    "logic_eu": "🇪🇺 Europe",
-    "logic_us": "🇺🇸 USA",
-    "logic_tooltip": "🇪🇺 Europe: Semicolon separator (;), Decimal comma (,)\n🇺🇸 USA: Comma separator (,), Decimal point (.)"
+    "logic_eu": "Europe",
+    "logic_us": "USA",
+    "logic_tooltip": "Europe: Semicolon separator (;), Decimal comma (,)\n USA: Comma separator (,), Decimal point (.)"
   }
 }
