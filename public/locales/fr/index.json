@@ -110,9 +110,8 @@
       "btn_retry": "Fermer et réessayer"
     },
     "preview": {
-    "title": "Aperçu des 5 premières lignes",
-    "legend_old": "Valeur originale",
-    "legend_new": "Valeur corrigée"
+    "original_label": "Avant (Original)",
+    "cleaned_label": "Après (Nettoyé)"
     },
     "logic_title": "Format :",
     "logic_eu": "Europe",

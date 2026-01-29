@@ -377,98 +377,97 @@ async function handleFormSubmit(e) {
 }
 
 /**
- * Génère le HTML pour la preview Avant/Après
- * @param {Array} previewRows - Les données renvoyées par le backend
- * @param {Function} t - La fonction de traduction
+ * Génère le HTML pour la preview en mode "Split View" (Côte à Côte)
  */
-// 1. AJOUTE 't' ICI DANS LES PARENTHÈSES
-function generatePreviewHTML(previewRows, t) { 
+function generatePreviewHTML(previewRows, t) {
     if (!previewRows || previewRows.length === 0) return '';
 
-    // Sécurité au cas où t n'est pas passé
-    const translate = t || ((k) => k);
+    // Sécurisation de la traduction
+    const safeT = (key, fallback) => {
+        const val = t ? t(key) : key;
+        return (val && val !== key) ? val : fallback;
+    };
 
-    // Textes (On utilise translate au lieu de t directement pour la sécurité)
-    const title = translate('preview.title');
-    const legendOld = translate('preview.original_label') || translate('preview.legend_old'); // J'ai mis tes deux clés possibles par sécurité
-    const legendNew = translate('preview.cleaned_label') || translate('preview.legend_new');
+    const txtOriginal = safeT('preview.original_label', 'Fichier Original');
+    const txtCleaned = safeT('preview.cleaned_label', 'Fichier Nettoyé');
 
-    let html = `
-    <div class="preview-wrapper animate-fade-in">
-        <div class="preview-header">
-            <div class="preview-title">
-                <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--deeper-purple)"></i> 
-                ${title}
-            </div>
-            <div class="preview-legend">
-                <span class="legend-item"><span class="dot-old"></span> ${legendOld}</span>
-                <span class="legend-item"><span class="dot-new"></span> ${legendNew}</span>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="preview-table">
-                <thead>`;
-
-    // ... LE RESTE DU CODE NE CHANGE PAS ...
-    
-    // (Copie le reste de ta fonction existante ici, 
-    // assure-toi juste de fermer l'accolade à la fin)
-    
-    // --- 1. GESTION DU HEADER (Ligne 0) ---
+    // --- PRÉPARATION DES HEADERS ---
+    // On prend les headers du fichier nettoyé pour les deux côtés pour simplifier l'alignement
+    let headerHTML = '';
     if (previewRows.length > 0) {
-        const headerRow = previewRows[0].cleaned; 
-        html += `<tr>`;
-        html += `<th style="width:40px; text-align:center; color:#9ca3af;">#</th>`;
-        headerRow.forEach(colName => {
-            html += `<th>${colName}</th>`;
+        headerHTML += '<tr>';
+        previewRows[0].cleaned.forEach(col => {
+            headerHTML += `<th>${col}</th>`;
         });
-        html += `</tr>`;
+        headerHTML += '</tr>';
     }
 
-    html += `   </thead>
-                <tbody>`;
+    // --- GÉNÉRATION DU TABLEAU GAUCHE (ORIGINAL) ---
+    let leftBody = '';
+    for (let i = 1; i < previewRows.length; i++) {
+        leftBody += '<tr>';
+        previewRows[i].original.forEach(val => {
+            // Si undefined ou null, on met vide
+            leftBody += `<td>${val || ''}</td>`;
+        });
+        leftBody += '</tr>';
+    }
 
+    // --- GÉNÉRATION DU TABLEAU DROIT (NETTOYÉ + COULEURS) ---
+    let rightBody = '';
     for (let i = 1; i < previewRows.length; i++) {
         const rowData = previewRows[i];
-        const original = rowData.original;
-        const cleaned = rowData.cleaned;
+        rightBody += '<tr>';
         
-        html += `<tr>`;
-        html += `<td style="color:#9ca3af; font-size:0.7rem; text-align:center;">${i}</td>`;
-
-        const maxCols = Math.max(original.length, cleaned.length);
-
-        for (let col = 0; col < maxCols; col++) {
-            const valOrig = (original[col] || '').toString(); 
-            const valClean = (cleaned[col] || '').toString();
-
-            const isModified = valOrig !== valClean;
-
-            if (isModified) {
-                const displayOrig = valOrig === '' ? '<span class="diff-empty-old"></span>' : valOrig;
-                const displayClean = valClean === '' ? '<i class="fa-solid fa-trash" style="font-size:0.7rem"></i>' : valClean;
-
-                html += `<td>
-                            <div class="diff-cell">
-                                <span class="diff-old">${displayOrig}</span>
-                                <span class="diff-new">${displayClean}</span>
-                            </div>
-                         </td>`;
-            } else {
-                html += `<td>${valClean}</td>`;
-            }
-        }
-        html += `</tr>`;
+        // On boucle sur les colonnes 'cleaned'
+        rowData.cleaned.forEach((valClean, index) => {
+            const valOrig = rowData.original[index]; // On récupère la valeur correspondante
+            
+            // Comparaison (attention aux types, on cast en string pour être sûr)
+            const strClean = String(valClean || '');
+            const strOrig = String(valOrig || '');
+            
+            // Si différent, on ajoute la classe CSS 'cell-diff'
+            const isDiff = strClean !== strOrig;
+            const cssClass = isDiff ? 'cell-diff' : '';
+            
+            rightBody += `<td class="${cssClass}">${strClean}</td>`;
+        });
+        rightBody += '</tr>';
     }
 
-    html += `   </tbody>
-            </table>
+    // --- ASSEMBLAGE FINAL DU HTML ---
+    return `
+    <div class="preview-wrapper animate-fade-in">
+        <div class="split-view-container">
+            
+            <div class="split-pane pane-original">
+                <div class="pane-header header-original">
+                    <i class="fa-regular fa-file"></i> ${txtOriginal}
+                </div>
+                <div class="table-scroll-wrapper">
+                    <table class="split-table">
+                        <thead>${headerHTML}</thead>
+                        <tbody>${leftBody}</tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="split-pane pane-cleaned">
+                <div class="pane-header header-cleaned">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> ${txtCleaned}
+                </div>
+                <div class="table-scroll-wrapper">
+                    <table class="split-table">
+                        <thead>${headerHTML}</thead>
+                        <tbody>${rightBody}</tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>`;
-
-    return html;
 }
-
 // --- Vues de la Modale (Succès) ---
 function displaySuccessView(data) {
     const t = window.t || ((k) => k);

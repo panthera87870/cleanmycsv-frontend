@@ -110,9 +110,8 @@
       "btn_retry": "Close and retry"
     },
     "preview": {
-    "title": "Preview (First 5 rows)",
-    "legend_old": "Original value",
-    "legend_new": "Corrected value"
+    "original_label": "Before (Original)",
+    "cleaned_label": "After (Cleaned)"
     },
     "logic_title": "File format:",
     "logic_eu": "Europe",
