@@ -803,23 +803,27 @@ body {
     border: 1px solid #f0f0f0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.04);
     margin: 25px auto;
-    overflow: hidden;
+    overflow-x: auto;
+    /* On empêche le conteneur de forcer la largeur à 100% */
+    width: fit-content;
     max-width: 100%;
 }
 
 .teaser-table-modern {
-    width: 100%;
+    /* Le tableau s'ajuste exactement à la taille du contenu */
+    width: auto; 
     border-collapse: separate;
     border-spacing: 0;
     text-align: left;
     font-size: 0.85em;
+    margin: 0 auto;
 }
 
 .teaser-table-modern th {
     background-color: #fcfcfc;
     color: #888;
     font-weight: 600;
-    padding: 12px 15px;
+    padding: 10px 15px;
     border-bottom: 2px solid #f0f0f0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -827,13 +831,12 @@ body {
 }
 
 .teaser-table-modern td {
-    padding: 14px 15px;
+    padding: 10px 15px;
     color: #444;
     border-bottom: 1px solid #f9f9f9;
-    max-width: 180px;
+    /* On laisse le texte dicter la taille de la colonne */
+    max-width: none; 
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* La magie : La case corrigée */
@@ -871,4 +874,32 @@ body {
     justify-content: center;
     padding-bottom: 10px;
     z-index: 2;
+}
+/* --- LES PRIX ALIGNÉS EN LIGNE --- */
+.teaser-pricing {
+    display: flex;
+    /* On force l'alignement horizontal */
+    flex-direction: row; 
+    /* On interdit le passage à la ligne */
+    flex-wrap: nowrap; 
+    gap: 10px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-rounded {
+    border-radius: 30px;
+    /* On ajuste le padding pour que tout rentre bien */
+    padding: 12px 10px; 
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Les boutons se partagent l'espace équitablement */
+    flex: 1; 
+    /* Permet aux boutons de se compresser proprement sur petit écran */
+    min-width: 0; 
+    /* Empêche le texte de se couper n'importe comment */
+    white-space: nowrap; 
 }
