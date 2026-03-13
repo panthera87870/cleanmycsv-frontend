@@ -585,7 +585,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     // Le résumé humain est affiché dans tous les cas
     html += `
         <div class="report-container" style="background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-            ${data.summary}
+            ${data.summary && data.summary.humanSummary ? data.summary.humanSummary : '<p>Analyse terminée.</p>'}
         </div>
     `;
 
