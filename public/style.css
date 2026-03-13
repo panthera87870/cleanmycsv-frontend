@@ -677,3 +677,107 @@ body {
         background: #fff;
     }
 }
+
+/* --- SECTION PRIX --- */
+.pricing-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.pricing-section h2 {
+    margin-bottom: 40px;
+}
+
+.pricing-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    border-radius: 16px;
+    width: 280px;
+    background: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Mise en avant douce avec de l'orange */
+.card-highlight {
+    border: 1px solid #FF8C00;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.1);
+}
+
+.pricing-card.popular {
+    border: 2px solid #FF8C00;
+    position: relative;
+}
+
+.pricing-card .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FF8C00;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.pricing-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.pricing-card .price {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #FF8C00;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Boutons bien arrondis */
+.cta-button {
+    display: block;
+    text-decoration: none;
+    background: #FF8C00;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px; 
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cta-button:hover {
+    background: #e67e00;
+}
+
+.btn-disabled {
+    display: block;
+    width: 100%;
+    background: #f0f0f0;
+    color: #999;
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+}

@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Gestion du retour Stripe (sauvegarde du token)
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    
+    if (token) {
+        localStorage.setItem('mycsv_token', token); // On sauvegarde le sésame
+        
+        // Nettoyage de l'URL pour faire propre
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Petit message de succès (avec traduction si disponible)
+        // On suppose que vous avez une fonction t() ou similaire, sinon simple alert
+        alert("Paiement réussi ! Votre offre est active."); 
+    }
+});
+
 // --- CONFIGURATION DES COOKIES (MODE MULTILINGUE) ---
 window.addEventListener('load', () => {
     if (typeof CookieConsent !== 'undefined') {
@@ -354,21 +371,53 @@ async function handleFormSubmit(e) {
     const formData = new FormData(form);
     
     try {
-        // On récupère la logique choisie dans le formulaire (value "fr" ou "en")
-        // Si jamais c'est vide (impossible normalement), on fallback sur la langue du site
         const selectedLogic = formData.get('cleaningLogic') || document.documentElement.lang || 'fr';
-        // 2. Ajoute-la dans l'URL d'envoi
-        const response = await fetch(`${form.action}?lang=${selectedLogic}`, { 
-            method: 'POST', 
-            body: formData 
-        });
+        
+        // --- NOUVEAU : Préparation de la requête avec le Token ---
+        const token = localStorage.getItem('mycsv_token');
+        const fetchOptions = {
+            method: 'POST',
+            body: formData,
+            headers: {} // On initialise les headers vides
+        };
 
+        // Si l'utilisateur a un token valide en stock, on l'ajoute
+        if (token) {
+            fetchOptions.headers['X-Access-Token'] = token;
+        }
+        
+        // --- FIN NOUVEAU ---
+
+        // On utilise nos fetchOptions préparées juste au-dessus
+        const response = await fetch(`${form.action}?lang=${selectedLogic}`, fetchOptions);
         const data = await response.json();
 
-        if (response.ok && data.success) {
-            displaySuccessView(data);
-        } else {
+        // GESTION DES NOUVELLES ERREURS (Limites atteintes)
+        if (!response.ok) {
+            // Si le backend renvoie nos codes d'erreur spécifiques
+            if (data.code === 'LIMIT_REACHED') {
+                alert(t('errors.limit_reached')); 
+                // On fait défiler la page doucement vers les offres
+                document.getElementById('pricing')?.scrollIntoView({behavior: 'smooth'});
+                
+                // On remet le formulaire à zéro visuellement
+                document.getElementById('dynamicContentArea').innerHTML = ''; 
+                return; // On arrête tout
+            }
+            if (data.code === 'FILE_TOO_LARGE_FREE') {
+                alert(t('errors.file_too_large_free'));
+                document.getElementById('pricing')?.scrollIntoView({behavior: 'smooth'});
+                document.getElementById('dynamicContentArea').innerHTML = '';
+                return;
+            }
+            
+            // Pour les autres erreurs classiques
             throw new Error(data.message || `Erreur Serveur: ${response.status}`);
+        }
+
+        // Si tout s'est bien passé
+        if (data.success) {
+            displaySuccessView(data);
         }
     } catch (error) {
         console.error('Erreur Critique:', error);

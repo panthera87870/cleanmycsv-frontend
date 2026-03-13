@@ -117,5 +117,44 @@
     "logic_eu": "Europe",
     "logic_us": "USA",
     "logic_tooltip": "Europe: Semicolon separator (;), Decimal comma (,)\n USA: Comma separator (,), Decimal point (.)"
+  },
+  "pricing": {
+    "title": "Our offers",
+    "freemium": {
+      "title": "Freemium",
+      "price": "$0",
+      "feat1": "2 cleans per day",
+      "feat2": "Files up to 2 MB",
+      "cta": "Current plan"
+    },
+    "single": {
+      "title": "Single",
+      "price": "$9",
+      "feat1": "1 guaranteed clean",
+      "feat2": "Unlimited access for 2h",
+      "feat3": "Up to 15 MB",
+      "cta": "Buy now"
+    },
+    "day_pass": {
+      "badge": "Popular",
+      "title": "24h",
+      "price": "$29",
+      "feat1": "Unlimited cleans",
+      "feat2": "Valid for 24h",
+      "feat3": "Up to 15 MB",
+      "cta": "Buy now"
+    },
+    "lifetime": {
+      "title": "Lifetime",
+      "price": "$99",
+      "feat1": "Unlimited forever",
+      "feat2": "Future updates included",
+      "feat3": "Up to 15 MB",
+      "cta": "Buy now"
+    }
+  },
+  "errors": {
+    "limit_reached": "Free limit reached (2/day). Upgrade to keep going!",
+    "file_too_large_free": "Oops, this file exceeds the 2MB free limit. Please choose a plan to unlock it."
   }
 }

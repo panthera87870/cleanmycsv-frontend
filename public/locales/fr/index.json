@@ -117,5 +117,45 @@
     "logic_eu": "Europe",
     "logic_us": "USA",
     "logic_tooltip": "Europe : Séparateur point-virgule (;), Décimal virgule (,)\nUSA : Séparateur virgule (,), Décimal point (.)"
+  },
+  "pricing": {
+    "title": "Nos offres simples et transparentes",
+    "freemium": {
+      "title": "Freemium",
+      "price": "0 € / $",
+      "feat1": "2 nettoyages par jour",
+      "feat2": "Fichiers jusqu'à 2 Mo",
+      "cta": "Offre actuelle"
+    },
+    "single": {
+      "title": "Nettoyage Unique",
+      "price": "9 € / $",
+      "feat1": "1 nettoyage garanti",
+      "feat2": "Accès illimité pendant 2h",
+      "feat3": "Jusqu'à 15 Mo",
+      "cta": "Choisir"
+    },
+    "day_pass": {
+      "title": "Pass 24 Heures",
+      "badge": "Le plus populaire",
+      "price": "29 € / $",
+      "feat1": "Nettoyages illimités",
+      "feat2": "Valide pendant 24h",
+      "feat3": "Jusqu'à 15 Mo",
+      "cta": "Choisir"
+    },
+    "lifetime": {
+      "title": "Pass à Vie",
+      "price": "99 € / $",
+      "feat1": "Illimité pour toujours",
+      "feat2": "Futures mises à jour incluses",
+      "feat3": "Jusqu'à 15 Mo",
+      "cta": "Choisir"
+    }
+  },
+  "errors": {
+    "limit_reached": "Limite gratuite atteinte (2/jour). Passez à une offre supérieure !",
+    "file_too_large_free": "En version gratuite, la limite est de 2Mo. Passez au Nettoyage Unique (15Mo).",
+    "payment_success": "Paiement validé ! Vos limites sont débloquées."
   }
 }
