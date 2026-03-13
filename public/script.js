@@ -655,39 +655,73 @@ function displayPostDownloadView() {
 }
 
 function displayTeaserView(preview, reasonCode) {
-    const t = window.t || ((k) => k); // Récupère la fonction de traduction
+    const t = window.t || ((k) => k);
     const isSizeError = reasonCode === 'FILE_TOO_LARGE_FREE';
-    const subtitleKey = isSizeError ? 'teaser.subtitle_size' : 'teaser.subtitle_limit';
+    const subtitleKey = isSizeError ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
 
-    // Construction d'un mini-tableau dynamique avec les 5 premières lignes
-    let tableRows = '';
-    // On prend un maximum de 4 lignes après l'en-tête pour garder la modale propre
-    preview.slice(1, 5).forEach(row => {
-        // On coupe à 3 éléments max pour ne pas exploser l'affichage
-        const origStr = row.original.slice(0, 3).join(', ') + (row.original.length > 3 ? '...' : '');
-        const cleanStr = row.cleaned.slice(0, 3).join(', ') + (row.cleaned.length > 3 ? '...' : '');
-        tableRows += `<tr><td class="td-dirty">${origStr}</td><td class="td-clean">${cleanStr}</td></tr>`;
-    });
+    let theadHTML = '';
+    let tbodyHTML = '';
 
-    // Remplacement du contenu de la modale
+    if (preview && preview.length > 0) {
+        // On limite à 4 colonnes max pour garder un design élégant
+        const MAX_COLS = 4;
+        const rawHeaders = preview[0].cleaned;
+        const headers = rawHeaders.slice(0, MAX_COLS);
+        const hasMoreCols = rawHeaders.length > MAX_COLS;
+
+        // 1. Création de l'en-tête (Ligne 0 du CSV)
+        theadHTML = '<tr>';
+        headers.forEach(h => {
+            theadHTML += `<th>${h || 'Colonne'}</th>`;
+        });
+        if (hasMoreCols) theadHTML += '<th class="col-fade">...</th>';
+        theadHTML += '</tr>';
+
+        // 2. Création des 3 premières lignes de données
+        const rowsToShow = preview.slice(1, 4);
+        rowsToShow.forEach(row => {
+            tbodyHTML += '<tr>';
+            
+            // On compare chaque cellule avec l'originale
+            row.cleaned.slice(0, MAX_COLS).forEach((cleanCell, index) => {
+                const origCell = row.original[index];
+                const isFixed = cleanCell !== origCell;
+                
+                // Si la cellule a été corrigée, on lui met notre classe magique
+                if (isFixed) {
+                    tbodyHTML += `<td class="cell-fixed" title="Original: ${origCell}">${cleanCell || '-'} ✨</td>`;
+                } else {
+                    tbodyHTML += `<td>${cleanCell || '-'}</td>`;
+                }
+            });
+            
+            if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
+            tbodyHTML += '</tr>';
+        });
+
+        // 3. La fausse ligne floutée pour l'effet Teaser
+        tbodyHTML += '<tr class="row-blurred">';
+        headers.forEach(() => {
+            tbodyHTML += `<td>données protégées</td>`;
+        });
+        if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
+        tbodyHTML += '</tr>';
+    }
+
     dynamicContentArea.innerHTML = `
         <div class="modal-center-view teaser-view">
             <h2>${t('teaser.title')}</h2>
-            <p class="teaser-alert">${t(subtitleKey)}</p>
-            <p class="text-muted-small mb-20">${t('teaser.hook')}</p>
+            <p class="teaser-alert">${subtitleKey}</p>
+            <p class="text-muted mb-20">${t('teaser.hook')}</p>
             
-            <div class="teaser-table-container">
-                <table class="teaser-table">
-                    <thead>
-                        <tr>
-                            <th><i class="fa-solid fa-file-csv"></i> ${t('teaser.original')}</th>
-                            <th><i class="fa-solid fa-wand-magic-sparkles"></i> ${t('teaser.cleaned')}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${tableRows}
-                    </tbody>
+            <div class="teaser-table-wrapper">
+                <table class="teaser-table-modern">
+                    <thead>${theadHTML}</thead>
+                    <tbody>${tbodyHTML}</tbody>
                 </table>
+                <div class="paywall-gradient">
+                    <i class="fa-solid fa-lock" style="font-size: 24px; color: #FF8C00; margin-bottom: 10px;"></i>
+                </div>
             </div>
 
             <div class="teaser-pricing">

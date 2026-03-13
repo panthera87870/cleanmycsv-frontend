@@ -782,7 +782,7 @@ body {
     font-weight: bold;
 }
 
-/* --- VUE TEASER & PAYWALL --- */
+/* --- VUE TEASER & PAYWALL (DESIGN MODERNE) --- */
 .teaser-view {
     text-align: center;
     padding: 10px;
@@ -791,87 +791,84 @@ body {
 .teaser-alert {
     color: #FF8C00;
     font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.05em;
+    margin-bottom: 15px;
 }
 
-.teaser-table-container {
-    background: #fdfdfd;
+/* Le conteneur du tableau avec le fondu blanc en bas */
+.teaser-table-wrapper {
+    position: relative;
+    background: #ffffff;
     border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    margin-bottom: 25px;
-    overflow-x: auto;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    margin: 25px auto;
+    overflow: hidden;
+    max-width: 100%;
 }
 
-.teaser-table {
+.teaser-table-modern {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85em;
+    border-collapse: separate;
+    border-spacing: 0;
     text-align: left;
+    font-size: 0.85em;
 }
 
-.teaser-table th {
-    padding: 10px;
-    color: #555;
-    border-bottom: 2px solid #FF8C00;
+.teaser-table-modern th {
+    background-color: #fcfcfc;
+    color: #888;
+    font-weight: 600;
+    padding: 12px 15px;
+    border-bottom: 2px solid #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.8em;
 }
 
-.teaser-table td {
-    padding: 12px 10px;
-    border-bottom: 1px dashed #eee;
-    max-width: 150px;
+.teaser-table-modern td {
+    padding: 14px 15px;
+    color: #444;
+    border-bottom: 1px solid #f9f9f9;
+    max-width: 180px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.td-dirty {
-    color: #888;
-    text-decoration: line-through;
-}
-
-.td-clean {
-    color: #333;
-    font-weight: bold;
-    background: rgba(255, 140, 0, 0.05);
+/* La magie : La case corrigée */
+.cell-fixed {
+    background-color: rgba(255, 140, 0, 0.08);
+    color: #cc7000 !important;
+    font-weight: 600;
     border-radius: 6px;
+    position: relative;
 }
 
-/* Boutons de la modale */
-.teaser-pricing {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.btn-rounded {
-    border-radius: 30px;
-    padding: 12px 20px;
-    font-size: 0.9em;
-    flex: 1;
-    min-width: 140px;
-    text-decoration: none;
+.col-fade {
+    color: #ccc !important;
     text-align: center;
 }
 
-.btn-popular {
-    background-color: #FF8C00;
-    color: white;
-    border: none;
-    box-shadow: 0 4px 10px rgba(255, 140, 0, 0.2);
+/* L'effet de flou sur la dernière ligne */
+.row-blurred td {
+    filter: blur(4px);
+    opacity: 0.4;
+    user-select: none;
+    pointer-events: none;
 }
 
-.btn-popular:hover {
-    background-color: #e67e00;
-}
-
-.btn-outline {
-    background: transparent;
-    color: #FF8C00;
-    border: 2px solid #FF8C00;
-}
-
-.btn-outline:hover {
-    background: #fff3e6;
+/* Le dégradé blanc par-dessus le flou avec le cadenas */
+.paywall-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 70%, rgba(255,255,255,1) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    z-index: 2;
 }
