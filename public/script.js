@@ -393,15 +393,13 @@ async function handleFormSubmit(e) {
         const data = await response.json();
 
         if (!response.ok) {
-            // Interception du Paywall : On utilise la vue Succès en mode "isPaywall = true"
-            if (response.status === 402 && data.summary) {
+            // NOUVEAU RÉFLEXE : Si c'est un problème de limite (Poids ou Nombre), on déclenche le Paywall direct !
+            if (response.status === 402 || data.code === 'LIMIT_REACHED' || data.code === 'FILE_TOO_LARGE_FREE') {
                 displaySuccessView(data, true, data.code);
-                return; 
+                return; // On arrête l'exécution classique et on affiche le teaser
             }
 
-            if (data.code === 'LIMIT_REACHED' || data.code === 'FILE_TOO_LARGE_FREE') {
-                throw new Error(t(`errors.${data.code.toLowerCase()}`));
-            }
+            // Pour toutes les VRAIES autres erreurs (panne serveur, etc.)
             throw new Error(data.message || `Erreur Serveur: ${response.status}`);
         }
 
