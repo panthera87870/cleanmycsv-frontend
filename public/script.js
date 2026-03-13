@@ -663,31 +663,52 @@ function displayTeaserView(preview, reasonCode) {
     let tbodyHTML = '';
 
     if (preview && preview.length > 0) {
-        // On limite à 4 colonnes max pour garder un design élégant
-        const MAX_COLS = 4;
-        const rawHeaders = preview[0].cleaned;
-        const headers = rawHeaders.slice(0, MAX_COLS);
-        const hasMoreCols = rawHeaders.length > MAX_COLS;
+        // On affiche jusqu'à 5 colonnes pour bien voir les ajouts
+        const MAX_COLS = 5; 
+        
+        const cleanHeaders = preview[0].cleaned;
+        const origHeaders = preview[0].original;
+        
+        // On normalise les en-têtes originaux pour les retrouver même si on a nettoyé les espaces
+        const origHeadersNormalized = origHeaders.map(h => (h || '').toString().trim().toLowerCase());
 
-        // 1. Création de l'en-tête (Ligne 0 du CSV)
+        const headersToShow = cleanHeaders.slice(0, MAX_COLS);
+        const hasMoreCols = cleanHeaders.length > MAX_COLS;
+
+        // 1. Création de l'en-tête
         theadHTML = '<tr>';
-        headers.forEach(h => {
+        headersToShow.forEach(h => {
             theadHTML += `<th>${h || 'Colonne'}</th>`;
         });
         if (hasMoreCols) theadHTML += '<th class="col-fade">...</th>';
         theadHTML += '</tr>';
 
-        // 2. Création des 3 premières lignes de données
+        // 2. Création des lignes de données (Aperçu)
         const rowsToShow = preview.slice(1, 4);
         rowsToShow.forEach(row => {
             tbodyHTML += '<tr>';
             
-            // On compare chaque cellule avec l'originale
-            row.cleaned.slice(0, MAX_COLS).forEach((cleanCell, index) => {
-                const origCell = row.original[index];
-                const isFixed = cleanCell !== origCell;
+            headersToShow.forEach((cleanHeader, index) => {
+                const cleanCell = row.cleaned[index];
                 
-                // Si la cellule a été corrigée, on lui met notre classe magique
+                // On cherche où était cette colonne dans le fichier d'origine
+                const cleanHeaderNormalized = (cleanHeader || '').toString().trim().toLowerCase();
+                const origIndex = origHeadersNormalized.indexOf(cleanHeaderNormalized);
+                
+                let isFixed = false;
+                let origCell = "";
+
+                if (origIndex === -1) {
+                    // Magie : La colonne n'existait pas avant (ex: Devise ajoutée) !
+                    isFixed = true;
+                    origCell = t('teaser.new_column') || "Donnée ajoutée";
+                } else {
+                    // La colonne existait, on compare son contenu exact
+                    origCell = row.original[origIndex];
+                    isFixed = cleanCell !== origCell;
+                }
+
+                // On applique le vert si c'est corrigé ou ajouté
                 if (isFixed) {
                     tbodyHTML += `<td class="cell-fixed" title="Original: ${origCell}">${cleanCell || '-'} ✨</td>`;
                 } else {
@@ -699,9 +720,9 @@ function displayTeaserView(preview, reasonCode) {
             tbodyHTML += '</tr>';
         });
 
-        // 3. La fausse ligne floutée pour l'effet Teaser
+        // 3. La fausse ligne floutée
         tbodyHTML += '<tr class="row-blurred">';
-        headers.forEach(() => {
+        headersToShow.forEach(() => {
             tbodyHTML += `<td>données protégées</td>`;
         });
         if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
