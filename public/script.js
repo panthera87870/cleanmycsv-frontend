@@ -393,19 +393,21 @@ async function handleFormSubmit(e) {
         const data = await response.json();
 
         if (!response.ok) {
-            // NOUVEAU : Interception du Paywall (Code 402)
-            if (response.status === 402 && data.preview) {
-                displayTeaserView(data.preview, data.code);
-                return; // On arrête tout, la vue teaser prend le relais
+            // Interception du Paywall : On utilise la vue Succès en mode "isPaywall = true"
+            if (response.status === 402 && data.summary) {
+                displaySuccessView(data, true, data.code);
+                return; 
             }
 
-            // (Gardez vos autres gestions d'erreurs ici au cas où...)
+            if (data.code === 'LIMIT_REACHED' || data.code === 'FILE_TOO_LARGE_FREE') {
+                throw new Error(t(`errors.${data.code.toLowerCase()}`));
+            }
             throw new Error(data.message || `Erreur Serveur: ${response.status}`);
         }
 
-        // Si tout s'est bien passé
         if (data.success) {
-            displaySuccessView(data);
+            // Succès normal : isPaywall = false
+            displaySuccessView(data, false);
         }
     } catch (error) {
         console.error('Erreur Critique:', error);
@@ -506,104 +508,166 @@ function generatePreviewHTML(previewRows, t) {
     </div>`;
 }
 // --- Vues de la Modale (Succès) ---
-function displaySuccessView(data) {
+function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     const t = window.t || ((k) => k);
-    const summary = data.summary;
-    const csvDownloadUrl = data.downloadUrl;
-    const csvDownloadName = data.downloadName;
-    const jsonDownloadUrl = data.reportDownloadUrl;
-    const jsonDownloadName = data.reportDownloadName;
-    // Génération de la preview
-    const previewHtml = generatePreviewHTML(data.preview, t);
     
-    // Note: summary.humanSummary vient du backend, il sera peut-être en français si le backend n'est pas traduit.
-    // L'idéal est que le backend renvoie des codes d'erreur ou des chiffres, mais pour l'instant on garde tel quel.
+    // --- 1. Génération du beau tableau ---
+    let theadHTML = '';
+    let tbodyHTML = '';
+    const preview = data.preview;
 
-    dynamicContentArea.innerHTML = `
-        <div class="modal-header-center">
-            <i class="fa-solid fa-circle-check icon-success-lg"></i>
-            <h2 class="modal-title">${t('modal.success.title')}</h2>
-        </div>
-        <div class="modal-section">
-            <h3 class="modal-subtitle">${t('modal.success.subtitle')}</h3>
+    if (preview && preview.length > 0) {
+        const MAX_COLS = 5; 
+        const cleanHeaders = preview[0].cleaned;
+        const origHeaders = preview[0].original;
+        const origHeadersNormalized = origHeaders.map(h => (h || '').toString().trim().toLowerCase());
+        const headersToShow = cleanHeaders.slice(0, MAX_COLS);
+        const hasMoreCols = cleanHeaders.length > MAX_COLS;
 
-            <div class="metric-container">
-                <div class="metric-item">
-                    <p class="metric-value" id="metric-affected">${summary.totalRowsAffected}</p>
-                    <p class="metric-label">${t('modal.success.rows_affected')}</p>
-                </div>
-                <div class="metric-item">
-                    <p class="metric-value" id="metric-removed">${summary.rowsRemoved}</p>
-                    <p class="metric-label">${t('modal.success.rows_removed')}</p>
-                </div>
-            </div>
-            
-            <div class="result-summary-box">
-                <div id="humanSummary">${summary.humanSummary}</div>
-            </div>
-            
-        </div>
-        <div class="success-content">
-             ${previewHtml}
+        theadHTML = '<tr>';
+        headersToShow.forEach(h => {
+            theadHTML += `<th>${h || 'Colonne'}</th>`;
+        });
+        if (hasMoreCols) theadHTML += '<th class="col-fade">...</th>';
+        theadHTML += '</tr>';
 
-             <div class="button-group">
-                 </div>
-        </div>
-        <label for="includeJson" class="checkbox-wrapper">
-            <input type="checkbox" id="includeJson">
-            <label for="includeJson" class="text-medium">${t('modal.success.checkbox_json')}</label>
-        </label>
-        <div class="mt-20 pt-10">
-            <button id="downloadAllBtn" class="cta-button download-btn-success w-100">
-                <i class="fa-solid fa-download"></i> 
-                ${t('modal.success.btn_download_csv')}
-            </button>
+        const rowsToShow = preview.slice(1, 4);
+        rowsToShow.forEach(row => {
+            tbodyHTML += '<tr>';
+            headersToShow.forEach((cleanHeader, index) => {
+                const cleanCell = row.cleaned[index];
+                const cleanHeaderNormalized = (cleanHeader || '').toString().trim().toLowerCase();
+                const origIndex = origHeadersNormalized.indexOf(cleanHeaderNormalized);
+                
+                let isFixed = false;
+                let origCell = "";
+
+                if (origIndex === -1) {
+                    isFixed = true;
+                    origCell = "Donnée ajoutée";
+                } else {
+                    origCell = row.original[origIndex];
+                    isFixed = cleanCell !== origCell;
+                }
+
+                if (isFixed) {
+                    tbodyHTML += `<td class="cell-fixed" title="Original: ${origCell}">${cleanCell || '-'} ✨</td>`;
+                } else {
+                    tbodyHTML += `<td>${cleanCell || '-'}</td>`;
+                }
+            });
+            if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
+            tbodyHTML += '</tr>';
+        });
+
+        // Si on est dans le paywall, la dernière ligne est floutée
+        if (isPaywall) {
+            tbodyHTML += '<tr class="row-blurred">';
+            headersToShow.forEach(() => tbodyHTML += `<td>données protégées</td>`);
+            if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
+            tbodyHTML += '</tr>';
+        }
+    }
+
+    // --- 2. Assemblage du HTML ---
+    const title = isPaywall ? t('teaser.title') : t('success.title');
+    
+    let html = `
+        <div class="modal-center-view">
+            <h2>${title}</h2>
+    `;
+
+    if (isPaywall) {
+        const subtitleKey = reasonCode === 'FILE_TOO_LARGE_FREE' ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
+        html += `<p class="teaser-alert">${subtitleKey}</p>`;
+    } else {
+        html += `<p class="text-muted">${t('success.subtitle')}</p>`;
+    }
+
+    // Le résumé humain est affiché dans tous les cas
+    html += `
+        <div class="report-container" style="background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+            ${data.summary}
         </div>
     `;
+
+    if (isPaywall) {
+        html += `<p class="text-muted mb-20">${t('teaser.hook')}</p>`;
+    }
+
+    // Le tableau
+    html += `
+        <div class="teaser-table-wrapper">
+            <table class="teaser-table-modern">
+                <thead>${theadHTML}</thead>
+                <tbody>${tbodyHTML}</tbody>
+            </table>
+    `;
     
-    const downloadBtn = document.getElementById('downloadAllBtn');
-    const jsonCheckbox = document.getElementById('includeJson');
-    let jsonAttempted = false;
+    // Le cadenas flottant
+    if (isPaywall) {
+        html += `
+            <div class="paywall-gradient">
+                <i class="fa-solid fa-lock" style="font-size: 24px; color: #FF8C00; margin-bottom: 10px;"></i>
+            </div>
+        `;
+    }
+    html += `</div>`; // Fin teaser-table-wrapper
 
-    jsonCheckbox.addEventListener('change', () => {
-        jsonAttempted = false;
-        // Mise à jour dynamique du bouton selon l'état de la case
-        if (jsonCheckbox.checked) {
-            downloadBtn.innerHTML = `<i class=\"fa-solid fa-download\"></i> ${t('modal.success.btn_download_csv')} (1/2)`;
-            downloadBtn.classList.remove('download-btn-json');
-            downloadBtn.classList.add('download-btn-success');
-        } else {
-            downloadBtn.innerHTML = `<i class=\"fa-solid fa-download\"></i> ${t('modal.success.btn_download_csv')}`;
-            downloadBtn.classList.remove('download-btn-json');
-            downloadBtn.classList.add('download-btn-success');
-        }
-    });
+    // --- 3. Les Boutons ---
+    if (isPaywall) {
+        html += `
+            <div class="teaser-pricing">
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="cta-button btn-rounded">9€ - ${t('teaser.btn_single')}</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button btn-popular btn-rounded">29€ - ${t('teaser.btn_24h')}</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="cta-button btn-outline btn-rounded">99€ - ${t('teaser.btn_life')}</a>
+            </div>
+        `;
+    } else {
+        // Mode Normal : La Checkbox JSON et les boutons de téléchargement sont de retour !
+        html += `
+            <div class="download-section mt-20">
+                <label class="json-checkbox-label" style="display: block; margin-bottom: 15px; font-size: 0.9em; cursor: pointer; color: #555;">
+                    <input type="checkbox" id="want-json"> ${t('success.checkbox_json')}
+                </label>
+                
+                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="${data.downloadUrl}" download="${data.downloadName}" class="cta-button" id="btn-download-csv">
+                        <i class="fa-solid fa-download"></i> ${t('success.btn_download_csv')}
+                    </a>
+                    <a href="${data.reportDownloadUrl}" download="${data.reportDownloadName}" class="btn-secondary" id="btn-download-json" style="display: none;">
+                        <i class="fa-solid fa-file-code"></i> ${t('success.btn_download_json')}
+                    </a>
+                </div>
+            </div>
+        `;
+    }
 
-    downloadBtn.addEventListener('click', () => {
-        const includeJson = jsonCheckbox.checked;
+    html += `</div>`;
+    dynamicContentArea.innerHTML = html;
+
+    // --- 4. Réactivation de la logique JSON et Post-Téléchargement ---
+    if (!isPaywall) {
+        const chkJson = document.getElementById('want-json');
+        const btnJson = document.getElementById('btn-download-json');
         
-        if (typeof gtag === 'function') {
-            gtag('event', 'download_file', {
-                'event_category': 'Conversion',
-                'event_label': includeJson ? 'CSV + JSON' : 'CSV Only',
-                'file_type': 'csv'
+        if (chkJson && btnJson) {
+            chkJson.addEventListener('change', (e) => {
+                btnJson.style.display = e.target.checked ? 'inline-block' : 'none';
             });
         }
 
-        if (!includeJson) {
-            triggerDownload(csvDownloadUrl, csvDownloadName);
-            setTimeout(() => { displayPostDownloadView(); }, 300);
-        } else if (includeJson && !jsonAttempted) {
-            triggerDownload(csvDownloadUrl, csvDownloadName);
-            downloadBtn.innerHTML = `<i class="fa-solid fa-download"></i> ${t('modal.success.btn_download_json')} (2/2)`;
-            downloadBtn.classList.remove('download-btn-success');
-            downloadBtn.classList.add('download-btn-json');
-            jsonAttempted = true;
-        } else if (includeJson && jsonAttempted) {
-            triggerDownload(jsonDownloadUrl, jsonDownloadName);
-            setTimeout(() => { displayPostDownloadView(); }, 1500);
+        const btnCsv = document.getElementById('btn-download-csv');
+        if (btnCsv) {
+            btnCsv.addEventListener('click', () => {
+                setTimeout(() => {
+                    if (typeof displayPostDownloadView === 'function') {
+                        displayPostDownloadView();
+                    }
+                }, 1000);
+            });
         }
-    });
+    }
 }
 
 function displayErrorView(errorMessage) {
@@ -652,106 +716,6 @@ function displayPostDownloadView() {
 
     const restartBtn = document.getElementById('btn-new-clean');
     if (restartBtn) restartBtn.addEventListener('click', resetModal);
-}
-
-function displayTeaserView(preview, reasonCode) {
-    const t = window.t || ((k) => k);
-    const isSizeError = reasonCode === 'FILE_TOO_LARGE_FREE';
-    const subtitleKey = isSizeError ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
-
-    let theadHTML = '';
-    let tbodyHTML = '';
-
-    if (preview && preview.length > 0) {
-        // On affiche jusqu'à 5 colonnes pour bien voir les ajouts
-        const MAX_COLS = 5; 
-        
-        const cleanHeaders = preview[0].cleaned;
-        const origHeaders = preview[0].original;
-        
-        // On normalise les en-têtes originaux pour les retrouver même si on a nettoyé les espaces
-        const origHeadersNormalized = origHeaders.map(h => (h || '').toString().trim().toLowerCase());
-
-        const headersToShow = cleanHeaders.slice(0, MAX_COLS);
-        const hasMoreCols = cleanHeaders.length > MAX_COLS;
-
-        // 1. Création de l'en-tête
-        theadHTML = '<tr>';
-        headersToShow.forEach(h => {
-            theadHTML += `<th>${h || 'Colonne'}</th>`;
-        });
-        if (hasMoreCols) theadHTML += '<th class="col-fade">...</th>';
-        theadHTML += '</tr>';
-
-        // 2. Création des lignes de données (Aperçu)
-        const rowsToShow = preview.slice(1, 4);
-        rowsToShow.forEach(row => {
-            tbodyHTML += '<tr>';
-            
-            headersToShow.forEach((cleanHeader, index) => {
-                const cleanCell = row.cleaned[index];
-                
-                // On cherche où était cette colonne dans le fichier d'origine
-                const cleanHeaderNormalized = (cleanHeader || '').toString().trim().toLowerCase();
-                const origIndex = origHeadersNormalized.indexOf(cleanHeaderNormalized);
-                
-                let isFixed = false;
-                let origCell = "";
-
-                if (origIndex === -1) {
-                    // Magie : La colonne n'existait pas avant (ex: Devise ajoutée) !
-                    isFixed = true;
-                    origCell = t('teaser.new_column') || "Donnée ajoutée";
-                } else {
-                    // La colonne existait, on compare son contenu exact
-                    origCell = row.original[origIndex];
-                    isFixed = cleanCell !== origCell;
-                }
-
-                // On applique le vert si c'est corrigé ou ajouté
-                if (isFixed) {
-                    tbodyHTML += `<td class="cell-fixed" title="Original: ${origCell}">${cleanCell || '-'} ✨</td>`;
-                } else {
-                    tbodyHTML += `<td>${cleanCell || '-'}</td>`;
-                }
-            });
-            
-            if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
-            tbodyHTML += '</tr>';
-        });
-
-        // 3. La fausse ligne floutée
-        tbodyHTML += '<tr class="row-blurred">';
-        headersToShow.forEach(() => {
-            tbodyHTML += `<td>données protégées</td>`;
-        });
-        if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
-        tbodyHTML += '</tr>';
-    }
-
-    dynamicContentArea.innerHTML = `
-        <div class="modal-center-view teaser-view">
-            <h2>${t('teaser.title')}</h2>
-            <p class="teaser-alert">${subtitleKey}</p>
-            <p class="text-muted mb-20">${t('teaser.hook')}</p>
-            
-            <div class="teaser-table-wrapper">
-                <table class="teaser-table-modern">
-                    <thead>${theadHTML}</thead>
-                    <tbody>${tbodyHTML}</tbody>
-                </table>
-                <div class="paywall-gradient">
-                    <i class="fa-solid fa-lock" style="font-size: 24px; color: #FF8C00; margin-bottom: 10px;"></i>
-                </div>
-            </div>
-
-            <div class="teaser-pricing">
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="cta-button btn-rounded">9€ - ${t('teaser.btn_single')}</a>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button btn-popular btn-rounded">29€ - ${t('teaser.btn_24h')}</a>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="cta-button btn-outline btn-rounded">99€ - ${t('teaser.btn_life')}</a>
-            </div>
-        </div>
-    `;
 }
 
 // --- HEADER SCROLL ---
