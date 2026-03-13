@@ -507,9 +507,20 @@ function generatePreviewHTML(previewRows, t) {
 }
 // --- Vues de la Modale (Succès) ---
 function displaySuccessView(data, isPaywall = false, reasonCode = null) {
-    const t = window.t || ((k) => k);
+    // 1. Le petit traducteur intelligent pour lire les "mots de code" à tiroirs (ex: success.title)
+    const t = (key) => {
+        if (window.translations && window.currentLang) {
+            const keys = key.split('.');
+            let val = window.translations[window.currentLang];
+            for (const k of keys) {
+                if (val !== undefined && val !== null) val = val[k];
+            }
+            if (typeof val === 'string') return val;
+        }
+        return window.t ? window.t(key) : key;
+    };
     
-    // --- 1. Génération du beau tableau ---
+    // --- 2. Génération du Tableau de Preview ---
     let theadHTML = '';
     let tbodyHTML = '';
     const preview = data.preview;
@@ -542,7 +553,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
                 if (origIndex === -1) {
                     isFixed = true;
-                    origCell = "Donnée ajoutée";
+                    origCell = t('teaser.new_column') || "Donnée ajoutée";
                 } else {
                     origCell = row.original[origIndex];
                     isFixed = cleanCell !== origCell;
@@ -558,7 +569,6 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             tbodyHTML += '</tr>';
         });
 
-        // Si on est dans le paywall, la dernière ligne est floutée
         if (isPaywall) {
             tbodyHTML += '<tr class="row-blurred">';
             headersToShow.forEach(() => tbodyHTML += `<td>données protégées</td>`);
@@ -567,25 +577,36 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         }
     }
 
-    // --- 2. Assemblage du HTML ---
+    // --- 3. Assemblage de la Modale ---
     const title = isPaywall ? t('teaser.title') : t('success.title');
     
     let html = `
-        <div class="modal-center-view">
+        <div class="modal-center-view success-view">
             <h2>${title}</h2>
     `;
 
     if (isPaywall) {
         const subtitleKey = reasonCode === 'FILE_TOO_LARGE_FREE' ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
-        html += `<p class="teaser-alert">${subtitleKey}</p>`;
+        // On utilise le rouge/danger de ta charte pour l'alerte
+        html += `<p class="teaser-alert" style="color: var(--color-danger); font-weight: bold; margin-bottom: 10px;">${subtitleKey}</p>`;
     } else {
         html += `<p class="text-muted">${t('success.subtitle')}</p>`;
     }
 
     // Le résumé humain est affiché dans tous les cas
+    const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '<p>Analyse terminée.</p>');
     html += `
-        <div class="report-container" style="background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-            ${data.summary && data.summary.humanSummary ? data.summary.humanSummary : '<p>Analyse terminée.</p>'}
+        <div class="report-container" style="background: var(--color-info-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em;">
+            ${summaryText}
+        </div>
+    `;
+
+    // LA CASE JSON POUR TOUT LE MONDE (Placée bien en évidence)
+    html += `
+        <div style="margin-bottom: 20px; text-align: center;">
+            <label style="cursor: pointer; font-size: 0.95em; color: var(--deeper-purple); font-weight: 600;">
+                <input type="checkbox" id="want-json"> ${t('success.checkbox_json')}
+            </label>
         </div>
     `;
 
@@ -602,41 +623,33 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             </table>
     `;
     
-    // Le cadenas flottant
     if (isPaywall) {
         html += `
             <div class="paywall-gradient">
-                <i class="fa-solid fa-lock" style="font-size: 24px; color: #FF8C00; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-lock" style="font-size: 24px; color: var(--deeper-purple); margin-bottom: 10px;"></i>
             </div>
         `;
     }
-    html += `</div>`; // Fin teaser-table-wrapper
+    html += `</div>`; 
 
-    // --- 3. Les Boutons ---
+    // --- 4. Les Boutons avec TON ancien style ---
     if (isPaywall) {
         html += `
-            <div class="teaser-pricing">
+            <div class="action-buttons teaser-pricing" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 25px;">
                 <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="cta-button btn-rounded">9€ - ${t('teaser.btn_single')}</a>
                 <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button btn-popular btn-rounded">29€ - ${t('teaser.btn_24h')}</a>
                 <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="cta-button btn-outline btn-rounded">99€ - ${t('teaser.btn_life')}</a>
             </div>
         `;
     } else {
-        // Mode Normal : La Checkbox JSON et les boutons de téléchargement sont de retour !
         html += `
-            <div class="download-section mt-20">
-                <label class="json-checkbox-label" style="display: block; margin-bottom: 15px; font-size: 0.9em; cursor: pointer; color: #555;">
-                    <input type="checkbox" id="want-json"> ${t('success.checkbox_json')}
-                </label>
-                
-                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="${data.downloadUrl}" download="${data.downloadName}" class="cta-button" id="btn-download-csv">
-                        <i class="fa-solid fa-download"></i> ${t('success.btn_download_csv')}
-                    </a>
-                    <a href="${data.reportDownloadUrl}" download="${data.reportDownloadName}" class="btn-secondary" id="btn-download-json" style="display: none;">
-                        <i class="fa-solid fa-file-code"></i> ${t('success.btn_download_json')}
-                    </a>
-                </div>
+            <div class="action-buttons mt-20" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="${data.downloadUrl}" download="${data.downloadName}" class="cta-button" id="btn-download-csv">
+                    <i class="fa-solid fa-download"></i> ${t('success.btn_download_csv')}
+                </a>
+                <a href="${data.reportDownloadUrl}" download="${data.reportDownloadName}" class="btn-secondary" id="btn-download-json" style="display: none;">
+                    <i class="fa-solid fa-file-code"></i> ${t('success.btn_download_json')}
+                </a>
             </div>
         `;
     }
@@ -644,17 +657,18 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
     dynamicContentArea.innerHTML = html;
 
-    // --- 4. Réactivation de la logique JSON et Post-Téléchargement ---
-    if (!isPaywall) {
-        const chkJson = document.getElementById('want-json');
-        const btnJson = document.getElementById('btn-download-json');
-        
-        if (chkJson && btnJson) {
-            chkJson.addEventListener('change', (e) => {
-                btnJson.style.display = e.target.checked ? 'inline-block' : 'none';
-            });
-        }
+    // --- 5. Activation des boutons ---
+    const chkJson = document.getElementById('want-json');
+    const btnJson = document.getElementById('btn-download-json');
+    
+    if (chkJson && btnJson && !isPaywall) {
+        // En mode gratuit/payé, ça affiche le bouton de téléchargement JSON
+        chkJson.addEventListener('change', (e) => {
+            btnJson.style.display = e.target.checked ? 'inline-block' : 'none';
+        });
+    }
 
+    if (!isPaywall) {
         const btnCsv = document.getElementById('btn-download-csv');
         if (btnCsv) {
             btnCsv.addEventListener('click', () => {
