@@ -781,3 +781,97 @@ body {
     border: none;
     font-weight: bold;
 }
+
+/* --- VUE TEASER & PAYWALL --- */
+.teaser-view {
+    text-align: center;
+    padding: 10px;
+}
+
+.teaser-alert {
+    color: #FF8C00;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.teaser-table-container {
+    background: #fdfdfd;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    margin-bottom: 25px;
+    overflow-x: auto;
+}
+
+.teaser-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+    text-align: left;
+}
+
+.teaser-table th {
+    padding: 10px;
+    color: #555;
+    border-bottom: 2px solid #FF8C00;
+}
+
+.teaser-table td {
+    padding: 12px 10px;
+    border-bottom: 1px dashed #eee;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.td-dirty {
+    color: #888;
+    text-decoration: line-through;
+}
+
+.td-clean {
+    color: #333;
+    font-weight: bold;
+    background: rgba(255, 140, 0, 0.05);
+    border-radius: 6px;
+}
+
+/* Boutons de la modale */
+.teaser-pricing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-rounded {
+    border-radius: 30px;
+    padding: 12px 20px;
+    font-size: 0.9em;
+    flex: 1;
+    min-width: 140px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-popular {
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(255, 140, 0, 0.2);
+}
+
+.btn-popular:hover {
+    background-color: #e67e00;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #FF8C00;
+    border: 2px solid #FF8C00;
+}
+
+.btn-outline:hover {
+    background: #fff3e6;
+}

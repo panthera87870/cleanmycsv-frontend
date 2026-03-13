@@ -120,5 +120,16 @@
       "prefix": "Sorry, an error occurred:",
       "btn_retry": "Close and retry"
     }
+  },
+  "teaser": {
+    "title": "File Preview ✨",
+    "subtitle_limit": "You've reached your free daily limit.",
+    "subtitle_size": "This file exceeds the free size limit (2 MB).",
+    "hook": "The cleaning was successful! Here's a quick preview of the fixed rows. Choose a plan below to unlock your full file instantly.",
+    "original": "Before",
+    "cleaned": "After",
+    "btn_single": "Single",
+    "btn_24h": "24h Pass",
+    "btn_life": "Lifetime"
   }
 }

@@ -392,26 +392,14 @@ async function handleFormSubmit(e) {
         const response = await fetch(`${form.action}?lang=${selectedLogic}`, fetchOptions);
         const data = await response.json();
 
-        // GESTION DES NOUVELLES ERREURS (Limites atteintes)
         if (!response.ok) {
-            // Si le backend renvoie nos codes d'erreur spécifiques
-            if (data.code === 'LIMIT_REACHED') {
-                alert(t('errors.limit_reached')); 
-                // On fait défiler la page doucement vers les offres
-                document.getElementById('pricing')?.scrollIntoView({behavior: 'smooth'});
-                
-                // On remet le formulaire à zéro visuellement
-                document.getElementById('dynamicContentArea').innerHTML = ''; 
-                return; // On arrête tout
+            // NOUVEAU : Interception du Paywall (Code 402)
+            if (response.status === 402 && data.preview) {
+                displayTeaserView(data.preview, data.code);
+                return; // On arrête tout, la vue teaser prend le relais
             }
-            if (data.code === 'FILE_TOO_LARGE_FREE') {
-                alert(t('errors.file_too_large_free'));
-                document.getElementById('pricing')?.scrollIntoView({behavior: 'smooth'});
-                document.getElementById('dynamicContentArea').innerHTML = '';
-                return;
-            }
-            
-            // Pour les autres erreurs classiques
+
+            // (Gardez vos autres gestions d'erreurs ici au cas où...)
             throw new Error(data.message || `Erreur Serveur: ${response.status}`);
         }
 
@@ -664,6 +652,51 @@ function displayPostDownloadView() {
 
     const restartBtn = document.getElementById('btn-new-clean');
     if (restartBtn) restartBtn.addEventListener('click', resetModal);
+}
+
+function displayTeaserView(preview, reasonCode) {
+    const t = window.t || ((k) => k); // Récupère la fonction de traduction
+    const isSizeError = reasonCode === 'FILE_TOO_LARGE_FREE';
+    const subtitleKey = isSizeError ? 'teaser.subtitle_size' : 'teaser.subtitle_limit';
+
+    // Construction d'un mini-tableau dynamique avec les 5 premières lignes
+    let tableRows = '';
+    // On prend un maximum de 4 lignes après l'en-tête pour garder la modale propre
+    preview.slice(1, 5).forEach(row => {
+        // On coupe à 3 éléments max pour ne pas exploser l'affichage
+        const origStr = row.original.slice(0, 3).join(', ') + (row.original.length > 3 ? '...' : '');
+        const cleanStr = row.cleaned.slice(0, 3).join(', ') + (row.cleaned.length > 3 ? '...' : '');
+        tableRows += `<tr><td class="td-dirty">${origStr}</td><td class="td-clean">${cleanStr}</td></tr>`;
+    });
+
+    // Remplacement du contenu de la modale
+    dynamicContentArea.innerHTML = `
+        <div class="modal-center-view teaser-view">
+            <h2>${t('teaser.title')}</h2>
+            <p class="teaser-alert">${t(subtitleKey)}</p>
+            <p class="text-muted-small mb-20">${t('teaser.hook')}</p>
+            
+            <div class="teaser-table-container">
+                <table class="teaser-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fa-solid fa-file-csv"></i> ${t('teaser.original')}</th>
+                            <th><i class="fa-solid fa-wand-magic-sparkles"></i> ${t('teaser.cleaned')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="teaser-pricing">
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="cta-button btn-rounded">9€ - ${t('teaser.btn_single')}</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button btn-popular btn-rounded">29€ - ${t('teaser.btn_24h')}</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="cta-button btn-outline btn-rounded">99€ - ${t('teaser.btn_life')}</a>
+            </div>
+        </div>
+    `;
 }
 
 // --- HEADER SCROLL ---

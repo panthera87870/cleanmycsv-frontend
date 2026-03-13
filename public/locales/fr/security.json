@@ -81,5 +81,16 @@
       "prefix": "Désolé, une erreur est survenue :",
       "btn_retry": "Fermer et réessayer"
     }
+  },
+  "teaser": {
+    "title": "Aperçu de votre fichier ✨",
+    "subtitle_limit": "Vous avez atteint votre limite d'essais pour aujourd'hui.",
+    "subtitle_size": "Ce fichier dépasse la taille maximale gratuite (2 Mo).",
+    "hook": "Le nettoyage a fonctionné ! Voici un aperçu des premières lignes corrigées. Choisissez une offre pour obtenir le fichier complet instantanément.",
+    "original": "Avant",
+    "cleaned": "Après",
+    "btn_single": "Unique",
+    "btn_24h": "Pass 24h",
+    "btn_life": "À vie"
   }
 }

@@ -156,5 +156,16 @@
   "errors": {
     "limit_reached": "Free limit reached (2/day). Upgrade to keep going!",
     "file_too_large_free": "Oops, this file exceeds the 2MB free limit. Please choose a plan to unlock it."
+  },
+  "teaser": {
+    "title": "File Preview ✨",
+    "subtitle_limit": "You've reached your free daily limit.",
+    "subtitle_size": "This file exceeds the free size limit (2 MB).",
+    "hook": "The cleaning was successful! Here's a quick preview of the fixed rows. Choose a plan below to unlock your full file instantly.",
+    "original": "Before",
+    "cleaned": "After",
+    "btn_single": "Single",
+    "btn_24h": "24h Pass",
+    "btn_life": "Lifetime"
   }
 }
