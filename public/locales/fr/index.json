@@ -129,7 +129,7 @@
     },
     "single": {
       "title": "Nettoyage Unique",
-      "price": "9 € / $",
+      "price": "9 €",
       "feat1": "1 nettoyage garanti",
       "feat2": "Accès illimité pendant 2h",
       "feat3": "Jusqu'à 15 Mo",
@@ -138,7 +138,7 @@
     "day_pass": {
       "title": "Pass 24 Heures",
       "badge": "Le plus populaire",
-      "price": "29 € / $",
+      "price": "29 €",
       "feat1": "Nettoyages illimités",
       "feat2": "Valide pendant 24h",
       "feat3": "Jusqu'à 15 Mo",
@@ -146,7 +146,7 @@
     },
     "lifetime": {
       "title": "Pass à Vie",
-      "price": "99 € / $",
+      "price": "99 €",
       "feat1": "Illimité pour toujours",
       "feat2": "Futures mises à jour incluses",
       "feat3": "Jusqu'à 15 Mo",
