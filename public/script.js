@@ -619,8 +619,8 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="text-muted mb-20" style="text-align: center;">${t('teaser.hook')}</p>`;
         html += `
             <div class="action-buttons teaser-pricing" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
-                <a href="VOTRE_LIEN_STRIPE_9" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">9€ - ${t('teaser.btn_single')}</a>
-                <a href="VOTRE_LIEN_STRIPE_29" class="cta-button" style="flex: 1; min-width: 120px; text-align: center;">29€ - ${t('teaser.btn_24h')}</a>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">9€ - ${t('teaser.btn_single')}</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button" style="flex: 1; min-width: 120px; text-align: center;">29€ - ${t('teaser.btn_24h')}</a>
                 <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">99€ - ${t('teaser.btn_life')}</a>
             </div>
         `;
