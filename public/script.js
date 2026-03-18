@@ -505,9 +505,7 @@ function generatePreviewHTML(previewRows, t) {
         </div>
     </div>`;
 }
-// --- Vues de la Modale (Succès) ---
 function displaySuccessView(data, isPaywall = false, reasonCode = null) {
-    // 1. Le petit traducteur intelligent pour lire les "mots de code" à tiroirs (ex: success.title)
     const t = (key) => {
         if (window.translations && window.currentLang) {
             const keys = key.split('.');
@@ -520,7 +518,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         return window.t ? window.t(key) : key;
     };
     
-    // --- 2. Génération du Tableau de Preview ---
+    // --- 1. GÉNÉRATION DU BEAU TABLEAU (La seule nouveauté) ---
     let theadHTML = '';
     let tbodyHTML = '';
     const preview = data.preview;
@@ -569,6 +567,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             tbodyHTML += '</tr>';
         });
 
+        // Effet de flou si paywall
         if (isPaywall) {
             tbodyHTML += '<tr class="row-blurred">';
             headersToShow.forEach(() => tbodyHTML += `<td>données protégées</td>`);
@@ -577,44 +576,28 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         }
     }
 
-    // --- 3. Assemblage de la Modale ---
+    // --- 2. CONSTRUCTION DE TON ANCIENNE PAGE ---
     const title = isPaywall ? t('teaser.title') : t('success.title');
     
-    let html = `
-        <div class="modal-center-view success-view">
-            <h2>${title}</h2>
-    `;
+    let html = `<div class="modal-center-view success-view">`;
+    html += `<h2>${title}</h2>`;
 
     if (isPaywall) {
         const subtitleKey = reasonCode === 'FILE_TOO_LARGE_FREE' ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
-        // On utilise le rouge/danger de ta charte pour l'alerte
-        html += `<p class="teaser-alert" style="color: var(--color-danger); font-weight: bold; margin-bottom: 10px;">${subtitleKey}</p>`;
+        html += `<p class="teaser-alert" style="color: var(--color-danger); font-weight: bold; margin-bottom: 15px;">${subtitleKey}</p>`;
     } else {
         html += `<p class="text-muted">${t('success.subtitle')}</p>`;
     }
 
-    // Le résumé humain est affiché dans tous les cas
-    const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '<p>Analyse terminée.</p>');
+    // A. TON RÉSUMÉ HUMAIN (Exactement comme avant)
+    const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
         <div class="report-container" style="background: var(--color-info-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em;">
             ${summaryText}
         </div>
     `;
 
-    // LA CASE JSON POUR TOUT LE MONDE (Placée bien en évidence)
-    html += `
-        <div style="margin-bottom: 20px; text-align: center;">
-            <label style="cursor: pointer; font-size: 0.95em; color: var(--deeper-purple); font-weight: 600;">
-                <input type="checkbox" id="want-json"> ${t('success.checkbox_json')}
-            </label>
-        </div>
-    `;
-
-    if (isPaywall) {
-        html += `<p class="text-muted mb-20">${t('teaser.hook')}</p>`;
-    }
-
-    // Le tableau
+    // B. LE TABLEAU (Inséré au milieu)
     html += `
         <div class="teaser-table-wrapper">
             <table class="teaser-table-modern">
@@ -622,7 +605,6 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                 <tbody>${tbodyHTML}</tbody>
             </table>
     `;
-    
     if (isPaywall) {
         html += `
             <div class="paywall-gradient">
@@ -630,26 +612,36 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             </div>
         `;
     }
-    html += `</div>`; 
+    html += `</div>`; // Fin du tableau
 
-    // --- 4. Les Boutons avec TON ancien style ---
+    // C. LES BOUTONS (Stripe OU Téléchargement classique)
     if (isPaywall) {
+        html += `<p class="text-muted mb-20" style="text-align: center;">${t('teaser.hook')}</p>`;
         html += `
-            <div class="action-buttons teaser-pricing" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 25px;">
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="cta-button btn-rounded">9€ - ${t('teaser.btn_single')}</a>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button btn-popular btn-rounded">29€ - ${t('teaser.btn_24h')}</a>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="cta-button btn-outline btn-rounded">99€ - ${t('teaser.btn_life')}</a>
+            <div class="action-buttons teaser-pricing" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                <a href="VOTRE_LIEN_STRIPE_9" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">9€ - ${t('teaser.btn_single')}</a>
+                <a href="VOTRE_LIEN_STRIPE_29" class="cta-button" style="flex: 1; min-width: 120px; text-align: center;">29€ - ${t('teaser.btn_24h')}</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">99€ - ${t('teaser.btn_life')}</a>
             </div>
         `;
     } else {
+        // TES ANCIENS BOUTONS ET TA CHECKBOX JSON
         html += `
-            <div class="action-buttons mt-20" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="${data.downloadUrl}" download="${data.downloadName}" class="cta-button" id="btn-download-csv">
-                    <i class="fa-solid fa-download"></i> ${t('success.btn_download_csv')}
-                </a>
-                <a href="${data.reportDownloadUrl}" download="${data.reportDownloadName}" class="btn-secondary" id="btn-download-json" style="display: none;">
-                    <i class="fa-solid fa-file-code"></i> ${t('success.btn_download_json')}
-                </a>
+            <div class="download-section mt-20">
+                <div style="margin-bottom: 20px; text-align: center;">
+                    <label style="cursor: pointer; font-size: 0.95em; color: var(--deeper-purple); font-weight: 600;">
+                        <input type="checkbox" id="want-json"> ${t('success.checkbox_json')}
+                    </label>
+                </div>
+                
+                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="${data.downloadUrl}" download="${data.downloadName}" class="cta-button" id="btn-download-csv">
+                        <i class="fa-solid fa-download"></i> ${t('success.btn_download_csv')}
+                    </a>
+                    <a href="${data.reportDownloadUrl}" download="${data.reportDownloadName}" class="btn-secondary" id="btn-download-json" style="display: none;">
+                        <i class="fa-solid fa-file-code"></i> ${t('success.btn_download_json')}
+                    </a>
+                </div>
             </div>
         `;
     }
@@ -657,18 +649,17 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
     dynamicContentArea.innerHTML = html;
 
-    // --- 5. Activation des boutons ---
-    const chkJson = document.getElementById('want-json');
-    const btnJson = document.getElementById('btn-download-json');
-    
-    if (chkJson && btnJson && !isPaywall) {
-        // En mode gratuit/payé, ça affiche le bouton de téléchargement JSON
-        chkJson.addEventListener('change', (e) => {
-            btnJson.style.display = e.target.checked ? 'inline-block' : 'none';
-        });
-    }
-
+    // --- 3. ÉCOUTEURS D'ÉVÉNEMENTS ---
     if (!isPaywall) {
+        const chkJson = document.getElementById('want-json');
+        const btnJson = document.getElementById('btn-download-json');
+        
+        if (chkJson && btnJson) {
+            chkJson.addEventListener('change', (e) => {
+                btnJson.style.display = e.target.checked ? 'inline-block' : 'none';
+            });
+        }
+
         const btnCsv = document.getElementById('btn-download-csv');
         if (btnCsv) {
             btnCsv.addEventListener('click', () => {
