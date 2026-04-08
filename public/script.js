@@ -683,23 +683,42 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             btnDownloadMain.addEventListener('click', (e) => {
                 e.preventDefault();
                 
+                // Si le bouton est désactivé (en cours de cooldown), on ne fait rien
+                if (btnDownloadMain.disabled) return;
+                
                 if (chkJson && chkJson.checked) {
                     // MODE DEUX ÉTAPES (CSV puis JSON)
                     if (downloadStep === 1) {
-                        // Étape 1/2 : On télécharge le CSV
+                        
+                        // 1. On bloque immédiatement le bouton pour empêcher le double-clic
+                        btnDownloadMain.disabled = true;
+                        btnDownloadMain.style.opacity = '0.7';
+                        btnDownloadMain.style.cursor = 'wait';
+                        
+                        // 2. Feedback visuel : on indique que ça prépare
+                        btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 8px;"></i>`;
+                        
+                        // 3. On lance le téléchargement du CSV
                         triggerDownload(data.downloadUrl, data.downloadName);
                         
-                        // On transforme le bouton pour l'étape 2/2
-                        // Note: Assure-toi d'avoir une clé 'modal.success.btn_download_json' dans tes locales !
-                        const jsonText = t('modal.success.btn_download_json') || 'Télécharger le rapport JSON';
-                        btnText.innerHTML = `${jsonText} (2/2)`;
-                        downloadStep = 2;
+                        // 4. On force une pause (1.5 secondes) avant de débloquer l'étape 2
+                        setTimeout(() => {
+                            const jsonText = t('modal.success.btn_download_json') || 'Télécharger le rapport JSON';
+                            btnText.innerHTML = `${jsonText} (2/2)`;
+                            
+                            // On réactive le bouton pour le deuxième clic
+                            btnDownloadMain.disabled = false;
+                            btnDownloadMain.style.opacity = '1';
+                            btnDownloadMain.style.cursor = 'pointer';
+                            
+                            downloadStep = 2; // On autorise l'étape suivante
+                        }, 1500); // Tu peux ajuster ce délai (1500 = 1,5s)
                         
                     } else if (downloadStep === 2) {
                         // Étape 2/2 : On télécharge le JSON
                         triggerDownload(data.reportDownloadUrl, data.reportDownloadName);
                         
-                        // C'est fini, on passe à l'écran de fin avec un léger délai
+                        // C'est fini, on passe à l'écran de fin
                         setTimeout(() => {
                             if (typeof displayPostDownloadView === 'function') {
                                 displayPostDownloadView();
