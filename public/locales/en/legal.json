@@ -21,6 +21,7 @@
   "sect2_li1": "<strong>Processing & Temporary Storage:</strong> Google Cloud Platform (GCP). Region: Belgium/Netherlands (Europe).",
   "sect2_li2": "<strong>Web Interface (Frontend):</strong> Vercel Inc., 340 S Lemon Ave, Walnut, CA 91789, USA.",
   "sect2_li3": "<strong>Domain Name:</strong> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.",
+  "sect2_li4": "<strong>Payment Processor:</strong> Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Dublin 2, Irlande.",
 
   "sect3_title": "<i class=\"fa-solid fa-gavel\"></i> 3. Intellectual Property",
   "sect3_p": "The entire site (design, texts, logos) as well as the cleaning algorithms developed specifically for CleanMyCSV are the exclusive property of the publisher. Any reproduction, even partial, is prohibited without prior authorization.",

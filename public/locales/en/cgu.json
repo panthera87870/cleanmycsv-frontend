@@ -20,7 +20,16 @@
   "sect3_li2": "<strong>Lawful Use:</strong> Do not upload files containing malicious code or data obtained illegally.",
   "sect3_li3": "<strong>Security:</strong> Do not attempt to bypass rate limits or compromise the infrastructure.",
 
-  "sect4_title": "<i class=\"fa-solid fa-scale-balanced\"></i> 4. Applicable Law",
+  "sect_cgv_prix_title": "<i class=\"fa-solid fa-tag\"></i> 4. Pricing and Payment Terms (Terms of Sale)",
+  "sect_cgv_prix_p": "Plan prices are listed in Euros (€). As a French sole proprietorship (Entreprise Individuelle), VAT is not applicable (Article 293 B of the French General Tax Code). Payment is due immediately upon ordering. All transactions are fully processed and securely handled by Stripe. The publisher does not store any credit card or banking data.",
+  
+  "sect_cgv_livraison_title": "<i class=\"fa-solid fa-bolt\"></i> 5. Service Delivery",
+  "sect_cgv_livraison_p": "Since CleanMyCSV is a digital service, delivery is instantaneous. Upon payment validation by Stripe, the User receives an email containing a unique access link ('token') allowing them to use the tool according to the duration or terms of the chosen plan.",
+  
+  "sect_cgv_retractation_title": "<i class=\"fa-solid fa-ban-hand\"></i> 6. Right of Withdrawal & Refund Policy",
+  "sect_cgv_retractation_p": "In accordance with Article L221-28 of the French Consumer Code, the right of withdrawal cannot be exercised for the supply of digital content not supplied on a tangible medium if the performance has begun with the consumer's prior express consent. By validating the payment, the User explicitly agrees to the immediate execution of the service and expressly waives their 14-day right of withdrawal.",
+
+  "sect4_title": "<i class=\"fa-solid fa-scale-balanced\"></i> 7. Applicable Law",
   "sect4_p": "These Terms are governed by French law. In the event of a dispute, and after an attempt at mediation, exclusive jurisdiction is assigned to the courts of Montpellier.",
 
   "footer_cgu": "Terms of Service",

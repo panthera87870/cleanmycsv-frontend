@@ -29,7 +29,7 @@
   "sect4_title": "<i class=\"fa-solid fa-shield-virus\"></i> 4. Protection Anti-Injection",
   "sect4_p": "En plus de protéger vos données, nous protégeons votre ordinateur. Notre algorithme neutralise les formules malveillantes (CSV Injection) en ajoutant une apostrophe de sécurité devant les cellules suspectes.",
 
-  "footer_cgu": "CGU",
+  "footer_cgu": "CGU / CGV",
   "footer_legal": "Mentions Légales",
   "footer_privacy": "Confidentialité",
   "footer_contact": "Contact",

@@ -6,7 +6,7 @@
   "nav_contact": "CONTACT",
   "nav_try": "Essayer",
 
-  "hero_title": "Conditions Générales d'Utilisation",
+  "hero_title": "Conditions Générales d'Utilisation et de Vente (CGU / CGV)",
   
   "sect1_title": "<i class=\"fa-solid fa-file-contract\"></i> 1. Objet",
   "sect1_p": "Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités de mise à disposition des services du site CleanMyCSV et les conditions d'utilisation du Service par l'Utilisateur.",
@@ -20,10 +20,19 @@
   "sect3_li2": "<strong>Usage licite :</strong> Ne pas téléverser de fichiers contenant des codes malveillants ou des données obtenues de manière illégale.",
   "sect3_li3": "<strong>Sécurité :</strong> Ne pas tenter de contourner les limites de requêtes (Rate Limiting) ou de compromettre l'infrastructure.",
 
-  "sect4_title": "<i class=\"fa-solid fa-scale-balanced\"></i> 4. Droit applicable",
+  "sect_cgv_prix_title": "<i class=\"fa-solid fa-tag\"></i> 4. Prix et Modalités de paiement (CGV)",
+  "sect_cgv_prix_p": "Les prix de nos offres sont indiqués en euros (€). En tant qu'Entreprise Individuelle, la TVA est non applicable (article 293 B du CGI). Le paiement est exigible immédiatement à la commande. Les transactions sont entièrement traitées et sécurisées par Stripe. L'éditeur ne stocke aucune donnée bancaire.",
+  
+  "sect_cgv_livraison_title": "<i class=\"fa-solid fa-bolt\"></i> 5. Livraison du service",
+  "sect_cgv_livraison_p": "CleanMyCSV étant un service numérique, la livraison est instantanée. Dès la validation du paiement par Stripe, l'Utilisateur reçoit un email contenant un lien d'accès unique (« token ») lui permettant d'utiliser l'outil selon la durée ou les conditions de l'offre choisie.",
+  
+  "sect_cgv_retractation_title": "<i class=\"fa-solid fa-ban-hand\"></i> 6. Droit de rétractation",
+  "sect_cgv_retractation_p": "Conformément à l'article L221-28 du Code de la Consommation, le droit de rétractation ne peut être exercé pour les contrats de fourniture d'un contenu numérique non fourni sur un support matériel dont l'exécution a commencé après accord préalable exprès du consommateur. En validant son paiement, l'Utilisateur accepte l'exécution immédiate du service et renonce expressément à son droit de rétractation de 14 jours.",
+
+  "sect4_title": "<i class=\"fa-solid fa-scale-balanced\"></i> 7. Droit applicable",
   "sect4_p": "Les présentes CGU sont régies par le droit français. En cas de litige, et après tentative de médiation, compétence exclusive est attribuée aux tribunaux de Montpellier.",
 
-  "footer_cgu": "CGU",
+  "footer_cgu": "CGU / CGV",
   "footer_legal": "Mentions Légales",
   "footer_privacy": "Confidentialité",
   "footer_contact": "Contact",
