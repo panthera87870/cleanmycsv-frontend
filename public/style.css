@@ -616,3 +616,71 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     .footer-right a { font-size: 0.8rem; }
     .copyright { font-size: 0.75rem; opacity: 0.7; }
 }
+
+/* ==============================================
+   PAGE DE SUCCÈS (PAIEMENT)
+   ============================================== */
+.success-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--color-info-bg);
+    text-align: center;
+    padding: 20px;
+}
+
+.success-card {
+    background: var(--white);
+    padding: 50px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 500px;
+    width: 100%;
+}
+
+.success-card i.fa-envelope-open-text {
+    font-size: 4rem;
+    color: var(--purple);
+    margin-bottom: 20px;
+}
+
+.success-card h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--black);
+}
+
+.success-card p {
+    color: var(--text-color);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.email-provider-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.email-provider-links a {
+    padding: 8px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 8px);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.email-provider-links a:hover {
+    border-color: var(--purple);
+    color: var(--purple);
+}
+
+.success-card .spam-notice {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 0;
+}

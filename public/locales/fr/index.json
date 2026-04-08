@@ -128,9 +128,9 @@
       "cta": "Offre actuelle"
     },
     "single": {
-      "title": "Nettoyage Unique",
+      "title": "Pass 2 Heures",
       "price": "9 €",
-      "feat1": "1 nettoyage garanti",
+      "feat1": "Nettoyage illimités",
       "feat2": "Accès illimité pendant 2h",
       "feat3": "Jusqu'à 15 Mo",
       "cta": "Choisir"
@@ -168,5 +168,11 @@
     "btn_single": "Unique",
     "btn_24h": "Pass 24h",
     "btn_life": "À vie"
+  },
+  "success_page": {
+  "meta_title": "Paiement Réussi - CleanMyCSV",
+  "title": "Paiement validé ! 🎉",
+  "desc": "Votre accès est prêt. Nous venons de vous envoyer un <strong>lien magique</strong> par email. <br><br>Cliquez simplement sur le lien dans l'email pour revenir sur le site et nettoyer vos fichiers.",
+  "spam_notice": "(N'oubliez pas de vérifier vos courriers indésirables / spams)"
   }
 }

@@ -128,9 +128,9 @@
       "cta": "Current plan"
     },
     "single": {
-      "title": "Single",
+      "title": "2h",
       "price": "$9",
-      "feat1": "1 guaranteed clean",
+      "feat1": "Unlimited clean",
       "feat2": "Unlimited access for 2h",
       "feat3": "Up to 15 MB",
       "cta": "Buy now"
@@ -167,5 +167,11 @@
     "btn_single": "Single",
     "btn_24h": "24h Pass",
     "btn_life": "Lifetime"
+  },
+  "success_page": {
+  "meta_title": "Payment Successful - CleanMyCSV",
+  "title": "Payment confirmed! 🎉",
+  "desc": "Your access is ready. We just sent you a <strong>magic link</strong> by email. <br><br>Simply click the link in the email to return to the site and clean your files.",
+  "spam_notice": "(Don't forget to check your spam/junk folder)"
   }
 }
