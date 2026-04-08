@@ -110,7 +110,7 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     transform: scale(1.05);
 }
 
-.btn-secondary, .cta-button-nav, .last-cta {
+.btn-secondary, .cta-button-nav, .last-cta, .start-clean-btn {
     background-color: var(--purple); color: var(--white);
 }
 
@@ -208,6 +208,7 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 .security-note { font-size: 0.9rem; color: #666; text-align: center; margin-top: 20px; }
 .security-note i { margin-right: 5px; color: var(--color-success); }
 .upload-step h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; color: var(--purple); }
+.start-clean-btn {display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%;}
 
 /* Utilitaires JS */
 .modal-center-view { text-align: center; padding: 50px 20px; }

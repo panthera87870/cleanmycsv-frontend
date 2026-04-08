@@ -363,7 +363,20 @@ async function handleFormSubmit(e) {
         <div class="modal-center-view">
             <h2>${t('modal.processing.title')}</h2>
             <p class="text-muted">${t('modal.processing.sending')}</p>
-            <div class="spinner-custom"></div> 
+            
+            <div class="progress-container" style="width: 100%; max-width: 80%; height: 8px; background: var(--color-info-bg, #f9f9f9); border-radius: 10px; margin: 25px auto; overflow: hidden; position: relative; border: 1px solid var(--color-border, #ddd);">
+                <div class="progress-bar" style="height: 100%; background: linear-gradient(90deg, var(--blue, #52c6ff), var(--purple, #8c52ff)); width: 0%; border-radius: 10px; animation: fakeProgress 10s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;"></div>
+            </div>
+            <style>
+                @keyframes fakeProgress {
+                    0% { width: 0%; }
+                    20% { width: 40%; }
+                    60% { width: 75%; }
+                    95% { width: 95%; }
+                    100% { width: 99%; }
+                }
+            </style>
+
             <p class="text-muted-small"><i class="fa-solid fa-clock"></i> ${t('modal.processing.wait')}</p>
         </div>
     `;
@@ -577,7 +590,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     }
 
     // --- 2. CONSTRUCTION DE TON ANCIENNE PAGE ---
-    const title = isPaywall ? t('teaser.title') : t('success.title');
+    const title = isPaywall ? t('teaser.title') : t('modal.success.title');
     
     let html = `<div class="modal-center-view success-view">`;
     html += `<h2>${title}</h2>`;
@@ -586,7 +599,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         const subtitleKey = reasonCode === 'FILE_TOO_LARGE_FREE' ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
         html += `<p class="teaser-alert" style="color: var(--color-danger); font-weight: bold; margin-bottom: 15px;">${subtitleKey}</p>`;
     } else {
-        html += `<p class="text-muted">${t('success.subtitle')}</p>`;
+        html += `<p class="text-muted">${t('modal.success.subtitle')}</p>`;
     }
 
     // A. TON RÉSUMÉ HUMAIN (Exactement comme avant)
@@ -625,23 +638,18 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             </div>
         `;
     } else {
-        // TES ANCIENS BOUTONS ET TA CHECKBOX JSON
+        // CORRECTION UX : Un seul bouton centré, gérant l'action combinée
         html += `
-            <div class="download-section mt-20">
+            <div class="download-section mt-20" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <div style="margin-bottom: 20px; text-align: center;">
                     <label style="cursor: pointer; font-size: 0.95em; color: var(--deeper-purple); font-weight: 600;">
-                        <input type="checkbox" id="want-json"> ${t('success.checkbox_json')}
+                        <input type="checkbox" id="want-json"> ${t('modal.success.checkbox_json')}
                     </label>
                 </div>
                 
-                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="${data.downloadUrl}" download="${data.downloadName}" class="cta-button" id="btn-download-csv">
-                        <i class="fa-solid fa-download"></i> ${t('success.btn_download_csv')}
-                    </a>
-                    <a href="${data.reportDownloadUrl}" download="${data.reportDownloadName}" class="btn-secondary" id="btn-download-json" style="display: none;">
-                        <i class="fa-solid fa-file-code"></i> ${t('success.btn_download_json')}
-                    </a>
-                </div>
+                <button class="cta-button" id="btn-download-all" style="width: 100%; max-width: 300px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-download"></i> ${t('modal.success.btn_download_csv')}
+                </button>
             </div>
         `;
     }
@@ -649,25 +657,31 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
     dynamicContentArea.innerHTML = html;
 
-    // --- 3. ÉCOUTEURS D'ÉVÉNEMENTS ---
+    // --- 3. ÉCOUTEURS D'ÉVÉNEMENTS (Correction de la fermeture de modale) ---
     if (!isPaywall) {
         const chkJson = document.getElementById('want-json');
-        const btnJson = document.getElementById('btn-download-json');
-        
-        if (chkJson && btnJson) {
-            chkJson.addEventListener('change', (e) => {
-                btnJson.style.display = e.target.checked ? 'inline-block' : 'none';
-            });
-        }
+        const btnDownloadAll = document.getElementById('btn-download-all');
 
-        const btnCsv = document.getElementById('btn-download-csv');
-        if (btnCsv) {
-            btnCsv.addEventListener('click', () => {
+        if (btnDownloadAll) {
+            btnDownloadAll.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // 1. On lance le téléchargement du CSV
+                triggerDownload(data.downloadUrl, data.downloadName);
+                
+                // 2. Si la case est cochée, on lance le JSON 500ms plus tard
+                if (chkJson && chkJson.checked) {
+                    setTimeout(() => {
+                        triggerDownload(data.reportDownloadUrl, data.reportDownloadName);
+                    }, 500);
+                }
+                
+                // 3. On laisse le temps aux téléchargements de démarrer avant d'afficher l'écran final
                 setTimeout(() => {
                     if (typeof displayPostDownloadView === 'function') {
                         displayPostDownloadView();
                     }
-                }, 1000);
+                }, 1500);
             });
         }
     }
