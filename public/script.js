@@ -638,7 +638,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             </div>
         `;
     } else {
-        // CORRECTION UX : Un seul bouton centré, gérant l'action combinée
+        // Un seul bouton, on ajoute un id "btn-text" pour cibler le texte facilement
         html += `
             <div class="download-section mt-20" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <div style="margin-bottom: 20px; text-align: center;">
@@ -647,8 +647,8 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                     </label>
                 </div>
                 
-                <button class="cta-button" id="btn-download-all" style="width: 100%; max-width: 300px; display: flex; justify-content: center; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-download"></i> ${t('modal.success.btn_download_csv')}
+                <button class="cta-button" id="btn-download-main" style="width: 100%; max-width: 300px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-download"></i> <span id="btn-text">${t('modal.success.btn_download_csv')}</span>
                 </button>
             </div>
         `;
@@ -657,31 +657,64 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
     dynamicContentArea.innerHTML = html;
 
-    // --- 3. ÉCOUTEURS D'ÉVÉNEMENTS (Correction de la fermeture de modale) ---
+    // --- 3. ÉCOUTEURS D'ÉVÉNEMENTS ---
     if (!isPaywall) {
         const chkJson = document.getElementById('want-json');
-        const btnDownloadAll = document.getElementById('btn-download-all');
+        const btnDownloadMain = document.getElementById('btn-download-main');
+        const btnText = document.getElementById('btn-text');
+        
+        // Variable pour suivre l'étape du téléchargement si le JSON est coché
+        let downloadStep = 1;
 
-        if (btnDownloadAll) {
-            btnDownloadAll.addEventListener('click', (e) => {
+        // Événement 1 : Quand on coche/décoche la case JSON
+        if (chkJson && btnText) {
+            chkJson.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    btnText.innerHTML = `${t('modal.success.btn_download_csv')} (1/2)`;
+                    downloadStep = 1; // On reset l'étape au cas où l'utilisateur joue avec la case
+                } else {
+                    btnText.innerHTML = `${t('modal.success.btn_download_csv')}`;
+                }
+            });
+        }
+
+        // Événement 2 : Au clic sur le bouton principal
+        if (btnDownloadMain) {
+            btnDownloadMain.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // 1. On lance le téléchargement du CSV
-                triggerDownload(data.downloadUrl, data.downloadName);
-                
-                // 2. Si la case est cochée, on lance le JSON 500ms plus tard
                 if (chkJson && chkJson.checked) {
-                    setTimeout(() => {
+                    // MODE DEUX ÉTAPES (CSV puis JSON)
+                    if (downloadStep === 1) {
+                        // Étape 1/2 : On télécharge le CSV
+                        triggerDownload(data.downloadUrl, data.downloadName);
+                        
+                        // On transforme le bouton pour l'étape 2/2
+                        // Note: Assure-toi d'avoir une clé 'modal.success.btn_download_json' dans tes locales !
+                        const jsonText = t('modal.success.btn_download_json') || 'Télécharger le rapport JSON';
+                        btnText.innerHTML = `${jsonText} (2/2)`;
+                        downloadStep = 2;
+                        
+                    } else if (downloadStep === 2) {
+                        // Étape 2/2 : On télécharge le JSON
                         triggerDownload(data.reportDownloadUrl, data.reportDownloadName);
+                        
+                        // C'est fini, on passe à l'écran de fin avec un léger délai
+                        setTimeout(() => {
+                            if (typeof displayPostDownloadView === 'function') {
+                                displayPostDownloadView();
+                            }
+                        }, 500);
+                    }
+                } else {
+                    // MODE CLASSIQUE (Seulement le CSV)
+                    triggerDownload(data.downloadUrl, data.downloadName);
+                    setTimeout(() => {
+                        if (typeof displayPostDownloadView === 'function') {
+                            displayPostDownloadView();
+                        }
                     }, 500);
                 }
-                
-                // 3. On laisse le temps aux téléchargements de démarrer avant d'afficher l'écran final
-                setTimeout(() => {
-                    if (typeof displayPostDownloadView === 'function') {
-                        displayPostDownloadView();
-                    }
-                }, 1500);
             });
         }
     }
