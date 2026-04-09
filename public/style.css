@@ -430,10 +430,13 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     border-radius: var(--radius-global); padding: 15px var(--spacing-global); border: none;
     font-size: 1.2rem; font-weight: 600; text-decoration: none; text-align: center; width: 100%; box-sizing: border-box;
 }
+.quick-clean {background-color: var(--purple); color: white;}
+.quick-clean h3 {color: white;}
+.price-quick-clean {color: white;}
 .day-pass { background-color: var(--blue); }
 .lifetime { background-color: var(--black); color: var(--white);}
 .lifetime h3 {color: white;}
-.lifetime p {color: white;}
+.price-lifetime {color: white;}
 
 
 /* 10. PAGES ANNEXES (LEGAL, MANUEL, DOC, CONTACT)
