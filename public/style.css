@@ -446,6 +446,7 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 }
 .day-pass { background-color: var(--blue); }
 .lifetime { background-color: var(--purple); color: var(--white);}
+.lifetime h3 {color: white;}
 
 /* Process */
 .how-it-works-section { padding: 60px 0 80px 0; }
