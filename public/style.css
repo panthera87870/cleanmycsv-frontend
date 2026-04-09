@@ -385,20 +385,6 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     max-width: 1000px; text-align: left;
 }
 
-/* Coût Caché */
-.hidden-cost-section { padding: 60px 0; }
-.cost-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 50px; }
-.cost-card {
-    padding: 25px 25px; border-radius: 50px;
-    border: 1px solid var(--grey); background-color: var(--grey);
-}
-.cost-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--text-color); text-align: center; }
-.cost-card p { font-size: 0.95rem; color: var(--subtext-color); line-height: 1.6; text-align: left; }
-.cost-cta-text {
-    font-size: 1.25rem; color: var(--text-color); font-weight: 700;
-    max-width: 800px; margin: 0 auto; line-height: 1.4; text-align: center;
-}
-
 /* Benefits (Trust) */
 .trust-benefits-section { padding: 30px 0 40px 0; }
 .trust-benefits-section h2 { margin-bottom: 30px; }
@@ -445,26 +431,10 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     font-size: 1.2rem; font-weight: 600; text-decoration: none; text-align: center; width: 100%; box-sizing: border-box;
 }
 .day-pass { background-color: var(--blue); }
-.lifetime { background-color: var(--purple); color: var(--white);}
-.lifetime h3 p {color: white;}
+.lifetime { background-color: var(--black); color: var(--white);}
+.lifetime h3 {color: white;}
+.lifetime p {color: white;}
 
-/* Process */
-.how-it-works-section { padding: 60px 0 80px 0; }
-.how-it-works-section .last-cta { margin-top: 45px; display: block; margin-left: auto; margin-right: auto; }
-.process-cards-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-    margin-bottom: 40px; text-align: left; position: relative; 
-}
-.process-card {
-    padding: 40px 30px; border-radius: 50px; border: 1px solid var(--color-border);
-    background-color: var(--grey); border-color: var(--grey); position: relative; padding-top: 80px;
-}
-.process-card .process-icon {
-    position: absolute; top: 25px; left: 50%; width: 60px; margin-left: -30px; 
-    text-align: center; font-size: 3rem; color: var(--text-color);
-}
-.process-card h3 { text-align: center; font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: var(--text-color); }
-.process-card p { font-size: 0.95rem; color: var(--subtext-color); line-height: 1.6; text-align: center; }
 
 /* 10. PAGES ANNEXES (LEGAL, MANUEL, DOC, CONTACT)
    ============================================== */
