@@ -419,7 +419,7 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     border-radius: var(--radius-global); font-weight: bold; box-shadow: var(--glow-effect); white-space: nowrap;
 }
 .pricing-card h3 { font-size: var(--h3-size); margin-bottom: 15px; color: var(--text-color); }
-.pricing-card .price .price-lifetime .price-quick-clean {
+.pricing-card .price, .price-lifetime, .price-quick-clean {
     font-size: var(--h2-size); font-weight: 800; color: var(--text-color); margin-bottom: var(--spacing-global);
 }
 .pricing-features {
