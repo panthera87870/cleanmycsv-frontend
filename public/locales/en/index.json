@@ -4,59 +4,68 @@
   "og_title": "CleanMyCSV – Clean your CSVs instantly",
   "og_desc": "A simple and fast tool to clean your CSV files. Save time guaranteed.",
   
-  "top_banner": "In 2026, save time on what really matters.",
+  "top_banner": "Launch Promo: Clean your first file for free.",
   
   "nav_home": "HOME",
   "nav_docs": "DOCUMENTATION",
   "nav_contact": "CONTACT",
   "nav_cta": "Try it",
   
-  "hero_title": "Clean CSV files. In an instant.",
-  "hero_subtext": "No formulas. No errors. No wasted time.",
-  "hero_cta": "Clean my file",
-  "hero_free_badge": "<i class=\"fas fa-check-circle\"></i> It's 100% free.",
-  "hero_img_alt": "Icons representing data sources to be cleaned",
+  "hero_title": "Clean your CSV files instantly.",
+  "hero_subtext": "Stop wrestling with encoding errors, duplicates, and broken columns. Drop your messy file, get clean data back in seconds. No formulas, no headaches.",
+  "hero_cta": "Clean a file for free",
+  "hero_cta_subtext": "Instant results. No signup required. Files deleted after processing.",
   
-  "costs_title": "Raw data hides more problems than you imagine.",
-  "costs_subtext": "A simple CSV file can contain dozens of small irregularities. <br> Individually, they seem harmless. Together, they waste your time and skew your results.",
+  "benefits_title": "What CleanMyCSV does for you (under the hood)",
+  "benefits_subtext": "Our algorithm automatically detects and fixes the errors that break your software.",
   
-  "cost_1_title": "Inconsistent Formats",
-  "cost_1_desc": "Different date formats, unstable separators, random capitalization… Your file loses its consistency.",
-  "cost_2_title": "Silent Duplicates",
-  "cost_2_desc": "Identical or similar rows mess up your totals without you noticing.",
-  "cost_3_title": "Structural Shifts",
-  "cost_3_desc": "A shifted column or misaligned value is enough to break the table's logic.",
-  
-  "costs_cta_text": "CleanMyCSV spots these irregularities and puts your file back in order, automatically.",
-  
-  "benefits_title": "Clear, fast, and methodical processing.",
-  "benefits_subtext": "What CleanMyCSV fixes for you:",
-  
-  "ben_1_title": "Automatic Harmonization",
-  "ben_1_desc": "Dates, numbers, and separators finally follow the same rules.",
-  "ben_2_title": "Targeted Corrections",
-  "ben_2_desc": "Errors are adjusted without touching reliable data.",
-  "ben_3_title": "Fast Processing",
-  "ben_3_desc": "Your file regains a consistent structure in seconds.",
-  "ben_4_title": "Universal Compatibility",
-  "ben_4_desc": "Any CSV is accepted, regardless of its source.",
-  "ben_5_title": "Guaranteed Privacy",
-  "ben_5_desc": "Your files are deleted immediately after processing.",
-  "ben_6_title": "Clear Report",
-  "ben_6_desc": "You clearly visualize every single adjustment.",
-  
+  "ben_1_title": "1. Delimiters & Encoding",
+  "ben_1_desc": "No more weird characters (Ã©) or merged columns. Forced UTF-8 conversion and perfectly aligned delimiters.",
+  "ben_2_title": "2. Duplicate Removal",
+  "ben_2_desc": "Smart detection and strict removal of duplicate rows. Keep your database light and accurate.",
+  "ben_3_title": "3. Data Formatting",
+  "ben_3_desc": "Trims invisible spaces, fixes capitalization, and standardizes data structures automatically.",
+
   "doc_link_full": "Learn more about CleanMyCSV: check our <a href=\"manual.html\" class=\"doc-link\">Documentation</a>.",
   
-  "steps_main_title": "Three steps. A simple routine, backed by advanced technology.",
-  "step_1_title": "Step 1: Upload your file",
-  "step_1_desc": "Drag & drop your CSV. The transfer is secure.",
-  "step_2_title": "Step 2: Structured Cleaning",
-  "step_2_desc": "Stabilized formats, duplicates removed, errors fixed.",
-  "step_3_title": "Step 3: Download your clean file",
-  "step_3_desc": "A consistent CSV, accompanied by a report if needed.",
-  
-  "cta_last": "Save time. <br>Try CleanMyCSV for free",
-  
+  "pricing": {
+    "title": "Simple pricing. Instant results.",
+    "subtitle": "Pay once, no hidden subscriptions.",
+    "freemium": {
+      "title": "Free",
+      "price": "$0",
+      "feat1": "1 free file",
+      "feat2": "Up to 5 MB limit",
+      "feat3": "Standard cleaning",
+      "cta": "Current plan"
+    },
+    "single": {
+      "title": "Quick Clean",
+      "price": "$9",
+      "feat1": "Unlimited cleaning",
+      "feat2": "24-hour full access",
+      "feat3": "Up to 25 MB files",
+      "cta": "Choose"
+    },
+    "day_pass": {
+      "title": "Pro",
+      "badge": "Most popular",
+      "price": "$29",
+      "feat1": "Unlimited cleaning",
+      "feat2": "7-day full access",
+      "feat3": "Up to 100 MB files",
+      "cta": "Choose"
+    },
+    "lifetime": {
+      "title": "Lifetime",
+      "price": "$99",
+      "feat1": "Unlimited cleaning forever",
+      "feat2": "Up to 100 MB files",
+      "feat3": "All future updates included",
+      "cta": "Choose"
+    }
+  },
+
   "footer_cgu": "Terms of Use",
   "footer_legal": "Legal Notice",
   "footer_privacy": "Privacy Policy",
@@ -69,6 +78,7 @@
     "accept_all": "Accept cookies",
     "accept_necessary": "Continue without accepting"
   },
+
   "modal": {
     "upload": {
       "main_title": "Clean your file instantly:",
@@ -118,54 +128,20 @@
     "logic_us": "USA",
     "logic_tooltip": "Europe: Semicolon separator (;), Decimal comma (,)\n USA: Comma separator (,), Decimal point (.)"
   },
-  "pricing": {
-    "title": "Our offers",
-    "freemium": {
-      "title": "Freemium",
-      "price": "$0",
-      "feat1": "2 cleans per day",
-      "feat2": "Files up to 2 MB",
-      "cta": "Current plan"
-    },
-    "single": {
-      "title": "2h",
-      "price": "$9",
-      "feat1": "Unlimited clean",
-      "feat2": "Unlimited access for 2h",
-      "feat3": "Up to 15 MB",
-      "cta": "Buy now"
-    },
-    "day_pass": {
-      "badge": "Popular",
-      "title": "24h",
-      "price": "$29",
-      "feat1": "Unlimited cleans",
-      "feat2": "Valid for 24h",
-      "feat3": "Up to 15 MB",
-      "cta": "Buy now"
-    },
-    "lifetime": {
-      "title": "Lifetime",
-      "price": "$99",
-      "feat1": "Unlimited forever",
-      "feat2": "Future updates included",
-      "feat3": "Up to 15 MB",
-      "cta": "Buy now"
-    }
-  },
+  
   "errors": {
-    "limit_reached": "Free limit reached (2/day). Upgrade to keep going!",
-    "file_too_large_free": "Oops, this file exceeds the 2MB free limit. Please choose a plan to unlock it."
+    "limit_reached": "Free limit reached. Upgrade to keep going!",
+    "file_too_large_free": "Oops, this file exceeds the 5MB free limit. Please choose a plan to unlock it."
   },
   "teaser": {
     "title": "File Preview ✨",
     "subtitle_limit": "You've reached your free daily limit.",
-    "subtitle_size": "This file exceeds the free size limit (2 MB).",
+    "subtitle_size": "This file exceeds the free size limit (5 MB).",
     "hook": "The cleaning was successful! Here's a quick preview of the fixed rows. Choose a plan below to unlock your full file instantly.",
     "original": "Before",
     "cleaned": "After",
-    "btn_single": "Single",
-    "btn_24h": "24h Pass",
+    "btn_single": "Quick Clean",
+    "btn_24h": "Pro",
     "btn_life": "Lifetime"
   },
   "success_page": {

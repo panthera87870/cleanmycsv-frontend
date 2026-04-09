@@ -4,59 +4,68 @@
   "og_title": "CleanMyCSV – Nettoyez vos CSV en un instant",
   "og_desc": "Un outil simple et rapide pour nettoyer vos fichiers CSV. Gain de temps garanti.",
   
-  "top_banner": "En 2026, gagnez du temps sur ce qui compte vraiment.",
+  "top_banner": "Lancement : Nettoyez votre premier fichier gratuitement.",
   
   "nav_home": "RETOUR AU MENU",
   "nav_docs": "DOCUMENTATION",
   "nav_contact": "CONTACT",
   "nav_cta": "Essayer",
   
-  "hero_title": "Des fichiers CSV propres. En un instant.",
-  "hero_subtext": "Sans formules. Sans erreurs. Sans perte de temps.",
-  "hero_cta": "Nettoyer mon fichier",
-  "hero_free_badge": "<i class=\"fas fa-check-circle\"></i> C'est 100% gratuit.",
-  "hero_img_alt": "Icônes représentant les sources de données à nettoyer",
+  "hero_title": "Nettoyez vos fichiers CSV instantanément.",
+  "hero_subtext": "Fini les erreurs d'encodage, les doublons et les colonnes décalées. Glissez votre fichier corrompu, récupérez une base de données parfaite en quelques secondes. Sans formules, sans stress.",
+  "hero_cta": "Nettoyer un fichier gratuitement",
+  "hero_cta_subtext": "Résultat immédiat. Pas d'authentification requise. Suppression des fichiers immédiate.",
   
-  "costs_title": "Les données brutes cachent souvent plus de problèmes qu’on ne l’imagine.",
-  "costs_subtext": "Un simple fichier CSV peut contenir des dizaines de petites irrégularités. <br> Individuellement, elles semblent anodines. Ensemble, elles vous font perdre du temps et faussent vos résultats.",
+  "benefits_title": "Ce que CleanMyCSV fait pour vous (en tâche de fond)",
+  "benefits_subtext": "Notre algorithme analyse et répare automatiquement les erreurs qui font planter vos logiciels.",
   
-  "cost_1_title": "Formats incohérents",
-  "cost_1_desc": "Dates différentes, séparateurs instables, majuscules aléatoires… Votre fichier perd sa cohérence.",
-  "cost_2_title": "Doublons silencieux",
-  "cost_2_desc": "Des lignes identiques ou similaires perturbent vos totaux sans que vous les remarquiez.",
-  "cost_3_title": "Décalages de structure",
-  "cost_3_desc": "Une colonne décalée ou une valeur mal alignée suffit à casser la logique du tableau.",
-  
-  "costs_cta_text": "CleanMyCSV repère ces irrégularités et remet votre fichier en ordre, automatiquement.",
-  
-  "benefits_title": "Un traitement clair, rapide et méthodique.",
-  "benefits_subtext": "Ce que CleanMyCSV remet en place pour vous :",
-  
-  "ben_1_title": "Harmonisation automatique",
-  "ben_1_desc": "Dates, nombres et séparateurs suivent enfin les mêmes règles.",
-  "ben_2_title": "Corrections ciblées",
-  "ben_2_desc": "Les erreurs sont ajustées sans toucher aux données fiables.",
-  "ben_3_title": "Traitement rapide",
-  "ben_3_desc": "Votre fichier retrouve une structure cohérente en quelques secondes.",
-  "ben_4_title": "Compatibilité universelle",
-  "ben_4_desc": "Tout CSV est accepté, quelle que soit sa source.",
-  "ben_5_title": "Confidentialité assurée",
-  "ben_5_desc": "Vos fichiers sont supprimés après traitement.",
-  "ben_6_title": "Rapport clair",
-  "ben_6_desc": "Vous visualisez clairement chaque ajustement.",
+  "ben_1_title": "1. Délimiteurs & Encodage",
+  "ben_1_desc": "Fini les accents bizarres (Ã©) et les colonnes fusionnées. Conversion forcée en UTF-8 propre et délimiteurs harmonisés.",
+  "ben_2_title": "2. Suppression des Doublons",
+  "ben_2_desc": "Détection intelligente et suppression stricte des lignes en double. Votre base de données redevient légère et pertinente.",
+  "ben_3_title": "3. Formatage des Données",
+  "ben_3_desc": "Nettoyage des espaces invisibles, harmonisation de la casse, et validation des structures (emails, numéros).",
   
   "doc_link_full": "En savoir plus sur CleanMyCSV : consultez notre <a href=\"manual.html\" class=\"doc-link\">Documentation</a>.",
   
-  "steps_main_title": "En trois étapes. Une routine simple, portée par une technologie rigoureuse.",
-  "step_1_title": "Étape 1: Déposez votre fichier",
-  "step_1_desc": "Glissez votre CSV. Le transfert est sécurisé.",
-  "step_2_title": "Étape 2: Nettoyage structuré",
-  "step_2_desc": "Formats stabilisés, doublons retirés, erreurs corrigées.",
-  "step_3_title": "Étape 3: Téléchargez votre fichier propre",
-  "step_3_desc": "Un CSV cohérent, accompagné d’un rapport si besoin.",
-  
-  "cta_last": "Gagnez du temps. <br>Essayez CleanMyCSV gratuitement",
-  
+  "pricing": {
+    "title": "Un pricing simple. Un résultat immédiat.",
+    "subtitle": "Paiement unique, sans abonnement caché.",
+    "freemium": {
+      "title": "Gratuit",
+      "price": "0 €",
+      "feat1": "1 fichier gratuit",
+      "feat2": "Fichiers jusqu'à 5 Mo",
+      "feat3": "Nettoyage standard",
+      "cta": "Offre actuelle"
+    },
+    "single": {
+      "title": "Quick Clean",
+      "price": "9 €",
+      "feat1": "Nettoyages illimités",
+      "feat2": "Accès total pendant 24h",
+      "feat3": "Fichiers jusqu'à 25 Mo",
+      "cta": "Choisir"
+    },
+    "day_pass": {
+      "title": "Pro",
+      "badge": "Le plus populaire",
+      "price": "29 €",
+      "feat1": "Nettoyages illimités",
+      "feat2": "Accès total pendant 7 jours",
+      "feat3": "Fichiers jusqu'à 100 Mo",
+      "cta": "Choisir"
+    },
+    "lifetime": {
+      "title": "Lifetime",
+      "price": "99 €",
+      "feat1": "Nettoyages illimités à vie",
+      "feat2": "Fichiers jusqu'à 100 Mo",
+      "feat3": "Futures mises à jour incluses",
+      "cta": "Choisir"
+    }
+  },
+ 
   "footer_cgu": "CGU / CGV",
   "footer_legal": "Mentions Légales",
   "footer_privacy": "Confidentialité",
@@ -69,6 +78,7 @@
     "accept_all": "Accepter l'utilisation",
     "accept_necessary": "Continuer sans accepter"
   },
+
   "modal": {
     "upload": {
       "main_title": "Nettoyez votre fichier en un instant :",
@@ -118,55 +128,21 @@
     "logic_us": "USA",
     "logic_tooltip": "Europe : Séparateur point-virgule (;), Décimal virgule (,)\nUSA : Séparateur virgule (,), Décimal point (.)"
   },
-  "pricing": {
-    "title": "Nos offres simples et transparentes",
-    "freemium": {
-      "title": "Freemium",
-      "price": "0 €",
-      "feat1": "2 nettoyages par jour",
-      "feat2": "Fichiers jusqu'à 2 Mo",
-      "cta": "Offre actuelle"
-    },
-    "single": {
-      "title": "Pass 2 Heures",
-      "price": "9 €",
-      "feat1": "Nettoyage illimités",
-      "feat2": "Accès illimité pendant 2h",
-      "feat3": "Jusqu'à 15 Mo",
-      "cta": "Choisir"
-    },
-    "day_pass": {
-      "title": "Pass 24 Heures",
-      "badge": "Le plus populaire",
-      "price": "29 €",
-      "feat1": "Nettoyages illimités",
-      "feat2": "Valide pendant 24h",
-      "feat3": "Jusqu'à 15 Mo",
-      "cta": "Choisir"
-    },
-    "lifetime": {
-      "title": "Pass à Vie",
-      "price": "99 €",
-      "feat1": "Illimité pour toujours",
-      "feat2": "Futures mises à jour incluses",
-      "feat3": "Jusqu'à 15 Mo",
-      "cta": "Choisir"
-    }
-  },
+  
   "errors": {
-    "limit_reached": "Limite gratuite atteinte (2/jour). Passez à une offre supérieure !",
-    "file_too_large_free": "En version gratuite, la limite est de 2Mo. Passez au Nettoyage Unique (15Mo).",
+    "limit_reached": "Limite gratuite atteinte. Passez à une offre supérieure !",
+    "file_too_large_free": "En version gratuite, la limite est de 5Mo. Passez à un nouveau plan.",
     "payment_success": "Paiement validé ! Vos limites sont débloquées."
   },
   "teaser": {
     "title": "Aperçu de votre fichier ✨",
     "subtitle_limit": "Vous avez atteint votre limite d'essais pour aujourd'hui.",
-    "subtitle_size": "Ce fichier dépasse la taille maximale gratuite (2 Mo).",
+    "subtitle_size": "Ce fichier dépasse la taille maximale gratuite (5 Mo).",
     "hook": "Le nettoyage a fonctionné ! Voici un aperçu des premières lignes corrigées. Choisissez une offre pour obtenir le fichier complet instantanément.",
     "original": "Avant",
     "cleaned": "Après",
-    "btn_single": "Unique",
-    "btn_24h": "Pass 24h",
+    "btn_single": "Pass 24h",
+    "btn_24h": "Pro",
     "btn_life": "À vie"
   },
   "success_page": {
