@@ -197,7 +197,7 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     border: 2px dashed var(--color-border); border-radius: 8px; padding: 30px; margin-bottom: 20px; text-align: center; cursor: pointer;
     transition: border-color 0.3s ease; background-color: var(--color-info-bg);
 }
-.upload-area:hover { border-color: var(--purple); }
+.upload-area:hover { border-color: var(--grey); }
 .upload-label { display: block; cursor: pointer; }
 .upload-label i { font-size: 3rem; color: var(--purple); margin-bottom: 10px; }
 .upload-label p { font-weight: 600; margin: 5px 0; color: var(--text-color); }
