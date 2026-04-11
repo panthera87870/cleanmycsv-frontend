@@ -194,10 +194,10 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 .close-btn:hover { color: var(--purple); }
 
 .upload-area {
-    border: 2px dashed var(--color-border); border-radius: 8px; padding: 30px; margin-bottom: 20px; text-align: center; cursor: pointer;
+    border: 2px dashed var(--grey); border-radius: 8px; padding: 30px; margin-bottom: 20px; text-align: center; cursor: pointer;
     transition: border-color 0.3s ease; background-color: var(--color-info-bg);
 }
-.upload-area:hover { border-color: var(--grey); }
+.upload-area:hover { border-color: var(--color-border); }
 .upload-label { display: block; cursor: pointer; }
 .upload-label i { font-size: 3rem; color: var(--purple); margin-bottom: 10px; }
 .upload-label p { font-weight: 600; margin: 5px 0; color: var(--text-color); }
@@ -254,7 +254,7 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 
 .final-success-view { text-align: center; padding: 30px 20px; animation: fadeIn 0.5s ease; }
 .final-success-view i.main-icon {
-    font-size: 5rem; color: var(--deeper-purple); margin-bottom: 25px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 5rem; color: var(--orange); margin-bottom: 25px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .final-success-view h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: var(--text-color); }
 .final-success-view p { color: var(--subtext-color); margin-bottom: 30px; font-size: 1.1rem; }
