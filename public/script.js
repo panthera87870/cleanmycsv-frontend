@@ -1,3 +1,6 @@
+// --- INITIALISATION VERCEL ANALYTICS (CUSTOM EVENTS) SECURISEE ---
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Gestion du retour Stripe (sauvegarde du token)
     const urlParams = new URLSearchParams(window.location.search);
@@ -136,6 +139,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 0); 
 
     setupDragDropProtection();
+
+    // --- TRACKING STRIPE AUTOMATIQUE (SANS TOUCHER AU HTML) ---
+    const stripeLinks = document.querySelectorAll('a[href*="buy.stripe.com"]');
+    stripeLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            window.va('track', 'Click_Stripe_Checkout');
+        });
+    });
 });
 
 // Écouteur pour mettre à jour la modale si on change de langue alors qu'elle est ouverte
@@ -358,7 +369,9 @@ async function handleFormSubmit(e) {
     if (typeof gtag === 'function') {
         gtag('event', 'start_cleaning', { 'event_category': 'Engagement', 'event_label': 'CSV Upload' });
     }
-    
+    // NOUVEAU : Envoi de l'événement à Vercel Analytics
+    window.va('track', 'Clean_Action_Started');
+
     dynamicContentArea.innerHTML = `
         <div class="modal-center-view">
             <h2>${t('modal.processing.title')}</h2>
