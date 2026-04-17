@@ -541,7 +541,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
         <div class="report-container" style="background: var(--color-info-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em;">
-            ${sanitize(summaryText)}
+            ${summaryText}
         </div>
     `;
 
