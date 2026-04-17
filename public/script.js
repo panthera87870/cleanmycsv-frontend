@@ -1,19 +1,32 @@
 // --- INITIALISATION VERCEL ANALYTICS (CUSTOM EVENTS) SECURISEE ---
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 
+/**
+ * FONCTION DE SÉCURISATION XSS (CHIRURGICALE)
+ * Remplace les caractères sensibles par des entités HTML.
+ */
+const sanitize = (str) => {
+    if (!str && str !== 0) return '';
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        "/": '&#x2F;',
+    };
+    const reg = /[&<>"'/]/ig;
+    return String(str).replace(reg, (match) => map[match]);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Gestion du retour Stripe (sauvegarde du token)
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
     
     if (token) {
-        localStorage.setItem('mycsv_token', token); // On sauvegarde le sésame
-        
-        // Nettoyage de l'URL pour faire propre
+        localStorage.setItem('mycsv_token', token); 
         window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // Petit message de succès (avec traduction si disponible)
-        // On suppose que vous avez une fonction t() ou similaire, sinon simple alert
         alert("Paiement réussi ! Votre offre est active."); 
     }
 });
@@ -33,10 +46,9 @@ window.addEventListener('load', () => {
                 necessary: { enabled: true, readOnly: true },
                 analytics: { enabled: false, readOnly: false }
             },
-            // Configuration automatique de la langue
             language: {
                 default: 'fr',
-                autoDetect: 'document', // Detecte la langue via <html lang="...">
+                autoDetect: 'document', 
                 translations: {
                     fr: {
                         consentModal: {
@@ -74,22 +86,18 @@ const dynamicContentArea = document.getElementById('dynamic-content');
     const BACKEND_URL = "https://cleanmycsv-backend-536004118248.europe-west1.run.app"; 
     fetch(`${BACKEND_URL}/wakeup`, { 
         method: 'GET',
-        headers: {
-            'X-Warmup-Key': 'warmup_cleanmyCSV_26_!'
-        }
+        headers: { 'X-Warmup-Key': 'warmup_cleanmyCSV_26_!' }
     });
 })();
 
 // --- GESTION DU GLISSER-DÉPOSER GLOBAL ---
 function setupDragDropProtection() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        document.addEventListener(eventName, preventDefaults, false);
+        document.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        }, false);
     });
-
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
 }
 
 // --- UTILITAIRE TRONCATURE ---
@@ -113,8 +121,6 @@ function truncateFilename(filename, maxLength = 30) {
 
 // --- GESTION DU CHARGEMENT DE LA PAGE ---
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. GESTION DES CLICS
     const openButtons = document.querySelectorAll('.js-open-modal');
     openButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -131,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 2. SCROLL FIX
     setTimeout(function() {
         if (window.location.hash === "") {
             window.scrollTo({ top: 0, behavior: 'auto' });
@@ -140,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setupDragDropProtection();
 
-    // --- TRACKING STRIPE AUTOMATIQUE (SANS TOUCHER AU HTML) ---
     const stripeLinks = document.querySelectorAll('a[href*="buy.stripe.com"]');
     stripeLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -149,41 +153,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Écouteur pour mettre à jour la modale si on change de langue alors qu'elle est ouverte
-// (Fonctionne avec ton i18n-loader.js)
 document.addEventListener('i18nReady', () => {
-    // Si la modale est visible et qu'on est sur l'étape initiale (pas en succès/erreur), on rafraîchit
     if (modalElement.classList.contains('visible') && document.getElementById('upload-form')) {
-        // On vérifie si un fichier était déjà sélectionné pour ne pas le perdre visuellement
-        // Note: Pour faire simple, on reset ici, l'utilisateur devra remettre son fichier s'il switch la langue
-        // C'est un compromis acceptable pour garder le code simple.
         resetModal();
     }
-    
-    // Mise à jour de la langue des cookies si possible (dépend de la lib)
     if (typeof CookieConsent !== 'undefined' && typeof CookieConsent.setLanguage === 'function') {
         CookieConsent.setLanguage(document.documentElement.lang);
     }
 });
 
 window.onload = function() {
-    // On attend un peu que les trads chargent, sinon on lance avec les valeurs par défaut
     setTimeout(resetModal, 100); 
 }
 
-// --- Fonctions de défilement (Scroll) ---
 function scrollToSection(event, sectionId) {
     event.preventDefault();
     const targetElement = document.getElementById(sectionId);
     if (targetElement) {
         const headerHeight = 80; 
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerHeight;
+        const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
 }
 
-// --- Fonctions de gestion de la modale ---
 function openModal() {
     resetModal(); 
     modalElement.classList.add('visible');
@@ -198,12 +190,9 @@ function closeModalBtn() {
     closeModal();
 }
 
-// --- FONCTION PRINCIPALE : RESET MODAL (AVEC SÉLECTEUR LOGIQUE) ---
+// --- FONCTION PRINCIPALE : RESET MODAL ---
 function resetModal() {
-    // Utilisation de window.t() défini dans i18n-loader.js
     const t = window.t || ((k) => k);
-
-    // 1. Détection de la langue pour le choix par défaut
     const currentLang = document.documentElement.lang || 'fr';
     const isFr = currentLang === 'fr';
 
@@ -211,10 +200,8 @@ function resetModal() {
         <h2>${t('modal.upload.main_title')}</h2>
         <div class="upload-step">
             <h3>${t('modal.upload.step_1')}</h3>
-            
             <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">                
                 <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required class="visually-hidden">
-                
                 <div class="upload-area">
                     <label for="csv-file" class="upload-label">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -222,22 +209,18 @@ function resetModal() {
                         <small>${t('modal.upload.supported_files')}</small>
                     </label>
                 </div>
-
                 <div class="logic-selector-container">
                     <span class="logic-title" style="font-weight:bold; margin-right:10px;">${t('modal.logic_title') || 'Format :'}</span>
-                    
                     <div class="logic-group">
                         <label class="radio-label">
                             <input type="radio" name="cleaningLogic" value="fr" ${isFr ? 'checked' : ''}>
                             <span>${t('modal.logic_eu') || '🇪🇺 Europe'}</span>
                         </label>
-
                         <label class="radio-label">
                             <input type="radio" name="cleaningLogic" value="en" ${!isFr ? 'checked' : ''}>
                             <span>${t('modal.logic_us') || '🇺🇸 USA'}</span>
                         </label>
                     </div>
-
                     <div class="tooltip-wrapper" style="margin-left: 10px;">
                         <i class="fa-regular fa-circle-question info-icon"></i>
                         <span class="tooltip-text">${t('modal.logic_tooltip') || 'Info format...'}</span>
@@ -248,17 +231,12 @@ function resetModal() {
                 </button>
             </form>
         </div>
-        <p class="security-note">
-            <i class="fa-solid fa-lock"></i> ${t('modal.upload.security_note')}
-        </p>
+        <p class="security-note"><i class="fa-solid fa-lock"></i> ${t('modal.upload.security_note')}</p>
     `;
-    
     setupFormListeners();
 }
 
-// --- Fonctions de téléchargement ---
 function triggerDownload(url, publicName) {
-    console.log('Téléchargement lancé pour :', publicName);
     const a = document.createElement('a');
     a.href = url; 
     a.download = publicName; 
@@ -268,21 +246,17 @@ function triggerDownload(url, publicName) {
     setTimeout(() => { document.body.removeChild(a); }, 100);
 }
 
-// --- Gestion des Événements du Formulaire ---
 function setupFormListeners() {
-    const t = window.t || ((k) => k);
-    console.log('--- Démarrage de setupFormListeners() ---');
-    
+    const t = window.t || ((k) => k);    
     const currentFileInput = document.getElementById('csv-file');
     const currentUploadForm = document.getElementById('upload-form');
     const currentUploadArea = currentUploadForm?.querySelector('.upload-area');
-
     if (!currentFileInput || !currentUploadForm || !currentUploadArea) return;
 
     const currentUploadLabel = currentUploadForm.querySelector('.upload-label');
     const currentSubmitButton = currentUploadForm.querySelector('.start-clean-btn'); 
 
-    // 1. Logique du Glisser-Déposer
+    // Glisser-Déposer
     ['dragenter', 'dragover'].forEach(eventName => {
         currentUploadArea.addEventListener(eventName, (e) => {
             e.preventDefault(); e.stopPropagation();
@@ -329,7 +303,7 @@ function setupFormListeners() {
         }
     }
 
-    // 2. Écouteur pour le changement de fichier
+    // Écouteur pour le changement de fichier
     currentFileInput.addEventListener('change', function() {
         if (currentFileInput.files.length > 0) {
             const originalName = currentFileInput.files[0].name;
@@ -341,7 +315,7 @@ function setupFormListeners() {
             currentUploadLabel.innerHTML = `
                 <i class="fa-solid fa-file-csv icon-purple"></i>
                 <p class="text-bold">${t('modal.upload.file_ready')} 
-                    <strong>${truncatedName}</strong>
+                    <strong>${sanitize(truncatedName)}</strong>
                 </p>
                 <small class="text-muted">${t('modal.upload.change_file')}</small>
             `;
@@ -356,11 +330,9 @@ function setupFormListeners() {
         }
     });
 
-    // 3. Soumission
     currentUploadForm.addEventListener('submit', handleFormSubmit);
 }
 
-// --- Logique de Soumission (AJAX) ---
 async function handleFormSubmit(e) {
     e.preventDefault();
     const t = window.t || ((k) => k);
@@ -369,14 +341,12 @@ async function handleFormSubmit(e) {
     if (typeof gtag === 'function') {
         gtag('event', 'start_cleaning', { 'event_category': 'Engagement', 'event_label': 'CSV Upload' });
     }
-    // NOUVEAU : Envoi de l'événement à Vercel Analytics
     window.va('track', 'Clean_Action_Started');
 
     dynamicContentArea.innerHTML = `
         <div class="modal-center-view">
             <h2>${t('modal.processing.title')}</h2>
             <p class="text-muted">${t('modal.processing.sending')}</p>
-            
             <div class="progress-container" style="width: 100%; max-width: 80%; height: 8px; background: var(--color-info-bg, #f9f9f9); border-radius: 10px; margin: 25px auto; overflow: hidden; position: relative; border: 1px solid var(--color-border, #ddd);">
                 <div class="progress-bar" style="height: 100%; background: linear-gradient(90deg, var(--blue, #52c6ff), var(--purple, #8c52ff)); width: 0%; border-radius: 10px; animation: fakeProgress 10s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;"></div>
             </div>
@@ -389,121 +359,79 @@ async function handleFormSubmit(e) {
                     100% { width: 99%; }
                 }
             </style>
-
             <p class="text-muted-small"><i class="fa-solid fa-clock"></i> ${t('modal.processing.wait')}</p>
         </div>
     `;
     
     const formData = new FormData(form);
-    
     try {
         const selectedLogic = formData.get('cleaningLogic') || document.documentElement.lang || 'fr';
-        
-        // --- NOUVEAU : Préparation de la requête avec le Token ---
         const token = localStorage.getItem('mycsv_token');
-        const fetchOptions = {
-            method: 'POST',
-            body: formData,
-            headers: {} // On initialise les headers vides
-        };
-
-        // Si l'utilisateur a un token valide en stock, on l'ajoute
-        if (token) {
-            fetchOptions.headers['X-Access-Token'] = token;
-        }
+        const fetchOptions = { method: 'POST', body: formData, headers: {} };
+        if (token) fetchOptions.headers['X-Access-Token'] = token;
         
-        // --- FIN NOUVEAU ---
-
-        // On utilise nos fetchOptions préparées juste au-dessus
         const response = await fetch(`${form.action}?lang=${selectedLogic}`, fetchOptions);
         const data = await response.json();
 
         if (!response.ok) {
-            // NOUVEAU RÉFLEXE : Si c'est un problème de limite (Poids ou Nombre), on déclenche le Paywall direct !
             if (response.status === 402 || data.code === 'LIMIT_REACHED' || data.code === 'FILE_TOO_LARGE_FREE') {
                 displaySuccessView(data, true, data.code);
-                return; // On arrête l'exécution classique et on affiche le teaser
+                return;
             }
-
-            // Pour toutes les VRAIES autres erreurs (panne serveur, etc.)
             throw new Error(data.message || `Erreur Serveur: ${response.status}`);
         }
-
         if (data.success) {
-            // Succès normal : isPaywall = false
             displaySuccessView(data, false);
         }
     } catch (error) {
-        console.error('Erreur Critique:', error);
         displayErrorView(error.message);
     }
 }
 
-/**
- * Génère le HTML pour la preview en mode "Split View" (Côte à Côte)
- */
 function generatePreviewHTML(previewRows, t) {
     if (!previewRows || previewRows.length === 0) return '';
-
-    // Sécurisation de la traduction
-    const safeT = (key, fallback) => {
-        const val = t ? t(key) : key;
-        return (val && val !== key) ? val : fallback;
-    };
+    const safeT = (key, fallback) => { const val = t ? t(key) : key; return (val && val !== key) ? val : fallback; };
 
     const txtOriginal = safeT('preview.original_label', 'Fichier Original');
     const txtCleaned = safeT('preview.cleaned_label', 'Fichier Nettoyé');
 
-    // --- PRÉPARATION DES HEADERS ---
-    // On prend les headers du fichier nettoyé pour les deux côtés pour simplifier l'alignement
     let headerHTML = '';
     if (previewRows.length > 0) {
         headerHTML += '<tr>';
         previewRows[0].cleaned.forEach(col => {
-            headerHTML += `<th>${col}</th>`;
+            headerHTML += `<th>${sanitize(col)}</th>`;
         });
         headerHTML += '</tr>';
     }
 
-    // --- GÉNÉRATION DU TABLEAU GAUCHE (ORIGINAL) ---
     let leftBody = '';
     for (let i = 1; i < previewRows.length; i++) {
         leftBody += '<tr>';
         previewRows[i].original.forEach(val => {
-            // Si undefined ou null, on met vide
-            leftBody += `<td>${val || ''}</td>`;
+            leftBody += `<td>${sanitize(val) || ''}</td>`;
         });
         leftBody += '</tr>';
     }
 
-    // --- GÉNÉRATION DU TABLEAU DROIT (NETTOYÉ + COULEURS) ---
     let rightBody = '';
     for (let i = 1; i < previewRows.length; i++) {
         const rowData = previewRows[i];
         rightBody += '<tr>';
-        
-        // On boucle sur les colonnes 'cleaned'
         rowData.cleaned.forEach((valClean, index) => {
-            const valOrig = rowData.original[index]; // On récupère la valeur correspondante
-            
-            // Comparaison (attention aux types, on cast en string pour être sûr)
+            const valOrig = rowData.original[index];
             const strClean = String(valClean || '');
             const strOrig = String(valOrig || '');
-            
-            // Si différent, on ajoute la classe CSS 'cell-diff'
             const isDiff = strClean !== strOrig;
             const cssClass = isDiff ? 'cell-diff' : '';
             
-            rightBody += `<td class="${cssClass}">${strClean}</td>`;
+            rightBody += `<td class="${cssClass}">${sanitize(strClean)}</td>`;
         });
         rightBody += '</tr>';
     }
 
-    // --- ASSEMBLAGE FINAL DU HTML ---
     return `
     <div class="preview-wrapper animate-fade-in">
-        <div class="split-view-container">
-            
+        <div class="split-view-container">           
             <div class="split-pane pane-original">
                 <div class="pane-header header-original">
                     <i class="fa-regular fa-file"></i> ${txtOriginal}
@@ -515,7 +443,6 @@ function generatePreviewHTML(previewRows, t) {
                     </table>
                 </div>
             </div>
-
             <div class="split-pane pane-cleaned">
                 <div class="pane-header header-cleaned">
                     <i class="fa-solid fa-wand-magic-sparkles"></i> ${txtCleaned}
@@ -527,10 +454,10 @@ function generatePreviewHTML(previewRows, t) {
                     </table>
                 </div>
             </div>
-
         </div>
     </div>`;
 }
+
 function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     const t = (key) => {
         if (window.translations && window.currentLang) {
@@ -544,7 +471,6 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         return window.t ? window.t(key) : key;
     };
     
-    // --- 1. GÉNÉRATION DU BEAU TABLEAU (La seule nouveauté) ---
     let theadHTML = '';
     let tbodyHTML = '';
     const preview = data.preview;
@@ -559,7 +485,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
         theadHTML = '<tr>';
         headersToShow.forEach(h => {
-            theadHTML += `<th>${h || 'Colonne'}</th>`;
+            theadHTML += `<th>${sanitize(h || 'Colonne')}</th>`;
         });
         if (hasMoreCols) theadHTML += '<th class="col-fade">...</th>';
         theadHTML += '</tr>';
@@ -584,16 +510,15 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                 }
 
                 if (isFixed) {
-                    tbodyHTML += `<td class="cell-fixed" title="Original: ${origCell}">${cleanCell || '-'} ✨</td>`;
+                    tbodyHTML += `<td class="cell-fixed" title="Original: ${sanitize(origCell)}">${sanitize(cleanCell) || '-'} ✨</td>`;
                 } else {
-                    tbodyHTML += `<td>${cleanCell || '-'}</td>`;
+                    tbodyHTML += `<td>${sanitize(cleanCell) || '-'}</td>`;
                 }
             });
             if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
             tbodyHTML += '</tr>';
         });
 
-        // Effet de flou si paywall
         if (isPaywall) {
             tbodyHTML += '<tr class="row-blurred">';
             headersToShow.forEach(() => tbodyHTML += `<td>données protégées</td>`);
@@ -602,9 +527,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         }
     }
 
-    // --- 2. CONSTRUCTION DE TON ANCIENNE PAGE ---
     const title = isPaywall ? t('teaser.title') : t('modal.success.title');
-    
     let html = `<div class="modal-center-view success-view">`;
     html += `<h2>${title}</h2>`;
 
@@ -615,15 +538,13 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="text-muted">${t('modal.success.subtitle')}</p>`;
     }
 
-    // A. TON RÉSUMÉ HUMAIN (Exactement comme avant)
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
         <div class="report-container" style="background: var(--color-info-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em;">
-            ${summaryText}
+            ${sanitize(summaryText)}
         </div>
     `;
 
-    // B. LE TABLEAU (Inséré au milieu)
     html += `
         <div class="teaser-table-wrapper">
             <table class="teaser-table-modern">
@@ -638,9 +559,8 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             </div>
         `;
     }
-    html += `</div>`; // Fin du tableau
+    html += `</div>`;
 
-    // C. LES BOUTONS (Stripe OU Téléchargement classique)
     if (isPaywall) {
         html += `<p class="text-muted mb-20" style="text-align: center;">${t('teaser.hook')}</p>`;
         html += `
@@ -651,7 +571,6 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             </div>
         `;
     } else {
-        // Un seul bouton, on ajoute un id "btn-text" pour cibler le texte facilement
         html += `
             <div class="download-section mt-20" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <div style="margin-bottom: 20px; text-align: center;">
@@ -670,16 +589,13 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
     dynamicContentArea.innerHTML = html;
 
-    // --- 3. ÉCOUTEURS D'ÉVÉNEMENTS ---
+    // --- ÉCOUTEURS D'ÉVÉNEMENTS ---
     if (!isPaywall) {
         const chkJson = document.getElementById('want-json');
         const btnDownloadMain = document.getElementById('btn-download-main');
         const btnText = document.getElementById('btn-text');
-        
-        // Variable pour suivre l'étape du téléchargement si le JSON est coché
         let downloadStep = 1;
 
-        // Événement 1 : Quand on coche/décoche la case JSON
         if (chkJson && btnText) {
             chkJson.addEventListener('change', (e) => {
                 if (e.target.checked) {
@@ -691,47 +607,32 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             });
         }
 
-        // Événement 2 : Au clic sur le bouton principal
         if (btnDownloadMain) {
             btnDownloadMain.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                // Si le bouton est désactivé (en cours de cooldown), on ne fait rien
+
                 if (btnDownloadMain.disabled) return;
-                
                 if (chkJson && chkJson.checked) {
-                    // MODE DEUX ÉTAPES (CSV puis JSON)
                     if (downloadStep === 1) {
-                        
-                        // 1. On bloque immédiatement le bouton pour empêcher le double-clic
                         btnDownloadMain.disabled = true;
                         btnDownloadMain.style.opacity = '0.7';
                         btnDownloadMain.style.cursor = 'wait';
-                        
-                        // 2. Feedback visuel : on indique que ça prépare
                         btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 8px;"></i>`;
                         
-                        // 3. On lance le téléchargement du CSV
                         triggerDownload(data.downloadUrl, data.downloadName);
                         
-                        // 4. On force une pause (1.5 secondes) avant de débloquer l'étape 2
                         setTimeout(() => {
                             const jsonText = t('modal.success.btn_download_json') || 'Télécharger le rapport JSON';
                             btnText.innerHTML = `${jsonText} (2/2)`;
-                            
-                            // On réactive le bouton pour le deuxième clic
                             btnDownloadMain.disabled = false;
                             btnDownloadMain.style.opacity = '1';
                             btnDownloadMain.style.cursor = 'pointer';
                             
-                            downloadStep = 2; // On autorise l'étape suivante
-                        }, 1500); // Tu peux ajuster ce délai (1500 = 1,5s)
+                            downloadStep = 2;
+                        }, 1500); // (1500 = 1,5s)
                         
                     } else if (downloadStep === 2) {
-                        // Étape 2/2 : On télécharge le JSON
                         triggerDownload(data.reportDownloadUrl, data.reportDownloadName);
-                        
-                        // C'est fini, on passe à l'écran de fin
                         setTimeout(() => {
                             if (typeof displayPostDownloadView === 'function') {
                                 displayPostDownloadView();
@@ -739,7 +640,6 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                         }, 500);
                     }
                 } else {
-                    // MODE CLASSIQUE (Seulement le CSV)
                     triggerDownload(data.downloadUrl, data.downloadName);
                     setTimeout(() => {
                         if (typeof displayPostDownloadView === 'function') {
@@ -758,7 +658,7 @@ function displayErrorView(errorMessage) {
         <div class="modal-center-view">
             <i class="fa-solid fa-triangle-exclamation icon-danger-lg"></i>
             <h2 class="modal-title">${t('modal.error.title')}</h2>
-            <p class="text-muted mb-15">${t('modal.error.prefix')} <strong>${errorMessage}</strong></p>
+            <p class="text-muted mb-15">${t('modal.error.prefix')} <strong>${sanitize(errorMessage)}</strong></p>
             <button id="btn-error-retry" class="cta-button btn-secondary">
                 ${t('modal.error.btn_retry')}
             </button>
@@ -773,20 +673,16 @@ function displayPostDownloadView() {
     dynamicContentArea.innerHTML = `
         <div class="final-success-view">
             <i class="fa-solid fa-circle-check main-icon"></i>
-            
             <h2>${t('modal.post_download.title')}</h2>
             <p>${t('modal.post_download.desc')}</p>
-            
             <div class="action-buttons">
                 <button id="btn-finish-home" class="btn-secondary">
                     <i class="fa-solid fa-house"></i> ${t('modal.post_download.btn_finish')}
                 </button>
-
                 <button id="btn-new-clean" class="cta-button-again">
                     <i class="fa-solid fa-rotate-right"></i> ${t('modal.post_download.btn_again')}
                 </button>
             </div>
-            
             <div class="text-muted-small mt-20">
                 ${t('modal.post_download.security_delete')}
             </div>
@@ -800,7 +696,6 @@ function displayPostDownloadView() {
     if (restartBtn) restartBtn.addEventListener('click', resetModal);
 }
 
-// --- HEADER SCROLL ---
 function setupHeaderScroll() {
     const header = document.querySelector('.main-header');
     let ticking = false;
