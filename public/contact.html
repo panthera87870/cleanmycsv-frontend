@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title data-i18n="meta_title">Contact & Assistance - CleanMyCSV</title>
+    <title data-i18n="contact.meta_title">Contact & Assistance - CleanMyCSV</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
     <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
@@ -47,54 +48,50 @@
         </div>
     </div>
     
-        <div class="sticky-wrapper">
+    <div class="sticky-wrapper">
         <header class="main-header">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html">
-                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
-                    </a>
+                    <a href="index.html"><span>CLEANMYCSV</span></a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="index.html" class="nav-link-uppercase" data-i18n="nav_home">RETOUR AU MENU</a>
-                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav_docs">DOCUMENTATION</a>
-                    <a href="contact.html" class="nav-link-uppercase" data-i18n="nav_contact">CONTACT</a>
-                    
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">DOCUMENTATION</a>
+                    <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
+                    <a href="#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">TARIFS</a>
                     <div class="lang-selector">
                         <i class="fa-solid fa-globe lang-icon"></i>
                         <button class="lang-btn" data-lang="fr">FR</button>
                         <span class="lang-separator">|</span>
                         <button class="lang-btn" data-lang="en">EN</button>
                     </div>
-
-                    <button class="cta-button-nav js-open-modal" data-i18n="nav_try">Essayer</button>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Essayer</button>
                 </div>
             </nav>
         </header>
     </div>
 
     <section class="page-content-wrapper">
-        <div class="container" style="max-width: 800px; text-align: center;">
-            <h1 style="margin-bottom: 20px;" data-i18n="hero_title">Contact & Support Client</h1>
+        <div class="container contact-container">
+            <h1 data-i18n="contact.hero_title">Contact & Assistance</h1>
             
-            <p class="section-subtext" style="text-align: center; margin-bottom: 50px;" data-i18n="hero_subtext">
+            <p class="section-subtext" data-i18n="contact.hero_subtext">
                 Une question sur le fonctionnement de l'outil ou une demande spécifique pour votre entreprise ? Même si CleanMyCSV est conçu pour être autonome, nous restons à votre écoute. Quel que soit votre besoin, n'hésitez pas à nous solliciter.
             </p>
 
             <div class="contact-box">
                 <i class="fa-solid fa-headset contact-icon"></i>
                 
-                <h3 data-i18n="contact_box_title">Une Question ? Écrivez-nous !</h3>
+                <h3 data-i18n="contact.contact_box_title">Une Question ? Écrivez-nous !</h3>
 
                 <a 
                     href="mailto:contact@cleanmycsv.fr?subject=Demande%20de%20contact%20CleanMyCSV" 
                     class="cta-button contact-cta"
-                    data-i18n="contact_btn"
+                    data-i18n="contact.contact_btn"
                 >
                     Nous contacter : contact@cleanmycsv.fr
                 </a>
                 
-                <p class="contact-note" data-i18n="contact_note">
+                <p class="contact-note" data-i18n="contact.contact_note">
                     Notre équipe s'engage à vous apporter une réponse détaillée sous 24 heures ouvrées.
                 </p>
             </div>
@@ -105,19 +102,32 @@
     <footer class="main-footer">
         <div class="container footer-content">
             <div class="footer-primary">
-                <div class="footer-right">
-                    <a href="cgu.html" data-i18n="footer_cgu">CGU</a>
-                    <a href="legal.html" data-i18n="footer_legal">Mentions Légales</a>
-                    <a href="security.html" data-i18n="footer_privacy">Confidentialité</a>
-                    <a href="contact.html" data-i18n="footer_contact">Contact</a>
-                    <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
-                        <span class="status-dot">●</span><span data-i18n="footer_status">Statut du système</span>
-                    </a>
+                
+                <div class="footer-links-wrapper">
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.product_title">Produit</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+                        <a href="manual.html" data-i18n="nav.docs">Documentation</a>
+                        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+                        <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
+                            <span class="status-dot">●</span><span data-i18n="footer.status">Statut du système</span>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.legal_title">Légal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">CGU / CGV</a>
+                        <a href="legal.html" data-i18n="footer.legal">Mentions Légales</a>
+                        <a href="security.html" data-i18n="footer.security">Confidentialité</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
                 </div>
+
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright" data-i18n="footer_copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
+
             </div>
         </div>
     </footer>

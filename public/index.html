@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title data-i18n="meta_title">CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes</title>
-    <meta name="description" data-i18n="meta_desc" content="CleanMyCSV harmonise vos fichiers CSV...">
+    <title data-i18n="index.meta.title">CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes</title>
+    <meta name="description" content="CleanMyCSV harmonise vos fichiers CSV en quelques secondes. Corrigez les formats incohérents, les doublons et les erreurs." data-i18n-attr="content:index.meta.description">
 
-    <meta property="og:title" data-i18n="og_title" content="CleanMyCSV – Nettoyez vos CSV en un instant">
-    <meta property="og:description" data-i18n="og_desc" content="Un outil simple et rapide...">
+    <meta property="og:title" content="CleanMyCSV – Nettoyez vos CSV en un instant">
+    <meta property="og:description" content="Un outil simple et rapide pour nettoyer vos fichiers CSV. Gain de temps garanti.">
     <meta property="og:image" content="assets/images/og-image.png">
     <meta property="og:type" content="website">
 
@@ -27,19 +29,15 @@
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6D4HMV5LP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  
-  // 1. Définir le consentement par défaut comme REFUSÉ
   gtag('consent', 'default', {
     'analytics_storage': 'denied',
     'ad_storage': 'denied',
     'wait_for_update': 500
   });
-
   gtag('js', new Date());
   gtag('config', 'G-Z6D4HMV5LP');
 </script>
@@ -56,24 +54,24 @@
     </div>
 
     <div class="sticky-wrapper">
-
         <header class="main-header">
             <nav class="navbar">
                 <div class="logo">
                     <a href="#top">
-                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
+                        <span>CLEANMYCSV</span>
                     </a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav_docs">DOCUMENTATION</a>
-                    <a href="contact.html" class="nav-link-uppercase" data-i18n="nav_contact">CONTACT</a>
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">DOCUMENTATION</a>
+                    <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
+                    <a href="#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">TARIFS</a>
                     <div class="lang-selector">
                         <i class="fa-solid fa-globe lang-icon"></i>
                         <button class="lang-btn" data-lang="fr">FR</button>
                         <span class="lang-separator">|</span>
                         <button class="lang-btn" data-lang="en">EN</button>
                     </div>
-                    <button class="cta-button-nav js-open-modal" data-i18n="nav_cta">Essayer</button>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Essayer</button>
                 </div>
             </nav>
         </header>
@@ -82,103 +80,233 @@
     <main class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 data-i18n="hero_title">Nettoyez vos fichiers CSV instantanément.</h1>
-                <h2 class="section-subtext" data-i18n="hero_subtext">
+                <h1 data-i18n="index.hero.title">Nettoyez vos fichiers CSV instantanément.</h1>
+                <h2 data-i18n="index.hero.subtitle">
                     Fini les erreurs d'encodage, les doublons et les colonnes décalées. Glissez votre fichier corrompu, récupérez une base de données parfaite en quelques secondes.<br>Sans formules, sans stress.
                 </h2>
                 <div class="cta-wrapper">
-                    <button class="cta-button hero-cta js-open-modal" data-i18n="hero_cta">
+                    <button class="cta-button hero-cta js-open-modal" data-i18n="index.hero.cta">
                         Nettoyer un fichier gratuitement
                     </button>
                 </div>
-                <span class="hero-subtext" data-i18n="hero_cta_subtext">
+                <span class="hero-subtext" data-i18n="index.hero.subtext">
                     Résultat immédiat. Pas d'authentification requise. Suppression des fichiers immédiate.
                 </span>
             </div>
         </div>
     </main>
 
-    <section class="trust-benefits-section">
+    <section class="benefits-section">
         <div class="container">
-            <h2 data-i18n="benefits_title">Ce que CleanMyCSV fait pour vous (en tâche de fond)</h2>
-            <p class="section-subtext" data-i18n="benefits_subtext">
+            <h2 data-i18n="index.benefits.title">Ce que CleanMyCSV fait pour vous (en tâche de fond)</h2>
+            <p class="section-subtext" data-i18n="index.benefits.subtitle">
                 Notre algorithme analyse et répare automatiquement les erreurs qui font planter vos logiciels.
             </p>
             <div class="grey-container">
                     <div class="benefit-content">
-                        <h3 data-i18n="ben_1_title">1. Délimiteurs & Encodage</h3>
-                        <p data-i18n="ben_1_desc">
+                        <h3 data-i18n="index.benefit1.title">1. Délimiteurs & Encodage</h3>
+                        <p data-i18n="index.benefit1.desc">
                             Fini les accents bizarres (Ã©) et les colonnes fusionnées. Conversion forcée en UTF-8 propre et délimiteurs harmonisés.
                         </p>
                     </div>
                 
                     <div class="benefit-content">
-                        <h3 data-i18n="ben_2_title">2. Suppression des Doublons</h3>
-                        <p data-i18n="ben_2_desc">
+                        <h3 data-i18n="index.benefit2.title">2. Suppression des Doublons</h3>
+                        <p data-i18n="index.benefit2.desc">
                             Détection intelligente et suppression stricte des lignes en double. Votre base de données redevient légère et pertinente.
                         </p>
                     </div>
                 
                     <div class="benefit-content">
-                        <h3 data-i18n="ben_3_title">3. Formatage des Données</h3>
-                        <p data-i18n="ben_3_desc">
+                        <h3 data-i18n="index.benefit3.title">3. Formatage des Données</h3>
+                        <p data-i18n="index.benefit3.desc">
                             Nettoyage des espaces invisibles, harmonisation de la casse, et validation des structures (emails, numéros).
                         </p>
                     </div>
             </div>
-            <p class="lien-vers-documentation" data-i18n="doc_link_full">
+            <p class="lien-vers-documentation" data-i18n="index.benefits.doc_link">
                 En savoir plus sur CleanMyCSV : consultez notre <a href="manual.html" class="doc-link">Documentation</a>.
             </p>
         </div>
     </section>
 
+    <section id="demo-cleaner" class="demo-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="index.demo.title">Le moteur en action</h2>
+            
+            <div class="demo-block">
+                <h3 class="table-caption" data-i18n="index.demo.input_title">1. Données Brutes (Entrée)</h3>
+                <div class="table-container raw-data">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-i18n="index.demo.table.name">Nom</th>
+                                <th data-i18n="index.demo.table.date">Date</th>
+                                <th data-i18n="index.demo.table.amount">Montant</th>
+                                <th data-i18n="index.demo.table.zip">Zipcode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>=CMD("FORMAT_C")</td><td>12/31/2023</td><td>$1,234.50</td><td>2110</td></tr>
+                            <tr><td>+De la| HOUSSAYE</td><td>FÉV 5, - 23</td><td>1.000,50 €</td><td> 75 00 1</td></tr>
+                            <tr><td>VAN der bRoek</td><td>04/05/2023</td><td> CAD 488,49 </td><td>123456789</td></tr>
+                            <tr><td>N/A</td><td>45000</td><td>¥ 1 200</td><td>NaN</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <div class="table-header-actions">
+                    <h3 class="table-caption" data-i18n="index.demo.output_title">2. Données Nettoyées (Sortie)</h3>
+                    
+                    <div class="toggle-container">
+                        <span class="toggle-label">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" id="locale-toggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-label us">US</span>
+                    </div>
+                </div>
+                <div id="table-fr" class="table-container clean-data active-view">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-i18n="index.demo.table.name">Nom</th>
+                                <th data-i18n="index.demo.table.date">Date</th>
+                                <th data-i18n="index.demo.table.amount">Montant</th>
+                                <th class="col-added" data-i18n="index.demo.table.currency">Devise</th>
+                                <th data-i18n="index.demo.table.zip">Zipcode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.security">'=CMD("FORMAT_C")</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.date_auto">2023-12-31</td>
+                                <td class="col-fixed">1234.50</td>
+                                <td class="col-added">USD</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.zip_zero">02110</td>
+                            </tr>
+                            <tr>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.particles">De La Houssaye</td>
+                                <td class="col-fixed">2023-02-05</td>
+                                <td class="col-fixed">1000.50</td>
+                                <td class="col-added">EUR</td>
+                                <td class="col-fixed">75001</td>
+                            </tr>
+                            <tr>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.particles">Van Der Broek</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.date_fr">2023-05-04</td>
+                                <td class="col-fixed">488.49</td>
+                                <td class="col-added">CAD</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.zip_plus4">12345-6789</td>
+                            </tr>
+                            <tr>
+                                <td class="col-fixed"></td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.excel_date">2023-03-15</td>
+                                <td class="col-fixed">1200.00</td>
+                                <td class="col-added">JPY</td>
+                                <td class="col-fixed"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="table-us" class="table-container clean-data hidden-view">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-i18n="index.demo.table.name">Nom</th>
+                                <th data-i18n="index.demo.table.date">Date</th>
+                                <th data-i18n="index.demo.table.amount">Amount</th>
+                                <th class="col-added" data-i18n="index.demo.table.currency">Currency</th>
+                                <th data-i18n="index.demo.table.zip">Zipcode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.security">'=CMD("FORMAT_C")</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.date_auto">2023-12-31</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.amount_us">1.23</td>
+                                <td class="col-added">USD</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.zip_zero">02110</td>
+                            </tr>
+                            <tr>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.particles">De La Houssaye</td>
+                                <td class="col-fixed">2023-02-05</td>
+                                <td class="col-fixed">1000.50</td>
+                                <td class="col-added">EUR</td>
+                                <td class="col-fixed">75001</td>
+                            </tr>
+                            <tr>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.particles">Van Der Broek</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.date_us">2023-04-05</td>
+                                <td class="col-fixed">488.49</td>
+                                <td class="col-added">CAD</td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.zip_plus4">12345-6789</td>
+                            </tr>
+                            <tr>
+                                <td class="col-fixed"></td>
+                                <td class="col-fixed has-tooltip" data-i18n-tooltip="index.demo.tooltip.excel_date">2023-03-15</td>
+                                <td class="col-fixed">1200.00</td>
+                                <td class="col-added">JPY</td>
+                                <td class="col-fixed"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="pricing" class="pricing-section container">
-        <h2 data-i18n="pricing.title">Un pricing simple. Un résultat immédiat.</h2>
-        <p class="section-subtext" data-i18n="pricing.subtitle"></p>
+        <h2 data-i18n="index.pricing.title">Un pricing simple. Un résultat immédiat.</h2>
+        <p class="section-subtext" data-i18n="index.pricing.subtitle">Paiement unique, sans abonnement caché.</p>
         
         <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3 data-i18n="pricing.freemium.title">Free</h3>
-                <p class="price" data-i18n="pricing.freemium.price">0 €</p>
+            <div class="pricing-card free">
+                <h3 data-i18n="index.pricing.free.title">Free</h3>
+                <p class="price" data-i18n="index.pricing.free.price">0 €</p>
                 <ul class="pricing-features">
-                    <li data-i18n="pricing.freemium.feat1">1 fichier gratuit</li>
-                    <li data-i18n="pricing.freemium.feat2">Fichiers jusqu'à 5 Mo</li>
+                    <li data-i18n="index.pricing.free.feat1">2 nettoyages gratuits par jour</li>
+                    <li data-i18n="index.pricing.free.feat2">Fichiers jusqu'à 5 Mo</li>
                 </ul>
-                <button class="btn-disabled" disabled data-i18n="pricing.freemium.cta">Offre actuelle</button>
+                <button class="price-button js-open-modal" disabled data-i18n="index.pricing.btn_try">Essayer</button>
             </div>
 
-            <div class="pricing-card quick-clean card-highlight">
-                <h3 data-i18n="pricing.single.title">24h</h3>
-                <p class="price-quick-clean" data-i18n="pricing.single.price">9 €</p>
+            <div class="pricing-card day-pass card-highlight">
+                <h3 data-i18n="index.pricing.day.title">24h</h3>
+                <p class="price-quick-clean" data-i18n="index.pricing.day.price">9 €</p>
                 <ul class="pricing-features">
-                    <li data-i18n="pricing.single.feat1">Nettoyages illimités</li>
-                    <li data-i18n="pricing.single.feat2">Accès total pendant 24h</li>
-                    <li data-i18n="pricing.single.feat3">Fichiers jusqu'à 25 Mo</li>
+                    <li data-i18n="index.pricing.day.feat1">Nettoyages illimités</li>
+                    <li data-i18n="index.pricing.day.feat2">Accès total pendant 24h</li>
+                    <li data-i18n="index.pricing.day.feat3">Fichiers jusqu'à 25 Mo</li>
                 </ul>
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="cta-button" data-i18n="pricing.single.cta">Acheter</a>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="price-button" data-i18n="index.pricing.btn_choose">Choisir</a>
             </div>
 
-            <div class="pricing-card popular day-pass card-highlight">
-                <div class="badge" data-i18n="pricing.day_pass.badge">Le plus opulaire</div>
-                <h3 data-i18n="pricing.day_pass.title">7 jours</h3>
-                <p class="price" data-i18n="pricing.day_pass.price">29 €</p>
+            <div class="pricing-card popular week-pass card-highlight">
+                <div class="badge" data-i18n="index.pricing.week.badge">Le plus populaire</div>
+                <h3 data-i18n="index.pricing.week.title">7 jours</h3>
+                <p class="price" data-i18n="index.pricing.week.price">29 €</p>
                 <ul class="pricing-features">
-                    <li data-i18n="pricing.day_pass.feat1">Nettoyages illimités</li>
-                    <li data-i18n="pricing.day_pass.feat2">Accès total pendant 7 jours</li>
-                    <li data-i18n="pricing.day_pass.feat3">Fichiers jusqu'à 100 Mo</li>
+                    <li data-i18n="index.pricing.week.feat1">Nettoyages illimités</li>
+                    <li data-i18n="index.pricing.week.feat2">Accès total pendant 7 jours</li>
+                    <li data-i18n="index.pricing.week.feat3">Fichiers jusqu'à 100 Mo</li>
                 </ul>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button" data-i18n="pricing.day_pass.cta">Acheter</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="price-button" data-i18n="index.pricing.btn_choose">Choisir</a>
             </div>
 
             <div class="pricing-card lifetime">
-                <h3 data-i18n="pricing.lifetime.title">À vie</h3>
-                <p class="price-lifetime" data-i18n="pricing.lifetime.price">99 €</p>
+                <h3 data-i18n="index.pricing.life.title">À vie</h3>
+                <p class="price-lifetime" data-i18n="index.pricing.life.price">99 €</p>
                 <ul class="pricing-features">
-                    <li data-i18n="pricing.lifetime.feat1">Nettoyages illimités à vie</li>
-                    <li data-i18n="pricing.lifetime.feat2">Fichiers jusqu'à 100 Mo</li>
-                    <li data-i18n="pricing.lifetime.feat3">Futures mises à jour incluses</li>
+                    <li data-i18n="index.pricing.life.feat1">Nettoyages illimités à vie</li>
+                    <li data-i18n="index.pricing.life.feat2">Fichiers jusqu'à 100 Mo</li>
+                    <li data-i18n="index.pricing.life.feat3">Futures mises à jour incluses</li>
                 </ul>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="cta-button" data-i18n="pricing.lifetime.cta">Acheter</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="price-button" data-i18n="index.pricing.btn_choose">Choisir</a>
             </div>
         </div>
     </section>
@@ -186,19 +314,32 @@
     <footer class="main-footer">
         <div class="container footer-content">
             <div class="footer-primary">
-                <div class="footer-right">
-                    <a href="cgu.html" data-i18n="footer_cgu">CGU / CGV</a>
-                    <a href="legal.html" data-i18n="footer_legal">Mentions Légales</a>
-                    <a href="security.html" data-i18n="footer_privacy">Confidentialité</a>
-                    <a href="contact.html" data-i18n="footer_contact">Contact</a>
-                    <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
-                        <span class="status-dot">●</span><span data-i18n="footer_status">Statut du système</span>
-                    </a>
+                
+                <div class="footer-links-wrapper">
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.product_title">Produit</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+                        <a href="manual.html" data-i18n="nav.docs">Documentation</a>
+                        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+                        <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
+                            <span class="status-dot">●</span><span data-i18n="footer.status">Statut du système</span>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.legal_title">Légal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">CGU / CGV</a>
+                        <a href="legal.html" data-i18n="footer.legal">Mentions Légales</a>
+                        <a href="security.html" data-i18n="footer.security">Confidentialité</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
                 </div>
+
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright" data-i18n="footer_rights">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
+
             </div>
         </div>
     </footer>

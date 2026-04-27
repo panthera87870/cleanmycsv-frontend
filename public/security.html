@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title data-i18n="meta_title">Politique de Confidentialité - CleanMyCSV</title>
+    <title data-i18n="security.meta.title">Politique de Confidentialité - CleanMyCSV</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
     <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
@@ -17,17 +18,15 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
-
     <script defer src="/_vercel/insights/script.js"></script>
+
 </head>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6D4HMV5LP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   
-  // 1. Définir le consentement par défaut comme REFUSÉ
   gtag('consent', 'default', {
     'analytics_storage': 'denied',
     'ad_storage': 'denied',
@@ -47,91 +46,105 @@
         </div>
     </div>
     
-   <div class="sticky-wrapper">
+    <div class="sticky-wrapper">
         <header class="main-header">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html">
-                        <span>CLEANMY<span class="logo-accent">CSV</span></span>
-                    </a>
+                    <a href="index.html"><span>CLEANMYCSV</span></a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="index.html" class="nav-link-uppercase" data-i18n="nav_home">RETOUR AU MENU</a>
-                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav_docs">DOCUMENTATION</a>
-                    <a href="contact.html" class="nav-link-uppercase" data-i18n="nav_contact">CONTACT</a>
-                    
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">DOCUMENTATION</a>
+                    <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
+                    <a href="index.html#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">TARIFS</a>
                     <div class="lang-selector">
                         <i class="fa-solid fa-globe lang-icon"></i>
                         <button class="lang-btn" data-lang="fr">FR</button>
                         <span class="lang-separator">|</span>
                         <button class="lang-btn" data-lang="en">EN</button>
                     </div>
-
-                    <button class="cta-button-nav js-open-modal" data-i18n="nav_try">Essayer</button>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Essayer</button>
                 </div>
             </nav>
         </header>
     </div>
 
-    <section class="page-content-wrapper">
+    <main class="page-content-wrapper">
         <div class="container">
-            <h1 data-i18n="hero_title">Confidentialité & Protection des Données</h1>
-            <p class="section-subtext text-center" data-i18n="hero_subtext">
-                Chez CleanMyCSV, nous traitons vos fichiers comme s'il s'agissait des nôtres : avec une sécurité maximale et une durée de vie minimale.
-            </p>
+            <section class="docs-section">
+                <h2 data-i18n="security.hero.title">Politique de Confidentialité</h2>
+                
+                <div class="structurel">
+                    <h4><i class="fa-solid fa-user-shield"></i> <span data-i18n="security.sect1.title">1. Responsable du Traitement</span></h4>
+                    <p data-i18n="security.sect1.p">Le service CleanMyCSV est édité par <strong>CleanMyCSV</strong>. En tant que responsable du traitement, nous nous engageons à ce que la collecte et le traitement de vos données soient conformes au RGPD et à la loi Informatique et Libertés.</p>
+                </div>
 
-            <div class="structurel">
-                <h4 data-i18n="sect1_title"><i class="fa-solid fa-cloud-shield"></i> 1. Architecture "Privacy by Design"</h4>
-                <p data-i18n="sect1_p">Notre infrastructure est conçue pour qu'aucune donnée sensible ne puisse être interceptée ou conservée durablement.</p>
-                <ul>
-                    <li data-i18n="sect1_li1"><strong>Traitement en mémoire vive (RAM) :</strong> Votre fichier est nettoyé "au vol" dans la mémoire de nos serveurs Cloud Run sans être écrit sur un disque dur durant l'opération.</li>
-                    <li data-i18n="sect1_li2"><strong>Chiffrement de bout en bout :</strong> Tous les échanges sont protégés par le protocole HTTPS (TLS) et une politique de sécurité stricte (HSTS).</li>
-                    <li data-i18n="sect1_li3"><strong>Sécurité :</strong> Nous utilisons des protections avancées contre les attaques (Rate Limiting, Helmet) pour garantir la disponibilité du service.</li>
-                </ul>
-            </div>
+                <div class="structurel">
+                    <h4><i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="security.sect2.title">2. Cycle de vie des données CSV</span></h4>
+                    <p data-i18n="security.sect2.intro">Nous appliquons une politique de rétention stricte pour garantir votre confidentialité :</p>
+                    <ul>
+                        <li data-i18n="security.sect2.li1"><strong>Traitement éphémère :</strong> Vos fichiers sont traités en mémoire vive sur nos serveurs Cloud Run.</li>
+                        <li data-i18n="security.sect2.li2"><strong>Accès sécurisé :</strong> Les liens de téléchargement générés (Signed URLs) expirent automatiquement après <strong>15 minutes</strong>.</li>
+                        <li data-i18n="security.sect2.li3"><strong>Suppression définitive :</strong> Les fichiers stockés temporairement dans nos buckets sécurisés sont supprimés automatiquement sous <strong>24 heures</strong> via une règle de cycle de vie automatisée.</li>
+                    </ul>
+                </div>
 
-            <div class="structurel">
-                <h4 data-i18n="sect2_title"><i class="fa-solid fa-clock-rotate-left"></i> 2. Cycle de vie éphémère (15 minutes)</h4>
-                <p data-i18n="sect2_p">Contrairement aux services de stockage, nous sommes une unité de traitement. Votre droit à l'oubli est automatisé par le code :</p>
-                <ul>
-                    <li data-i18n="sect2_li1"><strong>Suppression automatique :</strong> Une fois le nettoyage terminé, votre fichier propre et son rapport sont placés dans un espace de stockage sécurisé (Google Cloud Storage).</li>
-                    <li data-i18n="sect2_li2"><strong>Lien sécurisé à usage unique :</strong> Le lien de téléchargement qui vous est fourni expire mathématiquement après <strong>15 minutes</strong>.</li>
-                    <li data-i18n="sect2_li3"><strong>Destruction définitive :</strong> Passé ce délai, les fichiers sont supprimés de nos serveurs. Personne, pas même notre équipe technique, ne peut les récupérer.</li>
-                </ul>
-            </div>
+                <div class="structurel">
+                    <h4><i class="fa-solid fa-credit-card"></i> <span data-i18n="security.sect3.title">3. Services Tiers et Sécurité</span></h4>
+                    <p data-i18n="security.sect3.intro">Pour assurer le bon fonctionnement de CleanMyCSV, nous utilisons des partenaires de confiance :</p>
+                    <ul>
+                        <li data-i18n="security.sect3.li1"><strong>Stripe :</strong> Vos données de paiement sont traitées exclusivement par Stripe. CleanMyCSV n'a jamais accès à vos numéros de carte bancaire (certification PCI-DSS).</li>
+                        <li data-i18n="security.sect3.li2"><strong>Vercel Analytics :</strong> Nous mesurons l'audience de manière anonymisée. Aucune donnée permettant de vous identifier personnellement n'est collectée via cet outil.</li>
+                        <li data-i18n="security.sect3.li3"><strong>Google Cloud Storage :</strong> Vos fichiers sont isolés dans des compartiments (buckets) privés et chiffrés.</li>
+                    </ul>
+                </div>
 
-            <div class="structurel">
-                <h4 data-i18n="sect3_title"><i class="fa-solid fa-cookie-bite"></i> 3. Mesure d'audience & Cookies</h4>
-                <p data-i18n="sect3_p">Pour améliorer l'outil, nous utilisons Google Analytics de manière responsable :</p>
-                <ul>
-                    <li data-i18n="sect3_li1"><strong>Données Anonymisées :</strong> Nous collectons des statistiques globales (nombre de fichiers traités, erreurs de parsing) sans jamais lier ces infos à votre identité.</li>
-                    <li data-i18n="sect3_li2"><strong>Gestion des Cookies :</strong> Seuls les cookies nécessaires au bon fonctionnement et à la mesure d'audience anonyme sont utilisés. Vous pouvez les gérer via les réglages de votre navigateur.</li>
-                </ul>
-            </div>
+                <div class="structurel">
+                    <h4><i class="fa-solid fa-shield-virus"></i> <span data-i18n="security.sect4.title">4. Sécurité des fichiers exportés</span></h4>
+                    <p data-i18n="security.sect4.p">Notre algorithme neutralise les formules potentiellement malveillantes (CSV Injection) en nettoyant les caractères suspects lors de la normalisation, protégeant ainsi votre ordinateur lors de l'ouverture du fichier dans Excel ou Google Sheets.</p>
+                </div>
 
-            <div class="structurel">
-                <h4 data-i18n="sect4_title"><i class="fa-solid fa-shield-virus"></i> 4. Protection Anti-Injection</h4>
-                <p data-i18n="sect4_p">En plus de protéger vos données, nous protégeons votre ordinateur. Notre algorithme neutralise les formules malveillantes (CSV Injection) en ajoutant une apostrophe de sécurité devant les cellules suspectes.</p>
-            </div>
+                <div class="structurel">
+                    <h4><i class="fa-solid fa-server"></i> <span data-i18n="security.sect5.title">5. Sécurité de l'Infrastructure</span></h4>
+                    <p data-i18n="security.sect5.p">Nos serveurs sont équipés de protections avancées bloquant automatiquement les tentatives d'attaques web standard (failles XSS, Clickjacking) et limitant le nombre de requêtes pour prévenir les attaques par force brute et garantir la stabilité du service pour tous.</p>
+                </div>
+
+                <div class="final-cta-docs">
+                    <h3 data-i18n="security.cta.title">Des questions sur vos données ?</h3>
+                    <a href="contact.html" class="cta-button last-contact-btn" data-i18n="security.cta.btn">Nous contacter</a>
+                </div>
+            </section>
         </div>
-    </section>
+    </main>
 
     <footer class="main-footer">
         <div class="container footer-content">
             <div class="footer-primary">
-                <div class="footer-right">
-                    <a href="cgu.html" data-i18n="footer_cgu">CGU</a>
-                    <a href="legal.html" data-i18n="footer_legal">Mentions Légales</a>
-                    <a href="security.html" data-i18n="footer_privacy">Confidentialité</a>
-                    <a href="contact.html" data-i18n="footer_contact">Contact</a>
-                    <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
-                        <span class="status-dot">●</span><span data-i18n="footer_status">Statut du système</span>
-                    </a>
+                
+                <div class="footer-links-wrapper">
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.product_title">Produit</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+                        <a href="manual.html" data-i18n="nav.docs">Documentation</a>
+                        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+                        <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
+                            <span class="status-dot">●</span><span data-i18n="footer.status">Statut du système</span>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.legal_title">Légal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">CGU / CGV</a>
+                        <a href="legal.html" data-i18n="footer.legal">Mentions Légales</a>
+                        <a href="security.html" data-i18n="footer.security">Confidentialité</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
                 </div>
+
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright" data-i18n="footer_copyright">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
                 </div>
+
             </div>
         </div>
     </footer>

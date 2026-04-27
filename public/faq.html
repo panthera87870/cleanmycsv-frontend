@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
+
+    <title data-i18n="faq_content.meta.title">Guides de nettoyage CSV : Accents, Dates et Sécurité | CleanMyCSV</title>
+    <meta name="description" data-i18n-attr="content:faq_content.meta.desc" content="Découvrez comment CleanMyCSV répare vos fichiers : correction des accents (Ã©), récupération des zéros de codes postaux, normalisation de dates ISO et sécurité anti-injection.">
+     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
+  
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment l'outil de nettoyage CSV fonctionne-t-il ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CleanMyCSV analyse et standardise vos données instantanément. L'algorithme corrige les erreurs d'encodage, supprime les doublons et normalise les données complexes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quels types de données sont corrigés automatiquement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'outil normalise les e-mails, téléphones, codes postaux et les données financières avec extraction de devise."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content" id="modal-container">
+            <button class="close-btn js-close-modal">&times;</button>
+            <div id="dynamic-content"></div>
+        </div>
+    </div>
+    
+    <div class="sticky-wrapper">
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><span>CLEANMYCSV</span></a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">DOCUMENTATION</a>
+                    <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
+                    <a href="index.html#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">TARIFS</a>
+                    <div class="lang-selector">
+                        <i class="fa-solid fa-globe lang-icon"></i>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Essayer</button>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+<main class="page-content-wrapper">
+    <div class="container">
+        <section class="docs-section">
+            <article id="faq">
+                <h2 data-i18n="faq_content.title">Foire Aux Questions</h2>
+                
+                <div class="faq-container">
+                    
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q1.title">1. À quoi sert CleanMyCSV ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q1.ans">
+                                CleanMyCSV nettoie et normalise automatiquement vos fichiers de données. Le programme corrige intelligemment les erreurs de formatage, d'encodage et de structure pour vous livrer un fichier CSV propre et directement exploitable dans vos logiciels.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q2.title">2. Quelles corrections sont appliquées à mes données ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q2.intro">L'algorithme intervient sur plusieurs éléments critiques :</p>
+                            <ul class="faq-list">
+                                <li data-i18n="faq_content.q2.feat1"><strong>Encodage et structure :</strong> Conversion universelle vers UTF-8 pour sécuriser les accents et détection automatique des séparateurs.</li>
+                                <li data-i18n="faq_content.q2.feat2"><strong>Nettoyage :</strong> Suppression des lignes entièrement vides et des doublons.</li>
+                                <li data-i18n="faq_content.q2.feat3"><strong>Normalisation :</strong> Uniformisation des dates, réparation des codes postaux (ajout des zéros manquants), et formatage standardisé des adresses e-mail et numéros de téléphone.</li>
+                                <li data-i18n="faq_content.q2.feat4"><strong>Finance :</strong> Normalisation des montants et extraction automatique de la devise dans une colonne dédiée.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q3.title">3. Quels sont les tarifs et limites de taille de fichier ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q3.intro">CleanMyCSV s'adapte à vos besoins avec quatre offres claires :</p>
+                            <ul class="faq-list">
+                                <li data-i18n="faq_content.q3.tier1"><strong>Offre Gratuite (0 €) :</strong> Idéale pour tester, inclut 2 nettoyages par jour pour des fichiers allant jusqu'à 5 Mo.</li>
+                                <li data-i18n="faq_content.q3.tier2"><strong>Pass 24h (9 €) :</strong> Nettoyages illimités pendant 24 heures pour des fichiers jusqu'à 25 Mo.</li>
+                                <li data-i18n="faq_content.q3.tier3"><strong>Pass 7 jours (29 €) :</strong> Nettoyages illimités pendant une semaine, avec une capacité étendue aux fichiers jusqu'à 100 Mo.</li>
+                                <li data-i18n="faq_content.q3.tier4"><strong>Licence À Vie (99 €) :</strong> Accès illimité garanti à vie, fichiers jusqu'à 100 Mo et toutes les futures mises à jour incluses.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q4.title">4. Quels types de fichiers puis-je importer ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q4.ans">Le programme accepte exclusivement les fichiers au format .csv. Si votre fichier est dans un autre format, il sera immédiatement rejeté par le système.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q5.title">5. Mes données sensibles sont-elles en sécurité ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q5.ans">Oui, la sécurité est maximale. Vos fichiers sont accessibles via un lien sécurisé qui expire automatiquement après 15 minutes. Une fois ce délai passé, les données ne sont plus récupérables par personne. Pour une sécurité totale, nous appliquons une politique de suppression définitive de nos serveurs de stockage sous 24h.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q6.title">6. Pourquoi mon fichier est-il refusé au moment de l'import ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q6.intro">Un blocage peut survenir pour les raisons suivantes :</p>
+                            <ul class="faq-list">
+                                <li data-i18n="faq_content.q6.reason1">Le document n'est pas un fichier .csv valide.</li>
+                                <li data-i18n="faq_content.q6.reason2">Le poids du fichier dépasse la limite incluse dans votre offre actuelle (5 Mo, 25 Mo ou 100 Mo).</li>
+                                <li data-i18n="faq_content.q6.reason3">Vous utilisez l'offre gratuite et avez dépassé votre limite de 2 fichiers par jour.</li>
+                                <li data-i18n="faq_content.q6.reason4">Pour garantir la stabilité du service, le système limite les envois globaux à 300 requêtes toutes les 5 minutes.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q7.title">7. Comment vérifier les modifications apportées ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q7.ans">Une transparence totale est garantie. L'outil génère un rapport de diagnostic détaillé fourni avec votre fichier final. Ce document indique le volume de données modifiées et détaille l'historique complet des actions effectuées sur vos lignes et colonnes.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q8.title">8. Quelle est la différence entre le mode de nettoyage FR et US ?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q8.intro">La différence principale réside dans l'interprétation des <strong>données ambiguës</strong>. Notre algorithme utilise des logiques régionales différentes pour deviner la véritable intention derrière une donnée mal formatée :</p>
+                            <ul class="faq-list">
+                                <li data-i18n="faq_content.q8.feat1"><strong>Dates :</strong> La date "04/05/2023" sera lue comme le <strong>4 Mai</strong> en mode FR (Jour/Mois), mais comme le <strong>5 Avril</strong> en mode US (Mois/Jour). Si le programme détecte "13/01", il comprendra automatiquement l'erreur dans les deux modes et corrigera.</li>
+                                <li data-i18n="faq_content.q8.feat2"><strong>Montants :</strong> Le chiffre "1.234" sera interprété comme <strong>1234,00</strong> en mode FR (où le point sépare souvent les milliers), mais comme <strong>1,23</strong> en mode US (où le point marque la décimale).</li>
+                                <li data-i18n="faq_content.q8.feat3"><strong>Codes Postaux :</strong> Le mode US active des règles spécifiques au continent nord-américain, comme la restauration des zéros initiaux pour la côte Est et la standardisation du format ZIP+4 (ex: 12345-6789).</li>
+                            </ul>
+                            <p data-i18n="faq_content.q8.outro">Le choix du mode ne bride pas le nettoyage (les accents, tirets, et doublons sont corrigés dans les deux cas), il permet simplement de donner le bon contexte à notre moteur d'intelligence.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q9.title">9. Comment CleanMyCSV nettoie-t-il les numéros de téléphone ?</h3>
+                            <span class="fa-solid fa-chevron-down"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q9.intro">Les numéros de téléphone sont souvent saisis de manière chaotique. Notre algorithme les standardise pour qu'ils soient directement utilisables par votre CRM ou vos outils de campagne :</p>
+                            <ul class="faq-list">
+                                <li data-i18n="faq_content.q9.feat1">Il supprime les symboles parasites (espaces inutiles, parenthèses, doubles zéros).</li>
+                                <li data-i18n="faq_content.q9.feat2">Il isole et conserve les numéros internes (extensions / postes).</li>
+                                <li data-i18n="faq_content.q9.feat3">Il ne conserve que le premier numéro si une cellule en contient plusieurs (ex: "06... / 01...").</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q10.title">10. Numéros : Quelle est la différence entre le mode "Europe" et "US" ?</h3>
+                            <span class="fa-solid fa-chevron-down"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q10.intro">Le choix de la région permet à notre algorithme d'appliquer la bonne intelligence de formatage :</p>
+                            <ul class="faq-list">
+                                <li><strong data-i18n="faq_content.q10.us_title">Mode US :</strong> <span data-i18n="faq_content.q10.us_desc">Les numéros locaux à 10 chiffres sont automatiquement convertis au format international nord-américain (ex: <code>+1 (555) 123-4567</code>).</span></li>
+                                <li><strong data-i18n="faq_content.q10.eu_title">Mode Europe :</strong> <span data-i18n="faq_content.q10.eu_desc">L'algorithme est optimisé pour le marché français (conversion des numéros en <code>+33 6...</code>). Pour tous les autres pays européens (Allemagne, Belgique, Suisse, etc.), nous appliquons un principe de précaution : nous nettoyons parfaitement les caractères parasites sans forcer de formatage local, pour garantir que le numéro reste valide (ex: <code>+4930123456</code>).</span></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <h3 data-i18n="faq_content.q11.title">11. Y a-t-il un risque que le nettoyeur modifie mes numéros de SIRET ou de commande ?</h3>
+                            <span class="fa-solid fa-chevron-down"></span>
+                        </summary>
+                        <div class="faq-content">
+                            <p data-i18n="faq_content.q11.ans"><strong>Non, vos données de référence sont en sécurité.</strong> Notre détecteur de téléphone est équipé d'une sécurité "Anti-ID". Si une cellule contient une suite de chiffres bruts très longue (plus de 13 caractères, comme un numéro de SIRET, un code-barres EAN ou un identifiant de transaction) et sans signe de ponctuation téléphonique, l'algorithme la considère comme une donnée technique métier et n'y touche absolument pas.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </article>
+
+            <div class="final-cta-docs">
+                <h3 data-i18n="faq_content.cta.title">Prêt à récupérer des données impeccables ?</h3>
+                <button class="cta-button last-cta js-open-modal" data-i18n="faq_content.cta.btn">Nettoyer mon fichier maintenant</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-primary">
+                
+                <div class="footer-links-wrapper">
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.product_title">Produit</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+                        <a href="manual.html" data-i18n="nav.docs">Documentation</a>
+                        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+                        <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
+                            <span class="status-dot">●</span><span data-i18n="footer.status">Statut du système</span>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.legal_title">Légal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">CGU / CGV</a>
+                        <a href="legal.html" data-i18n="footer.legal">Mentions Légales</a>
+                        <a href="security.html" data-i18n="footer.security">Confidentialité</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                </div>
+
+            </div>
+        </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="i18n-loader.js"></script>
+</body>
+</html>

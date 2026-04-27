@@ -1,0 +1,460 @@
+{
+ 
+    "nav": {
+      "docs": "Documentation",
+      "faq": "FAQ",
+      "pricing": "Tarifs",
+      "cta": "Essayer"
+    },
+    "footer": {
+      "product_title": "Produit",
+      "legal_title": "Légal & Support",
+      "cgu": "CGU / CGV",
+      "legal": "Mentions Légales",
+      "security": "Confidentialité",
+      "copy": "© 2026 CleanMyCSV. Tous droits réservés."
+    },
+    "cookie": {
+      "title": "Protection de votre vie privée",
+      "description": "Nous utilisons des cookies pour mesurer l'audience et améliorer votre expérience sur CleanMyCSV. Ces données nous aident à optimiser nos outils de traitement de données.",
+      "accept_all": "Accepter l'utilisation",
+      "accept_necessary": "Continuer sans accepter"
+    },
+    "modal": {
+      "upload": {
+        "main_title": "Nettoyez votre fichier en un instant :",
+        "step_1": "1. Téléversez votre CSV",
+        "drag_drop_text": "Cliquez ou glissez-déposez votre fichier ici",
+        "supported_files": "Fichiers supportés : .CSV uniquement",
+        "btn_start_disabled": "Lancer le Nettoyage (Gratuit)",
+        "btn_start_ready": "Lancer le nettoyage de votre fichier",
+        "security_note": "Vos données sont sécurisées et traitées de manière anonyme.",
+        "file_ready": "Fichiers prêt :",
+        "change_file": "Cliquez pour changer de fichier",
+        "format_error": "Format de fichier non supporté. Seuls les fichiers .CSV sont acceptés.",
+        "general_error": "Seuls les fichiers CSV sont supportés ou le fichier n'a pas pu être lu."
+      },
+      "processing": {
+        "title": "Nettoyage en cours...",
+        "sending": "Envoi du fichier à votre script de nettoyage...",
+        "wait": "Cela prendra juste un instant !"
+      },
+      "success": {
+        "title": "Votre fichier est prêt !",
+        "subtitle": "Rapport de Nettoyage",
+        "rows_affected": "Lignes affectées",
+        "rows_removed": "Lignes / Doublons retirés",
+        "checkbox_json": "Je veux aussi le <strong>rapport détaillé JSON</strong> des corrections (pour les experts).",
+        "btn_download_csv": "Télécharger le CSV Nettoyé",
+        "btn_download_json": "Télécharger le Rapport JSON"
+      },
+      "post_download": {
+        "title": "Mission Accomplie !",
+        "desc": "Votre fichier nettoyé est maintenant disponible dans vos téléchargements.",
+        "btn_finish": "Terminer et retourner au site",
+        "btn_again": "Nettoyer un autre fichier",
+        "security_delete": "Vos données originales ont été effacées de nos serveurs par sécurité."
+      },
+      "error": {
+        "title": "Oups, Erreur !",
+        "prefix": "Désolé, une erreur est survenue :",
+        "btn_retry": "Fermer et réessayer"
+      }
+    },
+    "errors": {
+        "limit_reached": "Limite gratuite atteinte. Passez à une offre supérieure !",
+        "file_too_large_free": "En version gratuite, la limite est de 5Mo. Passez à un nouveau plan.",
+        "payment_success": "Paiement validé ! Vos limites sont débloquées."
+    },
+    "teaser": {
+        "title": "Aperçu de votre fichier ✨",
+        "subtitle_limit": "Vous avez atteint votre limite d'essais pour aujourd'hui.",
+        "subtitle_size": "Ce fichier dépasse la taille maximale gratuite (5 Mo).",
+        "hook": "Le nettoyage a fonctionné ! Voici un aperçu des premières lignes corrigées. Choisissez une offre pour obtenir le fichier complet instantanément.",
+        "original": "Avant",
+        "cleaned": "Après",
+        "btn_single": "Pass 24h",
+        "btn_24h": "Pro",
+        "btn_life": "À vie"
+    },
+    "success_page": {
+        "meta_title": "Paiement Réussi - CleanMyCSV",
+        "title": "Paiement validé ! 🎉",
+        "desc": "Votre accès est prêt. Nous venons de vous envoyer un <strong>lien magique</strong> par email. <br><br>Cliquez simplement sur le lien dans l'email pour revenir sur le site et nettoyer vos fichiers.",
+        "spam_notice": "(N'oubliez pas de vérifier vos courriers indésirables / spams)"
+    },
+
+  "index": {
+    "meta": {
+      "title": "CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes",
+      "description": "CleanMyCSV harmonise vos fichiers CSV en quelques secondes. Corrigez les formats incohérents, les doublons et les erreurs."
+    },
+    "hero": {
+      "title": "Nettoyez vos fichiers CSV instantanément.",
+      "subtitle": "Fini les erreurs d'encodage, les doublons et les colonnes décalées. Glissez votre fichier corrompu, récupérez une base de données parfaite en quelques secondes.<br><br>Sans formules, sans stress.",
+      "cta": "Nettoyer un fichier gratuitement",
+      "subtext": "Résultat immédiat. Pas d'authentification requise. Suppression des fichiers immédiate."
+    },
+    "benefits": {
+      "title": "Ce que CleanMyCSV fait pour vous (en tâche de fond)",
+      "subtitle": "Notre algorithme analyse et répare automatiquement les erreurs qui font planter vos logiciels.",
+      "doc_link": "En savoir plus sur CleanMyCSV : consultez notre <a href='manual.html' class='doc-link'>Documentation</a>."
+    },
+    "benefit1": {
+      "title": "1. Délimiteurs & Encodage",
+      "desc": "Fini les accents bizarres (Ã©) et les colonnes fusionnées. Conversion forcée en UTF-8 propre et délimiteurs harmonisés."
+    },
+    "benefit2": {
+      "title": "2. Suppression des Doublons",
+      "desc": "Détection intelligente et suppression stricte des lignes en double. Votre base de données redevient légère et pertinente."
+    },
+    "benefit3": {
+      "title": "3. Formatage des Données",
+      "desc": "Nettoyage des espaces invisibles, harmonisation de la casse, et validation des structures (emails, numéros)."
+    },
+    "demo": {
+      "title": "Le moteur en action",
+      "input_title": "1. Données Brutes (Entrée)",
+      "output_title": "2. Données Nettoyées (Sortie)",
+      "table": {
+        "name": "Nom",
+        "date": "Date",
+        "amount": "Montant",
+        "currency": "Devise",
+        "zip": "Zipcode"
+      },
+      "tooltip": {
+        "security": "Injection de code neutralisée (ajout du préfixe ' )",
+        "date_auto": "Format inversé détecté et auto-corrigé",
+        "zip_zero": "Code postal incomplet : zéro initial restauré",
+        "particles": "Particules de noms détectées et formatées",
+        "date_fr": "Date ambiguë lue en format Français (JJ/MM)",
+        "date_us": "Date ambiguë lue en format US (MM/JJ)",
+        "amount_us": "Point interprété comme séparateur décimal (US)",
+        "zip_plus4": "Format ZIP+4 américain détecté et standardisé",
+        "excel_date": "Bug du numéro de série Excel converti en date réelle"
+      }
+    },
+    "pricing": {
+      "title": "Un pricing simple. Un résultat immédiat.",
+      "subtitle": "Paiement unique, sans abonnement caché.",
+      "btn_try": "Essayer",
+      "btn_choose": "Choisir",
+      "free": {
+        "title": "Free",
+        "price": "0 €",
+        "feat1": "2 nettoyages gratuits par jour",
+        "feat2": "Fichiers jusqu'à 5 Mo"
+      },
+      "day": {
+        "title": "24h",
+        "price": "9 €",
+        "feat1": "Nettoyages illimités",
+        "feat2": "Accès total pendant 24h",
+        "feat3": "Fichiers jusqu'à 25 Mo"
+      },
+      "week": {
+        "badge": "Le plus populaire",
+        "title": "7 jours",
+        "price": "29 €",
+        "feat1": "Nettoyages illimités",
+        "feat2": "Accès total pendant 7 jours",
+        "feat3": "Fichiers jusqu'à 100 Mo"
+      },
+      "life": {
+        "title": "À vie",
+        "price": "99 €",
+        "feat1": "Nettoyages illimités à vie",
+        "feat2": "Fichiers jusqu'à 100 Mo",
+        "feat3": "Futures mises à jour incluses"
+      }
+    } 
+  },
+  
+  "manual": {
+    "meta": {
+      "title": "Guide Technique : Standardisation et Nettoyage CSV | CleanMyCSV",
+      "desc": "Documentation complète sur le traitement des fichiers CSV : encodage UTF-8, normalisation ISO, sécurité XSS et logique FR/US."
+    },
+    "sidebar": {
+      "title": "Sommaire",
+      "nav1": "Encodage & Accents",
+      "nav2": "Délimiteurs",
+      "nav3": "Typographie & Zip",
+      "nav4": "Télephone",
+      "nav5": "Finances & Devises",
+      "nav6": "Dates ISO 8601",
+      "nav7": "Logique FR vs US",
+      "nav8": "Optimisation Structurelle",
+      "nav9": "Sécurité XSS",
+      "nav10": "Audit & Rapport JSON"
+    },
+    "hero": {
+      "title": "Guide Complet : Standardisation et Nettoyage de vos Fichiers CSV",
+      "subtext": "Découvrez comment l'algorithme de CleanMyCSV analyse, corrige et sécurise vos bases de données. Ce guide détaille l'ensemble des processus de traitement appliqués à vos fichiers pour garantir une donnée exploitable, fiable et standardisée."
+    },
+    "art1": {
+      "title": "1. Résolution des Problèmes d'Encodage et de Caractères",
+      "p": "Les exports depuis d'anciens systèmes ou certaines versions d'Excel (format Windows-1252 ou MacRoman) génèrent fréquemment des erreurs d'encodage, remplaçant les accents par des symboles illisibles.",
+      "feature": "<strong>L'action du programme :</strong><br><br>CleanMyCSV scanne le fichier pour détecter les anomalies d'encodage (ex: présence de caractères ``).<br>S'il détecte un format obsolète, il le convertit de force en <strong>UTF-8 standard</strong>, garantissant la préservation de tous les caractères spéciaux et accents internationaux.<br><br>Exemple : <code>SociÃ©tÃ© de DÃ©mÃ©nagement</code> devient <code>Société de Déménagement</code>"
+    },
+    "art2": {
+      "title": "2. Détection Intelligente des Délimiteurs (Séparateurs)",
+      "p": "Un fichier CSV mal formaté regroupe souvent toutes les données dans une seule colonne. Cela se produit lorsque le logiciel cible n'utilise pas le même séparateur que le fichier source.",
+      "feature": "<strong>L'action du programme :</strong><br>L'algorithme analyse un échantillon de vos données (jusqu'à 10 000 caractères) et calcule un score de probabilité pour identifier le séparateur exact. Il gère parfaitement les virgules intégrées dans des champs de texte (ex: adresses) sans provoquer de décalage de colonnes.<br><br><strong>Formats supportés nativement :</strong><br>Point-virgule (;), Virgule (,), Tabulation (\\t), et Barre verticale (|)."
+    },
+    "art3": {
+      "title": "3. Normalisation Typographique (Noms et Codes Postaux)",
+      "p": "La consistance visuelle et technique des textes est indispensable pour une base de données client saine.",
+      "feature": "<strong>Noms Propres (Proper Case) :</strong> L'outil harmonise la casse des noms et prénoms. Il gère intelligemment les particules complexes (De, Du, Des, Le, La, Van, Von) et les préfixes anglo-saxons (Mc, O').<br><br>Exemple : <code>mcdonald O'neil</code> devient <code>McDonald O'Neil</code>.<br><br><strong>Restauration des Codes Postaux :</strong> Les tableurs comme Excel ont tendance à considérer les codes postaux comme des nombres, supprimant ainsi les zéros initiaux (très courant pour les codes postaux français ou internationaux). CleanMyCSV détecte cette anomalie et restaure le zéro manquant pour garantir la longueur légale du code.<br><br>Exemple : <code>7500</code> devient <code>07500</code>."
+    },
+    "art4": {
+      "title": "4. Normalisation des Téléphones (Standard International)",
+      "p": "Le moteur détecte automatiquement les colonnes liées aux téléphones (Tel, Mobile, WhatsApp, etc.) grâce à des expressions régulières strictes et applique un formatage intelligent.",
+      "feat1": "<strong>Conversion indicatifs :</strong> Remplacement des <code>00</code> et <code>(0)</code> par le standard <code>+</code>.",
+      "feat2": "<strong>Gestion des doublons :</strong> Si une case contient <code>Num1 / Num2</code>, seul le premier est conservé pour garantir un import CRM sans erreur.",
+      "feat3": "<strong>Sécurité Anti-ID (SIRET/EAN) :</strong> Les suites alphanumériques de plus de 13 caractères sans séparateur sont ignorées pour protéger vos identifiants métiers.",
+      "code_label": "Exemple du Rapport JSON (Téléphones)"
+    },
+    "art5": {
+      "title": "5. Extraction et Formatage des Données Financières (Montants et Devises)",
+      "p": "Les colonnes de prix contenant des symboles monétaires ou des espaces sont lues comme du \"texte\" par les logiciels d'analyse, ce qui empêche tout calcul mathématique.",
+      "feature": "<strong>L'action du programme :</strong>",
+      "feat1": "1. Il détecte la présence de symboles monétaires ($, €, £, ¥) ou de codes (EUR, USD, GBP, JPY, CAD, AUD, CHF, SEK).",
+      "feat2": "2. Il extrait cette devise pour l'isoler de la donnée. (Note : selon la structure du fichier, cela peut créer une nouvelle colonne \"Devise\" distincte).",
+      "feat3": "3. Il nettoie le montant de tout espace ou séparateur de milliers inapproprié, et unifie le séparateur décimal en un format mathématique pur (point).",
+      "label_before": "Avant",
+      "label_after": "Après (Prêt pour calculs)"
+    },
+    "art6": {
+      "title": "6. Standardisation Internationale des Dates (Format ISO 8601)",
+      "p": "Les conflits de formats de dates faussent les tris et les automatisations.",
+      "feature": "<strong>L'action du programme :</strong> Le script identifie les différents formats de dates, y compris les formats mixtes, les dates textuelles (\"Jan 1, 2024\") et les numéros de série Excel (ex: 45292). Il convertit ensuite l'intégralité de ces données au format de base de données standard international : AAAA-MM-JJ."
+    },
+    "art7": {
+      "title": "7. Adaptation Régionale : Algorithmes de Nettoyage (FR vs US)",
+      "p": "Les standards de formatage des données varient drastiquement entre l'Europe et l'Amérique du Nord. Un outil de nettoyage générique risque de corrompre vos montants financiers ou de mal interpréter la structure de votre fichier.",
+      "feature": "<strong>L'action du programme :</strong> CleanMyCSV intègre un double moteur de traitement. Avant l'exécution, vous définissez le contexte de vos données (Logique FR ou US).<br><br><strong>Impact sur la donnée :</strong>",
+      "feat1": "<strong>Les Nombres :</strong> En mode Français, le programme comprend que l'espace sépare les milliers et la virgule marque les décimales (<code>1 250,50</code> devient <code>1250.50</code>). En mode US, il interprète correctement la virgule comme séparateur de milliers (<code>1,250.50</code> devient <code>1250.50</code>).",
+      "feat2": "<strong>Les Séparateurs :</strong> L'algorithme ajuste ses probabilités de détection, privilégiant le point-virgule (;) pour les fichiers FR et la virgule (,) pour les fichiers US."
+    },
+    "art8": {
+      "title": "8. Optimisation Structurelle : Lignes Vides et Doublons",
+      "p": "Un fichier lourd ralentit vos systèmes. Le nettoyage des données superflues est effectué à la volée.",
+      "feature": "<strong>Lignes 100% vides :</strong> Toute ligne ne contenant aucune valeur utile est ignorée et supprimée du fichier de sortie.<br><br><strong>Dédoublonnage strict :</strong> Le programme compare l'intégralité des lignes. Si deux lignes (ou plus) sont rigoureusement identiques sur toutes leurs colonnes, une seule est conservée."
+    },
+    "art9": {
+      "title": "9. Sécurité des Données et Prévention des Injections (XSS)",
+      "p": "L'importation de fichiers externes représente un risque de sécurité (injections de scripts).",
+      "feature": "<strong>L'action du programme :</strong><br>Avant restitution, une fonction de \"Sanitization\" chirurgicale est appliquée. Les caractères sensibles utilisés dans le code informatique <code>(&lt;, &gt;, &amp;, \", ', /)</code> sont convertis en entités HTML inoffensives. Cela garantit que votre fichier CSV ne peut pas exécuter de code malveillant s'il est importé dans votre CRM ou sur un affichage web."
+    },
+    "art10": {
+      "title": "10. Audit et Traçabilité (Le Rapport JSON)",
+      "p": "La transparence est totale. Vous ne confiez pas vos données à une \"boîte noire\".",
+      "feature": "<strong>L'action du programme :</strong> Chaque modification effectuée par CleanMyCSV est consignée. En plus de votre fichier propre, l'outil génère un rapport d'audit exhaustif (disponible en téléchargement).<br><br><strong>Ce que contient le rapport :</strong> Le nombre exact de lignes traitées, le nombre de colonnes, et le détail ligne par ligne de la valeur Avant et de la valeur Après correction, avec le motif exact de la modification (jusqu'à 1000 détails affichés pour préserver les performances).",
+      "label_report": "Exemple de rapport"
+    },
+    "cta": {
+      "title": "Donnez à vos données la qualité qu'elles méritent.",
+      "btn": "Nettoyer mon fichier maintenant"
+    }
+  },
+  
+  "faq_content": {
+    "meta": {
+      "title": "Guides de nettoyage CSV : Accents, Dates et Sécurité | CleanMyCSV",
+      "desc": "Découvrez comment CleanMyCSV répare vos fichiers : correction des accents (Ã©), récupération des zéros de codes postaux, normalisation de dates ISO et sécurité anti-injection."
+    },
+    "title": "Foire Aux Questions",
+    "q1": {
+      "title": "1. À quoi sert CleanMyCSV ?",
+      "ans": "CleanMyCSV nettoie et normalise automatiquement vos fichiers de données. Le programme corrige intelligemment les erreurs de formatage, d'encodage et de structure pour vous livrer un fichier CSV propre et directement exploitable dans vos logiciels."
+    },
+    "q2": {
+      "title": "2. Quelles corrections sont appliquées à mes données ?",
+      "intro": "L'algorithme intervient sur plusieurs éléments critiques :",
+      "feat1": "<strong>Encodage et structure :</strong> Conversion universelle vers UTF-8 pour sécuriser les accents et détection automatique des séparateurs.",
+      "feat2": "<strong>Nettoyage :</strong> Suppression des lignes entièrement vides et des doublons.",
+      "feat3": "<strong>Normalisation :</strong> Uniformisation des dates, réparation des codes postaux (ajout des zéros manquants), et formatage standardisé des adresses e-mail et numéros de téléphone.",
+      "feat4": "<strong>Finance :</strong> Normalisation des montants et extraction automatique de la devise dans une colonne dédiée."
+    },
+    "q3": {
+      "title": "3. Quels sont les tarifs et limites de taille de fichier ?",
+      "intro": "CleanMyCSV s'adapte à vos besoins avec quatre offres claires :",
+      "tier1": "<strong>Offre Gratuite (0 €) :</strong> Idéale pour tester, inclut 2 nettoyages par jour pour des fichiers allant jusqu'à 5 Mo.",
+      "tier2": "<strong>Pass 24h (9 €) :</strong> Nettoyages illimités pendant 24 heures pour des fichiers jusqu'à 25 Mo.",
+      "tier3": "<strong>Pass 7 jours (29 €) :</strong> Nettoyages illimités pendant une semaine, avec une capacité étendue aux fichiers jusqu'à 100 Mo.",
+      "tier4": "<strong>Licence À Vie (99 €) :</strong> Accès illimité garanti à vie, fichiers jusqu'à 100 Mo et toutes les futures mises à jour incluses."
+    },
+    "q4": {
+      "title": "4. Quels types de fichiers puis-je importer ?",
+      "ans": "Le programme accepte exclusivement les fichiers au format .csv. Si votre fichier est dans un autre format, il sera immédiatement rejeté par le système."
+    },
+    "q5": {
+      "title": "5. Mes données sensibles sont-elles en sécurité ?",
+      "ans": "Oui, la sécurité est maximale. Vos fichiers sont accessibles via un lien sécurisé qui expire automatiquement après 15 minutes. Une fois ce délai passé, les données ne sont plus récupérables par personne. Pour une sécurité totale, nous appliquons une politique de suppression définitive de nos serveurs de stockage sous 24h."
+    },
+    "q6": {
+      "title": "6. Pourquoi mon fichier est-il refusé au moment de l'import ?",
+      "intro": "Un blocage peut survenir pour les raisons suivantes :",
+      "reason1": "Le document n'est pas un fichier .csv valide.",
+      "reason2": "Le poids du fichier dépasse la limite incluse dans votre offre actuelle (5 Mo, 25 Mo ou 100 Mo).",
+      "reason3": "Vous utilisez l'offre gratuite et avez dépassé votre limite de 2 fichiers par jour.",
+      "reason4": "Pour garantir la stabilité du service, le système limite les envois globaux à 300 requêtes toutes les 5 minutes."
+    },
+    "q7": {
+      "title": "7. Comment vérifier les modifications apportées ?",
+      "ans": "Une transparence totale est garantie. L'outil génère un rapport de diagnostic détaillé fourni avec votre fichier final. Ce document indique le volume de données modifiées et détaille l'historique complet des actions effectuées sur vos lignes et colonnes."
+    },
+    "q8": {
+      "title": "8. Quelle est la différence entre le mode de nettoyage FR et US ?",
+      "intro": "La différence principale réside dans l'interprétation des <strong>données ambiguës</strong>. Notre algorithme utilise des logiques régionales différentes pour deviner la véritable intention derrière une donnée mal formatée :",
+      "feat1": "<strong>Dates :</strong> La date \"04/05/2023\" sera lue comme le <strong>4 Mai</strong> en mode FR (Jour/Mois), mais comme le <strong>5 Avril</strong> en mode US (Mois/Jour). Si le programme détecte \"13/01\", il comprendra automatiquement l'erreur dans les deux modes et corrigera.",
+      "feat2": "<strong>Montants :</strong> Le chiffre \"1.234\" sera interprété comme <strong>1234,00</strong> en mode FR (où le point sépare souvent les milliers), mais comme <strong>1,23</strong> en mode US (où le point marque la décimale).",
+      "feat3": "<strong>Codes Postaux :</strong> Le mode US active des règles spécifiques au continent nord-américain, comme la restauration des zéros initiaux pour la côte Est et la standardisation du format ZIP+4 (ex: 12345-6789).",
+      "outro": "Le choix du mode ne bride pas le nettoyage (les accents, tirets, et doublons sont corrigés dans les deux cas), il permet simplement de donner le bon contexte à notre moteur d'intelligence."
+    },
+    "q9": {
+      "title": "9. Comment CleanMyCSV nettoie-t-il les numéros de téléphone ?",
+      "intro": "Les numéros de téléphone sont souvent saisis de manière chaotique. Notre algorithme les standardise pour qu'ils soient directement utilisables par votre CRM ou vos outils de campagne :",
+      "feat1": "Il supprime les symboles parasites (espaces inutiles, parenthèses, doubles zéros).",
+      "feat2": "Il isole et conserve les numéros internes (extensions / postes).",
+      "feat3": "Il ne conserve que le premier numéro si une cellule en contient plusieurs (ex: \"06... / 01...\")."
+    },
+    "q10": {
+      "title": "10. Numéros : Quelle est la différence entre le mode \"Europe\" et \"US\" ?",
+      "intro": "Le choix de la région permet à notre algorithme d'appliquer la bonne intelligence de formatage :",
+      "us_title": "Mode US :",
+      "us_desc": "Les numéros locaux à 10 chiffres sont automatiquement convertis au format international nord-américain (ex: <code>+1 (555) 123-4567</code>).",
+      "eu_title": "Mode Europe :",
+      "eu_desc": "L'algorithme est optimisé pour le marché français (conversion des numéros en <code>+33 6...</code>). Pour tous les autres pays européens (Allemagne, Belgique, Suisse, etc.), nous appliquons un principe de précaution : nous nettoyons parfaitement les caractères parasites sans forcer de formatage local, pour garantir que le numéro reste valide (ex: <code>+4930123456</code>)."
+    },
+    "q11": {
+      "title": "11. Y a-t-il un risque que le nettoyeur modifie mes numéros de SIRET ou de commande ?",
+      "ans": "<strong>Non, vos données de référence sont en sécurité.</strong> Notre détecteur de téléphone est équipé d'une sécurité \"Anti-ID\". Si une cellule contient une suite de chiffres bruts très longue (plus de 13 caractères, comme un numéro de SIRET, un code-barres EAN ou un identifiant de transaction) et sans signe de ponctuation téléphonique, l'algorithme la considère comme une donnée technique métier et n'y touche absolument pas."
+    },
+    "cta": {
+      "title": "Prêt à récupérer des données impeccables ?",
+      "btn": "Nettoyer mon fichier maintenant"
+    }
+  },
+
+  "cgu": {
+    "meta": {
+      "title": "Conditions Générales d'Utilisation - CleanMyCSV"
+    },
+    "hero": {
+      "title": "Conditions Générales d'Utilisation"
+    },
+    "sect1": {
+      "title": "1. Objet",
+      "p": "Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités de mise à disposition des services du site CleanMyCSV et les conditions d'utilisation du Service par l'Utilisateur."
+    },
+    "sect2": {
+      "title": "2. Accès au service",
+      "p": "Le Service est accessible gratuitement à tout Utilisateur disposant d'un accès à internet. Tous les coûts afférents à l'accès au Service, que ce soit les frais matériels, logiciels ou d'accès à internet sont exclusivement à la charge de l'utilisateur. L'éditeur met en œuvre tous les moyens raisonnables à sa disposition pour assurer un accès de qualité au Service, mais n'est tenu à aucune obligation d'y parvenir."
+    },
+    "sect3": {
+      "title": "3. Responsabilité",
+      "intro": "L'utilisateur s'engage à respecter les règles suivantes lors de l'utilisation de l'outil de nettoyage de données :",
+      "li1": "<strong>Usage professionnel :</strong> CleanMyCSV est un outil technique destiné à faciliter le traitement de fichiers. L'utilisateur est seul responsable de la vérification finale des données.",
+      "li2": "<strong>Usage licite :</strong> Ne pas téléverser de fichiers contenant des codes malveillants ou des données obtenues de manière illégale.",
+      "li3": "<strong>Sécurité :</strong> Ne pas tenter de contourner les limites de requêtes (Rate Limiting) ou de compromettre l'infrastructure."
+    },
+    "sect4": {
+      "title": "4. Prix et Modalités de paiement (CGV)",
+      "p": "Les prix de nos offres sont indiqués en euros (€). En tant qu'Entreprise Individuelle, la TVA est non applicable (article 293 B du CGI). Le paiement est exigible immédiatement à la commande. Les transactions sont entièrement traitées et sécurisées par Stripe. L'éditeur ne stocke aucune donnée bancaire."
+    },
+    "sect5":{
+      "title": "5. Livraison du service",
+      "p": "CleanMyCSV étant un service numérique, la livraison est instantanée. Dès la validation du paiement par Stripe, l'Utilisateur reçoit un email contenant un lien d'accès unique (« token ») lui permettant d'utiliser l'outil selon la durée ou les conditions de l'offre choisie."
+    },
+    "sect6" : {
+      "title": "6. Droit de rétractation",
+      "p": "Conformément à l'article L221-28 du Code de la Consommation, le droit de rétractation ne peut être exercé pour les contrats de fourniture d'un contenu numérique non fourni sur un support matériel dont l'exécution a commencé après accord préalable exprès du consommateur. En validant son paiement, l'Utilisateur accepte l'exécution immédiate du service et renonce expressément à son droit de rétractation de 14 jours."
+    },
+    "sect7": {
+      "title": "7. Droit applicable",
+      "p": "Les présentes CGU sont régies par le droit français. En cas de litige, et après tentative de médiation, compétence exclusive est attribuée aux tribunaux de Montpellier."
+    }
+  },
+  
+  "legal": {
+    "meta": {
+      "title": "Mentions Légales - CleanMyCSV"
+    },
+    "hero": {
+      "title": "Mentions Légales",
+      "subtext": "Transparence totale sur l'édition et l'hébergement du service."
+    },
+    "sect1": {
+      "title": "1. Éditeur du Service",
+      "intro": "Le site <strong>CleanMyCSV.fr</strong> est édité par :",
+      "li1": "<strong>Propriétaire :</strong> Métrot Léa, Entrepreneur Individuel (EI).",
+      "li2": "<strong>SIRET :</strong> 98037891300019.",
+      "li3": "<strong>Siège Social :</strong> 55 Place Paul Vigne D'Octon, 34070 Montpellier, France.",
+      "li4": "<strong>Directeur de la publication :</strong> Métrot Léa."
+    },
+    "sect2": {
+      "title": "2. Hébergement & Infrastructure",
+      "intro": "Pour garantir une sécurité de niveau bancaire, nous nous appuyons sur des leaders mondiaux dont les serveurs de traitement sont localisés en Europe :",
+      "li1": "<strong>Traitement & Stockage Temporaire :</strong> Google Cloud Platform (GCP). Région : Belgique/Pays-Bas (Europe).",
+      "li2": "<strong>Interface Web (Frontend) :</strong> Vercel Inc., 340 S Lemon Ave, Walnut, CA 91789, USA.",
+      "li3": "<strong>Nom de Domaine :</strong> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.",
+      "li4": "<strong>Processeur de Paiement :</strong> Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Dublin 2, Irlande."
+    },
+    "sect3": {
+      "title": "3. Propriété Intellectuelle",
+      "p": "L'ensemble du site (design, textes, logos) ainsi que les algorithmes de nettoyage développés spécifiquement pour CleanMyCSV sont la propriété exclusive de l'éditeur. Toute reproduction, même partielle, est interdite sans autorisation préalable."
+    }
+  },
+
+  "security": {
+    "meta": {
+      "title": "Politique de Confidentialité - CleanMyCSV"
+    },
+    "hero": {
+      "title": "Politique de Confidentialité"
+    },
+    "sect1": {
+      "title": "1. Responsable du Traitement",
+      "p": "Le service CleanMyCSV est édité par <strong>CleanMyCSV</strong>. En tant que responsable du traitement, nous nous engageons à ce que la collecte et le traitement de vos données soient conformes au RGPD et à la loi Informatique et Libertés."
+    },
+    "sect2": {
+      "title": "2. Cycle de vie des données CSV",
+      "intro": "Nous appliquons une politique de rétention stricte pour garantir votre confidentialité :",
+      "li1": "<strong>Traitement éphémère :</strong> Vos fichiers sont traités en mémoire vive sur nos serveurs Cloud Run.",
+      "li2": "<strong>Accès sécurisé :</strong> Les liens de téléchargement générés (Signed URLs) expirent automatiquement après <strong>15 minutes</strong>.",
+      "li3": "<strong>Suppression définitive :</strong> Les fichiers stockés temporairement dans nos buckets sécurisés sont supprimés automatiquement sous <strong>24 heures</strong> via une règle de cycle de vie automatisée."
+    },
+    "sect3": {
+      "title": "3. Services Tiers et Sécurité",
+      "intro": "Pour assurer le bon fonctionnement de CleanMyCSV, nous utilisons des partenaires de confiance :",
+      "li1": "<strong>Stripe :</strong> Vos données de paiement sont traitées exclusivement par Stripe. CleanMyCSV n'a jamais accès à vos numéros de carte bancaire (certification PCI-DSS).",
+      "li2": "<strong>Vercel Analytics :</strong> Nous mesurons l'audience de manière anonymisée. Aucune donnée permettant de vous identifier personnellement n'est collectée via cet outil.",
+      "li3": "<strong>Google Cloud Storage :</strong> Vos fichiers sont isolés dans des compartiments (buckets) privés et chiffrés."
+    },
+    "sect4": {
+      "title": "4. Sécurité des fichiers exportés",
+      "p": "Notre algorithme neutralise les formules potentiellement malveillantes (CSV Injection) en nettoyant les caractères suspects lors de la normalisation, protégeant ainsi votre ordinateur lors de l'ouverture du fichier dans Excel ou Google Sheets."
+    },
+    "sect5": {
+      "title": "5. Sécurité de l'Infrastructure",
+      "p": "Nos serveurs sont équipés de protections avancées bloquant automatiquement les tentatives d'attaques web standard (failles XSS, Clickjacking) et limitant le nombre de requêtes pour prévenir les attaques par force brute et garantir la stabilité du service pour tous."
+    },
+    "cta": {
+      "title": "Des questions sur vos données ?",
+      "btn": "Nous contacter"
+    }
+  },
+
+  "contact": {
+    "meta_title": "Contact & Assistance - CleanMyCSV",
+    "hero_title": "Contact & Support Client",
+    "hero_subtext": "Une question ? Un problème technique ? <br>Notre équipe est à votre écoute.",
+    "contact_box_title": "E-mail",
+    "contact_btn": "Nous contacter : contact@cleanmycsv.fr",
+    "contact_note": "Réponse sous 24h ouvrées."
+  }
+ 
+}
