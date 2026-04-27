@@ -59,7 +59,15 @@
         "title": "Oups, Erreur !",
         "prefix": "Désolé, une erreur est survenue :",
         "btn_retry": "Fermer et réessayer"
-      }
+      },
+    "preview": {
+      "original_label": "Avant (Original)",
+      "cleaned_label": "Après (Nettoyé)"
+    },
+    "logic_title": "Format :",
+    "logic_eu": "Europe",
+    "logic_us": "USA",
+    "logic_tooltip": "Europe : Séparateur point-virgule (;), Décimal virgule (,)\nUSA : Séparateur virgule (,), Décimal point (.)"
     },
     "errors": {
         "limit_reached": "Limite gratuite atteinte. Passez à une offre supérieure !",
