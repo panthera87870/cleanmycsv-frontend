@@ -588,7 +588,7 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     font-size: 0.85rem; display: inline-block;
 }
 .footer-link-group a:hover { color: var(--light-text-color); transform: translateX(4px); }
-.status-dot {color : var(--third-color)}
+.status-dot {color : var(--success-color)}
 
 /* 12. PAGE DE SUCCÈS (PAIEMENT)
    ============================================== */
