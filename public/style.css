@@ -48,6 +48,27 @@ section[id] { scroll-margin-top: 80px; }
     --footer-text-color: #989aa2;
 }
 
+/* --- OVERRIDE DU STYLE DES COOKIES V3 --- */
+#cc-main {
+    --cc-font-family: 'Raleway', sans-serif;
+    --cc-bg: var(--dark-bg);
+    --cc-text: var(--light-text-color);
+    --cc-separator-bg: var(--dark-border);
+    
+    /* Bouton Principal (Accepter) -> En Violet */
+    --cc-btn-primary-bg: var(--first-color);
+    --cc-btn-primary-color: var(--light-text-color);
+    --cc-btn-primary-hover-bg: var(--second-color);
+    
+    /* Bouton Secondaire (Refuser) -> En sombre (si equalWeightButtons est désactivé) */
+    --cc-btn-secondary-bg: var(--dark-box);
+    --cc-btn-secondary-color: var(--light-text-color);
+    --cc-btn-secondary-hover-bg: var(--light-hover);
+
+    --cc-modal-border-radius: 20px;
+    --cc-btn-border-radius: 50px;
+}
+
 /* 2. RESET & BASE
    ============================================== */
 
@@ -112,19 +133,6 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 }
 .cta-button, .start-clean-btn, .cta-button-again, .download-btn-success, .download-btn-json, .contact-cta {
     background-color: var(--third-color); color: var(--dark-text-color)
-}
-
-/* --- OVERRIDE DU STYLE DES COOKIES V3 --- */
-#cc-main {
-    --cc-font-family: 'Raleway', sans-serif;
-    --cc-bg: var(--dark-bg);
-    --cc-text: var(--light-text-color);
-    --cc-separator-bg: var(--dark-border);
-    --cc-btn-bg: var(--dark-box);
-    --cc-btn-color: var(--light-text-color);
-    --cc-btn-hover-bg: var(--second-color);
-    --cc-modal-border-radius: 20px;
-    --cc-btn-border-radius: 50px;
 }
 
 /* 6. HEADER & NAVIGATION
