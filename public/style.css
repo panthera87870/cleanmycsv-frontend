@@ -588,7 +588,7 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     font-size: 0.85rem; display: inline-block;
 }
 .footer-link-group a:hover { color: var(--light-text-color); transform: translateX(4px); }
-.status-dot {color : var(--success-color)}
+.status-dot {color : var(--third-color)}
 
 /* 12. PAGE DE SUCCÈS (PAIEMENT)
    ============================================== */
@@ -616,11 +616,11 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
    ============================================== */
 @media (max-width: 768px) {
     :root {
-        --h1-size: 2.2rem;   /* Au lieu de 3rem */
-        --h2-size: 1.8rem;   /* Au lieu de 2.2rem */
-        --h3-size: 1.3rem;   /* Au lieu de 1.5rem */
-        --h4-size: 1.1rem;   /* Au lieu de 1.2rem */
-        --p-size: 0.95rem;   /* Au lieu de 1rem */
+        --h1-size: 2rem;   /* Au lieu de 3rem */
+        --h2-size: 1.4rem;   /* Au lieu de 2.2rem */
+        --h3-size: 1.1rem;   /* Au lieu de 1.5rem */
+        --h4-size: 1rem;   /* Au lieu de 1.2rem */
+        --p-size: 0.8rem;   /* Au lieu de 1rem */
         --spacing-global: 20px; /* On divise par 2 l'espacement global pour mobile */
         --radius-global: 25px;  /* Des coins un peu moins arrondis pour mieux s'adapter aux petits écrans */
     }
@@ -628,21 +628,25 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     
     .container { padding-left: 20px; padding-right: 20px; }
 
-    .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; }
-    .logo { width: auto; justify-content: flex-start; margin-bottom: 0; }
-    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 10px; }
+    .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; position: relative;}
+    .logo { width: auto; justify-content: flex-start; margin-bottom: 0; order: 1; }
+    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 10px; order: 3; flex-wrap: wrap; }
     .nav-right-links .nav-link-uppercase { font-size: 0.85rem; }
     .nav-right-links a { font-size: 0.9rem; }
     .nav-right-links .cta-button-nav { padding: 8px 15px; font-size: 0.9rem; }
+    .lang-selector { order: 2; margin-right: 0; position: absolute; top: 15px; right: 15px; margin: 0; }
 
     .hero-section { min-height: auto; align-items: flex-start; padding-top: 40px; }
     .hero-container { flex-direction: column; text-align: center; } 
     .hero-content { padding-top: 20; order: 1; text-align: center; } 
-    .hero-content h1 { font-size: 2.2rem; margin-bottom: 15px; } 
-    .hero-content p { font-size: 1rem; margin-bottom: 20px; max-width: 100%; } 
+    .hero-content h1 { font-size: var(--h1-size); margin-bottom: 15px; } 
+    .hero-section h2 {font-size: var(--h2-size);}
+    .hero-content p { font-size: var(--p-size); margin-bottom: 20px; max-width: 100%; } 
 
     .modal-overlay { align-items: flex-start; overflow-y: auto; padding: 20px 0; }
     .modal-content { padding: 25px; margin: 0 auto; }
+
+    .section-subtext p {font-size: var(--p-size);}
 
     .table-container {
         padding: 10px; margin: 0 -10px; border-radius: 15px; 
@@ -653,12 +657,12 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
 
     .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; display: grid !important; }
     .pricing-card { min-width: 0; max-width: none; padding: 30px 10px 15px 10px; }
-    .pricing-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .pricing-card h3 { font-size: var(--h3-size); margin-bottom: 10px; }
     .pricing-card .price { font-size: 1.7rem; margin-bottom: 15px; }
     .pricing-features {text-align: center;}
 
     .page-content-wrapper { padding: 50px 0; }
-    .page-content-wrapper h2 { font-size: 2rem; }
+    .page-content-wrapper h2 { font-size: var(--h2-size); }
     .structurel { padding: 25px; border-radius: 20px; }
 
     .docs-container { flex-direction: column; }
