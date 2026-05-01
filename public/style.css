@@ -616,38 +616,48 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
    ============================================== */
 @media (max-width: 768px) {
     :root {
-        --h1-size: 2rem;   /* Au lieu de 3rem */
-        --h2-size: 1.4rem;   /* Au lieu de 2.2rem */
-        --h3-size: 1.1rem;   /* Au lieu de 1.5rem */
-        --h4-size: 1rem;   /* Au lieu de 1.2rem */
-        --p-size: 0.8rem;   /* Au lieu de 1rem */
-        --spacing-global: 20px; /* On divise par 2 l'espacement global pour mobile */
-        --radius-global: 25px;  /* Des coins un peu moins arrondis pour mieux s'adapter aux petits écrans */
+        --h1-size: 2rem;   
+        --h2-size: 1.5rem; /* Un poil plus grand pour la hiérarchie */
+        --h3-size: 1.2rem;   
+        --h4-size: 1.1rem;   
+        --p-size: 0.95rem; /* Évite la pénalité Google pour texte trop petit */
+        --spacing-global: 15px; /* On resserre l'espace global */
+        --radius-global: 20px;  /* Des coins moins ronds pour gagner de la place */
     }
-    section { padding: 60px 0 !important; }
     
-    .container { padding-left: 20px; padding-right: 20px; }
+    /* Moins d'espace mort entre les sections */
+    section { padding: 35px 0 !important; }
+    
+    .container { padding-left: 15px; padding-right: 15px; }
 
+    /* Navigation */
     .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; position: relative;}
-    .logo { width: auto; justify-content: flex-start; margin-bottom: 0; order: 1; }
-    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 10px; order: 3; flex-wrap: wrap; }
+    .logo { width: auto; justify-content: flex-start; margin-bottom: 0; order: 1; font-size: 1.1rem; }
+    .nav-right-links { gap: 10px; width: 100%; justify-content: flex-end; margin-top: 15px; order: 3; flex-wrap: wrap; }
     .nav-right-links .nav-link-uppercase { font-size: 0.85rem; }
     .nav-right-links a { font-size: 0.9rem; }
-    .nav-right-links .cta-button-nav { padding: 8px 15px; font-size: 0.9rem; }
-    .lang-selector { order: 2; margin-right: 0; position: absolute; top: 15px; right: 15px; margin: 0; }
+    .nav-right-links .cta-button-nav { padding: 8px 12px; font-size: 0.9rem; }
+    .lang-selector { order: 2; margin-right: 0; position: absolute; top: 10px; right: 15px; margin: 0; }
 
-    .hero-section { min-height: auto; align-items: flex-start; padding-top: 40px; }
-    .hero-container { flex-direction: column; text-align: center; } 
-    .hero-content { padding-top: 20; order: 1; text-align: center; } 
+    /* Hero Section */
+    .hero-section { min-height: auto; align-items: flex-start; padding-top: 20px; }
+    .hero-container { flex-direction: column; text-align: center; padding: 30px 15px; border-radius: 30px; } 
+    .hero-content { padding-top: 0; order: 1; text-align: center; } 
     .hero-content h1 { font-size: var(--h1-size); margin-bottom: 15px; } 
-    .hero-section h2 {font-size: var(--h2-size);}
+    .hero-content h2 { font-size: var(--h2-size); }
     .hero-content p { font-size: var(--p-size); margin-bottom: 20px; max-width: 100%; } 
 
+    /* On réduit le padding interne de TOUTES les boîtes pour mobile */
+    .box, .cost-card, .grey-container, .process-card, .contact-box, .structurel {
+        padding: 20px 15px;
+        margin: 15px auto;
+        border-radius: 20px;
+    }
+
     .modal-overlay { align-items: flex-start; overflow-y: auto; padding: 20px 0; }
-    .modal-content { padding: 25px; margin: 0 auto; }
+    .modal-content { padding: 20px; margin: 0 auto; width: 95%; }
 
-    .section-subtext p {font-size: var(--p-size);}
-
+    /* Tables (Parfait pour garder tes tableaux lisibles avec scroll horizontal) */
     .table-container {
         padding: 10px; margin: 0 -10px; border-radius: 15px; 
         overflow-x: auto; -webkit-overflow-scrolling: touch;
@@ -655,16 +665,17 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     .demo-section table { min-width: 600px; }
     .demo-section th, .demo-section td { white-space: nowrap; padding: 10px 12px; }
 
-    .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; display: grid !important; }
-    .pricing-card { min-width: 0; max-width: none; padding: 30px 10px 15px 10px; }
+    /* Pricing Grid : 1 SEULE COLONNE SUR MOBILE ! */
+    .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .pricing-card { min-width: 0; max-width: none; padding: 30px 15px 20px 15px; }
     .pricing-card h3 { font-size: var(--h3-size); margin-bottom: 10px; }
-    .pricing-card .price { font-size: 1.7rem; margin-bottom: 15px; }
-    .pricing-features {text-align: center;}
+    .pricing-card p { font-size: 1.7rem; margin-bottom: 15px; }
+    .pricing-features { text-align: center; }
 
-    .page-content-wrapper { padding: 50px 0; }
+    .page-content-wrapper { padding: 40px 0; }
     .page-content-wrapper h2 { font-size: var(--h2-size); }
-    .structurel { padding: 25px; border-radius: 20px; }
 
+    /* Documentation Menu */
     .docs-container { flex-direction: column; }
     .docs-sidebar {
         width: 100vw; position: relative; top: 0; z-index: 40; left: 50%; right: 50%;
@@ -672,27 +683,25 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
         padding: 15px; border-radius: 0;
     }
     .docs-sidebar ul {
-        display: flex; overflow-x: auto; white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+        display: flex; overflow-x: auto; white-space: nowrap; 
         gap: 15px; padding-bottom: 10px; scroll-snap-type: x mandatory;
     }
     .docs-sidebar li { scroll-snap-align: start; }
     
+    /* Footer */
     .main-footer { margin-top: 20px; }
     .footer-content { padding: 30px 0 20px 0; }
-    .footer-primary { flex-direction: row-reverse; align-items: flex-end; margin-bottom: 0px; gap: 15px;}
-    .footer-left { margin-bottom: 0px; text-align: left; flex-shrink: 0;}
-    .footer-right { gap: 3px; align-items: flex-end; text-align: right; flex-shrink: 0; }
-    .footer-logo { font-size: 0.95rem; }
-    .footer-right a { font-size: 0.8rem; }
-    .copyright { font-size: 0.75rem; opacity: 0.7; }
-    .footer-primary { flex-direction: column; align-items: center; gap: 40px; }
-    .footer-links-wrapper { flex-direction: row; gap: 40px; width: 100%; justify-content: space-around; }
-    .footer-left { align-items: center; text-align: center; }
+    .footer-primary { flex-direction: column; align-items: center; gap: 30px; }
+    .footer-left { align-items: center; text-align: center; margin-bottom: 0px; flex-shrink: 0;}
+    .footer-right { gap: 3px; align-items: center; text-align: center; flex-shrink: 0; }
+    .footer-logo { font-size: 1rem; }
+    .footer-right a { font-size: 0.85rem; }
+    .copyright { font-size: 0.8rem; opacity: 0.7; }
+    .footer-links-wrapper { flex-direction: row; gap: 30px; width: 100%; justify-content: space-around; flex-wrap: wrap; }
 }
 
 @media (max-width: 480px) {
-    .footer-links-wrapper { flex-direction: column; text-align: center; align-items: center; gap: 30px; }
+    .footer-links-wrapper { flex-direction: column; text-align: center; align-items: center; gap: 25px; }
     .footer-link-group { text-align: center; align-items: center; }
-
-    .has-tooltip::after { max-width: 160px; font-size: 0.7rem; }
+    .has-tooltip::after { max-width: 160px; font-size: 0.75rem; }
 }
