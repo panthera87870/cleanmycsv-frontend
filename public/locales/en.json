@@ -103,6 +103,16 @@
       "cta": "Clean a file for free",
       "subtext": "Instant results. No signup required. Files deleted after processing."
     },
+    "badges": {
+      "b1_title": "Zero Data Retention",
+      "b1_tooltip": "Your data remains strictly private. Each file is processed in an isolated environment and permanently deleted after 15 minutes.",
+      "b2_title": "SSL Encrypted Transfer",
+      "b2_tooltip": "Your file transfers are secured end-to-end. We use the same encryption standards as major financial institutions.",
+      "b3_title": "High-Precision Cleaning",
+      "b3_tooltip": "Our engine analyzes and corrects your data row by row to ensure perfect formatting, with absolutely zero data loss.",
+      "b4_title": "No Sign-Up Required",
+      "b4_tooltip": "Save time: no account creation or credit card needed to clean your file."
+    },
     "benefits": {
       "title": "What CleanMyCSV does (behind the scenes)",
       "subtitle": "Our algorithm automatically detects and fixes the errors that break your software.",

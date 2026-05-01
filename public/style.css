@@ -177,6 +177,25 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     display: block; margin-bottom: 30px; color: var(--dark-text-color);
 }
 .hero-subtext i { margin-right: 5px; color: var(--dark-text-color); }
+.trust-badges { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+.badge-item {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(var(--dark-bg-rgb), 0.2); /* Fond semi-transparent élégant */
+    padding: 8px 16px; border-radius: var(--radius-global);
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--light-text-color);
+    border: 1px solid rgba(var(--dark-border-rgb), 0.1); 
+}
+.badge-item i { color: var(--third-color); font-size: 1.1rem; }
+.trust-badges .has-tooltip::after {
+    background: rgba(var(--dark-bg-rgb), 0.6); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--dark-border-rgb), 0.25);
+    border-radius: 20px;
+    box-shadow: var(--glow-effect);
+    padding: 12px 16px;
+    font-size: 0.8rem;
+}
 
 /* 8. SECTIONS DE CONTENU (LANDING & PAGES)
    ============================================== */
@@ -236,18 +255,21 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 .has-tooltip::after {
     content: attr(data-tooltip); position: absolute;
-    bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    bottom: calc(100% + 2px); left: 50%; transform: translateX(-50%);
     white-space: normal; width: max-content; max-width: 220px; 
     text-align: center; line-height: 1.4;
-    background: var(--dark-box); color: var(--light-text-color);
-    padding: 10px 14px; border-radius: 8px;
-    font-size: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    background: rgba(var(--dark-bg-rgb), 0.6); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--dark-border-rgb), 0.25);
+    color: var(--light-text-color);
+    padding: 10px 14px; border-radius: 20px;
+    font-size: 0.75rem; box-shadow: 0 8px 25px var(--glow-effect);
     opacity: 0; visibility: hidden; transition: all 0.2s ease-out;
     z-index: 999; pointer-events: none;
 }
 .has-tooltip:hover::after {
     opacity: 1; visibility: visible;
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateX(-50%) translateY(-2px);
 }
 td:first-child.has-tooltip::after { left: 0; transform: translateX(0); }
 td:first-child.has-tooltip:hover::after { transform: translateX(0) translateY(-5px); }

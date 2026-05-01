@@ -103,6 +103,16 @@
       "cta": "Nettoyer un fichier gratuitement",
       "subtext": "Résultat immédiat. Pas d'authentification requise. Suppression des fichiers immédiate."
     },
+    "badges": {
+      "b1_title": "Suppression Automatique",
+      "b1_tooltip": "Vos données restent strictement privées. Chaque fichier est traité dans un environnement isolé puis définitivement effacé au bout de 15 minutes.",
+      "b2_title": "Transfert Chiffré (SSL)",
+      "b2_tooltip": "Le transfert de vos fichiers est sécurisé de bout en bout. Nous utilisons les mêmes standards de chiffrement que les institutions bancaires.",
+      "b3_title": "Nettoyage Haute Précision",
+      "b3_tooltip": "Notre moteur analyse et corrige vos données ligne par ligne pour garantir un formatage parfait, sans aucune perte d'information.",
+      "b4_title": "Sans Inscription",
+      "b4_tooltip": "Gagnez du temps : pas de création de compte ni de carte bancaire requise pour nettoyer votre fichier."
+    },
     "benefits": {
       "title": "Ce que CleanMyCSV fait pour vous (en tâche de fond)",
       "subtitle": "Notre algorithme analyse et répare automatiquement les erreurs qui font planter vos logiciels.",
