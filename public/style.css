@@ -630,6 +630,24 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     
     .container { padding-left: 15px; padding-right: 15px; }
 
+    /* --- FORCE TOUS LES TITRES SUR MOBILE --- */
+    /* Cela écrase les tailles fixes définies pour la vue ordinateur */
+    
+    h1, .hero-content h1, .page-content-wrapper h1, .docs-content h1, .contact-container h1, .success-card h1 { 
+        font-size: var(--h1-size) !important; 
+        line-height: 1.2;
+    }
+    h2, .hero-content h2, .page-content-wrapper h2, .doc-article h2, .benefits-section h2, .success-card h2 { 
+        font-size: var(--h2-size) !important; 
+        line-height: 1.3;
+    }
+    h3, .pricing-card h3, .page-content-wrapper h3, .doc-article h3, .upload-step h3, .benefit-content h3 { 
+        font-size: var(--h3-size) !important; 
+    }
+    h4, .structurel h4, .docs-sidebar h4 { 
+        font-size: var(--h4-size) !important; 
+    }
+
     /* Navigation */
     .navbar { flex-wrap: wrap; justify-content: flex-start; text-align: left; padding: 10px 15px; position: relative;}
     .logo { width: auto; justify-content: flex-start; margin-bottom: 0; order: 1; font-size: 1.1rem; }
