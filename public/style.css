@@ -249,10 +249,7 @@ input:checked + .slider:before { transform: translateX(22px); }
     border-bottom: 1px solid var(--light-border);
     font-size: 0.9rem;
 }
-.has-tooltip {
-    position: relative; cursor: help;
-    border-bottom: 1px dashed var(--first-color); 
-}
+.has-tooltip { position: relative; cursor: help; }
 .has-tooltip::after {
     content: attr(data-tooltip); position: absolute;
     bottom: calc(100% + 2px); left: 50%; transform: translateX(-50%);
