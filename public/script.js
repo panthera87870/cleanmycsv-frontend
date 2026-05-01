@@ -350,15 +350,6 @@ async function handleFormSubmit(e) {
             <div class="progress-container" style="width: 100%; max-width: 80%; height: 8px; background: var(--color-info-bg, #f9f9f9); border-radius: 10px; margin: 25px auto; overflow: hidden; position: relative; border: 1px solid var(--color-border, #ddd);">
                 <div class="progress-bar" style="height: 100%; background: linear-gradient(90deg, var(--blue, #52c6ff), var(--purple, #8c52ff)); width: 0%; border-radius: 10px; animation: fakeProgress 10s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;"></div>
             </div>
-            <style>
-                @keyframes fakeProgress {
-                    0% { width: 0%; }
-                    20% { width: 40%; }
-                    60% { width: 75%; }
-                    95% { width: 95%; }
-                    100% { width: 99%; }
-                }
-            </style>
             <p class="text-muted-small"><i class="fa-solid fa-clock"></i> ${t('modal.processing.wait')}</p>
         </div>
     `;

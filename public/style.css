@@ -474,9 +474,15 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     height: 100%; 
     background: linear-gradient(90deg, var(--first-color), var(--second-color), var(--third-color)); 
     width: 0%; border-radius: 10px; 
-    animation: fakeProgress 2s forwards;
+    animation: fakeProgress 10s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
 }
-@keyframes fakeProgress { 0% { width: 0%; } 100% { width: 100%; } }
+@keyframes fakeProgress {
+                    0% { width: 0%; }
+                    20% { width: 40%; }
+                    60% { width: 75%; }
+                    95% { width: 95%; }
+                    100% { width: 99%; }
+                }
 
 .result-summary-box {
     background-color: var(--dark-box); padding: 30px; border-radius: 20px;
