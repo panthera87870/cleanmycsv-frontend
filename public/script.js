@@ -704,3 +704,23 @@ function setupHeaderScroll() {
     }
 }
 setupHeaderScroll();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const localeToggle = document.getElementById('locale-toggle');
+    const tableFr = document.getElementById('table-fr');
+    const tableUs = document.getElementById('table-us');
+
+    if (localeToggle && tableFr && tableUs) {
+        localeToggle.addEventListener('change', () => {
+            if (localeToggle.checked) {
+                // Mode US activé
+                tableFr.classList.replace('active-view', 'hidden-view');
+                tableUs.classList.replace('hidden-view', 'active-view');
+            } else {
+                // Mode FR activé
+                tableUs.classList.replace('active-view', 'hidden-view');
+                tableFr.classList.replace('hidden-view', 'active-view');
+            }
+        });
+    }
+});
