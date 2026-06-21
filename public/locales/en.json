@@ -78,12 +78,12 @@
     "title": "File Preview ✨",
     "subtitle_limit": "You've reached your free daily limit.",
     "subtitle_size": "This file exceeds the free size limit (5 MB).",
-    "hook": "The cleaning was successful! Here's a quick preview of the fixed rows. Choose a plan below to unlock your full file instantly.",
+    "hook": "Your file has been completely cleaned and structured in the background. Don't waste hours fixing formatting errors manually in Excel: choose a pass to download it instantly.",
     "original": "Before",
     "cleaned": "After",
-    "btn_single": "Quick Clean",
-    "btn_24h": "Pro",
-    "btn_life": "Lifetime"
+    "btn_day": "24h Pass",
+    "btn_week": "7-day Pass",
+    "btn_year": "Annual Pro Pass"
   },
   "success_page": {
   "meta_title": "Payment Successful - CleanMyCSV",
@@ -154,38 +154,40 @@
       }
     },
     "pricing": {
-      "title": "Simple pricing. Instant results.",
-      "subtitle": "One-time payment, no hidden subscriptions.",
-      "btn_try": "Try it",
-      "btn_choose": "Get started",
+      "title": "Simple Pricing. Instant Results.",
+      "subtitle": "One-time payment. No hidden subscriptions.",
+      "btn_try": "Try for Free",
+      "btn_choose": "Get This Pass",
       "free": {
-        "title": "Free",
+        "title": "Free Trial",
         "price": "$0",
-        "feat1": "2 free cleans per day",
-        "feat2": "Files up to 5 MB"
+        "feat1": "2 free cleans per day (up to 5MB)",
+        "feat2": "Dynamic Before/After live preview",
+        "feat3": "Full data diagnostic report included"
       },
       "day": {
-        "title": "24h Pass",
+        "title": "Express Pass",
         "price": "$9",
-        "feat1": "Unlimited cleans",
-        "feat2": "Full access for 24h",
-        "feat3": "Files up to 25 MB"
+        "feat1": "Unlimited cleans for 24 hours",
+        "feat2": "Supports large files up to 100MB",
+        "feat3": "Perfect for an urgent, one-time fix"
       },
       "week": {
         "badge": "Most Popular",
-        "title": "7-Day Pass",
+        "title": "Campaign Pass",
         "price": "$29",
-        "feat1": "Unlimited cleans",
-        "feat2": "Full access for 7 days",
-        "feat3": "Files up to 100 MB"
+        "feat1": "Unlimited cleans for 7 days",
+        "feat2": "Supports large files up to 100MB",
+        "feat3": "Priority server processing"
       },
-      "life": {
-        "title": "Lifetime",
+      "year": {
+        "title": "Pro Annual Pass",
         "price": "$99",
-        "feat1": "Unlimited lifetime access",
-        "feat2": "Files up to 100 MB",
-        "feat3": "All future updates included"
-      }
+        "feat1": "Unlimited usage for 365 days",
+        "feat2": "Supports large files up to 100MB",
+        "feat3": "One-time payment (no auto-renewal surprises)"
+      },
+      "no_account_note": "No account needed. After payment, you'll receive a <strong>magic link via email</strong> to reuse your pass on any device."
     }
   },
 

@@ -78,12 +78,12 @@
         "title": "Aperçu de votre fichier ✨",
         "subtitle_limit": "Vous avez atteint votre limite d'essais pour aujourd'hui.",
         "subtitle_size": "Ce fichier dépasse la taille maximale gratuite (5 Mo).",
-        "hook": "Le nettoyage a fonctionné ! Voici un aperçu des premières lignes corrigées. Choisissez une offre pour obtenir le fichier complet instantanément.",
+        "hook": "Le nettoyage a fonctionné ! Votre fichier complet est corrigé et prêt. Choisissez une offre pour le télécharger instantanément.",
         "original": "Avant",
         "cleaned": "Après",
-        "btn_single": "Pass 24h",
-        "btn_24h": "Pro",
-        "btn_life": "À vie"
+        "btn_day": "Pass 24h",
+        "btn_week": "Pass 7 jours",
+        "btn_year": "Pass Annuel Pro"
     },
     "success_page": {
         "meta_title": "Paiement Réussi - CleanMyCSV",
@@ -156,37 +156,39 @@
     "pricing": {
       "title": "Un pricing simple. Un résultat immédiat.",
       "subtitle": "Paiement unique, sans abonnement caché.",
-      "btn_try": "Essayer",
-      "btn_choose": "Choisir",
+      "btn_try": "Essayer gratuitement",
+      "btn_choose": "Choisir ce Pass",
       "free": {
-        "title": "Free",
+        "title": "Test Gratuit",
         "price": "0 €",
-        "feat1": "2 nettoyages gratuits par jour",
-        "feat2": "Fichiers jusqu'à 5 Mo"
+        "feat1": "2 essais par jour (limite 5 Mo)",
+        "feat2": "Aperçu dynamique Avant/Après",
+        "feat3": "Rapport de diagnostic inclus"
       },
       "day": {
-        "title": "24h",
+        "title": "Pass Express",
         "price": "9 €",
-        "feat1": "Nettoyages illimités",
-        "feat2": "Accès total pendant 24h",
-        "feat3": "Fichiers jusqu'à 25 Mo"
+        "feat1": "Nettoyages illimités pendant 24h",
+        "feat2": "Gros fichiers supportés (jusqu'à 100 Mo)",
+        "feat3": "Idéal pour un déblocage urgent"
       },
       "week": {
         "badge": "Le plus populaire",
-        "title": "7 jours",
+        "title": "Pass Campagne",
         "price": "29 €",
-        "feat1": "Nettoyages illimités",
-        "feat2": "Accès total pendant 7 jours",
-        "feat3": "Fichiers jusqu'à 100 Mo"
-      },
-      "life": {
-        "title": "À vie",
-        "price": "99 €",
-        "feat1": "Nettoyages illimités à vie",
+        "feat1": "Nettoyages illimités pendant 7 jours",
         "feat2": "Fichiers jusqu'à 100 Mo",
-        "feat3": "Futures mises à jour incluses"
-      }
-    } 
+        "feat3": "Priorité de traitement sur le serveur"
+      },
+      "year": {
+        "title": "Pass Annuel Pro",
+        "price": "99 €",
+        "feat1": "Usage illimité pendant 365 jours",
+        "feat2": "Fichiers jusqu'à 100 Mo",
+        "feat3": "Paiement unique (aucun prélèvement surprise)"
+      },
+      "no_account_note": "Pas besoin de compte. Après paiement, vous recevez un <strong>lien magique par email</strong> pour réutiliser votre accès sur n'importe quel appareil."
+    }
   },
   
   "manual": {
