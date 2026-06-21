@@ -161,31 +161,27 @@
       "free": {
         "title": "Test Gratuit",
         "price": "0 €",
-        "feat1": "2 essais par jour (limite 5 Mo)",
-        "feat2": "Aperçu dynamique Avant/Après",
-        "feat3": "Rapport de diagnostic inclus"
+        "feat1": "2 nettoyages par jour",
+        "feat2": "Fichiers jusqu'à 5 Mo (~50 000 lignes)"
       },
       "day": {
         "title": "Pass Express",
         "price": "9 €",
         "feat1": "Nettoyages illimités pendant 24h",
-        "feat2": "Gros fichiers supportés (jusqu'à 100 Mo)",
-        "feat3": "Idéal pour un déblocage urgent"
+        "feat2": "Fichiers jusqu'à 100 Mo (~1 million de lignes)"
       },
       "week": {
         "badge": "Le plus populaire",
         "title": "Pass Campagne",
         "price": "29 €",
         "feat1": "Nettoyages illimités pendant 7 jours",
-        "feat2": "Fichiers jusqu'à 100 Mo",
-        "feat3": "Priorité de traitement sur le serveur"
+        "feat2": "Fichiers jusqu'à 100 Mo (~1 million de lignes)"
       },
       "year": {
         "title": "Pass Annuel Pro",
-        "price": "99 €",
-        "feat1": "Usage illimité pendant 365 jours",
-        "feat2": "Fichiers jusqu'à 100 Mo",
-        "feat3": "Paiement unique (aucun prélèvement surprise)"
+        "price": "99 € <small style='font-size:12px; font-weight:normal;'>/ an</small>",
+        "feat1": "Nettoyages illimités pendant 1 an",
+        "feat2": "Fichiers jusqu'à 100 Mo (~1 million de lignes)"
       },
       "no_account_note": "Pas besoin de compte. Après paiement, vous recevez un <strong>lien magique par email</strong> pour réutiliser votre accès sur n'importe quel appareil."
     }

@@ -161,31 +161,27 @@
       "free": {
         "title": "Free Trial",
         "price": "$0",
-        "feat1": "2 free cleans per day (up to 5MB)",
-        "feat2": "Dynamic Before/After live preview",
-        "feat3": "Full data diagnostic report included"
+        "feat1": "2 free cleans per day",
+        "feat2": "Files up to 5MB (~50,000 rows)"
       },
       "day": {
         "title": "Express Pass",
         "price": "$9",
         "feat1": "Unlimited cleans for 24 hours",
-        "feat2": "Supports large files up to 100MB",
-        "feat3": "Perfect for an urgent, one-time fix"
+        "feat2": "Files up to 100MB (~1 million rows)"
       },
       "week": {
         "badge": "Most Popular",
         "title": "Campaign Pass",
         "price": "$29",
         "feat1": "Unlimited cleans for 7 days",
-        "feat2": "Supports large files up to 100MB",
-        "feat3": "Priority server processing"
+        "feat2": "Files up to 100MB (~1 million rows)"
       },
       "year": {
         "title": "Pro Annual Pass",
         "price": "$99",
-        "feat1": "Unlimited usage for 365 days",
-        "feat2": "Supports large files up to 100MB",
-        "feat3": "One-time payment (no auto-renewal surprises)"
+        "feat1": "Unlimited cleans for 1 year",
+        "feat2": "Files up to 100MB (~1 million rows)"
       },
       "no_account_note": "No account needed. After payment, you'll receive a <strong>magic link via email</strong> to reuse your pass on any device."
     }
