@@ -553,15 +553,16 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
-        <div class="teaser-report-container">
-            ${summaryText}
-        </div>
+        <details>
+            <summary>Voir le résumé complet</summary>
+            <div class="teaser-report-container">
+                ${summaryText}
+            </div>
+        </details>
     `;
 
     // --- NOUVEAU : ACCORDÉON POUR LES DÉTAILS ---
     html += `
-        <details>
-            <summary>Voir le détail technique</summary>
             <div class="teaser-table-wrapper">
                 <table class="teaser-table">
                     <thead>${theadHTML}</thead>
