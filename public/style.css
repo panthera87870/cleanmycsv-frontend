@@ -18,10 +18,12 @@ section[id] { scroll-margin-top: 80px; }
     --third-color : #ccefbf;
     --dark-text-color : #000000;
     --light-text-color : #ffffff;
+    --medium-text-color : #b1b2bd;
     --success-color : #00e190;
     --danger-color : #e1001b;
     --dark-border : #101014;
     --light-border : #d9d9d9;
+    --medium-border : #474952;
     --light-hover : var(--light-box);
     --dark-hover : var(--dark-box);
 
@@ -531,7 +533,8 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
 
 .teaser-paywall-gradient {
     position: absolute; bottom: 0; left: 0; right: 0; height: 90px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 70%, rgba(255,255,255,1) 100%);
+    /* Le dégradé passe de transparent à la couleur var(--dark-box) de manière fluide */
+    background: linear-gradient(to bottom, rgba(var(--dark-box-rgb), 0) 0%, rgba(var(--dark-box-rgb), 0.95) 70%, var(--dark-box) 100%);
     display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; z-index: 2;
 }
 .teaser-paywall-gradient i { font-size: 24px; color: var(--first-color); margin-bottom: 10px; }
