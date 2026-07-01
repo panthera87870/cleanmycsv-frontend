@@ -454,6 +454,7 @@ function generatePreviewHTML(previewRows, t) {
 }
 
 function displaySuccessView(data, isPaywall = false, reasonCode = null) {
+    console.log("CONTENU REÇU DANS DISPLAYSUCCESSVIEW :", data); // <-- AJOUTE ÇA
     const t = (key) => {
         if (window.translations && window.currentLang) {
             const keys = key.split('.');
