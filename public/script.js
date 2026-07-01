@@ -201,7 +201,7 @@ function resetModal() {
         <div class="upload-step">
             <h3>${t('modal.upload.step_1')}</h3>
             <form id="upload-form" class="upload-area-wrapper" method="POST" action="https://cleanmycsv-backend-536004118248.europe-west1.run.app/clean-file" enctype="multipart/form-data">                
-                <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required class="visually-hidden">
+                <input type="file" id="csv-file" name="csv_file_to_clean" accept=".csv" required class="modal-visually-hidden">
                 <div class="upload-area">
                     <label for="csv-file" class="upload-label">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -209,29 +209,29 @@ function resetModal() {
                         <small>${t('modal.upload.supported_files')}</small>
                     </label>
                 </div>
-                <div class="logic-selector-container">
-                    <span class="logic-title" style="font-weight:bold; margin-right:10px;">${t('modal.logic_title') || 'Format :'}</span>
-                    <div class="logic-group">
-                        <label class="radio-label">
+                <div class="upload-logic-container">
+                    <span class="upload-logic-title">${t('modal.logic_title') || 'Format :'}</span>
+                    <div class="upload-logic-group">
+                        <label class="upload-radio-label">
                             <input type="radio" name="cleaningLogic" value="fr" ${isFr ? 'checked' : ''}>
                             <span>${t('modal.logic_eu') || '🇪🇺 Europe'}</span>
                         </label>
-                        <label class="radio-label">
+                        <label class="upload-radio-label">
                             <input type="radio" name="cleaningLogic" value="en" ${!isFr ? 'checked' : ''}>
                             <span>${t('modal.logic_us') || '🇺🇸 USA'}</span>
                         </label>
                     </div>
-                    <div class="tooltip-wrapper" style="margin-left: 10px;">
-                        <i class="fa-regular fa-circle-question info-icon"></i>
-                        <span class="tooltip-text">${t('modal.logic_tooltip') || 'Info format...'}</span>
+                    <div class="upload-tooltip-wrapper">
+                        <i class="fa-regular fa-circle-question upload-tooltip-icon"></i>
+                        <span class="upload-tooltip-text">${t('modal.logic_tooltip') || 'Info format...'}</span>
                     </div>
                 </div>
-                <button type="submit" class="cta-button start-clean-btn" disabled>
+                <button type="submit" class="cta-button upload-btn-submit" disabled>
                     ${t('modal.upload.btn_start_disabled')}
                 </button>
             </form>
         </div>
-        <p class="security-note"><i class="fa-solid fa-lock"></i> ${t('modal.upload.security_note')}</p>
+        <p class="upload-security-note"><i class="fa-solid fa-lock"></i> ${t('modal.upload.security_note')}</p>
     `;
     setupFormListeners();
 }
@@ -346,11 +346,11 @@ async function handleFormSubmit(e) {
     dynamicContentArea.innerHTML = `
         <div class="modal-center-view">
             <h2>${t('modal.processing.title')}</h2>
-            <p class="text-muted">${t('modal.processing.sending')}</p>
-            <div class="progress-container">
-                <div class="progress-bar"></div>
+            <p class="modal-text-muted">${t('modal.processing.sending')}</p>
+            <div class="processing-progress-container">
+                <div class="processing-progress-bar"></div>
             </div>
-            <p class="text-muted-small"><i class="fa-solid fa-clock"></i> ${t('modal.processing.wait')}</p>
+            <p class="modal-text-small"><i class="fa-solid fa-clock"></i> ${t('modal.processing.wait')}</p>
         </div>
     `;
     
@@ -478,7 +478,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         headersToShow.forEach(h => {
             theadHTML += `<th>${sanitize(h || 'Colonne')}</th>`;
         });
-        if (hasMoreCols) theadHTML += '<th class="col-fade">...</th>';
+        if (hasMoreCols) theadHTML += '<th class="teaser-col-fade">...</th>';
         theadHTML += '</tr>';
 
         const rowsToShow = preview.slice(1, 4);
@@ -501,19 +501,19 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                 }
 
                 if (isFixed) {
-                    tbodyHTML += `<td class="cell-fixed" title="Original: ${sanitize(origCell)}">${sanitize(cleanCell) || '-'} ✨</td>`;
+                    tbodyHTML += `<td class="teaser-cell-fixed" title="Original: ${sanitize(origCell)}">${sanitize(cleanCell) || '-'} ✨</td>`;
                 } else {
                     tbodyHTML += `<td>${sanitize(cleanCell) || '-'}</td>`;
                 }
             });
-            if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
+            if (hasMoreCols) tbodyHTML += '<td class="teaser-col-fade">...</td>';
             tbodyHTML += '</tr>';
         });
 
         if (isPaywall) {
-            tbodyHTML += '<tr class="row-blurred">';
+            tbodyHTML += '<tr class="teaser-row-blurred">';
             headersToShow.forEach(() => tbodyHTML += `<td>données protégées</td>`);
-            if (hasMoreCols) tbodyHTML += '<td class="col-fade">...</td>';
+            if (hasMoreCols) tbodyHTML += '<td class="teaser-col-fade">...</td>';
             tbodyHTML += '</tr>';
         }
     }
@@ -524,53 +524,52 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
     if (isPaywall) {
         const subtitleKey = reasonCode === 'FILE_TOO_LARGE_FREE' ? t('teaser.subtitle_size') : t('teaser.subtitle_limit');
-        html += `<p class="teaser-alert" style="color: var(--color-danger); font-weight: bold; margin-bottom: 15px;">${subtitleKey}</p>`;
+        html += `<p class="teaser-alert">${subtitleKey}</p>`;
     } else {
-        html += `<p class="text-muted">${t('modal.success.subtitle')}</p>`;
+        html += `<p class="modal-text-muted">${t('modal.success.subtitle')}</p>`;
     }
 
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
-        <div class="report-container" style="background: var(--color-info-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left; font-size: 0.9em;">
+        <div class="teaser-report-container">
             ${summaryText}
         </div>
     `;
 
     html += `
         <div class="teaser-table-wrapper">
-            <table class="teaser-table-modern">
+            <table class="teaser-table">
                 <thead>${theadHTML}</thead>
                 <tbody>${tbodyHTML}</tbody>
             </table>
     `;
     if (isPaywall) {
         html += `
-            <div class="paywall-gradient">
-                <i class="fa-solid fa-lock" style="font-size: 24px; color: var(--deeper-purple); margin-bottom: 10px;"></i>
+            <div class="teaser-paywall-gradient">
+                <i class="fa-solid fa-lock"></i>
             </div>
         `;
     }
     html += `</div>`;
 
     if (isPaywall) {
-        html += `<p class="text-muted mb-20" style="text-align: center;">${t('teaser.hook')}</p>`;
+        html += `<p class="modal-text-muted" style="margin-bottom:20px;">${t('teaser.hook')}</p>`;
         html += `
-            <div class="action-buttons teaser-pricing" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">9€ - ${t('teaser.btn_day')}</a>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button" style="flex: 1; min-width: 120px; text-align: center;">29€ - ${t('teaser.btn_week')}</a>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="btn-secondary" style="flex: 1; min-width: 120px; text-align: center;">99€ - ${t('teaser.btn_year')}</a>
+            <div class="action-buttons teaser-pricing">
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="btn-secondary teaser-pricing-btn">9€ - ${t('teaser.btn_day')}</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button teaser-pricing-btn">29€ - ${t('teaser.btn_week')}</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="btn-secondary teaser-pricing-btn">99€ - ${t('teaser.btn_year')}</a>
             </div>
         `;
     } else {
         html += `
-            <div class="download-section mt-20" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                <div style="margin-bottom: 20px; text-align: center;">
-                    <label style="cursor: pointer; font-size: 0.95em; color: var(--deeper-purple); font-weight: 600;">
+            <div class="success-download-section">
+                <div class="success-checkbox-wrapper">
+                    <label class="success-checkbox-label">
                         <input type="checkbox" id="want-json"> ${t('modal.success.checkbox_json')}
                     </label>
                 </div>
-                
-                <button class="cta-button" id="btn-download-main" style="width: 100%; max-width: 300px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                <button class="cta-button success-btn-download" id="btn-download-main">
                     <i class="fa-solid fa-download"></i> <span id="btn-text">${t('modal.success.btn_download_csv')}</span>
                 </button>
             </div>
@@ -608,7 +607,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                         btnDownloadMain.disabled = true;
                         btnDownloadMain.style.opacity = '0.7';
                         btnDownloadMain.style.cursor = 'wait';
-                        btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 8px;"></i>`;
+                        btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin success-spinner"></i>`;
                         
                         triggerDownload(data.downloadUrl, data.downloadName);
                         
@@ -663,10 +662,10 @@ function displayPostDownloadView() {
     const t = window.t || ((k) => k);
     dynamicContentArea.innerHTML = `
         <div class="final-success-view">
-            <i class="fa-solid fa-circle-check main-icon"></i>
+            <i class="fa-solid fa-circle-check final-main-icon"></i>
             <h2>${t('modal.post_download.title')}</h2>
             <p>${t('modal.post_download.desc')}</p>
-            <div class="action-buttons">
+            <div class="final-action-buttons">
                 <button id="btn-finish-home" class="btn-secondary">
                     <i class="fa-solid fa-house"></i> ${t('modal.post_download.btn_finish')}
                 </button>
@@ -674,7 +673,7 @@ function displayPostDownloadView() {
                     <i class="fa-solid fa-rotate-right"></i> ${t('modal.post_download.btn_again')}
                 </button>
             </div>
-            <div class="text-muted-small mt-20">
+            <div class="modal-text-small">
                 ${t('modal.post_download.security_delete')}
             </div>
         </div>
