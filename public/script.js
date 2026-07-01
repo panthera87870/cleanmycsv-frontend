@@ -226,7 +226,7 @@ function resetModal() {
                         <span class="upload-tooltip-text">${t('modal.logic_tooltip') || 'Info format...'}</span>
                     </div>
                 </div>
-                <button type="submit" class="cta-button upload-btn-submit" disabled>
+                <button type="submit" id="upload-submit-btn" class="cta-button upload-btn-submit" disabled>
                     ${t('modal.upload.btn_start_disabled')}
                 </button>
             </form>
@@ -254,7 +254,7 @@ function setupFormListeners() {
     if (!currentFileInput || !currentUploadForm || !currentUploadArea) return;
 
     const currentUploadLabel = currentUploadForm.querySelector('.upload-label');
-    const currentSubmitButton = currentUploadForm.querySelector('.start-clean-btn'); 
+    const currentSubmitButton = document.getElementById('upload-submit-btn'); // Corrigé pour éviter l'erreur de ciblage
 
     // Glisser-Déposer
     ['dragenter', 'dragover'].forEach(eventName => {
@@ -309,8 +309,10 @@ function setupFormListeners() {
             const originalName = currentFileInput.files[0].name;
             const truncatedName = truncateFilename(originalName, 30);
             
-            currentSubmitButton.disabled = false;
-            currentSubmitButton.textContent = t('modal.upload.btn_start_ready');
+            if (currentSubmitButton) {
+                currentSubmitButton.disabled = false;
+                currentSubmitButton.textContent = t('modal.upload.btn_start_ready');
+            }
             
             currentUploadLabel.innerHTML = `
                 <i class="fa-solid fa-file-csv icon-purple"></i>
@@ -320,8 +322,10 @@ function setupFormListeners() {
                 <small class="text-muted">${t('modal.upload.change_file')}</small>
             `;
         } else {
-            currentSubmitButton.disabled = true;
-            currentSubmitButton.textContent = t('modal.upload.btn_start_disabled');
+            if (currentSubmitButton) {
+                currentSubmitButton.disabled = true;
+                currentSubmitButton.textContent = t('modal.upload.btn_start_disabled');
+            }
             currentUploadLabel.innerHTML = `
                 <i class="fa-solid fa-cloud-arrow-up icon-purple"></i>
                 <p class="text-bold">${t('modal.upload.drag_drop_text')}</p>
@@ -553,7 +557,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
 
     if (isPaywall) {
-        html += `<p class="modal-text-muted" style="margin-bottom:20px;">${t('teaser.hook')}</p>`;
+        html += `<p class="modal-text-muted mb-20">${t('teaser.hook')}</p>`;
         html += `
             <div class="action-buttons teaser-pricing">
                 <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="btn-secondary teaser-pricing-btn">9€ - ${t('teaser.btn_day')}</a>
@@ -605,8 +609,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                 if (chkJson && chkJson.checked) {
                     if (downloadStep === 1) {
                         btnDownloadMain.disabled = true;
-                        btnDownloadMain.style.opacity = '0.7';
-                        btnDownloadMain.style.cursor = 'wait';
+                        btnDownloadMain.classList.add('btn-loading'); // Remplace le JS style.opacity et style.cursor
                         btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin success-spinner"></i>`;
                         
                         triggerDownload(data.downloadUrl, data.downloadName);
@@ -615,8 +618,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                             const jsonText = t('modal.success.btn_download_json') || 'Télécharger le rapport JSON';
                             btnText.innerHTML = `${jsonText} (2/2)`;
                             btnDownloadMain.disabled = false;
-                            btnDownloadMain.style.opacity = '1';
-                            btnDownloadMain.style.cursor = 'pointer';
+                            btnDownloadMain.classList.remove('btn-loading');
                             
                             downloadStep = 2;
                         }, 1500); // (1500 = 1,5s)
