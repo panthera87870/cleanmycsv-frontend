@@ -453,6 +453,28 @@ function generatePreviewHTML(previewRows, t) {
     </div>`;
 }
 
+function getStatsFromPreview(preview) {
+    if (!preview || preview.length <= 1) return { rows: 0, fixes: 0 };
+
+    let totalRows = preview.length - 1; // On enlève l'entête
+    let totalFixes = 0;
+
+    // On boucle sur toutes les lignes (en ignorant l'entête)
+    for (let i = 1; i < preview.length; i++) {
+        const row = preview[i];
+        // On compare les cellules originales et nettoyées
+        row.cleaned.forEach((cleanVal, index) => {
+            const origVal = row.original[index];
+            // Si la donnée a changé, on incrémente le compteur
+            if (String(cleanVal) !== String(origVal)) {
+                totalFixes++;
+            }
+        });
+    }
+
+    return { rows: totalRows, fixes: totalFixes };
+}
+
 function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     const t = (key) => {
         if (window.translations && window.currentLang) {
@@ -465,6 +487,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         }
         return window.t ? window.t(key) : key;
     };
+    const stats = getStatsFromPreview(data.preview);
     
     let theadHTML = '';
     let tbodyHTML = '';
@@ -541,12 +564,12 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `
         <div class="dashboard-stats">
             <div class="stat-card">
-                <span class="stat-value">${rowCount}</span>
-                <span class="stat-label">Lignes</span>
+                <span class="stat-value">${stats.rows}</span>
+                <span class="stat-label">Lignes traitées</span>
             </div>
             <div class="stat-card">
-                <span class="stat-value">✨</span>
-                <span class="stat-label">Nettoyé</span>
+                <span class="stat-value">${stats.fixes}</span>
+                <span class="stat-label">Erreurs corrigées</span>
             </div>
         </div>
     `;
