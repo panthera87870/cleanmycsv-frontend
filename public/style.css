@@ -543,7 +543,7 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
 .teaser-pricing-btn { flex: 1; min-width: 120px; text-align: center; padding: 12px 10px; font-size: 0.9em; font-weight: bold; text-decoration: none; border-radius: 30px; }
 /* Couleurs spécifiques des boutons de l'aperçu */
 .teaser-pricing-btn.btn-day { background-color: var(--second-color); color: var(--light-text-color); }
-.teaser-pricing-btn.btn-week { background-color: var(--success-color); color: var(--dark-text-color); } /* Texte sombre car le vert est vif */
+.teaser-pricing-btn.btn-week { background-color: var(--third-color); color: var(--dark-text-color); } /* Texte sombre car le vert est vif */
 .teaser-pricing-btn.btn-year { background-color: var(--first-color); color: var(--light-text-color); }
 
 /* Petit effet au survol pour qu'ils soient interactifs */
@@ -561,7 +561,44 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
 .success-btn-download.btn-loading { opacity: 0.7; cursor: wait; pointer-events: none; } /* Remplace le JS inline */
 .success-spinner { margin-left: 8px; }
 
-
+details {
+    background: var(--dark-box);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px solid var(--medium-border);
+}
+summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--first-color);
+}
+/* Dashboard */
+.dashboard-stats {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.stat-card {
+    background: var(--dark-bg);
+    border: 1px solid var(--dark-border);
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+}
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--third-color);
+}
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+    text-transform: uppercase;
+}
 /* --- ÉTAPE 5 : VUE POST-DOWNLOAD (Fin) --- */
 .final-success-view { text-align: center; padding: 30px 20px; animation: fadeIn 0.5s ease; }
 .final-main-icon { font-size: 5rem; color: var(--second-color); margin-bottom: 25px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }

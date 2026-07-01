@@ -470,6 +470,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     let tbodyHTML = '';
     const preview = data.preview;
 
+    // --- LOGIQUE DE TABLEAU ORIGINALE (INCHANGÉE) ---
     if (preview && preview.length > 0) {
         const MAX_COLS = 5; 
         const cleanHeaders = preview[0].cleaned;
@@ -523,6 +524,8 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     }
 
     const title = isPaywall ? t('teaser.title') : t('modal.success.title');
+    
+    // --- CONSTRUCTION DU HTML AVEC DASHBOARD & ACCORDÉON ---
     let html = `<div class="modal-center-view success-view">`;
     html += `<h2>${title}</h2>`;
 
@@ -533,6 +536,21 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="modal-text-muted">${t('modal.success.subtitle')}</p>`;
     }
 
+    // --- NOUVEAU : DASHBOARD DES CORRECTIONS ---
+    const rowCount = preview ? preview.length - 1 : 0;
+    html += `
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <span class="stat-value">${rowCount}</span>
+                <span class="stat-label">Lignes</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">✨</span>
+                <span class="stat-label">Nettoyé</span>
+            </div>
+        </div>
+    `;
+
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
         <div class="teaser-report-container">
@@ -540,22 +558,27 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         </div>
     `;
 
+    // --- NOUVEAU : ACCORDÉON POUR LES DÉTAILS ---
     html += `
-        <div class="teaser-table-wrapper">
-            <table class="teaser-table">
-                <thead>${theadHTML}</thead>
-                <tbody>${tbodyHTML}</tbody>
-            </table>
+        <details>
+            <summary>Voir le détail technique</summary>
+            <div class="teaser-table-wrapper">
+                <table class="teaser-table">
+                    <thead>${theadHTML}</thead>
+                    <tbody>${tbodyHTML}</tbody>
+                </table>
     `;
+    
     if (isPaywall) {
         html += `
-            <div class="teaser-paywall-gradient">
-                <i class="fa-solid fa-lock"></i>
-            </div>
+                <div class="teaser-paywall-gradient">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
         `;
     }
-    html += `</div>`;
+    html += `</div></details>`; // Fin Accordéon
 
+    // --- LOGIQUE PAYWALL / DOWNLOAD (ORIGINALE) ---
     if (isPaywall) {
         html += `<p class="modal-text-muted mb-20">${t('teaser.hook')}</p>`;
         html += `
@@ -583,7 +606,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `</div>`;
     dynamicContentArea.innerHTML = html;
 
-    // --- ÉCOUTEURS D'ÉVÉNEMENTS ---
+    // --- ÉCOUTEURS D'ÉVÉNEMENTS (ORIGINAUX) ---
     if (!isPaywall) {
         const chkJson = document.getElementById('want-json');
         const btnDownloadMain = document.getElementById('btn-download-main');
@@ -594,7 +617,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             chkJson.addEventListener('change', (e) => {
                 if (e.target.checked) {
                     btnText.innerHTML = `${t('modal.success.btn_download_csv')} (1/2)`;
-                    downloadStep = 1; // On reset l'étape au cas où l'utilisateur joue avec la case
+                    downloadStep = 1;
                 } else {
                     btnText.innerHTML = `${t('modal.success.btn_download_csv')}`;
                 }
@@ -609,7 +632,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                 if (chkJson && chkJson.checked) {
                     if (downloadStep === 1) {
                         btnDownloadMain.disabled = true;
-                        btnDownloadMain.classList.add('btn-loading'); // Remplace le JS style.opacity et style.cursor
+                        btnDownloadMain.classList.add('btn-loading');
                         btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin success-spinner"></i>`;
                         
                         triggerDownload(data.downloadUrl, data.downloadName);
@@ -621,7 +644,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                             btnDownloadMain.classList.remove('btn-loading');
                             
                             downloadStep = 2;
-                        }, 1500); // (1500 = 1,5s)
+                        }, 1500);
                         
                     } else if (downloadStep === 2) {
                         triggerDownload(data.reportDownloadUrl, data.reportDownloadName);
