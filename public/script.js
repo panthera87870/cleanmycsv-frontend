@@ -465,6 +465,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         }
         return window.t ? window.t(key) : key;
     };
+    const stats = data.stats || {};
     const totalProcessed = data.originalRowsCount || 0;
     const rowsAffected = data.totalRowsAffected || 0;
 
