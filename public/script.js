@@ -540,20 +540,22 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="modal-text-muted">${t('modal.success.subtitle')}</p>`;
     }
 
-    // --- NOUVEAU : DASHBOARD DES CORRECTIONS ---
-    const rowCount = preview ? preview.length - 1 : 0;
-    html += `
-        <div class="dashboard-stats">
-            <div class="stat-card">
-                <span class="stat-value">${totalProcessed}</span>
-                <span class="stat-label">Lignes traitées</span>
+    // Construction du Dashboard (Masqué si c'est un paywall)
+    let html = ``;
+    if (!isPaywall) {
+        html += `
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <span class="stat-value">${totalProcessed}</span>
+                    <span class="stat-label">Lignes traitées</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">${rowsAffected}</span>
+                    <span class="stat-label">Lignes impactées</span>
+                </div>
             </div>
-            <div class="stat-card">
-                <span class="stat-value">${rowsAffected}</span>
-                <span class="stat-label">Lignes impactées</span>
-            </div>
-        </div>
-    `;
+        `;
+    }
 
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
