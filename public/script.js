@@ -465,10 +465,9 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         }
         return window.t ? window.t(key) : key;
     };
-    const stats = data.stats || {};
-    const totalFixes = (stats.postalCodeCorrections || 0) + (stats.generalFixes || 0);
-    const totalRows = stats.originalRowCount || (data.preview ? data.preview.length - 1 : 0);
-    
+    const totalProcessed = data.originalRowsCount || 0;
+    const rowsAffected = data.totalRowsAffected || 0;
+
     let theadHTML = '';
     let tbodyHTML = '';
     const preview = data.preview;
@@ -544,12 +543,12 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     html += `
         <div class="dashboard-stats">
             <div class="stat-card">
-                <span class="stat-value">${totalRows}</span>
+                <span class="stat-value">${totalProcessed}</span>
                 <span class="stat-label">Lignes traitées</span>
             </div>
             <div class="stat-card">
-                <span class="stat-value">${totalFixes}</span>
-                <span class="stat-label">Corrections</span>
+                <span class="stat-value">${rowsAffected}</span>
+                <span class="stat-label">Lignes impactées</span>
             </div>
         </div>
     `;
