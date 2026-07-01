@@ -541,7 +541,6 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     }
 
     // Construction du Dashboard (Masqué si c'est un paywall)
-    let html = ``;
     if (!isPaywall) {
         html += `
             <div class="dashboard-stats">
