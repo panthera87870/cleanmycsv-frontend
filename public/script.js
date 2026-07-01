@@ -560,9 +560,9 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="modal-text-muted mb-20">${t('teaser.hook')}</p>`;
         html += `
             <div class="action-buttons teaser-pricing">
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="btn-secondary teaser-pricing-btn">9€ - ${t('teaser.btn_day')}</a>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="cta-button teaser-pricing-btn">29€ - ${t('teaser.btn_week')}</a>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="btn-secondary teaser-pricing-btn">99€ - ${t('teaser.btn_year')}</a>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="teaser-pricing-btn btn-day">9€ - ${t('teaser.btn_day')}</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="teaser-pricing-btn btn-week">29€ - ${t('teaser.btn_week')}</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="teaser-pricing-btn btn-year">99€ - ${t('teaser.btn_year')}</a>
             </div>
         `;
     } else {

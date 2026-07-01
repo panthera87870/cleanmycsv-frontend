@@ -541,6 +541,17 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
 
 .teaser-pricing { display: flex; flex-direction: row; flex-wrap: nowrap; gap: 10px; justify-content: center; margin-top: 25px; margin-bottom: 20px; }
 .teaser-pricing-btn { flex: 1; min-width: 120px; text-align: center; padding: 12px 10px; font-size: 0.9em; font-weight: bold; text-decoration: none; border-radius: 30px; }
+/* Couleurs spécifiques des boutons de l'aperçu */
+.teaser-pricing-btn.btn-day { background-color: var(--second-color); color: var(--light-text-color); }
+.teaser-pricing-btn.btn-week { background-color: var(--success-color); color: var(--dark-text-color); } /* Texte sombre car le vert est vif */
+.teaser-pricing-btn.btn-year { background-color: var(--first-color); color: var(--light-text-color); }
+
+/* Petit effet au survol pour qu'ils soient interactifs */
+.teaser-pricing-btn:hover { 
+    filter: brightness(1.15); 
+    transform: translateY(-2px); 
+    transition: all 0.2s ease; 
+}
 
 .success-download-section { display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 20px; }
 .success-checkbox-wrapper { margin-bottom: 20px; text-align: center; }
