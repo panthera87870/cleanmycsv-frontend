@@ -417,8 +417,10 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
 }
 .modal-overlay.visible { visibility: visible; opacity: 1; }
 .modal-content {
-    background-color: var(--dark-bg); padding: 40px; margin: auto; border-radius: 20px; position: relative;
-    width: 90%; max-width: 600px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transform: scale(0.95); transition: transform 0.3s ease-out;
+    background-color: rgba(var(--dark-bg-rgb), 0.6); box-shadow: var(--glow-effect); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    padding: 40px; margin: auto; border-radius: 20px; position: relative;
+    width: 90%; max-width: 600px; transform: scale(0.95); transition: transform 0.3s ease-out;
 }
 .modal-overlay.visible .modal-content { transform: scale(1); }
 
@@ -448,9 +450,9 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     border: 2px dashed var(--dark-border); border-radius: 8px; padding: 30px; margin-bottom: 50px; text-align: center; cursor: pointer;
     transition: border-color 0.3s ease; background-color: var(--dark-box);
 }
-.upload-area:hover, .upload-area.highlight { border-color: var(--light-border); }
+.upload-area:hover, .upload-area.highlight { border-color: var(--medium-border); }
 .upload-label { display: block; cursor: pointer; }
-.upload-label i { font-size: 3rem; color: var(--first-color); margin-bottom: 10px; }
+.upload-label i { font-size: 3rem; color: var(--medium-text-color); margin-bottom: 10px; }
 .upload-label p { font-weight: 600; margin: 5px 0; color: var(--light-text-color); }
 .upload-label small { color: var(--light-text-color); font-size: 0.8rem; }
 .upload-label p strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 70%; vertical-align: top; }
