@@ -540,17 +540,26 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="modal-text-muted">${t('modal.success.subtitle')}</p>`;
     }
 
+    // 1. On va chercher les vraies données dans l'objet 'summary'
+    const summary = data.summary || {};
+    
+    // 2. On extrait les chiffres du "Résumé Humain"
+    // 'rowsRemoved' vient de ton reporter.js (rowsRemoved: 0, ...)
+    // 'totalChanges' correspond au nombre total d'actions dans le rapport
+    const rowsRemoved = summary.rowsRemoved || 0;
+    const totalCorrections = summary.totalChanges || 0;
+
     // Construction du Dashboard (Masqué si c'est un paywall)
     if (!isPaywall) {
         html += `
             <div class="dashboard-stats">
                 <div class="stat-card">
-                    <span class="stat-value">${totalProcessed}</span>
-                    <span class="stat-label">Lignes traitées</span>
+                    <span class="stat-value">${rowsRemoved}</span>
+                    <span class="stat-label">Lignes supprimées</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-value">${rowsAffected}</span>
-                    <span class="stat-label">Lignes impactées</span>
+                    <span class="stat-value">${totalCorrections}</span>
+                    <span class="stat-label">Corrections effectuées</span>
                 </div>
             </div>
         `;
