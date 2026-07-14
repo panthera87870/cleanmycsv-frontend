@@ -42,11 +42,12 @@
     "success": {
       "title": "Your file is ready!",
       "subtitle": "Cleaning Report",
-      "rows_affected": "Rows affected",
-      "rows_removed": "Rows / Duplicates removed",
+      "total_corrections": "Corrections applied",
+      "rows_removed": "Rows removed",
       "checkbox_json": "I also want the <strong>detailed JSON report</strong> of corrections (for experts).",
       "btn_download_csv": "Download Cleaned CSV",
-      "btn_download_json": "Download JSON Report"
+      "btn_download_json": "Download JSON Report",
+      "summary_title": "View full report"
     },
     "post_download": {
       "title": "Mission Accomplished!",

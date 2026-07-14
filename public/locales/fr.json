@@ -42,11 +42,12 @@
       "success": {
         "title": "Votre fichier est prêt !",
         "subtitle": "Rapport de Nettoyage",
-        "rows_affected": "Lignes affectées",
-        "rows_removed": "Lignes / Doublons retirés",
+        "total_corrections": "Corrections effectuées",
+        "rows_removed": "Lignes supprimées",
         "checkbox_json": "Je veux aussi le <strong>rapport détaillé JSON</strong> des corrections (pour les experts).",
         "btn_download_csv": "Télécharger le CSV Nettoyé",
-        "btn_download_json": "Télécharger le Rapport JSON"
+        "btn_download_json": "Télécharger le Rapport JSON",
+        "summary_title": "Voir le résumé complet"
       },
       "post_download": {
         "title": "Mission Accomplie !",

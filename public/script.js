@@ -555,11 +555,11 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
             <div class="dashboard-stats">
                 <div class="stat-card">
                     <span class="stat-value">${rowsRemoved}</span>
-                    <span class="stat-label">Lignes supprimées</span>
+                    <span class="stat-label">${t('modal.success.rows_removed')}</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-value">${totalCorrections}</span>
-                    <span class="stat-label">Corrections effectuées</span>
+                    <span class="stat-label">${t('modal.success.total_corrections')}</span>
                 </div>
             </div>
         `;
@@ -568,7 +568,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
     const summaryText = data.summary && data.summary.humanSummary ? data.summary.humanSummary : (data.summary || '');
     html += `
         <details>
-            <summary>Voir le résumé complet</summary>
+            <summary>${t('modal.success.summary_title')}</summary>
             <div class="teaser-report-container">
                 ${summaryText}
             </div>
