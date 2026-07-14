@@ -604,7 +604,7 @@ summary {
 
 /* Réduction des espacements et mise en forme du bloc de diagnostic */
 .report-diagnostic {
-    margin-bottom: 20px !important; /* Réduit l'espace par défaut */
+    margin-bottom: 10px !important; /* Réduit l'espace par défaut */
     padding: 15px !important;
     background: rgba(var(--first-color-rgb), 0.05); /* Légère couleur de fond */
     border-left: 4px solid var(--first-color); /* Mise en valeur avec la couleur primaire */
