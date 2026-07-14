@@ -604,12 +604,24 @@ summary {
 
 /* Réduction des espacements et mise en forme du bloc de diagnostic */
 .report-diagnostic {
-    margin-bottom: 10px; /* Réduit l'espace par défaut */
-    padding: 10px;
+    margin: 10px 0 !important; /* Réduit drastiquement l'espace extérieur */
+    padding: 10px 15px !important; /* Réduit l'espace intérieur */
     background: rgba(var(--second-color-rgb), 0.05); /* Légère couleur de fond */
     border-left: 4px solid var(--second-color); /* Mise en valeur avec la couleur primaire */
     border-radius: 8px;
     font-size: 0.95rem;
+}
+
+/* Annule les marges des paragraphes dans le bloc diagnostic */
+.report-diagnostic p {
+    margin: 0 !important; /* Supprime le vide entre "Original" et "Final" */
+    line-height: 1.4; /* Plus serré que le 1.6 global */
+    text-align: left; /* Aligne à gauche pour un aspect plus propre */
+}
+
+/* Gère l'espace sous le bloc */
+.report-diagnostic p:not(:last-child) {
+    margin-bottom: 5px !important;
 }
 
 /* Style de la liste des actions */
