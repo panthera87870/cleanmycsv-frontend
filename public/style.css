@@ -604,10 +604,10 @@ summary {
 
 /* Réduction des espacements et mise en forme du bloc de diagnostic */
 .report-diagnostic {
-    margin-bottom: 10px !important; /* Réduit l'espace par défaut */
-    padding: 15px !important;
-    background: rgba(var(--first-color-rgb), 0.05); /* Légère couleur de fond */
-    border-left: 4px solid var(--first-color); /* Mise en valeur avec la couleur primaire */
+    margin-bottom: 10px; /* Réduit l'espace par défaut */
+    padding: 10px;
+    background: rgba(var(--second-color-rgb), 0.05); /* Légère couleur de fond */
+    border-left: 4px solid var(--second-color); /* Mise en valeur avec la couleur primaire */
     border-radius: 8px;
     font-size: 0.95rem;
 }
