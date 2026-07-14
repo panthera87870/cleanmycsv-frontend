@@ -571,7 +571,7 @@ details {
 summary {
     cursor: pointer;
     font-weight: 600;
-    color: var(--first-color);
+    color: var(--light-text-color);
 }
 /* Dashboard */
 .dashboard-stats {
@@ -599,6 +599,51 @@ summary {
     color: var(--light-text-color);
     text-transform: uppercase;
 }
+
+/* --- Styles pour le Résumé Humain (Modale) --- */
+
+/* Réduction des espacements et mise en forme du bloc de diagnostic */
+.report-diagnostic {
+    margin-bottom: 20px !important; /* Réduit l'espace par défaut */
+    padding: 15px !important;
+    background: rgba(var(--first-color-rgb), 0.05); /* Légère couleur de fond */
+    border-left: 4px solid var(--first-color); /* Mise en valeur avec la couleur primaire */
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* Style de la liste des actions */
+.report-list {
+    list-style: none; /* Enlève les puces standards */
+    margin: 10px 0 0 0 !important;
+    padding: 0;
+}
+
+.report-list li {
+    margin-bottom: 8px; /* Espacement réduit entre les items */
+    padding-left: 15px;
+    position: relative;
+    color: var(--light-text-color);
+}
+
+/* Ajout d'une petite icône ou puce colorée personnalisée */
+.report-list li::before {
+    content: "•";
+    color: var(--third-color); /* Couleur verte pour le succès/correction */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Mise en valeur des titres dans la modale */
+.modal-content h3 {
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    color: var(--third-color); /* Couleur spécifique pour les titres de sections */
+    font-size: 1.2rem;
+}
+
 /* --- ÉTAPE 5 : VUE POST-DOWNLOAD (Fin) --- */
 .final-success-view { text-align: center; padding: 30px 20px; animation: fadeIn 0.5s ease; }
 .final-main-icon { font-size: 5rem; color: var(--second-color); margin-bottom: 25px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
