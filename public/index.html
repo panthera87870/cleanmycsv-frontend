@@ -27,6 +27,47 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
 
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+        "@type": "Question",
+        "name": "How to fix broken characters like Ã© in a CSV file?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Encoding errors like Ã© happen when a file uses an outdated format like Windows-1252. CleanMyCSV solves this by automatically converting the file to standard UTF-8, instantly restoring all international accents and special characters."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "How to restore missing leading zeros in zip codes removed by Excel?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Spreadsheets like Excel often strip away leading zeros (e.g., turning 02110 into 2110) because they treat zip codes as numbers. CleanMyCSV automatically detects zip code columns and restores the missing leading zero based on regional standards."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "What is the difference between FR and US CSV cleaning modes?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The FR mode interprets commas as decimal separators and semicolons as column delimiters. The US mode interprets dots as decimals and commas as delimiters, while also enabling standard formatting for US ZIP+4 codes."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Will the CSV cleaner alter my Order IDs, EIN, or business numbers?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. CleanMyCSV includes an Anti-ID safeguard. Raw number strings longer than 13 characters (such as EINs, barcodes, or transaction IDs) are flagged as technical business data and left completely untouched."
+        }
+        }
+    ]
+    }
+    </script>
 </head>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6D4HMV5LP"></script>
