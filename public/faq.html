@@ -24,26 +24,42 @@
 
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
         {
-          "@type": "Question",
-          "name": "Comment l'outil de nettoyage CSV fonctionne-t-il ?",
-          "acceptedAnswer": {
+        "@type": "Question",
+        "name": "How to fix broken characters like Ã© in a CSV file?",
+        "acceptedAnswer": {
             "@type": "Answer",
-            "text": "CleanMyCSV analyse et standardise vos données instantanément. L'algorithme corrige les erreurs d'encodage, supprime les doublons et normalise les données complexes."
-          }
+            "text": "Encoding errors like Ã© happen when a file uses an outdated format like Windows-1252. CleanMyCSV solves this by automatically converting the file to standard UTF-8, instantly restoring all international accents and special characters."
+        }
         },
         {
-          "@type": "Question",
-          "name": "Quels types de données sont corrigés automatiquement ?",
-          "acceptedAnswer": {
+        "@type": "Question",
+        "name": "How to restore missing leading zeros in zip codes removed by Excel?",
+        "acceptedAnswer": {
             "@type": "Answer",
-            "text": "L'outil normalise les e-mails, téléphones, codes postaux et les données financières avec extraction de devise."
-          }
+            "text": "Spreadsheets like Excel often strip away leading zeros (e.g., turning 02110 into 2110) because they treat zip codes as numbers. CleanMyCSV automatically detects zip code columns and restores the missing leading zero based on regional standards."
         }
-      ]
+        },
+        {
+        "@type": "Question",
+        "name": "What is the difference between FR and US CSV cleaning modes?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The FR mode interprets commas as decimal separators and semicolons as column delimiters. The US mode interprets dots as decimals and commas as delimiters, while also enabling standard formatting for US ZIP+4 codes."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Will the CSV cleaner alter my Order IDs, EIN, or business numbers?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. CleanMyCSV includes an Anti-ID safeguard. Raw number strings longer than 13 characters (such as EINs, barcodes, or transaction IDs) are flagged as technical business data and left completely untouched."
+        }
+        }
+    ]
     }
     </script>
 </head>
