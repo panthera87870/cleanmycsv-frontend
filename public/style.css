@@ -276,6 +276,7 @@ input:checked + .slider:before { transform: translateX(22px); }
     font-size: 0.75rem; box-shadow: 0 8px 25px var(--glow-effect);
     opacity: 0; visibility: hidden; transition: all 0.2s ease-out;
     z-index: 999; pointer-events: none;
+    font-family: 'Raleway', sans-serif;
 }
 .has-tooltip:hover::after {
     opacity: 1; visibility: visible;
