@@ -159,7 +159,11 @@
         "amount_fr_comma": "Virgule décimale standardisée en point mathématique pur",
         "amount_us_thousands": "La virgule a été interprétée comme un séparateur de milliers (valeur multipliée)",
         "zip_plus4": "Format long ZIP+4 américain identifié et standardisé"
-      }
+      },
+      "footer_note": "Les règles de nettoyage s'adaptent instantanément à la région sélectionnée. Un doute sur les formats ? Consultez notre",
+      "footer_note_and": "ou notre",
+      "link_docs": "Documentation", 
+      "link_faq": "FAQ"
     },
     "pricing": {
       "title": "Un pricing simple. Un résultat immédiat.",
@@ -205,10 +209,10 @@
       "nav1": "Encodage & Accents",
       "nav2": "Délimiteurs",
       "nav3": "Typographie & Zip",
-      "nav4": "Télephone",
+      "nav4": "Téléphone",
       "nav5": "Finances & Devises",
       "nav6": "Dates ISO 8601",
-      "nav7": "Logique FR vs US",
+      "nav7": "Logique EU vs US",
       "nav8": "Optimisation Structurelle",
       "nav9": "Sécurité XSS",
       "nav10": "Audit & Rapport JSON"

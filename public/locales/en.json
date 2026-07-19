@@ -159,7 +159,11 @@
         "amount_fr_comma": "Decimal comma standardized into a pure mathematical dot",
         "amount_us_thousands": "Comma interpreted as a thousands separator, multiplying the total value",
         "zip_plus4": "US ZIP+4 extended format detected and standardized"
-      }
+      },
+      "footer_note": "Cleaning rules adapt instantly to the selected region. Unsure about the formatting? Check out our",
+      "footer_note_and": "or our",
+      "link_docs": "Documentation", 
+      "link_faq": "FAQ"
     },
     "pricing": {
       "title": "Simple Pricing. Instant Results.",
@@ -208,7 +212,7 @@
       "nav4": "Phone Numbers",
       "nav5": "Financials & Currencies",
       "nav6": "ISO 8601 Dates",
-      "nav7": "FR vs US Logic",
+      "nav7": "EU vs US Logic",
       "nav8": "Structural Optimization",
       "nav9": "XSS Security",
       "nav10": "Audit & JSON Report"
