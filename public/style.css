@@ -258,6 +258,10 @@ input:checked + .slider:before { transform: translateX(22px); }
     border-bottom: 1px solid var(--light-border);
     font-size: 0.9rem;
 }
+.demo-section td {
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    letter-spacing: 0.5px; /* Aère légèrement les chiffres pour une lisibilité parfaite */
+}
 .has-tooltip { position: relative; cursor: help; }
 .has-tooltip::after {
     content: attr(data-tooltip); position: absolute;
