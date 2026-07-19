@@ -244,8 +244,15 @@ input:checked + .slider:before { transform: translateX(22px); }
 .col-added { color: var(--second-color); font-weight: 600; }
 .demo-section table {
     width: 100%; border-collapse: collapse; background: var(--dark-box);
-    border-radius: 12px; overflow: hidden;
+    border-radius: 12px; overflow: visible;
 }
+/* Arrondit les coins supérieurs (en-têtes th) */
+.demo-section table thead tr:first-child th:first-child { border-top-left-radius: 12px; }
+.demo-section table thead tr:first-child th:last-child { border-top-right-radius: 12px; }
+
+/* Arrondit les coins inférieurs (cellules td de la dernière ligne) */
+.demo-section table tbody tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+.demo-section table tbody tr:last-child td:last-child { border-bottom-right-radius: 12px; }
 .demo-section th, .demo-section td {
     padding: 12px 15px; text-align: left;
     border-bottom: 1px solid var(--light-border);
