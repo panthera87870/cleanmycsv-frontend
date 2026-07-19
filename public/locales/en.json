@@ -143,15 +143,23 @@
         "zip": "Zipcode"
       },
       "tooltip": {
-        "security": "Code injection neutralized (' prefix added)",
-        "date_auto": "Reversed format detected and auto-corrected",
-        "zip_zero": "Incomplete zip code: leading zero restored",
-        "particles": "Name particles detected and properly formatted",
-        "date_fr": "Ambiguous date parsed in FR format (DD/MM)",
-        "date_us": "Ambiguous date parsed in US format (MM/DD)",
-        "amount_us": "Period interpreted as decimal separator (US)",
-        "zip_plus4": "US ZIP+4 format detected and standardized",
-        "excel_date": "Excel serial number bug converted to valid date"
+        "security": "Formula injection neutralized (added single quote prefix ' )",
+        "zip_zero": "Missing leading zero restored for valid ZIP code",
+        "particles": "Name particles detected and properly capitalized",
+        "excel_date": "Excel serial number glitch converted to an actual date",
+        "date_fail_fr": "Invalid date in EU format (month 31 does not exist); left untouched to prevent corruption",
+        "date_us_valid": "Valid US date detected and normalized to ISO standard",
+        "date_fr": "Ambiguous date parsed using Europe logic (DD/MM)",
+        "date_us": "Ambiguous date parsed using US logic (MM/DD)",
+        "amount_thousands_fr": "Single dot interpreted as a thousands separator",
+        "amount_decimal_us": "Single dot automatically interpreted as a decimal point",
+        "amount_fail_fr": "Regional mismatch error: double decimal point generated from raw US format",
+        "amount_us_clean": "Thousands comma stripped to clean raw value for calculations",
+        "amount_fr_clean": "Thousands dot removed and decimal comma converted",
+        "amount_fail_us": "Regional mismatch error: decimal comma mistakenly stripped as a thousands separator",
+        "amount_fr_comma": "Decimal comma standardized into a pure mathematical dot",
+        "amount_us_thousands": "Comma interpreted as a thousands separator, multiplying the total value",
+        "zip_plus4": "US ZIP+4 extended format detected and standardized"
       }
     },
     "pricing": {

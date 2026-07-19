@@ -144,14 +144,22 @@
       },
       "tooltip": {
         "security": "Injection de code neutralisée (ajout du préfixe ' )",
-        "date_auto": "Format inversé détecté et auto-corrigé",
         "zip_zero": "Code postal incomplet : zéro initial restauré",
         "particles": "Particules de noms détectées et formatées",
-        "date_fr": "Date ambiguë lue en format Français (JJ/MM)",
-        "date_us": "Date ambiguë lue en format US (MM/JJ)",
-        "amount_us": "Point interprété comme séparateur décimal (US)",
-        "zip_plus4": "Format ZIP+4 américain détecté et standardisé",
-        "excel_date": "Bug du numéro de série Excel converti en date réelle"
+        "excel_date": "Bug du numéro de série Excel converti en date réelle",
+        "date_fail_fr": "Date invalide au format Europe (le mois 31 n'existe pas), protégée contre toute altération",
+        "date_us_valid": "Date américaine valide détectée et normalisée au format ISO",
+        "date_fr": "Date ambiguë convertie selon la structure Europe (JJ/MM)",
+        "date_us": "Date ambiguë convertie selon la structure USA (MM/JJ)",
+        "amount_thousands_fr": "Le point isolé a été interprété comme un séparateur de milliers",
+        "amount_decimal_us": "Le point isolé a été interprété d'office comme séparateur décimal",
+        "amount_fail_fr": "Erreur d'interprétation régionale : double séparateur décimal généré sur un format brut US",
+        "amount_us_clean": "La virgule des milliers a été extraite pour nettoyer le calcul mathématique",
+        "amount_fr_clean": "Le point des milliers a été supprimé et la virgule décimale convertie",
+        "amount_fail_us": "Erreur d'interprétation régionale : la virgule décimale a sauté",
+        "amount_fr_comma": "Virgule décimale standardisée en point mathématique pur",
+        "amount_us_thousands": "La virgule a été interprétée comme un séparateur de milliers (valeur multipliée)",
+        "zip_plus4": "Format long ZIP+4 américain identifié et standardisé"
       }
     },
     "pricing": {
