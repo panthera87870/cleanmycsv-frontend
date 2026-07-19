@@ -294,18 +294,13 @@ tr:first-child td:last-child.has-tooltip::after { left: auto; right: 0; transfor
 tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5px); }
 
 .demo-footer-note {
-    font-size: 0.8rem; color: var(--light-text-color); opacity: 0.6;
+    font-size: 0.9rem; color: var(--light-text-color);
     text-align: center; margin-top: 15px;
 }
-.demo-footer-note i {
-    color: var(--second-color); /* Ta couleur d'accentuation (ex: jaune/orange/vert) */
-    margin-right: 5px;
-}
+.demo-footer-note i { color: var(--first-color); margin-right: 5px; }
 .demo-link {
-    color: var(--first-color); /* Ta couleur principale */
-    text-decoration: underline;
-    font-weight: 600;
-    transition: opacity 0.2s;
+    color: var(--light-text-color); text-decoration: underline;
+    font-weight: 600; transition: opacity 0.2s;
 }
 .demo-link:hover { opacity: 0.8; }
 
