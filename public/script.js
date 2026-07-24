@@ -1,6 +1,52 @@
 // --- INITIALISATION VERCEL ANALYTICS (CUSTOM EVENTS) SECURISEE ---
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 
+// --- AUTO-TRACKER UMAMI POUR TOUS LES BOUTONS & LIENS ---
+document.addEventListener('click', (e) => {
+    // 1. Cherche si l'élément cliqué (ou son parent) est un bouton ou un lien
+    const target = e.target.closest('button, a, input[type="submit"], input[type="checkbox"], label');
+    
+    if (!target) return; // Si c'est un clic à côté, on ignore.
+
+    // 2. Extrait un nom propre pour l'événement Umami
+    let eventName = '';
+
+    // A. Priorité au texte du bouton
+    const cleanText = target.textContent?.trim().replace(/\s+/g, ' ').slice(0, 30);
+    
+    // B. Identification selon l'élément
+    if (target.getAttribute('href')?.includes('buy.stripe.com')) {
+        const url = target.getAttribute('href');
+        if (url.includes('28EfZj9TJ')) eventName = 'Click_Stripe_Day_Pass_9E';
+        else if (url.includes('bJe4gBgi7')) eventName = 'Click_Stripe_Week_Pass_29E';
+        else if (url.includes('14A28t5D')) eventName = 'Click_Stripe_Year_Pass_99E';
+        else eventName = 'Click_Stripe_Checkout';
+    } 
+    else if (target.classList.contains('js-open-modal')) {
+        eventName = `Open_Modal_${cleanText || 'Try'}`;
+    } 
+    else if (target.classList.contains('lang-btn')) {
+        eventName = `Change_Lang_${target.getAttribute('data-lang')?.toUpperCase()}`;
+    } 
+    else if (target.id === 'locale-toggle') {
+        eventName = target.checked ? 'Toggle_Demo_US' : 'Toggle_Demo_EU';
+    } 
+    else if (target.id === 'upload-submit-btn') {
+        eventName = 'Submit_CSV_Form';
+    } 
+    else if (target.id === 'btn-download-main') {
+        eventName = 'Download_Cleaned_CSV';
+    } 
+    else if (cleanText) {
+        eventName = `Click_${cleanText.replace(/[^a-zA-Z0-9]/g, '_')}`;
+    }
+
+    // 3. Envoie l'événement à Umami s'il existe
+    if (eventName && window.umami) {
+        window.umami.track(eventName);
+    }
+});
+
 /**
  * FONCTION DE SÉCURISATION XSS (CHIRURGICALE)
  * Remplace les caractères sensibles par des entités HTML.
