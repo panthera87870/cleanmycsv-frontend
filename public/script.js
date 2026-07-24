@@ -31,53 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- CONFIGURATION DES COOKIES (MODE MULTILINGUE) ---
-window.addEventListener('load', () => {
-    if (typeof CookieConsent !== 'undefined') {
-        CookieConsent.run({
-            guiOptions: {
-                consentModal: {
-                    layout: 'box',
-                    position: 'bottom right',
-                    equalWeightButtons: false
-                }
-            },
-            categories: {
-                necessary: { enabled: true, readOnly: true },
-                analytics: { enabled: false, readOnly: false }
-            },
-            language: {
-                default: 'fr',
-                autoDetect: 'document', 
-                translations: {
-                    fr: {
-                        consentModal: {
-                            title: 'Protection de votre vie privée',
-                            description: 'Nous utilisons des cookies pour mesurer l\'audience et améliorer votre expérience sur CleanMyCSV. Ces données nous aident à optimiser nos outils de traitement de données.',
-                            acceptAllBtn: 'Accepter l\'utilisation',
-                            acceptNecessaryBtn: 'Continuer sans accepter',
-                        }
-                    },
-                    en: {
-                        consentModal: {
-                            title: 'Privacy Protection',
-                            description: 'We use cookies to measure audience and improve your experience on CleanMyCSV. This data helps us optimize our data processing tools.',
-                            acceptAllBtn: 'Accept cookies',
-                            acceptNecessaryBtn: 'Continue without accepting',
-                        }
-                    }
-                }
-            },
-            onConsent: ({ cookie }) => {
-                const status = cookie.categories.includes('analytics') ? 'granted' : 'denied';
-                if (typeof gtag === 'function') {
-                    gtag('consent', 'update', { 'analytics_storage': status });
-                }
-            }
-        });
-    }
-});
-
 const modalElement = document.getElementById('upload-modal');
 const dynamicContentArea = document.getElementById('dynamic-content');
 
