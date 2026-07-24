@@ -8,6 +8,12 @@ document.addEventListener('click', (e) => {
     
     if (!target) return; // Si c'est un clic à côté, on ignore.
 
+    // ⛔ EXCLUSION : On ignore le bouton principal de téléchargement
+    // (car il est déjà géré proprement dans displaySuccessView)
+    if (target.id === 'btn-download-main' || target.closest('#btn-download-main')) {
+        return;
+    }
+    
     // 2. Extrait un nom propre pour l'événement Umami
     let eventName = '';
 
@@ -645,6 +651,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                 if (btnDownloadMain.disabled) return;
                 if (chkJson && chkJson.checked) {
                     if (downloadStep === 1) {
+                        if (window.umami) window.umami.track('Download_Cleaned_CSV');
                         btnDownloadMain.disabled = true;
                         btnDownloadMain.classList.add('btn-loading');
                         btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin success-spinner"></i>`;
@@ -661,6 +668,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                         }, 1500);
                         
                     } else if (downloadStep === 2) {
+                        if (window.umami) window.umami.track('Download_Report_JSON');
                         triggerDownload(data.reportDownloadUrl, data.reportDownloadName);
                         setTimeout(() => {
                             if (typeof displayPostDownloadView === 'function') {
@@ -669,6 +677,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                         }, 500);
                     }
                 } else {
+                    if (window.umami) window.umami.track('Download_Cleaned_CSV');
                     triggerDownload(data.downloadUrl, data.downloadName);
                     setTimeout(() => {
                         if (typeof displayPostDownloadView === 'function') {
