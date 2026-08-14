@@ -502,8 +502,7 @@
   "shopify_page": {
     "meta": {
       "title": "Fix Shopify CSV Import Errors Instantly | CleanMyCSV",
-      "desc": "Fix Shopify CSV import errors in seconds. Convert encoding to UTF-8 BOM, repair broken accents, fix price column formats, and restore missing leading zeros on SKUs."
-    },
+      "desc": "Fix Shopify CSV import errors in seconds. Convert UTF-8 BOM encoding, repair broken accents, fix price columns, and restore missing SKU zeros."    },
     "hero": {
       "title": "Fix Shopify CSV Import Errors Instantly",
       "subtitle": "Getting \"Illegal UTF-8 byte sequence\", broken product prices, or shifted column errors on Shopify?<br><br>CleanMyCSV automatically formats your file into 100% compliant Shopify CSV structure.",
@@ -582,8 +581,7 @@
   "zeros_page": {
     "meta": {
       "title": "Restore Leading Zeros in Excel CSV (ZIP Codes & Phones) | CleanMyCSV",
-      "desc": "Automatically restore missing leading zeros in CSV files caused by Excel. Fix truncated US ZIP codes (02110), French postal codes (06100), phone numbers, and SKUs online."
-    },
+      "desc": "Restore missing CSV leading zeros caused by Excel. Fix truncated ZIP codes (02110), postal codes (06100), phone numbers, and SKUs online."    },
     "hero": {
       "title": "Restore Missing Leading Zeros in CSV Files",
       "subtitle": "Did Excel turn your Boston ZIP code \"02110\" into \"2110\" or strip initial zeros from phone numbers and SKUs?<br><br>CleanMyCSV detects numeric data fields and rebuilds missing leading zeros automatically without Excel macro headaches.",
@@ -622,8 +620,7 @@
   "hubspot_page": {
     "meta": {
       "title": "Fix HubSpot CSV Contact Import Errors Instantly | CleanMyCSV",
-      "desc": "Fix HubSpot CSV import errors in seconds. Convert dates to ISO 8601 (YYYY-MM-DD), format E.164 phone numbers, restore ZIP code leading zeros, and clean email lists."
-    },
+      "desc": "Fix HubSpot CSV import errors in seconds. Format dates to ISO 8601, normalize E.164 phone numbers, restore ZIP code zeros, and clean email lists."    },
     "hero": {
       "title": "Fix HubSpot CSV Contact & Company Import Errors",
       "subtitle": "Getting invalid property errors, date formatting rejections, or corrupted names when importing lists into HubSpot?<br><br>CleanMyCSV formats your B2B lead lists into 100% compliant HubSpot CRM structure in seconds.",
@@ -662,8 +659,7 @@
   "klaviyo_page": {
     "meta": {
       "title": "Fix Klaviyo CSV Import Errors & SMS Formatting | CleanMyCSV",
-      "desc": "Fix Klaviyo CSV subscriber import errors in seconds. Format E.164 phone numbers for Klaviyo SMS, repair broken {{ first_name }} accents, and sanitize email lists."
-    },
+      "desc": "Fix Klaviyo CSV import errors in seconds. Format E.164 phone numbers for SMS, repair broken {{ first_name }} accents, and sanitize email lists."    },
     "hero": {
       "title": "Fix Klaviyo CSV Import Errors & SMS Phone Formatting",
       "subtitle": "Getting phone consent import failures or corrupted <code>{{ first_name }}</code> merge tags in Klaviyo?<br><br>CleanMyCSV formats your subscriber lists into 100% compliant Klaviyo structure in seconds.",
@@ -702,8 +698,7 @@
   "formula_page": {
     "meta": {
       "title": "Sanitize CSV Formula Injection Online | Anti-Exploit Guard | CleanMyCSV",
-      "desc": "Sanitize CSV files against Formula Injection vulnerabilities (=, +, -, @). Automatically escape malicious Excel payload characters and secure spreadsheet exports online."
-    },
+      "desc": "Sanitize CSV files against Formula Injection (=, +, -, @). Escape malicious Excel payload characters and secure spreadsheet exports online."    },
     "hero": {
       "title": "Sanitize CSV Formula Injection & Protect Spreadsheets",
       "subtitle": "Are user-submitted web forms or survey exports exposing your team to Excel CSV Injection attacks?<br><br>CleanMyCSV detects and neutralizes malicious <code>=</code>, <code>+</code>, <code>-</code>, and <code>@</code> formula prefixes automatically before you open files locally.",
@@ -742,8 +737,7 @@
   "delimiter_page": {
     "meta": {
       "title": "Convert CSV Semicolon to Comma Online | Delimiter Fixer | CleanMyCSV",
-      "desc": "Instantly convert CSV column delimiters from semicolons (;) to commas (,) online. Fix European Excel CSV separator mismatches without broken columns or formulas."
-    },
+      "desc": "Convert CSV delimiters from semicolons (;) to commas (,) online. Fix European Excel CSV separator mismatches without broken columns or formulas."    },
     "hero": {
       "title": "Convert CSV Semicolon to Comma Online",
       "subtitle": "Did European Excel dump all your CSV columns into a single unreadable row using semicolons (<code>;</code>)?<br><br>CleanMyCSV auto-detects separators, splits merged columns, and standardizes your file into comma-delimited (<code>,</code>) structure instantly.",
@@ -782,8 +776,7 @@
   "phone_page": {
     "meta": {
       "title": "Format Phone Numbers in CSV to E.164 Standard Online | CleanMyCSV",
-      "desc": "Bulk format and normalize phone numbers in CSV files to international E.164 standard. Add country codes, strip extensions, and restore missing leading zeros online."
-    },
+      "desc": "Format and normalize CSV phone numbers to international E.164 standard. Add country codes, strip extensions, and restore missing leading zeros online."    },
     "hero": {
       "title": "Bulk Format Phone Numbers in CSV to E.164 Standard",
       "subtitle": "Are messy phone formats like <code>06.12.34.56.78</code>, <code>+33(0)6...</code>, or missing country codes ruining your cold calling and SMS campaigns?<br><br>CleanMyCSV normalizes phone numbers into clean international E.164 formats automatically.",
@@ -822,8 +815,7 @@
   "coldemail_page": {
     "meta": {
       "title": "Clean Lead Lists for Cold Email (Lemlist, Instantly, Clay) | CleanMyCSV",
-      "desc": "Clean and format lead lists for cold email tools. Fix broken {{first_name}} accents, format capitalization, sanitize email addresses, and remove duplicates online."
-    },
+      "desc": "Clean lead lists for cold email tools. Fix broken {{first_name}} accents, format capitalization, sanitize email addresses, and remove duplicates online."    },
     "hero": {
       "title": "Clean Lead Lists for Cold Email Campaigns",
       "subtitle": "Sending cold emails with corrupted <code>{{ first_name }}</code> variables like \"Ã‰lodie\" or \"JOHN\"?<br><br>CleanMyCSV formats scraped lead lists for Lemlist, Instantly, and Clay in seconds to protect your domain deliverability.",
@@ -862,8 +854,7 @@
   "salesforce_page": {
     "meta": {
       "title": "Fix Salesforce CSV & Data Loader Import Errors | CleanMyCSV",
-      "desc": "Fix Salesforce Data Loader CSV import errors in seconds. Format ISO 8601 dates, protect 15/18 character Record IDs, format E.164 phone numbers, and repair encodings online."
-    },
+      "desc": "Fix Salesforce Data Loader CSV import errors. Format ISO 8601 dates, protect 15/18 character Record IDs, format E.164 phones, and repair encodings online."    },
     "hero": {
       "title": "Fix Salesforce CSV & Data Loader Import Errors",
       "subtitle": "Getting batch errors, date formatting rejections, or corrupted 18-char Record IDs in Salesforce Data Loader?<br><br>CleanMyCSV formats Lead, Account, and Contact CSV files into 100% compliant Salesforce CRM structure.",
@@ -942,8 +933,7 @@
   "woocommerce_page": {
     "meta": {
       "title": "Fix WooCommerce Product CSV Import Errors Instantly | CleanMyCSV",
-      "desc": "Fix WooCommerce product CSV import errors in seconds. Normalize price decimals, convert UTF-8 BOM encoding, fix semicolon delimiters, and restore SKU leading zeros online."
-    },
+      "desc": "Fix WooCommerce CSV import errors in seconds. Normalize price decimals, convert UTF-8 BOM, fix semicolon delimiters, and restore SKU zeros online."    },
     "hero": {
       "title": "Fix WooCommerce Product CSV Import Errors",
       "subtitle": "Getting price formatting errors, corrupted product accents, or column shifts during WooCommerce catalog imports?<br><br>CleanMyCSV formats your product CSVs into 100% compliant WooCommerce structure in seconds.",
@@ -982,8 +972,7 @@
   "date_page": {
     "meta": {
       "title": "Convert CSV Dates to ISO 8601 Standard (YYYY-MM-DD) | CleanMyCSV",
-      "desc": "Bulk convert messy CSV dates to standard ISO 8601 format (YYYY-MM-DD) online. Fix Excel serial date numbers, swap US/EU day-month formats, and normalize text dates."
-    },
+      "desc": "Convert messy CSV dates to standard ISO 8601 format (YYYY-MM-DD) online. Fix Excel serial date numbers, swap US/EU formats, and normalize text dates."    },
     "hero": {
       "title": "Convert CSV Dates to ISO 8601 Standard (YYYY-MM-DD)",
       "subtitle": "Are mixed regional date formats (<code>DD/MM/YYYY</code> vs <code>MM/DD/YYYY</code>) or Excel serial numbers (<code>45292</code>) causing database import failures?<br><br>CleanMyCSV normalizes all date columns into clean ISO 8601 standard structure automatically.",

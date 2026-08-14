@@ -307,8 +307,7 @@
   "faq_content": {
     "meta": {
       "title": "Guides de nettoyage CSV : Accents, Dates et Sécurité | CleanMyCSV",
-      "desc": "Découvrez comment CleanMyCSV répare vos fichiers : correction des accents (Ã©), récupération des zéros de codes postaux, normalisation de dates ISO et sécurité anti-injection."
-    },
+      "desc": "Découvrez comment CleanMyCSV répare vos fichiers : correction des accents, récupération des zéros postaux, dates ISO et sécurité anti-injection."    },
     "title": "Foire Aux Questions",
     "q1": {
       "title": "1. À quoi sert CleanMyCSV ?",
@@ -503,8 +502,7 @@
   "shopify_page": {
     "meta": {
       "title": "Corriger les Erreurs d'Import CSV Shopify Instantanément | CleanMyCSV",
-      "desc": "Réparez les erreurs d'import CSV Shopify en quelques secondes. Conversion UTF-8 BOM, correction des accents cassés, formatage des prix et restauration des zéros de SKU."
-    },
+      "desc": "Réparez les erreurs d'import CSV Shopify. Conversion UTF-8 BOM, correction des accents cassés, formatage des prix et restauration des zéros de SKU."    },
     "hero": {
       "title": "Corrigez vos Erreurs d'Import CSV Shopify Instantanément",
       "subtitle": "Erreurs \"Illegal UTF-8 byte sequence\", prix invalides ou colonnes décalées sur Shopify ?<br><br>CleanMyCSV formate automatiquement votre fichier pour le rendre 100 % compatible avec Shopify.",
@@ -583,8 +581,7 @@
   "zeros_page": {
     "meta": {
       "title": "Restaurer les Zéros Effacés par Excel (Codes Postaux & Téléphones) | CleanMyCSV",
-      "desc": "Restaurez automatiquement les zéros manquants supprimés par Excel dans vos CSV. Corrigez les codes postaux (06100), numéros de téléphone et SKU tronqués en ligne."
-    },
+      "desc": "Restaurez les zéros manquants supprimés par Excel dans vos CSV. Corrigez les codes postaux (06100), numéros de téléphone et SKU tronqués en ligne."    },
     "hero": {
       "title": "Restaurez les Zéros Manquants dans vos Fichiers CSV",
       "subtitle": "Excel a transformé votre code postal \"06100\" en \"6100\" ou effacé le zéro initial de vos téléphones et SKU ?<br><br>CleanMyCSV détecte les colonnes de données et réinsère automatiquement les zéros sans formules complexes.",
@@ -623,8 +620,7 @@
   "hubspot_page": {
     "meta": {
       "title": "Corriger les Erreurs d'Import CSV Contacts HubSpot | CleanMyCSV",
-      "desc": "Corrigez les erreurs d'import CSV HubSpot en quelques secondes. Conversion des dates au format ISO (AAAA-MM-JJ), formatage des téléphones E.164 et nettoyage d'emails."
-    },
+      "desc": "Corrigez les erreurs d'import CSV HubSpot. Conversion des dates au format ISO (AAAA-MM-JJ), formatage des téléphones E.164 et nettoyage d'emails."    },
     "hero": {
       "title": "Corrigez vos Erreurs d'Import CSV Contacts & Entreprises HubSpot",
       "subtitle": "Erreurs de propriétés invalides, dates rejetées ou noms corrompus lors de l'import dans HubSpot ?<br><br>CleanMyCSV formate vos listes de leads B2B pour les rendre 100 % conformes à la structure HubSpot CRM.",
@@ -783,8 +779,7 @@
   "phone_page": {
     "meta": {
       "title": "Normaliser Numéros de Téléphone CSV au Format E.164 | CleanMyCSV",
-      "desc": "Formatage en masse de numéros de téléphone CSV au format international E.164 (+33, +1). Ajoutez les indicatifs, supprimez les extensions et restaurez les zéros."
-    },
+      "desc": "Formatage de numéros de téléphone CSV au format international E.164 (+33, +1). Ajoutez les indicatifs, supprimez les extensions et restaurez les zéros."    },
     "hero": {
       "title": "Formater en Masse les Numéros de Téléphone CSV au Format E.164",
       "subtitle": "Formatages chaotiques (<code>06.12.34.56.78</code>, <code>+33(0)6...</code>) ou indicatifs manquants dans vos fichiers de prospection ?<br><br>CleanMyCSV normalise vos numéros au format international E.164 propre automatiquement.",
