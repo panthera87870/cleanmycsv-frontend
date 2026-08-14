@@ -483,6 +483,46 @@
     "contact_box_title": "E-mail",
     "contact_btn": "Nous contacter : contact@cleanmycsv.fr",
     "contact_note": "Réponse sous 24h ouvrées."
+  },
+  "shopify_page": {
+    "meta": {
+      "title": "Corriger les Erreurs d'Import CSV Shopify Instantanément | CleanMyCSV",
+      "desc": "Réparez les erreurs d'import CSV Shopify en quelques secondes. Conversion UTF-8 BOM, correction des accents cassés, formatage des prix et restauration des zéros de SKU."
+    },
+    "hero": {
+      "title": "Corrigez vos Erreurs d'Import CSV Shopify Instantanément",
+      "subtitle": "Erreurs \"Illegal UTF-8 byte sequence\", prix invalides ou colonnes décalées sur Shopify ?<br><br>CleanMyCSV formate automatiquement votre fichier pour le rendre 100 % compatible avec Shopify.",
+      "cta": "Réparer mon CSV Shopify Gratuitement"
+    },
+    "badges": {
+      "b1": "Conforme UTF-8 BOM Shopify",
+      "b2": "100% Privé & Zéro Rétention",
+      "b3": "Réparation Immédiate de Catalogues"
+    },
+    "issues": {
+      "title": "Erreurs d'Import CSV Shopify Résolues Automatiquement",
+      "subtitle": "L'importateur Shopify est très strict. Voici comment CleanMyCSV résout les 4 blocages les plus fréquents :"
+    },
+    "issue1": {
+      "title": "1. \"Illegal UTF-8 Byte Sequence\" & Accents Corrompus",
+      "desc": "Lors de l'export depuis Excel sous Windows (format Windows-1252), les accents se changent en caractères illisibles (\"Ã©\" au lieu de \"é\"). Shopify rejette le fichier. CleanMyCSV convertit votre fichier en <strong>UTF-8 avec BOM</strong>, préservant ainsi vos titres, descriptions HTML et handles."
+    },
+    "issue2": {
+      "title": "2. Colonnes Décalées & Séparateurs Point-Virgule",
+      "desc": "Les exports Excel européens utilisent des points-virgules (<code>;</code>) au lieu des virgules (<code>,</code>). Shopify fusionne alors toutes vos données dans une seule colonne. Notre moteur détecte le séparateur et réaligne toutes les colonnes (Title, Handle, Variant Price, Image Src)."
+    },
+    "issue3": {
+      "title": "3. Prix Invalides & Symboles de Devises",
+      "desc": "Shopify exige des prix en nombres décimaux purs (ex: <code>29.99</code>). Les colonnes contenant des symboles (<code>$ 29,99</code> ou <code>29,99 €</code>) font échouer l'import. CleanMyCSV retire les devises, convertit les virgules en points et isole la monnaie."
+    },
+    "issue4": {
+      "title": "4. SKU, Codes-Barres et Codes Postaux Tronqués",
+      "desc": "Excel supprime les zéros initiaux des séries numériques (transformant le SKU <code>00123</code> en <code>123</code>). Notre algorithme Anti-ID et de restauration de codes postaux identifie les données métiers et réinsère les zéros manquants avant l'import Shopify."
+    },
+    "cta_banner": {
+      "title": "Ne perdez plus des heures à réparer vos fichiers d'import Shopify à la main.",
+      "btn": "Nettoyer mon CSV Shopify"
+    }
   }
  
 }

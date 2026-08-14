@@ -482,5 +482,45 @@
     "contact_box_title": "Email Support",
     "contact_btn": "Contact Us: contact@cleanmycsv.fr",
     "contact_note": "Response within 24 business hours."
+  },
+  "shopify_page": {
+    "meta": {
+      "title": "Fix Shopify CSV Import Errors Instantly | CleanMyCSV",
+      "desc": "Fix Shopify CSV import errors in seconds. Convert encoding to UTF-8 BOM, repair broken accents, fix price column formats, and restore missing leading zeros on SKUs."
+    },
+    "hero": {
+      "title": "Fix Shopify CSV Import Errors Instantly",
+      "subtitle": "Getting \"Illegal UTF-8 byte sequence\", broken product prices, or shifted column errors on Shopify?<br><br>CleanMyCSV automatically formats your file into 100% compliant Shopify CSV structure.",
+      "cta": "Fix My Shopify CSV Now"
+    },
+    "badges": {
+      "b1": "Shopify UTF-8 BOM Compliant",
+      "b2": "100% Private & Zero Retention",
+      "b3": "Instant Product Catalog Repair"
+    },
+    "issues": {
+      "title": "Common Shopify CSV Errors We Repair Automatically",
+      "subtitle": "Shopify's CSV importer is notoriously strict. Here is how CleanMyCSV resolves the 4 most frequent import blocks:"
+    },
+    "issue1": {
+      "title": "1. \"Illegal UTF-8 Byte Sequence\" & Corrupted Accents",
+      "desc": "When exporting product lists from Excel on Windows (Windows-1252 format), French or international accents break into gibberish (e.g. \"Ã©\" instead of \"é\"). Shopify rejects these files outright. CleanMyCSV converts your file into pure <strong>UTF-8 with BOM</strong>, perfectly preserving titles, HTML descriptions, and handles."
+    },
+    "issue2": {
+      "title": "2. Column Shifts & Semicolon Delimiters",
+      "desc": "European Excel exports use semicolons (<code>;</code>) as column separators instead of commas (<code>,</code>). This dumps all your product attributes into a single row on Shopify. Our engine auto-detects the delimiter and re-aligns all columns (Title, Handle, Variant Price, Image Src) seamlessly."
+    },
+    "issue3": {
+      "title": "3. Invalid Variant Prices & Currency Formatting",
+      "desc": "Shopify requires prices as pure decimal numbers (e.g., <code>29.99</code>). Price columns containing currency symbols (<code>$ 29,99</code> or <code>29,99 €</code>) fail to import. CleanMyCSV strips currency characters, normalizes comma decimals into dots, and isolates currency codes into dedicated fields."
+    },
+    "issue4": {
+      "title": "4. Stripped SKUs, Barcodes & Zip Codes",
+      "desc": "Excel strips leading zeros from numeric strings (turning SKU <code>00123</code> into <code>123</code> or zip code <code>02110</code> into <code>2110</code>). Our Anti-ID safeguard and zip code restoration algorithms identify business parameters and rebuild missing zeros before you import into Shopify."
+    },
+    "cta_banner": {
+      "title": "Stop wasting hours fixing Shopify import files manually.",
+      "btn": "Clean Your Shopify CSV Free"
+    }
   }
 }
