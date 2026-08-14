@@ -803,5 +803,205 @@
       "title": "Garantissez 100 % de joignabilité sur vos listes de prospection téléphonique.",
       "btn": "Formater mes Téléphones"
     }
+  },
+  "coldemail_page": {
+    "meta": {
+      "title": "Nettoyer Listes de Leads Prospection Email (Lemlist, Instantly) | CleanMyCSV",
+      "desc": "Nettoyez vos fichiers de leads pour la prospection email. Réparez les accents des {{prénom}}, formatez les majuscules et supprimez les doublons en ligne."
+    },
+    "hero": {
+      "title": "Nettoyez vos Listes de Leads pour vos Campagnes de Cold Email",
+      "subtitle": "Vous envoyez des emails de prospection avec des variables <code>{{ prénom }}</code> corrompues comme \"Ã‰lodie\" ou \"JOHN\" ?<br><br>CleanMyCSV formate vos fichiers scrapés pour Lemlist, Instantly et Clay afin de protéger votre délivrabilité.",
+      "cta": "Nettoyer ma Liste de Leads Gratuitement"
+    },
+    "badges": {
+      "b1": "Prêt pour Lemlist & Instantly",
+      "b2": "Personnalisation avec Majuscules Propres",
+      "b3": "Zéro Risque de Spam"
+    },
+    "issues": {
+      "title": "Pourquoi le Nettoyage de Fichiers est Crucial en Cold Email",
+      "subtitle": "Les outils de scraping comme Apollo, Clay ou PhantomBuster génèrent des données brutes bruitées. Voici comment CleanMyCSV optimise vos campagnes :"
+    },
+    "issue1": {
+      "title": "1. Correction des Accents Cassés & Majuscules Propres",
+      "desc": "Commencer un mail de prospection par <i>\"Bonjour JOHN\"</i> ou <i>\"Bonjour Ã‰lodie\"</i> trahit immédiatement un robot. CleanMyCSV répare les erreurs d'encodage UTF-8, ajuste les majuscules (transformant <code>JOHN</code> en <code>John</code>) et gère les particules (De, Van, Von, Mc, O')."
+    },
+    "issue2": {
+      "title": "2. Assainissement des Emails & Suppression des Doublons",
+      "desc": "Un taux de rebond élevé détruit la réputation de votre nom de domaine. CleanMyCSV passe les emails en minuscules, retire les espaces cachés, corrige les doubles symboles <code>@@</code> et supprime les doublons."
+    },
+    "issue3": {
+      "title": "3. Préparation Multicanale (Téléphones & Codes Postaux)",
+      "desc": "Vous prospectez sur plusieurs canaux (Email, Téléphone, LinkedIn) ? CleanMyCSV normalise vos téléphones au format international E.164 (<code>+33</code> ou <code>+1</code>) et réinsère les zéros de codes postaux effacés par Excel."
+    },
+    "issue4": {
+      "title": "4. Export CSV Fluide vers Clay, Instantly & Woodpecker",
+      "desc": "Les exports Excel avec points-virgules (<code>;</code>) décalent le mapping des colonnes sur les plateformes de prospection. CleanMyCSV convertit vos données en UTF-8 BOM avec des virgules standards, prêtes pour l'import."
+    },
+    "cta_banner": {
+      "title": "Protégez votre délivrabilité et maximisez vos taux de réponse dès aujourd'hui.",
+      "btn": "Nettoyer ma Liste de Leads"
+    }
+  },
+  "salesforce_page": {
+    "meta": {
+      "title": "Corriger les Erreurs d'Import CSV Salesforce Data Loader | CleanMyCSV",
+      "desc": "Corrigez les erreurs d'importation Salesforce Data Loader. Conversion des dates ISO 8601, protection des ID à 15/18 caractères et formatage des téléphones."
+    },
+    "hero": {
+      "title": "Corrigez vos Erreurs d'Import CSV Salesforce Data Loader",
+      "subtitle": "Erreurs de lots, rejet de format de dates ou ID à 18 caractères corrompus dans Salesforce Data Loader ?<br><br>CleanMyCSV formate vos fichiers de Leads, Comptes et Contacts pour les rendre 100 % conformes à Salesforce.",
+      "cta": "Nettoyer mon CSV Salesforce Gratuitement"
+    },
+    "badges": {
+      "b1": "Compatible Data Loader & Import Wizard",
+      "b2": "Protection des ID Salesforce",
+      "b3": "Formatage Dates ISO & Téléphones"
+    },
+    "issues": {
+      "title": "Erreurs d'Importation Salesforce Résolues Automatiquement",
+      "subtitle": "Salesforce CRM applique des règles de validation strictes lors de l'intégration. Voici comment CleanMyCSV prépare vos fichiers :"
+    },
+    "issue1": {
+      "title": "1. Formatage Stricte des Dates ISO 8601",
+      "desc": "Salesforce rejette les dates non conformes à la norme ISO (<code>AAAA-MM-JJ</code>). Les dates au format texte (\"12/05/2024\") déclenchent des rejets immédiats. CleanMyCSV standardise toutes les colonnes de dates automatiquement."
+    },
+    "issue2": {
+      "title": "2. Protection des ID de Enregistrements Salesforce (15 et 18 Caractères)",
+      "desc": "Salesforce s'appuie sur des ID uniques à 15 ou 18 caractères (ex: <code>00100000003ABCQAAS</code>). Excel altère souvent la casse de ces identifiants. Notre garde-fou Anti-ID isole les clés techniques pour éviter toute corruption."
+    },
+    "issue3": {
+      "title": "3. Normalisation des Téléphones & Personnalisation des Leads",
+      "desc": "Le formatage des téléphones aux normes E.164 garantit une intégration fluide avec la téléphonie CTI. CleanMyCSV ajuste les majuscules des noms propres et restaure les zéros de codes postaux effacés par Excel."
+    },
+    "issue4": {
+      "title": "4. Séparateur Point-Virgule & Conversion UTF-8 BOM",
+      "desc": "Data Loader exige des fichiers CSV à virgules (<code>,</code>) codés en UTF-8 BOM. Les exports Excel européens avec points-virgules (<code>;</code>) fusionnent tout dans une seule colonne. CleanMyCSV gère la conversion en un clic."
+    },
+    "cta_banner": {
+      "title": "Éliminez les échecs de traitement par lots dans Salesforce Data Loader dès aujourd'hui.",
+      "btn": "Nettoyer mon Fichier Salesforce"
+    }
+  },
+  "airtable_page": {
+    "meta": {
+      "title": "Corriger les Erreurs d'Import CSV Airtable et Notion | CleanMyCSV",
+      "desc": "Corrigez les erreurs d'import CSV dans Airtable et Notion. Réalignez les colonnes fusionnées, convertissez les séparateurs et formatez les dates ISO."
+    },
+    "hero": {
+      "title": "Corrigez vos Erreurs d'Importation CSV dans Airtable & Notion",
+      "subtitle": "Des colonnes fusionnées, des dates non reconnues ou des accents cassés bloquent vos bases Airtable ou Notion ?<br><br>CleanMyCSV formate vos fichiers en structures UTF-8 à virgules prêtes pour vos outils No-Code.",
+      "cta": "Nettoyer mon Fichier No-Code Gratuitement"
+    },
+    "badges": {
+      "b1": "Prêt pour Airtable & Notion",
+      "b2": "Compatible Écosystème No-Code",
+      "b3": "Réalignement Immédiat des Colonnes"
+    },
+    "issues": {
+      "title": "Problèmes d'Importation No-Code Résolus Automatiquement",
+      "subtitle": "Airtable et Notion exigent des séparateurs précis et des formats stricts pour construire des tables relationnelles. Voici comment CleanMyCSV prépare vos données :"
+    },
+    "issue1": {
+      "title": "1. Réalignement des Colonnes Fusionnées (Points-Virgules)",
+      "desc": "L'import de fichiers Excel européens à points-virgules (<code>;</code>) dans Airtable ou Notion compresse tout dans une seule colonne texte. CleanMyCSV convertit votre fichier en séparateur virgule standard (<code>,</code>) pour remplir chaque champ correctement."
+    },
+    "issue2": {
+      "title": "2. Formatage des Dates au Format ISO 8601",
+      "desc": "Les champs Date d'Airtable et Notion rejettent les formats régionaux <code>JJ/MM/AAAA</code>. CleanMyCSV standardise les colonnes de dates au format ISO (<code>AAAA-MM-JJ</code>), activant directement les vues calendrier, timeline et filtres d'automatisation."
+    },
+    "issue3": {
+      "title": "3. Correction des Accents & Caractères Spéciaux",
+      "desc": "Les données issues du web ou d'anciens exports affichent souvent des symboles cassés (comme <code>Ã©</code> au lieu de <code>é</code>). CleanMyCSV convertit vos données en <strong>UTF-8 BOM</strong> pour un affichage parfait dans vos options de sélection et champs texte."
+    },
+    "issue4": {
+      "title": "4. Normalisation des Téléphones et Codes Postaux",
+      "desc": "Les champs Téléphone et Localisation exigent des formats propres. Excel efface le zéro initial des codes postaux (<code>06100</code> devenant <code>6100</code>). CleanMyCSV réinsère les zéros manquants et passe les numéros au format international (<code>+33</code> / <code>+1</code>)."
+    },
+    "cta_banner": {
+      "title": "Arrêtez de perdre des heures à nettoyer manuellement vos CSV pour vos outils No-Code.",
+      "btn": "Nettoyer mon Fichier Airtable & Notion"
+    }
+  },
+  "woocommerce_page": {
+    "meta": {
+      "title": "Corriger les Erreurs d'Import CSV Produits WooCommerce | CleanMyCSV",
+      "desc": "Corrigez les erreurs d'importation de catalogue WooCommerce. Normalisez les prix décimaux, convertissez en UTF-8 BOM et restaurez les zéros des SKU."
+    },
+    "hero": {
+      "title": "Corrigez vos Erreurs d'Import CSV Produits WooCommerce",
+      "subtitle": "Erreurs de prix, accents corrompus sur les catégories ou colonnes décalées lors de l'import de votre catalogue WooCommerce ?<br><br>CleanMyCSV formate vos fichiers produits pour les rendre 100 % conformes à WooCommerce en quelques secondes.",
+      "cta": "Nettoyer mon CSV WooCommerce Gratuitement"
+    },
+    "badges": {
+      "b1": "Compatible Importateur WooCommerce Native",
+      "b2": "Normalisation des Prix & Décimales",
+      "b3": "Protection des Accents UTF-8 BOM"
+    },
+    "issues": {
+      "title": "Erreurs d'Importation WooCommerce Résolues Automatiquement",
+      "subtitle": "L'importateur WooCommerce exige des règles de formatage très strictes. Voici comment CleanMyCSV prépare votre catalogue :"
+    },
+    "issue1": {
+      "title": "1. Formatage des Colonnes de Prix (Prix Régulier & Promo)",
+      "desc": "WooCommerce exige des prix en nombres décimaux purs à point (ex: <code>19.99</code>). Les valeurs contenant des symboles (<code>19,99 €</code> ou <code>$19.99</code>) ou des virgules transforment vos prix en 0. CleanMyCSV retire les devises et standardise les décimales."
+    },
+    "issue2": {
+      "title": "2. Séparateur Point-Virgule & Réalignement des Colonnes",
+      "desc": "Les exports Excel européens séparent les colonnes par des points-virgules (<code>;</code>). Importer ce fichier dans WooCommerce compresse tous les attributs (Nom, SKU, Prix) dans une seule colonne. CleanMyCSV convertit les séparateurs en virgules standards."
+    },
+    "issue3": {
+      "title": "3. Titres, Descriptions & Catégories Corrompus",
+      "desc": "Les accents dans les titres et catégories (ex: <i>Vêtements > T-Shirts</i>) deviennent illisibles (<code>VÃªtements</code>) en format Windows ANSI. CleanMyCSV convertit vos données en <strong>UTF-8 BOM</strong> pour un affichage parfait."
+    },
+    "issue4": {
+      "title": "4. Protection des Zéros de SKU & Codes-Barres",
+      "desc": "WooCommerce utilise le SKU pour synchroniser les variations et les stocks. Excel supprime les zéros au début des SKU (transformant <code>00412</code> en <code>412</code>), ce qui casse la liaison des variations. Notre garde-fou Anti-ID préserve l'intégrité des SKU."
+    },
+    "cta_banner": {
+      "title": "Importez votre catalogue WooCommerce sans perdre de temps sur vos tableurs.",
+      "btn": "Nettoyer mon Fichier WooCommerce"
+    }
+  },
+  "date_page": {
+    "meta": {
+      "title": "Convertir Dates CSV au Format ISO 8601 (AAAA-MM-JJ) | CleanMyCSV",
+      "desc": "Convertissez vos dates CSV au format universel ISO 8601 (AAAA-MM-JJ) en ligne. Corrigez les nombres de série Excel (45292) et inversez les jours/mois."
+    },
+    "hero": {
+      "title": "Convertir les Dates CSV au Format Universel ISO 8601 (AAAA-MM-JJ)",
+      "subtitle": "Des formats de dates régionaux conflictuels (<code>JJ/MM/AAAA</code> vs <code>MM/JJ/AAAA</code>) ou des nombres de série Excel (<code>45292</code>) bloquent vos imports SQL ?<br><br>CleanMyCSV normalise toutes vos colonnes de dates au format ISO 8601 automatiquement.",
+      "cta": "Formater mes Dates CSV Gratuitement"
+    },
+    "badges": {
+      "b1": "Format ISO 8601 (AAAA-MM-JJ)",
+      "b2": "Conversion Nombres Série Excel",
+      "b3": "Prêt pour SQL & PowerBI"
+    },
+    "issues": {
+      "title": "Erreurs d'Importation de Dates CSV Résolues Automatiquement",
+      "subtitle": "Les bases de données (PostgreSQL, BigQuery, MySQL) et outils BI exigent un formatage unifié. Voici comment CleanMyCSV prépare vos données :"
+    },
+    "issue1": {
+      "title": "1. Conversion des Nombres de Série Excel (ex: 45292 → 2024-01-12)",
+      "desc": "Lors des exports Microsoft Excel, les colonnes de dates se changent souvent en entiers bruts (comptant les jours depuis le 1er janvier 1900, comme <code>45292</code>). CleanMyCSV détecte ces nombres à 5 chiffres et les retransforme en dates ISO lisibles."
+    },
+    "issue2": {
+      "title": "2. Inversion Jours/Mois US vs Europe (MM/JJ/AAAA vs JJ/MM/AAAA)",
+      "desc": "Inverser le jour et le mois corrompt discrètement vos données CRM ou SQL. Notre moteur utilise une analyse contextuelle selon la langue pour identifier les conventions européennes (<code>JJ-MM-AAAA</code>) ou américaines (<code>MM-JJ-AAAA</code>)."
+    },
+    "issue3": {
+      "title": "3. Normalisation des Mois Textuels & Séparateurs",
+      "desc": "Les dates textuelles avec abréviations (ex: <i>\"12 Jan 2024\"</i>, <i>\"12-Fév-2024\"</i>) empêchent de définir le type de colonne DATE en base. CleanMyCSV traduit les mois textuels multilingues et unifie les séparateurs au format ISO à tirets."
+    },
+    "issue4": {
+      "title": "4. Intégration Immédiate dans BigQuery, PostgreSQL & PowerBI",
+      "desc": "Ne perdez plus de temps à écrire des requêtes <code>PARSE_DATE()</code> ou des scripts Python Pandas. CleanMyCSV convertit les dates, répare les accents et délivre un fichier CSV propre en quelques secondes."
+    },
+    "cta_banner": {
+      "title": "Standardisez vos dates CSV pour une intégration fluide dans vos bases de données.",
+      "btn": "Formater mes Dates Maintenant"
+    }
   }
 }

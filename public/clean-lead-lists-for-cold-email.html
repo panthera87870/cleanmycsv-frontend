@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
+
+    <!-- SEO / Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/clean-lead-lists-for-cold-email.html" />
+    <link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/clean-lead-lists-for-cold-email.html?lang=fr" />
+    <link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/clean-lead-lists-for-cold-email.html" />
+
+    <title data-i18n="coldemail_page.meta.title">Clean Lead Lists for Cold Email (Lemlist, Instantly, Clay) | CleanMyCSV</title>
+    <meta name="description" data-i18n-attr="content:coldemail_page.meta.desc" content="Clean and format lead lists for cold email tools. Fix broken {{first_name}} accents, format capitalization, sanitize email addresses, and remove duplicates online.">
+
+    <meta property="og:title" content="Clean Lead Lists for Cold Email Campaigns - CleanMyCSV">
+    <meta property="og:description" content="Fix broken personalization variables, format lead names, and sanitize email lists for Lemlist, Instantly, and Clay in 1 click.">
+    <meta property="og:image" content="assets/images/og-image.png">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="3c4e12ac-ecc8-4b77-b24e-08597dac077e"></script>
+
+    <!-- Schema.org WebApplication for Cold Email Lead List Cleaning -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CleanMyCSV - Cold Email Lead List Cleaner",
+      "url": "https://cleanmycsv.fr/clean-lead-lists-for-cold-email.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Automated online tool to clean and format lead lists for cold email platforms (Lemlist, Instantly, Clay, Apollo): first name capitalization, accent repair, and email deduplication.",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "99",
+        "offerCount": "4"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content" id="modal-container">
+            <button class="close-btn js-close-modal">&times;</button>
+            <div id="dynamic-content"></div>
+        </div>
+    </div>
+
+    <div class="sticky-wrapper">
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><span>CLEANMYCSV</span></a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">Documentation</a>
+                    <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
+                    <a href="#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">Pricing</a>
+                    <div class="lang-selector">
+                        <i class="fa-solid fa-globe lang-icon"></i>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Try it</button>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 data-i18n="coldemail_page.hero.title">Clean Lead Lists for Cold Email Campaigns</h1>
+                <h2 data-i18n="coldemail_page.hero.subtitle">
+                    Sending cold emails with corrupted <code>{{ first_name }}</code> variables like "Ã‰lodie" or "JOHN"?<br><br>CleanMyCSV formats scraped lead lists for Lemlist, Instantly, and Clay in seconds to protect your domain deliverability.
+                </h2>
+                <div class="cta-wrapper">
+                    <button class="cta-button hero-cta js-open-modal" data-i18n="coldemail_page.hero.cta">
+                        Clean My Lead List Free
+                    </button>
+                </div>
+                <div class="trust-badges">
+                    <div class="badge-item">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span data-i18n="coldemail_page.badges.b1">Lemlist & Instantly Ready</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fa-solid fa-user-check"></i>
+                        <span data-i18n="coldemail_page.badges.b2">Proper Case Personalization</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span data-i18n="coldemail_page.badges.b3">Zero Spam Flag Risk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="page-content-wrapper">
+        <div class="container">
+            <h2 data-i18n="coldemail_page.issues.title">Why Clean Lead Lists Matter for Cold Email Success</h2>
+            <p class="section-subtext" data-i18n="coldemail_page.issues.subtitle">
+                Prospecting engines like Apollo, Clay, and PhantomBuster export raw, noisy data. Here is how CleanMyCSV optimizes your campaign variables:
+            </p>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-i-cursor icon-purple"></i> <span data-i18n="coldemail_page.issue1.title">1. Fix Broken Accents & Proper Case Capitalization</span></h4>
+                <p data-i18n="coldemail_page.issue1.desc">
+                    Opening cold emails with <i>"Hi JOHN"</i> or <i>"Bonjour Ã‰lodie"</i> immediately signals an automated spam script. CleanMyCSV repairs UTF-8 encoding errors, adjusts proper capitalization (turning <code>JOHN</code> into <code>John</code>), and handles international particles (De, Van, Von, Mc, O').
+                </p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-at icon-purple"></i> <span data-i18n="coldemail_page.issue2.title">2. Email Address Sanitization & Deduplication</span></h4>
+                <p data-i18n="coldemail_page.issue2.desc">
+                    High bounce rates destroy domain sender reputation. CleanMyCSV lowercases emails, strips hidden trailing spaces, corrects double <code>@@</code> symbols, and removes duplicate leads across scraped lists before you launch your campaign.
+                </p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-phone-volume icon-purple"></i> <span data-i18n="coldemail_page.issue3.title">3. Multi-Channel Phone & ZIP Code Prep</span></h4>
+                <p data-i18n="coldemail_page.issue3.desc">
+                    Running cold outreach across Email, Cold Calling, and LinkedIn? CleanMyCSV normalizes phone numbers into E.164 international formats (<code>+1</code> or <code>+33</code>) and restores 5-digit ZIP codes stripped by Excel.
+                </p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-file-export icon-purple"></i> <span data-i18n="coldemail_page.issue4.title">4. Seamless CSV Export to Clay, Instantly & Woodpecker</span></h4>
+                <p data-i18n="coldemail_page.issue4.desc">
+                    Exporting from Excel with semicolon delimiters (<code>;</code>) causes cold email platforms to misinterpret column mappings. CleanMyCSV converts your output to UTF-8 BOM with standard comma delimiters, ready for instant import.
+                </p>
+            </div>
+
+            <div class="final-cta-docs">
+                <h3 data-i18n="coldemail_page.cta_banner.title">Protect your domain deliverability and maximize reply rates today.</h3>
+                <button class="cta-button last-cta js-open-modal" data-i18n="coldemail_page.cta_banner.btn">
+                    Clean My Lead List Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section container">
+        <h2 data-i18n="index.pricing.title">Simple Pricing. Instant Results.</h2>
+        <p class="section-subtext" data-i18n="index.pricing.subtitle">One-time payment. No hidden subscriptions.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card lifetime">
+                <h3 data-i18n="index.pricing.year.title">Pro Annual Pass</h3>
+                <p class="price-lifetime" data-i18n="index.pricing.year.price">$99</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.year.feat1">Unlimited cleans for 1 year</li>
+                    <li data-i18n="index.pricing.year.feat2">Files up to 100MB (~1 million rows)</li>
+                </ul>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
+            </div>
+
+            <div class="pricing-card popular week-pass card-highlight">
+                <div class="badge" data-i18n="index.pricing.week.badge">Most Popular</div>
+                <h3 data-i18n="index.pricing.week.title">Campaign Pass</h3>
+                <p class="price" data-i18n="index.pricing.week.price">$29</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.week.feat1">Unlimited cleans for 7 days</li>
+                    <li data-i18n="index.pricing.week.feat2">Files up to 100MB (~1 million rows)</li>
+                </ul>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
+            </div>
+
+            <div class="pricing-card day-pass card-highlight">
+                <h3 data-i18n="index.pricing.day.title">Express Pass</h3>
+                <p class="price-quick-clean" data-i18n="index.pricing.day.price">$9</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.day.feat1">Unlimited cleans for 24 hours</li>
+                    <li data-i18n="index.pricing.day.feat2">Files up to 100MB (~1 million rows)</li>
+                </ul>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
+            </div>
+
+            <div class="pricing-card free">
+                <h3 data-i18n="index.pricing.free.title">Free Trial</h3>
+                <p class="price" data-i18n="index.pricing.free.price">$0</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.free.feat1">2 free cleans per day</li>
+                    <li data-i18n="index.pricing.free.feat2">Files up to 5MB (~50,000 rows)</li>
+                </ul>
+                <button class="price-button js-open-modal" disabled data-i18n="index.pricing.btn_try">Try for Free</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-primary">
+                <div class="footer-links-wrapper">
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.product_title">Product</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
+                        <a href="manual.html" data-i18n="nav.docs">Documentation</a>
+                        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+                        <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
+                            <span class="status-dot">●</span><span data-i18n="footer.status"> System Status</span>
+                        </a>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.legal_title">Legal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">Terms of Service</a>
+                        <a href="legal.html" data-i18n="footer.legal">Legal Notice</a>
+                        <a href="security.html" data-i18n="footer.security">Privacy Policy</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="i18n-loader.js"></script>
+</body>
+</html>
