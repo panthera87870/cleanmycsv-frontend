@@ -451,7 +451,11 @@ tr:first-child td:last-child.has-tooltip:hover::after { transform: translateY(5p
     justify-content: space-between; align-items: center; user-select: none;
 }
 .faq-item summary h3 { margin: 0; font-size: var(--h4-size); }
-.faq-item summary:hover { background-color: var(--second-color); }
+.faq-item summary:hover { 
+    filter: brightness(1.15); 
+    transform: translateY(-2px); 
+    transition: all 0.2s ease;  
+}
 .faq-icon { position: relative; width: 20px; height: 20px; flex-shrink: 0; margin-left: 15px; }
 .faq-icon::before, .faq-icon::after {
     content: ""; position: absolute; background-color: var(--light-text-color);
