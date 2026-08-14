@@ -522,5 +522,165 @@
       "title": "Stop wasting hours fixing Shopify import files manually.",
       "btn": "Clean Your Shopify CSV Free"
     }
+  },
+  "accents_page": {
+    "meta": {
+      "title": "Fix Broken Accents & UTF-8 Encoding in CSV Online | CleanMyCSV",
+      "desc": "Instantly fix broken accents (Ã©, Ã¨, Ã ) and corrupt UTF-8 character encoding in CSV files. Convert Excel ANSI & Windows-1252 to clean UTF-8 BOM online."
+    },
+    "hero": {
+      "title": "Fix Broken Accents & Corrupted UTF-8 Characters in CSV",
+      "subtitle": "Seeing \"Ã©\", \"Ã¨\", \"â€™\", or black question marks in your scraped lists or CRM exports?<br><br>CleanMyCSV auto-detects legacy Excel encodings (Windows-1252, MacRoman) and repairs character corruption in 1 click.",
+      "cta": "Fix My Corrupted CSV Now"
+    },
+    "badges": {
+      "b1": "Auto-Forced UTF-8 BOM",
+      "b2": "Cold Email Campaign Ready",
+      "b3": "Instant Multi-Language Repair"
+    },
+    "issues": {
+      "title": "Why Do CSV Accents Get Scrambled?",
+      "subtitle": "Scraped databases, CRM exports, and Microsoft Excel often use conflicting text encodings. Here is how CleanMyCSV repairs them:"
+    },
+    "issue1": {
+      "title": "1. The \"Ã©\" Double-Encoding Disaster",
+      "desc": "When a UTF-8 file is opened and saved by Excel using Windows ANSI (Windows-1252) settings, single accents transform into double-byte gibberish: <code>é</code> becomes <code>Ã©</code>, <code>à</code> becomes <code>Ã </code>, and <code>’</code> becomes <code>â€™</code>. Sending cold emails with these variables ruins your response rates. CleanMyCSV decodes the raw buffer and restores human-readable text."
+    },
+    "issue2": {
+      "title": "2. Legacy Excel ANSI & MacRoman Conversion",
+      "desc": "Older macOS exports use MacRoman encoding, while Windows software defaults to ISO-8859-1 or CP1252. CleanMyCSV tests your file against multiple encoding standards in isolated memory and forced-converts the final output to <strong>UTF-8 BOM</strong>, guaranteed to open cleanly on both Windows Excel and Mac Numbers."
+    },
+    "issue3": {
+      "title": "3. Proper Name & International Character Protection",
+      "desc": "International names contain complex accent marks (e.g., <code>Müller</code>, <code>François</code>, <code>Sánchez</code>). Our engine normalizes name capitalization while protecting delicate multi-byte characters and language particles (De, Van, Von, Mc, O')."
+    },
+    "issue4": {
+      "title": "4. Zero-Risk Lead List Cleaning",
+      "desc": "Growth marketers and freelancers deal with sensitive B2B leads. We enforce a 100% ephemeral processing pipeline: your files are processed in isolated Cloud Run memory and automatically purged within 24 hours."
+    },
+    "cta_banner": {
+      "title": "Don't ruin your email campaigns with broken lead variables.",
+      "btn": "Fix My Lead List CSV"
+    }
+  },
+  "zeros_page": {
+    "meta": {
+      "title": "Restore Leading Zeros in Excel CSV (ZIP Codes & Phones) | CleanMyCSV",
+      "desc": "Automatically restore missing leading zeros in CSV files caused by Excel. Fix truncated US ZIP codes (02110), French postal codes (06100), phone numbers, and SKUs online."
+    },
+    "hero": {
+      "title": "Restore Missing Leading Zeros in CSV Files",
+      "subtitle": "Did Excel turn your Boston ZIP code \"02110\" into \"2110\" or strip initial zeros from phone numbers and SKUs?<br><br>CleanMyCSV detects numeric data fields and rebuilds missing leading zeros automatically without Excel macro headaches.",
+      "cta": "Restore Leading Zeros Free"
+    },
+    "badges": {
+      "b1": "US ZIP & ZIP+4 Padding",
+      "b2": "Phone & E.164 Normalization",
+      "b3": "Instant CRM-Ready Export"
+    },
+    "issues": {
+      "title": "How Excel Destroys Numeric Data (And How We Fix It)",
+      "subtitle": "By default, Microsoft Excel assumes numbers are mathematical values rather than formatted text. Here is how CleanMyCSV recovers your data:"
+    },
+    "issue1": {
+      "title": "1. Truncated US & European Postal Codes",
+      "desc": "East Coast US ZIP codes starting with zero (e.g. Massachusetts <code>02110</code>, New Jersey <code>07001</code>) and French postal codes (e.g. Nice <code>06000</code>) lose their initial zero in Excel, becoming 4-digit strings like <code>2110</code> or <code>6000</code>. Our engine identifies postal columns and pads them back to standard 5-digit or ZIP+4 (<code>12345-6789</code>) formats."
+    },
+    "issue2": {
+      "title": "2. Stripped Phone Numbers & Country Codes",
+      "desc": "When sales leads contain local phone numbers like <code>0612345678</code> or <code>020 7946 0912</code>, Excel removes the initial zero (turning it into <code>612345678</code>). CleanMyCSV restores the leading zero or normalizes the phone number into international E.164 format (e.g. <code>+33 6 12 34 56 78</code> or <code>+1 (555) 019-2834</code>)."
+    },
+    "issue3": {
+      "title": "3. Corrupted Product SKUs & Barcodes",
+      "desc": "E-commerce inventory and ERP exports frequently rely on zero-padded SKUs (e.g., <code>0004921</code>). Excel turns these into <code>4921</code>, breaking product matching during imports on Shopify, Amazon, or WooCommerce. Our Anti-ID safeguard isolates technical identifiers and protects their original text integrity."
+    },
+    "issue4": {
+      "title": "4. Seamless Import to HubSpot, Salesforce & Klaviyo",
+      "desc": "Stop writing complex Excel formulas like <code>=TEXT(A2, \"00000\")</code> every time you prepare a lead list. Upload your raw CSV, let CleanMyCSV pad all missing zeros, and download a ready-to-import CSV in under 5 seconds."
+    },
+    "cta_banner": {
+      "title": "Stop losing valuable location and lead data in Excel.",
+      "btn": "Restore My CSV Leading Zeros"
+    }
+  },
+  "hubspot_page": {
+    "meta": {
+      "title": "Fix HubSpot CSV Contact Import Errors Instantly | CleanMyCSV",
+      "desc": "Fix HubSpot CSV import errors in seconds. Convert dates to ISO 8601 (YYYY-MM-DD), format E.164 phone numbers, restore ZIP code leading zeros, and clean email lists."
+    },
+    "hero": {
+      "title": "Fix HubSpot CSV Contact & Company Import Errors",
+      "subtitle": "Getting invalid property errors, date formatting rejections, or corrupted names when importing lists into HubSpot?<br><br>CleanMyCSV formats your B2B lead lists into 100% compliant HubSpot CRM structure in seconds.",
+      "cta": "Clean My HubSpot CSV Free"
+    },
+    "badges": {
+      "b1": "ISO 8601 Date Formatting",
+      "b2": "E.164 Phone Normalization",
+      "b3": "Zero Import Rejections"
+    },
+    "issues": {
+      "title": "Common HubSpot CSV Import Rejections We Fix",
+      "subtitle": "HubSpot CRM requires strict property standards for contact and company imports. Here is how CleanMyCSV prepares your files:"
+    },
+    "issue1": {
+      "title": "1. Date Property Rejections (YYYY-MM-DD Enforcement)",
+      "desc": "HubSpot date properties fail to import if formatted as <code>DD/MM/YYYY</code> or text dates like \"Jan 12, 2024\". CleanMyCSV detects date columns and standardizes all values into strict ISO 8601 format (<code>YYYY-MM-DD</code>) with locale-aware day/month parsing."
+    },
+    "issue2": {
+      "title": "2. Phone Number Normalization for HubSpot Calling",
+      "desc": "HubSpot's built-in dialer and WhatsApp integration require international E.164 phone formats (e.g., <code>+1 (555) 019-2834</code> or <code>+33 6 12 34 56 78</code>). Our engine strips invalid extensions, restores dropped initial zeros, and adds proper country codes."
+    },
+    "issue3": {
+      "title": "3. Invalid Email Formatting & Duplicates",
+      "desc": "HubSpot uses email as the primary unique key for contact deduplication. Emails with hidden spaces, accidental double <code>@@</code> symbols, or uppercase characters cause import conflicts. CleanMyCSV auto-sanitizes, lowercases, and deduplicates all email rows."
+    },
+    "issue4": {
+      "title": "4. Corrupted Names & Missing ZIP Code Zeros",
+      "desc": "Importing leads with scrambled accents (<code>Ã©</code>) or stripped 4-digit ZIP codes (<code>2110</code>) ruins CRM segmentation and personalization tokens. CleanMyCSV converts encodings to UTF-8 BOM and pads postal codes automatically."
+    },
+    "cta_banner": {
+      "title": "Prepare your sales lead lists for HubSpot without manual Excel work.",
+      "btn": "Clean My HubSpot CSV Now"
+    }
+  },
+  "klaviyo_page": {
+    "meta": {
+      "title": "Fix Klaviyo CSV Import Errors & SMS Formatting | CleanMyCSV",
+      "desc": "Fix Klaviyo CSV subscriber import errors in seconds. Format E.164 phone numbers for Klaviyo SMS, repair broken {{ first_name }} accents, and sanitize email lists."
+    },
+    "hero": {
+      "title": "Fix Klaviyo CSV Import Errors & SMS Phone Formatting",
+      "subtitle": "Getting phone consent import failures or corrupted <code>{{ first_name }}</code> merge tags in Klaviyo?<br><br>CleanMyCSV formats your subscriber lists into 100% compliant Klaviyo structure in seconds.",
+      "cta": "Clean My Klaviyo List Free"
+    },
+    "badges": {
+      "b1": "E.164 Format for Klaviyo SMS",
+      "b2": "Clean Personalization Tags",
+      "b3": "Zero List Import Failures"
+    },
+    "issues": {
+      "title": "Common Klaviyo CSV Import Failures We Solve",
+      "subtitle": "Klaviyo enforces strict syntax rules for SMS compliance and customer property mapping. Here is how CleanMyCSV repairs your subscriber lists:"
+    },
+    "issue1": {
+      "title": "1. Klaviyo SMS Consent Rejections (E.164 Requirement)",
+      "desc": "Klaviyo SMS requires phone numbers formatted in strict international E.164 standards (e.g. <code>+15550192834</code> or <code>+33612345678</code>). Unformatted numbers (<code>06.12.34.56.78</code>) cause Klaviyo to skip SMS consent imports entirely. CleanMyCSV cleans formatting, restores dropped zeros, and prepends correct country codes."
+    },
+    "issue2": {
+      "title": "2. Broken First Name Merge Tags ({{ first_name }})",
+      "desc": "Sending email flows with broken accents like <i>\"Hi Ã‰lodie\"</i> ruins brand trust and drops click-through rates. Our UTF-8 BOM engine auto-fixes corrupted character encodings and capitalizes proper names cleanly."
+    },
+    "issue3": {
+      "title": "3. Email Syntax Normalization & Deduplication",
+      "desc": "Emails containing trailing spaces, typos (<code>.con</code> instead of <code>.com</code>), or accidental uppercase letters create duplicate profiles in Klaviyo. CleanMyCSV normalizes email strings and deduplicates your lists prior to import."
+    },
+    "issue4": {
+      "title": "4. Truncated ZIP Codes for Location Segments",
+      "desc": "Building location-based Klaviyo segments relies on precise postal codes. Excel strips initial zeros from East Coast US (<code>02110</code>) and European zip codes (<code>06100</code>). CleanMyCSV pads missing zeros back to standard 5-digit formats."
+    },
+    "cta_banner": {
+      "title": "Boost your Klaviyo deliverability and campaign engagement today.",
+      "btn": "Clean My Klaviyo CSV Now"
+    }
   }
 }

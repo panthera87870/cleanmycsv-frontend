@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
+
+    <!-- SEO / Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/clean-csv-for-hubspot.html" />
+    <link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/clean-csv-for-hubspot.html?lang=fr" />
+    <link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/clean-csv-for-hubspot.html" />
+
+    <title data-i18n="hubspot_page.meta.title">Fix HubSpot CSV Contact Import Errors Instantly | CleanMyCSV</title>
+    <meta name="description" data-i18n-attr="content:hubspot_page.meta.desc" content="Fix HubSpot CSV import errors in seconds. Convert dates to ISO 8601 (YYYY-MM-DD), format E.164 phone numbers, restore ZIP code leading zeros, and clean email lists.">
+
+    <meta property="og:title" content="Fix HubSpot CSV Contact & Company Import Errors - CleanMyCSV">
+    <meta property="og:description" content="Stop HubSpot import failures. Clean lead lists, normalize dates and phone numbers, and fix character encoding in 1 click.">
+    <meta property="og:image" content="assets/images/og-image.png">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="3c4e12ac-ecc8-4b77-b24e-08597dac077e"></script>
+
+    <!-- Schema.org WebApplication for HubSpot CSV Cleaning -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CleanMyCSV - HubSpot CSV Import Cleaner",
+      "url": "https://cleanmycsv.fr/clean-csv-for-hubspot.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Automated online tool to repair HubSpot contact and company CSV import errors: ISO date conversion, E.164 phone formatting, email sanitization, and UTF-8 encoding repair.",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "99",
+        "offerCount": "4"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content" id="modal-container">
+            <button class="close-btn js-close-modal">&times;</button>
+            <div id="dynamic-content"></div>
+        </div>
+    </div>
+
+    <div class="sticky-wrapper">
+        <header class="main-header">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><span>CLEANMYCSV</span></a>
+                </div>
+                <div class="nav-right-links">
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">Documentation</a>
+                    <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
+                    <a href="#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">Pricing</a>
+                    <div class="lang-selector">
+                        <i class="fa-solid fa-globe lang-icon"></i>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Try it</button>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 data-i18n="hubspot_page.hero.title">Fix HubSpot CSV Contact & Company Import Errors</h1>
+                <h2 data-i18n="hubspot_page.hero.subtitle">
+                    Getting invalid property errors, date formatting rejections, or corrupted names when importing lists into HubSpot?<br><br>CleanMyCSV formats your B2B lead lists into 100% compliant HubSpot CRM structure in seconds.
+                </h2>
+                <div class="cta-wrapper">
+                    <button class="cta-button hero-cta js-open-modal" data-i18n="hubspot_page.hero.cta">
+                        Clean My HubSpot CSV Free
+                    </button>
+                </div>
+                <div class="trust-badges">
+                    <div class="badge-item">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span data-i18n="hubspot_page.badges.b1">ISO 8601 Date Formatting</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <span data-i18n="hubspot_page.badges.b2">E.164 Phone Normalization</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span data-i18n="hubspot_page.badges.b3">Zero Import Rejections</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="page-content-wrapper">
+        <div class="container">
+            <h2 data-i18n="hubspot_page.issues.title">Common HubSpot CSV Import Rejections We Fix</h2>
+            <p class="section-subtext" data-i18n="hubspot_page.issues.subtitle">
+                HubSpot CRM requires strict property standards for contact and company imports. Here is how CleanMyCSV prepares your files:
+            </p>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-calendar-days icon-purple"></i> <span data-i18n="hubspot_page.issue1.title">1. Date Property Rejections (YYYY-MM-DD Enforcement)</span></h4>
+                <p data-i18n="hubspot_page.issue1.desc">
+                    HubSpot date properties fail to import if formatted as <code>DD/MM/YYYY</code> or text dates like "Jan 12, 2024". CleanMyCSV detects date columns and standardizes all values into strict ISO 8601 format (<code>YYYY-MM-DD</code>) with locale-aware day/month parsing.
+                </p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-square-phone icon-purple"></i> <span data-i18n="hubspot_page.issue2.title">2. Phone Number Normalization for HubSpot Calling</span></h4>
+                <p data-i18n="hubspot_page.issue2.desc">
+                    HubSpot's built-in dialer and WhatsApp integration require international E.164 phone formats (e.g., <code>+1 (555) 019-2834</code> or <code>+33 6 12 34 56 78</code>). Our engine strips invalid extensions, restores dropped initial zeros, and adds proper country codes.
+                </p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-at icon-purple"></i> <span data-i18n="hubspot_page.issue3.title">3. Invalid Email Formatting & Duplicates</span></h4>
+                <p data-i18n="hubspot_page.issue3.desc">
+                    HubSpot uses email as the primary unique key for contact deduplication. Emails with hidden spaces, accidental double <code>@@</code> symbols, or uppercase characters cause import conflicts. CleanMyCSV auto-sanitizes, lowercases, and deduplicates all email rows.
+                </p>
+            </div>
+
+            <div class="structurel">
+                <h4><i class="fa-solid fa-user-gear icon-purple"></i> <span data-i18n="hubspot_page.issue4.title">4. Corrupted Names & Missing ZIP Code Zeros</span></h4>
+                <p data-i18n="hubspot_page.issue4.desc">
+                    Importing leads with scrambled accents (<code>Ã©</code>) or stripped 4-digit ZIP codes (<code>2110</code>) ruins CRM segmentation and personalization tokens. CleanMyCSV converts encodings to UTF-8 BOM and pads postal codes automatically.
+                </p>
+            </div>
+
+            <div class="final-cta-docs">
+                <h3 data-i18n="hubspot_page.cta_banner.title">Prepare your sales lead lists for HubSpot without manual Excel work.</h3>
+                <button class="cta-button last-cta js-open-modal" data-i18n="hubspot_page.cta_banner.btn">
+                    Clean My HubSpot CSV Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section container">
+        <h2 data-i18n="index.pricing.title">Simple Pricing. Instant Results.</h2>
+        <p class="section-subtext" data-i18n="index.pricing.subtitle">One-time payment. No hidden subscriptions.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card lifetime">
+                <h3 data-i18n="index.pricing.year.title">Pro Annual Pass</h3>
+                <p class="price-lifetime" data-i18n="index.pricing.year.price">$99</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.year.feat1">Unlimited cleans for 1 year</li>
+                    <li data-i18n="index.pricing.year.feat2">Files up to 100MB (~1 million rows)</li>
+                </ul>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
+            </div>
+
+            <div class="pricing-card popular week-pass card-highlight">
+                <div class="badge" data-i18n="index.pricing.week.badge">Most Popular</div>
+                <h3 data-i18n="index.pricing.week.title">Campaign Pass</h3>
+                <p class="price" data-i18n="index.pricing.week.price">$29</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.week.feat1">Unlimited cleans for 7 days</li>
+                    <li data-i18n="index.pricing.week.feat2">Files up to 100MB (~1 million rows)</li>
+                </ul>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
+            </div>
+
+            <div class="pricing-card day-pass card-highlight">
+                <h3 data-i18n="index.pricing.day.title">Express Pass</h3>
+                <p class="price-quick-clean" data-i18n="index.pricing.day.price">$9</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.day.feat1">Unlimited cleans for 24 hours</li>
+                    <li data-i18n="index.pricing.day.feat2">Files up to 100MB (~1 million rows)</li>
+                </ul>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
+            </div>
+
+            <div class="pricing-card free">
+                <h3 data-i18n="index.pricing.free.title">Free Trial</h3>
+                <p class="price" data-i18n="index.pricing.free.price">$0</p>
+                <ul class="pricing-features">
+                    <li data-i18n="index.pricing.free.feat1">2 free cleans per day</li>
+                    <li data-i18n="index.pricing.free.feat2">Files up to 5MB (~50,000 rows)</li>
+                </ul>
+                <button class="price-button js-open-modal" disabled data-i18n="index.pricing.btn_try">Try for Free</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-primary">
+                <div class="footer-links-wrapper">
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.product_title">Product</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
+                        <a href="manual.html" data-i18n="nav.docs">Documentation</a>
+                        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+                        <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
+                            <span class="status-dot">●</span><span data-i18n="footer.status"> System Status</span>
+                        </a>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4 data-i18n="footer.legal_title">Legal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">Terms of Service</a>
+                        <a href="legal.html" data-i18n="footer.legal">Legal Notice</a>
+                        <a href="security.html" data-i18n="footer.security">Privacy Policy</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-left">
+                    <span class="footer-logo">CLEANMYCSV</span>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="i18n-loader.js"></script>
+</body>
+</html>
