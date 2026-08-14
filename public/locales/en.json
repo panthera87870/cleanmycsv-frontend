@@ -391,7 +391,7 @@
     },
     "sect4": {
       "title": "4. Pricing and Payment Terms (Terms of Sale)",
-      "p": "Plan prices are listed in Euros (€). As a French sole proprietorship (Entreprise Individuelle), VAT is not applicable (Article 293 B of the French General Tax Code). Payment is due immediately upon ordering. All transactions are fully processed and securely handled by Stripe. The publisher does not store any credit card or banking data."
+      "p": "Plan prices are listed in US Dollars ($) or Euros (€) as displayed on the website. As a French sole proprietorship (Entreprise Individuelle), VAT is not applicable (Article 293 B of the French General Tax Code). Payment is due immediately upon ordering. All transactions are fully processed and securely handled by Stripe. The publisher does not store any credit card or banking data."
     },
     "sect5":{
       "title": "5. Service Delivery",
@@ -459,7 +459,7 @@
       "title": "3. Third-Party Services & Security",
       "intro": "To provide a seamless experience, CleanMyCSV relies on trusted industry-leading partners:",
       "li1": "<strong>Stripe:</strong> Your payment data is securely processed exclusively by Stripe. CleanMyCSV never touches or stores your credit card numbers (PCI-DSS compliant).",
-      "li2": "<strong>Vercel Analytics:</strong> We measure website traffic using anonymized data. No personally identifiable information (PII) is ever collected through this tool.",
+      "li2": "<strong>Vercel Analytics and Umami Cloud:</strong> We measure website traffic using anonymized data. No personally identifiable information (PII) is ever collected through this tool.",
       "li3": "<strong>Google Cloud Storage:</strong> Your files are strictly isolated in private, encrypted storage buckets."
     },
     "sect4": {

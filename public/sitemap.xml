@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- PAGE D'ACCUEIL (HOMEPAGE) -->
+  <url>
+    <loc>https://cleanmycsv.fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/" />
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- DOCUMENTATION MANUEL TECHNIQUE -->
+  <url>
+    <loc>https://cleanmycsv.fr/manual.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/manual.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/manual.html?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/manual.html" />
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FOIRE AUX QUESTIONS (FAQ) -->
+  <url>
+    <loc>https://cleanmycsv.fr/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/faq.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/faq.html?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/faq.html" />
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- POLITIQUE DE CONFIDENTIALITÉ / SÉCURITÉ -->
+  <url>
+    <loc>https://cleanmycsv.fr/security.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/security.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/security.html?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/security.html" />
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- PAGE DE CONTACT -->
+  <url>
+    <loc>https://cleanmycsv.fr/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/contact.html?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/contact.html" />
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>

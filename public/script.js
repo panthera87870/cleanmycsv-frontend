@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (token) {
         localStorage.setItem('mycsv_token', token); 
         window.history.replaceState({}, document.title, window.location.pathname);
-        alert("Paiement réussi ! Votre offre est active."); 
+        alert("Payment successful! Your offer is active."); 
     }
 });
 
@@ -162,9 +162,6 @@ document.addEventListener('i18nReady', () => {
     if (modalElement.classList.contains('visible') && document.getElementById('upload-form')) {
         resetModal();
     }
-    if (typeof CookieConsent !== 'undefined' && typeof CookieConsent.setLanguage === 'function') {
-        CookieConsent.setLanguage(document.documentElement.lang);
-    }
 });
 
 window.onload = function() {
@@ -198,7 +195,7 @@ function closeModalBtn() {
 // --- FONCTION PRINCIPALE : RESET MODAL ---
 function resetModal() {
     const t = window.t || ((k) => k);
-    const currentLang = document.documentElement.lang || 'fr';
+    const currentLang = document.documentElement.lang || 'en';
     const isFr = currentLang === 'fr';
 
     dynamicContentArea.innerHTML = `
@@ -365,7 +362,7 @@ async function handleFormSubmit(e) {
     
     const formData = new FormData(form);
     try {
-        const selectedLogic = formData.get('cleaningLogic') || document.documentElement.lang || 'fr';
+        const selectedLogic = formData.get('cleaningLogic') || document.documentElement.lang || 'en';
         const token = localStorage.getItem('mycsv_token');
         const fetchOptions = { method: 'POST', body: formData, headers: {} };
         if (token) fetchOptions.headers['X-Access-Token'] = token;
@@ -378,7 +375,7 @@ async function handleFormSubmit(e) {
                 displaySuccessView(data, true, data.code);
                 return;
             }
-            throw new Error(data.message || `Erreur Serveur: ${response.status}`);
+            throw new Error(data.message || `Server Error: ${response.status}`);
         }
         if (data.success) {
             displaySuccessView(data, false);
@@ -392,8 +389,8 @@ function generatePreviewHTML(previewRows, t) {
     if (!previewRows || previewRows.length === 0) return '';
     const safeT = (key, fallback) => { const val = t ? t(key) : key; return (val && val !== key) ? val : fallback; };
 
-    const txtOriginal = safeT('preview.original_label', 'Fichier Original');
-    const txtCleaned = safeT('preview.cleaned_label', 'Fichier Nettoyé');
+    const txtOriginal = safeT('preview.original_label', 'Original File');
+    const txtCleaned = safeT('preview.cleaned_label', 'Cleaned File');
 
     let headerHTML = '';
     if (previewRows.length > 0) {
@@ -490,7 +487,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
         theadHTML = '<tr>';
         headersToShow.forEach(h => {
-            theadHTML += `<th>${sanitize(h || 'Colonne')}</th>`;
+            theadHTML += `<th>${sanitize(h || 'Column')}</th>`;
         });
         if (hasMoreCols) theadHTML += '<th class="teaser-col-fade">...</th>';
         theadHTML += '</tr>';
@@ -508,7 +505,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
                 if (origIndex === -1) {
                     isFixed = true;
-                    origCell = t('teaser.new_column') || "Donnée ajoutée";
+                    origCell = t('teaser.new_column') || "Added data";
                 } else {
                     origCell = row.original[origIndex];
                     isFixed = cleanCell !== origCell;
@@ -526,7 +523,7 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
 
         if (isPaywall) {
             tbodyHTML += '<tr class="teaser-row-blurred">';
-            headersToShow.forEach(() => tbodyHTML += `<td>données protégées</td>`);
+            headersToShow.forEach(() => tbodyHTML += `<td>protected data</td>`);
             if (hasMoreCols) tbodyHTML += '<td class="teaser-col-fade">...</td>';
             tbodyHTML += '</tr>';
         }
@@ -603,9 +600,9 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
         html += `<p class="modal-text-muted mb-20">${t('teaser.hook')}</p>`;
         html += `
             <div class="action-buttons teaser-pricing">
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="teaser-pricing-btn btn-day">9€ - ${t('teaser.btn_day')}</a>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="teaser-pricing-btn btn-week">29€ - ${t('teaser.btn_week')}</a>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="teaser-pricing-btn btn-year">99€ - ${t('teaser.btn_year')}</a>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="teaser-pricing-btn btn-day">$9 - ${t('teaser.btn_day')}</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="teaser-pricing-btn btn-week">$29 - ${t('teaser.btn_week')}</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="teaser-pricing-btn btn-year">$99 - ${t('teaser.btn_year')}</a>
             </div>
         `;
     } else {
@@ -654,12 +651,12 @@ function displaySuccessView(data, isPaywall = false, reasonCode = null) {
                         if (window.umami) window.umami.track('Download_Cleaned_CSV');
                         btnDownloadMain.disabled = true;
                         btnDownloadMain.classList.add('btn-loading');
-                        btnText.innerHTML = `Préparation... <i class="fa-solid fa-spinner fa-spin success-spinner"></i>`;
+                        btnText.innerHTML = `Preparing... <i class="fa-solid fa-spinner fa-spin success-spinner"></i>`;
                         
                         triggerDownload(data.downloadUrl, data.downloadName);
                         
                         setTimeout(() => {
-                            const jsonText = t('modal.success.btn_download_json') || 'Télécharger le rapport JSON';
+                            const jsonText = t('modal.success.btn_download_json') || 'Download JSON Report';
                             btnText.innerHTML = `${jsonText} (2/2)`;
                             btnDownloadMain.disabled = false;
                             btnDownloadMain.classList.remove('btn-loading');

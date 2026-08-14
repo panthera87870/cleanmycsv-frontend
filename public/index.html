@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title data-i18n="index.meta.title">CleanMyCSV - Nettoyez vos fichiers CSV en quelques secondes</title>
-    <meta name="description" content="CleanMyCSV harmonise vos fichiers CSV en quelques secondes. Corrigez les formats incohérents, les doublons et les erreurs." data-i18n-attr="content:index.meta.description">
+    <!-- SEO / Hreflang Tags (International Targeting) -->
+    <link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/" />
+    <link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/?lang=fr" />
+    <link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/" />
 
-    <meta property="og:title" content="CleanMyCSV – Nettoyez vos CSV en un instant">
-    <meta property="og:description" content="Un outil simple et rapide pour nettoyer vos fichiers CSV. Gain de temps garanti.">
+    <title data-i18n="index.meta.title">CleanMyCSV - Clean your CSV files in seconds</title>
+    <meta name="description" content="CleanMyCSV harmonizes your CSV files instantly. Fix inconsistent formatting, duplicates, and encoding errors." data-i18n-attr="content:index.meta.description">
+
+    <meta property="og:title" content="CleanMyCSV – Clean your CSV files instantly">
+    <meta property="og:description" content="A simple and fast tool to clean your CSV files. Save hours of manual work.">
     <meta property="og:image" content="assets/images/og-image.png">
     <meta property="og:type" content="website">
 
@@ -27,6 +32,63 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="3c4e12ac-ecc8-4b77-b24e-08597dac077e"></script>
 
+    <!-- GEO Optimization: Schema.org WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CleanMyCSV",
+      "url": "https://cleanmycsv.fr",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Online tool to clean, repair, and standardize CSV files instantly. Fix encoding glitches (UTF-8), restore missing zip code leading zeros, normalize ISO dates and phone numbers.",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "99",
+        "offerCount": "4",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free Trial",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Express Pass (24h)",
+            "price": "9",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Campaign Pass (7 Days)",
+            "price": "29",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Pro Annual Pass",
+            "price": "99",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      "featureList": [
+        "Automatic UTF-8 conversion and Ã© accent correction",
+        "Zip code missing leading zero restoration",
+        "Phone number and email normalization",
+        "ISO 8601 date standardization (YYYY-MM-DD)",
+        "Automatic currency and financial amount extraction",
+        "CSV formula injection (XSS) neutralization",
+        "Duplicate row and empty row removal"
+      ]
+    }
+    </script>
+
+    <!-- SEO / Schema.org FAQPage -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -89,16 +151,16 @@
                     </a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">DOCUMENTATION</a>
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">Documentation</a>
                     <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
-                    <a href="#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">TARIFS</a>
+                    <a href="#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">Pricing</a>
                     <div class="lang-selector">
                         <i class="fa-solid fa-globe lang-icon"></i>
                         <button class="lang-btn" data-lang="fr">FR</button>
                         <span class="lang-separator">|</span>
                         <button class="lang-btn" data-lang="en">EN</button>
                     </div>
-                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Essayer</button>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Try it</button>
                 </div>
             </nav>
         </header>
@@ -107,31 +169,31 @@
     <main class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 data-i18n="index.hero.title">Nettoyez vos fichiers CSV instantanément.</h1>
+                <h1 data-i18n="index.hero.title">Clean your CSV files instantly.</h1>
                 <h2 data-i18n="index.hero.subtitle">
-                    Fini les erreurs d'encodage, les doublons et les colonnes décalées. Glissez votre fichier corrompu, récupérez une base de données parfaite en quelques secondes.<br>Sans formules, sans stress.
+                    Stop wrestling with encoding errors, duplicates, and broken columns. Drop your messy file, get clean data back in seconds.<br><br>No formulas, no stress.
                 </h2>
                 <div class="cta-wrapper">
                     <button class="cta-button hero-cta js-open-modal" data-i18n="index.hero.cta">
-                        Nettoyer un fichier gratuitement
+                        Clean a file for free
                     </button>
                 </div>
                 <div class="trust-badges">
                     <div class="badge-item has-tooltip" data-i18n-tooltip="index.badges.b1_tooltip">
                         <i class="fa-solid fa-trash-can-arrow-up"></i>
-                        <span data-i18n="index.badges.b1_title">Suppression Automatique</span>
+                        <span data-i18n="index.badges.b1_title">Zero Data Retention</span>
                     </div>
                     <div class="badge-item has-tooltip" data-i18n-tooltip="index.badges.b2_tooltip">
                         <i class="fa-solid fa-lock"></i>
-                        <span data-i18n="index.badges.b2_title">Transfert Chiffré (SSL)</span>
+                        <span data-i18n="index.badges.b2_title">SSL Encrypted Transfer</span>
                     </div>
                     <div class="badge-item has-tooltip" data-i18n-tooltip="index.badges.b3_tooltip">
                         <i class="fa-solid fa-microchip"></i>
-                        <span data-i18n="index.badges.b3_title">Nettoyage Haute Précision</span>
+                        <span data-i18n="index.badges.b3_title">High-Precision Cleaning</span>
                     </div>
                     <div class="badge-item has-tooltip" data-i18n-tooltip="index.badges.b4_tooltip">
                         <i class="fa-solid fa-user-check"></i>
-                        <span data-i18n="index.badges.b4_title">Sans Inscription</span>
+                        <span data-i18n="index.badges.b4_title">No Sign-Up Required</span>
                     </div>
                 </div>
             </div>
@@ -140,18 +202,18 @@
 
     <section id="demo-cleaner" class="demo-section">
         <div class="container">
-            <h2 class="section-title" data-i18n="index.demo.title">Le moteur en action</h2>
+            <h2 class="section-title" data-i18n="index.demo.title">The engine in action</h2>
             
             <!-- 1. DONNÉES BRUTES (ENTRÉE) -->
             <div class="demo-block">
-                <h3 class="table-caption" data-i18n="index.demo.input_title">1. Données Brutes (Entrée)</h3>
+                <h3 class="table-caption" data-i18n="index.demo.input_title">1. Raw Data (Input)</h3>
                 <div class="table-container raw-data">
                     <table>
                         <thead>
                             <tr>
-                                <th data-i18n="index.demo.table.name">Nom</th>
+                                <th data-i18n="index.demo.table.name">Name</th>
                                 <th data-i18n="index.demo.table.date">Date</th>
-                                <th data-i18n="index.demo.table.amount">Montant</th>
+                                <th data-i18n="index.demo.table.amount">Amount</th>
                                 <th data-i18n="index.demo.table.zip">Zipcode</th>
                             </tr>
                         </thead>
@@ -168,7 +230,7 @@
             <!-- 2. DONNÉES NETTOYÉES (SORTIE) -->
             <div class="demo-block">
                 <div class="table-header-actions">
-                    <h3 class="table-caption" data-i18n="index.demo.output_title">2. Données Nettoyées (Sortie)</h3>
+                    <h3 class="table-caption" data-i18n="index.demo.output_title">2. Cleaned Data (Output)</h3>
                     
                     <div class="toggle-container">
                         <span class="toggle-label">EU</span>
@@ -185,10 +247,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th data-i18n="index.demo.table.name">Nom</th>
+                                <th data-i18n="index.demo.table.name">Name</th>
                                 <th data-i18n="index.demo.table.date">Date</th>
-                                <th data-i18n="index.demo.table.amount">Montant</th>
-                                <th class="col-added" data-i18n="index.demo.table.currency">Devise</th>
+                                <th data-i18n="index.demo.table.amount">Amount</th>
+                                <th class="col-added" data-i18n="index.demo.table.currency">Currency</th>
                                 <th data-i18n="index.demo.table.zip">Zipcode</th>
                             </tr>
                         </thead>
@@ -230,10 +292,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th data-i18n="index.demo.table.name">Nom</th>
+                                <th data-i18n="index.demo.table.name">Name</th>
                                 <th data-i18n="index.demo.table.date">Date</th>
-                                <th data-i18n="index.demo.table.amount">Montant</th>
-                                <th class="col-added" data-i18n="index.demo.table.currency">Devise</th>
+                                <th data-i18n="index.demo.table.amount">Amount</th>
+                                <th class="col-added" data-i18n="index.demo.table.currency">Currency</th>
                                 <th data-i18n="index.demo.table.zip">Zipcode</th>
                             </tr>
                         </thead>
@@ -272,9 +334,9 @@
             </div>
             <p class="demo-footer-note">
                 <i class="fa-solid fa-lightbulb"></i> 
-                <span data-i18n="index.demo.footer_note">Les règles de nettoyage s'adaptent instantanément à la région sélectionnée. Un doute sur les formats ? Consultez notre</span> 
+                <span data-i18n="index.demo.footer_note">Cleaning rules adapt instantly to the selected region. Unsure about the formatting? Check out our</span> 
                 <a href="manual.html" class="demo-link" data-i18n="index.demo.link_docs">Documentation</a> 
-                <span data-i18n="index.demo.footer_note_and">ou notre</span> 
+                <span data-i18n="index.demo.footer_note_and">or our</span> 
                 <a href="faq.html" class="demo-link" data-i18n="index.demo.link_faq">FAQ</a>.
             </p>
         </div>
@@ -282,88 +344,88 @@
 
     <section class="benefits-section">
         <div class="container">
-            <h2 data-i18n="index.benefits.title">Ce que CleanMyCSV fait pour vous (en tâche de fond)</h2>
+            <h2 data-i18n="index.benefits.title">What CleanMyCSV does (behind the scenes)</h2>
             <p class="section-subtext" data-i18n="index.benefits.subtitle">
-                Notre algorithme analyse et répare automatiquement les erreurs qui font planter vos logiciels.
+                Our algorithm automatically detects and fixes the errors that break your software.
             </p>
             <div class="grey-container">
                     <div class="benefit-content">
-                        <h3 data-i18n="index.benefit1.title">1. Délimiteurs & Encodage</h3>
+                        <h3 data-i18n="index.benefit1.title">1. Delimiters & Encoding</h3>
                         <p data-i18n="index.benefit1.desc">
-                            Fini les accents bizarres (Ã©) et les colonnes fusionnées. Conversion forcée en UTF-8 propre et délimiteurs harmonisés.
+                            No more weird symbols (Ã©) or merged columns. Forced conversion to clean UTF-8 and harmonized delimiters.
                         </p>
                     </div>
                 
                     <div class="benefit-content">
-                        <h3 data-i18n="index.benefit2.title">2. Suppression des Doublons</h3>
+                        <h3 data-i18n="index.benefit2.title">2. Duplicate Removal</h3>
                         <p data-i18n="index.benefit2.desc">
-                            Détection intelligente et suppression stricte des lignes en double. Votre base de données redevient légère et pertinente.
+                            Smart detection and strict removal of duplicate rows. Keep your database light and accurate.
                         </p>
                     </div>
                 
                     <div class="benefit-content">
-                        <h3 data-i18n="index.benefit3.title">3. Formatage des Données</h3>
+                        <h3 data-i18n="index.benefit3.title">3. Data Formatting</h3>
                         <p data-i18n="index.benefit3.desc">
-                            Nettoyage des espaces invisibles, harmonisation de la casse, et validation des structures (emails, numéros).
+                            Trims invisible spaces, fixes capitalization, and validates structures (emails, phone numbers).
                         </p>
                     </div>
             </div>
             <p class="small-subtext" data-i18n="index.benefits.doc_link">
-                En savoir plus sur CleanMyCSV : consultez notre <a href="manual.html" class="doc-link">Documentation</a>.
+                Learn more about CleanMyCSV: check out our <a href="manual.html" class="doc-link">Documentation</a>.
             </p>
         </div>
     </section>
 
     <section id="pricing" class="pricing-section container">
-        <h2 data-i18n="index.pricing.title">Un pricing simple. Un résultat immédiat.</h2>
-        <p class="section-subtext" data-i18n="index.pricing.subtitle">Paiement unique, sans abonnement caché.</p>
+        <h2 data-i18n="index.pricing.title">Simple Pricing. Instant Results.</h2>
+        <p class="section-subtext" data-i18n="index.pricing.subtitle">One-time payment. No hidden subscriptions.</p>
         
         <div class="pricing-grid">
 
             <div class="pricing-card lifetime">
-                <h3 data-i18n="index.pricing.year.title">Pass Annuel Pro</h3>
-                <p class="price-lifetime" data-i18n="index.pricing.year.price">99 €</p>
+                <h3 data-i18n="index.pricing.year.title">Pro Annual Pass</h3>
+                <p class="price-lifetime" data-i18n="index.pricing.year.price">$99</p>
                 <ul class="pricing-features">
-                    <li data-i18n="index.pricing.year.feat1">Nettoyages illimités pendant 1 an</li>
-                    <li data-i18n="index.pricing.year.feat2">Fichiers jusqu'à 100 Mo</li>
+                    <li data-i18n="index.pricing.year.feat1">Unlimited cleans for 1 year</li>
+                    <li data-i18n="index.pricing.year.feat2">Files up to 100MB (~1 million rows)</li>
                 </ul>
-                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="price-button" data-i18n="index.pricing.btn_choose">Choisir</a>
+                <a href="https://buy.stripe.com/14A28t5Dte7C3vp511fAc03" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
             </div>
 
             <div class="pricing-card popular week-pass card-highlight">
-                <div class="badge" data-i18n="index.pricing.week.badge">Le plus populaire</div>
-                <h3 data-i18n="index.pricing.week.title">Pass Campagne</h3>
-                <p class="price" data-i18n="index.pricing.week.price">29 €</p>
+                <div class="badge" data-i18n="index.pricing.week.badge">Most Popular</div>
+                <h3 data-i18n="index.pricing.week.title">Campaign Pass</h3>
+                <p class="price" data-i18n="index.pricing.week.price">$29</p>
                 <ul class="pricing-features">
-                    <li data-i18n="index.pricing.week.feat1">Nettoyages illimités pendant 7 jours</li>
-                    <li data-i18n="index.pricing.week.feat2">Fichiers jusqu'à 100 Mo</li>
+                    <li data-i18n="index.pricing.week.feat1">Unlimited cleans for 7 days</li>
+                    <li data-i18n="index.pricing.week.feat2">Files up to 100MB (~1 million rows)</li>
                 </ul>
-                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="price-button" data-i18n="index.pricing.btn_choose">Choisir</a>
+                <a href="https://buy.stripe.com/bJe4gBgi7gfK7LFdxxfAc02" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
             </div>
 
             <div class="pricing-card day-pass card-highlight">
-                <h3 data-i18n="index.pricing.day.title">Pass Express</h3>
-                <p class="price-quick-clean" data-i18n="index.pricing.day.price">9 €</p>
+                <h3 data-i18n="index.pricing.day.title">Express Pass</h3>
+                <p class="price-quick-clean" data-i18n="index.pricing.day.price">$9</p>
                 <ul class="pricing-features">
-                    <li data-i18n="index.pricing.day.feat1">Nettoyages illimités pendant 24h</li>
-                    <li data-i18n="index.pricing.day.feat2">Fichiers jusqu'à 100 Mo</li>
+                    <li data-i18n="index.pricing.day.feat1">Unlimited cleans for 24 hours</li>
+                    <li data-i18n="index.pricing.day.feat2">Files up to 100MB (~1 million rows)</li>
                 </ul>
-                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="price-button" data-i18n="index.pricing.btn_choose">Choisir</a>
+                <a href="https://buy.stripe.com/28EfZj9TJ1kQ2rl9hhfAc01" class="price-button" data-i18n="index.pricing.btn_choose">Get This Pass</a>
             </div>
 
             <div class="pricing-card free">
-                <h3 data-i18n="index.pricing.free.title">Test Gratuit</h3>
-                <p class="price" data-i18n="index.pricing.free.price">0 €</p>
+                <h3 data-i18n="index.pricing.free.title">Free Trial</h3>
+                <p class="price" data-i18n="index.pricing.free.price">$0</p>
                 <ul class="pricing-features">
-                    <li data-i18n="index.pricing.free.feat1">2 nettoyages gratuits par jour</li>
-                    <li data-i18n="index.pricing.free.feat2">Fichiers jusqu'à 5 Mo</li>
+                    <li data-i18n="index.pricing.free.feat1">2 free cleans per day</li>
+                    <li data-i18n="index.pricing.free.feat2">Files up to 5MB (~50,000 rows)</li>
                 </ul>
-                <button class="price-button js-open-modal" disabled data-i18n="index.pricing.btn_try">Essayer</button>
+                <button class="price-button js-open-modal" disabled data-i18n="index.pricing.btn_try">Try for Free</button>
             </div>
 
         </div>
         <p class="small-subtext"><i class="fa-solid fa-envelope-open-text"></i> 
-            <span data-i18n="index.pricing.no_account_note">Pas besoin de compte. Après paiement, vous recevez un <strong>lien magique par email</strong> pour réutiliser votre accès sur n'importe quel appareil.</span>
+            <span data-i18n="index.pricing.no_account_note">No account needed. After payment, you'll receive a <strong>magic link via email</strong> to reuse your pass on any device.</span>
         </p>
     </section>
 
@@ -373,27 +435,27 @@
                 
                 <div class="footer-links-wrapper">
                     <div class="footer-link-group">
-                        <h4 data-i18n="footer.product_title">Produit</h4>
-                        <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+                        <h4 data-i18n="footer.product_title">Product</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
                         <a href="manual.html" data-i18n="nav.docs">Documentation</a>
                         <a href="faq.html" data-i18n="nav.faq">FAQ</a>
                         <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
-                            <span class="status-dot">●</span><span data-i18n="footer.status"> Statut du système</span>
+                            <span class="status-dot">●</span><span data-i18n="footer.status"> System Status</span>
                         </a>
                     </div>
                     
                     <div class="footer-link-group">
-                        <h4 data-i18n="footer.legal_title">Légal & Support</h4>
-                        <a href="cgu.html" data-i18n="footer.cgu">CGU / CGV</a>
-                        <a href="legal.html" data-i18n="footer.legal">Mentions Légales</a>
-                        <a href="security.html" data-i18n="footer.security">Confidentialité</a>
+                        <h4 data-i18n="footer.legal_title">Legal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">Terms of Service</a>
+                        <a href="legal.html" data-i18n="footer.legal">Legal Notice</a>
+                        <a href="security.html" data-i18n="footer.security">Privacy Policy</a>
                         <a href="contact.html">Contact</a>
                     </div>
                 </div>
 
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. All rights reserved.</p>
                 </div>
 
             </div>

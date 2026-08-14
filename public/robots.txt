@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Directives d'accès pour les Crawlers d'IA (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: AnthropicAI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemaps & LLM Context Files
+Sitemap: https://cleanmycsv.fr/sitemap.xml
+# LLMs Text Files:
+# https://cleanmycsv.fr/llms.txt
+# https://cleanmycsv.fr/llms-full.txt

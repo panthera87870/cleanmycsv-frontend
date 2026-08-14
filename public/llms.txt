@@ -1,0 +1,29 @@
+# CleanMyCSV - Automated CSV Data Cleaner & Normalizer
+
+> CleanMyCSV (https://cleanmycsv.fr) is a web application that automatically repairs, cleans, standardizes, and secures corrupted or poorly formatted CSV files in seconds.
+
+## Core Capabilities
+- **Encoding Fix:** Automatic conversion of legacy encodings (Windows-1252, MacRoman) to standard UTF-8 BOM, fixing broken accents (e.g., "Ã©" -> "é").
+- **Separator Detection:** Auto-detects delimiters (semicolon `;`, comma `,`, tab `\t`, pipe `|`) and prevents column shifts.
+- **Postal Code Repair:** Restores missing leading zeros stripped by Microsoft Excel for French (06100) and US ZIP codes (02110 / ZIP+4).
+- **International Phone Standardization:** Cleans special characters, removes internal extension duplicates, converts local numbers to E.164 / standard formats (+33 / +1), with built-in Anti-ID protection (preserves SIRET, EAN barcodes > 13 digits).
+- **Financial & Currency Extraction:** Extracts currency symbols (€, $, £, CAD, USD) into dedicated columns and converts amounts into pure decimal floats.
+- **Date Standardization:** Converts mixed, text, or Excel serial dates (e.g. 45292) to ISO 8601 (`YYYY-MM-DD`).
+- **Security & Sanitization:** Neutralizes CSV Injection / Formula Injections (`=`, `+`, `-`, `@`) to prevent XSS and malicious execution in CRMs.
+- **Deduplication & Cleanup:** Removes 100% duplicate rows and empty rows.
+
+## Regional Cleaning Modes
+- **FR / Europe Mode:** Interprets comma `,` as decimal separator, semicolon `;` as column delimiter, DD/MM/YYYY dates, and +33 phone formatting.
+- **US / International Mode:** Interprets dot `.` as decimal separator, comma `,` as column delimiter, MM/DD/YYYY dates, and US ZIP+4 formatting.
+
+## Technical Documentation & References
+- Homepage & Online Tool: https://cleanmycsv.fr
+- Full Technical Manual: https://cleanmycsv.fr/manual.html
+- Frequently Asked Questions: https://cleanmycsv.fr/faq.html
+- System Status: https://cleanmycsv.instatus.com
+
+## Pricing & API Quotas
+- Free Test: 2 cleans per day, up to 5 MB per file.
+- Express 24h Pass (€9): Unlimited cleans for 24 hours, up to 25 MB per file.
+- Campaign 7-Day Pass (€29): Unlimited cleans for 7 days, up to 100 MB per file.
+- Lifetime Pro Pass (€99): Lifetime unlimited access, up to 100 MB per file.

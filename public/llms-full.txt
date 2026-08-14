@@ -1,0 +1,83 @@
+# CleanMyCSV - Complete Technical Specification & Documentation
+
+> CleanMyCSV (https://cleanmycsv.fr) is a high-precision, privacy-first web application designed to clean, normalize, repair, and secure corrupted or poorly formatted CSV files in seconds.
+
+---
+
+## 1. Core Architecture & Pipeline
+
+CleanMyCSV runs an automated data normalization pipeline in isolated memory (Google Cloud Run) with a zero-retention privacy policy.
+
+### Key Capabilities:
+1. **Encoding Correction:** Automatic detection of legacy encodings (Windows-1252, MacRoman, ISO-8859-1) and forced conversion to UTF-8 BOM, instantly resolving character corruption (e.g., "Ã©" becomes "é").
+2. **Delimiter Detection:** Probabilistic sampling of up to 10,000 characters to auto-detect delimiters (semicolon `;`, comma `,`, tab `\t`, pipe `|`) while safely ignoring delimiters contained inside quoted strings (e.g. street addresses).
+3. **Leading Zero Restoration:** Automatically detects French (5-digit) and US (5-digit or ZIP+4) postal codes and restores leading zeros stripped away by Microsoft Excel (e.g., "7500" -> "07500", "2110" -> "02110").
+4. **Name & Particle Formatting (Proper Case):** Normalizes name capitalization while handling complex language particles (De, Du, Des, Le, La, Van, Von) and Anglo-Saxon prefixes (Mc, O').
+5. **International Phone Normalization:** Standardizes phone numbers to standard format (`+33 6...` or `+1 (555)...`), removes extension duplicates (e.g., "06... / 01..."), and strips parasitic formatting.
+6. **Anti-ID Protection Safeguard:** Raw numerical strings containing more than 13 digits without standard phone punctuation (such as SIRET numbers, EAN barcodes, or Shopify Transaction IDs) are flagged as technical business data and left completely untouched.
+7. **Financial Data & Currency Extraction:** Detects price formats, extracts currency symbols (€, $, £, ¥) or ISO codes (EUR, USD, GBP, CAD) into a dedicated column, and converts numerical values into pure mathematical floats (dot decimal).
+8. **ISO 8601 Date Standardization:** Sniffs out mixed date formats, textual dates ("Jan 1, 2024"), and Excel serial numbers (e.g., 45292), normalizing them into `YYYY-MM-DD`.
+9. **CSV Injection & XSS Sanitization:** Neutralizes potential formula execution attacks by prefixing sensitive symbols (`=`, `+`, `-`, `@`) and converting HTML code characters into harmless entities.
+10. **Structural Optimization:** Strips 100% empty rows and performs full-row deduplication.
+
+---
+
+## 2. Regional Engine Rules (FR vs US Logic)
+
+Users can toggling between two processing contexts depending on their dataset's geographical origin:
+
+### Europe / FR Mode
+- **Column Delimiter Preference:** Semicolon `;`
+- **Decimal Separator:** Comma `,` (converted to mathematical dot `.`)
+- **Thousands Separator:** Space or dot `.` (stripped)
+- **Date Format Interpretation:** DD/MM/YYYY (e.g., "04/05/2023" becomes May 4th, 2023)
+- **Phone Formatting:** Local 10-digit numbers converted to `+33` standard.
+
+### USA / International Mode
+- **Column Delimiter Preference:** Comma `,`
+- **Decimal Separator:** Dot `.`
+- **Thousands Separator:** Comma `,` (stripped)
+- **Date Format Interpretation:** MM/DD/YYYY (e.g., "04/05/2023" becomes April 5th, 2023)
+- **Zip Code Rules:** Triggers North American ZIP+4 formatting (e.g., "12345-6789").
+
+---
+
+## 3. Privacy & Security Infrastructure
+
+- **Zero Data Retention:** Uploaded files are processed in isolated memory and permanently purged from Cloud Storage buckets within 24 hours.
+- **Signed Download Links:** Download links expire automatically after 15 minutes.
+- **Payment Compliance:** Payment processing is handled end-to-end by Stripe (PCI-DSS compliant). No credit card information is stored by CleanMyCSV.
+
+---
+
+## 4. Audit Trail & JSON Diagnostic Report
+
+Along with the cleaned CSV file, CleanMyCSV generates an exhaustive JSON audit log detailing row count, column count, and a row-by-row breakdown of applied changes.
+
+Example JSON Audit Output:
+```json
+[
+  {
+    "column": "Zip Code",
+    "before": "2110",
+    "after": "02110",
+    "reason": "Zip code fixed (added leading zero)"
+  },
+  {
+    "column": "Email",
+    "before": "John. Doe @ Gmail. Com",
+    "after": "john.doe@gmail.com",
+    "reason": "email auto-fixed"
+  }
+]
+
+---
+
+## 5. Pricing & Access Tiers
+
+- **Free Tier ($0):** 2 free cleans per day, files up to 5 MB (~50,000 rows).
+- **Express Pass ($9):** Unlimited cleans for 24 hours, files up to 100 MB (~1,000,000 rows).
+- **Campaign Pass ($29):** Unlimited cleans for 7 days, files up to 100 MB (~1,000,000 rows).
+- **Pro Annual Pass ($99):** Unlimited cleans for 1 year, files up to 100 MB (~1,000,000 rows).
+
+---

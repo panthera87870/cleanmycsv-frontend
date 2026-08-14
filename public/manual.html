@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
 
-    <title data-i18n="manual.meta.title">Guide Technique : Standardisation et Nettoyage CSV | CleanMyCSV</title>
-    <meta name="description" data-i18n-attr="content:manual.meta.desc" content="Documentation complète sur le traitement des fichiers CSV : encodage UTF-8, normalisation ISO, sécurité XSS et logique FR/US.">
+    <!-- SEO / Hreflang Tags (International Targeting) -->
+    <link rel="alternate" hreflang="en" href="https://cleanmycsv.fr/manual.html" />
+    <link rel="alternate" hreflang="fr" href="https://cleanmycsv.fr/manual.html?lang=fr" />
+    <link rel="alternate" hreflang="x-default" href="https://cleanmycsv.fr/manual.html" />
+
+    <title data-i18n="manual.meta.title">Technical Guide: CSV Standardization & Cleaning | CleanMyCSV</title>
+    <meta name="description" data-i18n-attr="content:manual.meta.desc" content="Comprehensive documentation on our CSV processing pipeline: UTF-8 encoding, ISO formatting, XSS security, and FR/US regional logic.">
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
@@ -21,12 +26,14 @@
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="3c4e12ac-ecc8-4b77-b24e-08597dac077e"></script>
     
+    <!-- GEO & Technical SEO Optimization: TechArticle Schema -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "Guide Technique : Standardisation et Nettoyage CSV",
-    "description": "Documentation officielle détaillant les processus de nettoyage de CleanMyCSV : correction d'encodage, formatage des dates, et normalisation des données financières.",
+    "headline": "Technical Guide: CSV Standardization & Cleaning Pipeline",
+    "description": "Official technical documentation detailing CleanMyCSV's cleaning engine: encoding repair, date ISO formatting, XSS security, and financial data normalization.",
+    "inLanguage": "en",
     "author": {
         "@type": "Organization",
         "name": "CleanMyCSV"
@@ -35,8 +42,8 @@
         "@type": "Organization",
         "name": "CleanMyCSV"
     },
-    "articleSection": "Documentation Technique",
-    "keywords": "Nettoyage CSV, Encodage UTF-8, Normalisation ISO, CSV Injection"
+    "articleSection": "Technical Documentation",
+    "keywords": "CSV Cleaning Engine, UTF-8 Encoding Repair, ISO 8601 Dates, CSV Injection Security, Zip Code Zero Restoration"
     }
     </script>
 </head>
@@ -57,16 +64,16 @@
                     <a href="index.html"><span>CLEANMYCSV</span></a>
                 </div>
                 <div class="nav-right-links">
-                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">DOCUMENTATION</a>
+                    <a href="manual.html" class="nav-link-uppercase" data-i18n="nav.docs">Documentation</a>
                     <a href="faq.html" class="nav-link-uppercase" data-i18n="nav.faq">FAQ</a>
-                    <a href="index.html#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">TARIFS</a>
+                    <a href="index.html#pricing" class="nav-link-uppercase" data-i18n="nav.pricing">Pricing</a>
                     <div class="lang-selector">
                         <i class="fa-solid fa-globe lang-icon"></i>
                         <button class="lang-btn" data-lang="fr">FR</button>
                         <span class="lang-separator">|</span>
                         <button class="lang-btn" data-lang="en">EN</button>
                     </div>
-                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Essayer</button>
+                    <button class="cta-button-nav js-open-modal" data-i18n="nav.cta">Try it</button>
                 </div>
             </nav>
         </header>
@@ -76,65 +83,65 @@
     <div class="container docs-container">
         <aside class="docs-sidebar">
             <nav>
-                <h4 data-i18n="manual.sidebar.title">Sommaire</h4>
+                <h4 data-i18n="manual.sidebar.title">Table of Contents</h4>
                 <ul>
-                        <li><a href="#encodage"><i class="fa-solid fa-language"></i> <span data-i18n="manual.sidebar.nav1">Encodage & Accents</span></a></li>
-                        <li><a href="#separateurs"><i class="fa-solid fa-table-columns"></i> <span data-i18n="manual.sidebar.nav2">Délimiteurs</span></a></li>
-                        <li><a href="#normalisation"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="manual.sidebar.nav3">Typographie & Zip</span></a></li>
-                        <li><a href="#telephone"><i class="fa-solid fa-phone"></i> <span data-i18n="manual.sidebar.nav4">Télephone</span></a></li>
-                        <li><a href="#nombres"><i class="fa-solid fa-coins"></i> <span data-i18n="manual.sidebar.nav5">Finances & Devises</span></a></li>
-                        <li><a href="#dates"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="manual.sidebar.nav6">Dates ISO 8601</span></a></li>
-                        <li><a href="#regionale"><i class="fa-solid fa-earth-americas"></i> <span data-i18n="manual.sidebar.nav7">Logique FR vs US</span></a></li>
-                        <li><a href="#nettoyage"><i class="fa-solid fa-broom"></i> <span data-i18n="manual.sidebar.nav8">Optimisation Structurelle</span></a></li>
-                        <li><a href="#securite"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="manual.sidebar.nav9">Sécurité XSS</span></a></li>
-                        <li><a href="#rapport"><i class="fa-solid fa-file-code"></i> <span data-i18n="manual.sidebar.nav10">Audit & Rapport JSON</span></a></li>
+                        <li><a href="#encodage"><i class="fa-solid fa-language"></i> <span data-i18n="manual.sidebar.nav1">Encoding & Accents</span></a></li>
+                        <li><a href="#separateurs"><i class="fa-solid fa-table-columns"></i> <span data-i18n="manual.sidebar.nav2">Delimiters</span></a></li>
+                        <li><a href="#normalisation"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="manual.sidebar.nav3">Typography & Zip Codes</span></a></li>
+                        <li><a href="#telephone"><i class="fa-solid fa-phone"></i> <span data-i18n="manual.sidebar.nav4">Phone Numbers</span></a></li>
+                        <li><a href="#nombres"><i class="fa-solid fa-coins"></i> <span data-i18n="manual.sidebar.nav5">Financials & Currencies</span></a></li>
+                        <li><a href="#dates"><i class="fa-regular fa-calendar-check"></i> <span data-i18n="manual.sidebar.nav6">ISO 8601 Dates</span></a></li>
+                        <li><a href="#regionale"><i class="fa-solid fa-earth-americas"></i> <span data-i18n="manual.sidebar.nav7">EU vs US Logic</span></a></li>
+                        <li><a href="#nettoyage"><i class="fa-solid fa-broom"></i> <span data-i18n="manual.sidebar.nav8">Structural Optimization</span></a></li>
+                        <li><a href="#securite"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="manual.sidebar.nav9">XSS Security</span></a></li>
+                        <li><a href="#rapport"><i class="fa-solid fa-file-code"></i> <span data-i18n="manual.sidebar.nav10">Audit & JSON Report</span></a></li>
                 </ul>
             </nav>
         </aside>
 
         <section class="docs-content">
-            <h1 id="introduction" data-i18n="manual.hero.title">Guide Complet : Standardisation et Nettoyage de vos Fichiers CSV</h1>
+            <h1 id="introduction" data-i18n="manual.hero.title">Comprehensive Guide: CSV Standardization & Cleaning</h1>
             <p class="section-subtext manual-subtext" data-i18n="manual.hero.subtext">
-                Découvrez comment l'algorithme de CleanMyCSV analyse, corrige et sécurise vos bases de données. Ce guide détaille l'ensemble des processus de traitement appliqués à vos fichiers pour garantir une donnée exploitable, fiable et standardisée.           
+                Discover how the CleanMyCSV engine analyzes, fixes, and secures your databases. This guide breaks down the full processing pipeline applied to your files, guaranteeing usable, reliable, and standardized data.           
             </p>
 
             <article id="encodage" class="doc-article">
-                <h2 data-i18n="manual.art1.title">1. Résolution des Problèmes d'Encodage et de Caractères</h2>
-                <p data-i18n="manual.art1.p">Les exports depuis d'anciens systèmes ou certaines versions d'Excel (format Windows-1252 ou MacRoman) génèrent fréquemment des erreurs d'encodage, remplaçant les accents par des symboles illisibles.</p>
+                <h2 data-i18n="manual.art1.title">1. Fixing Encoding & Character Issues</h2>
+                <p data-i18n="manual.art1.p">Legacy system exports or old Excel versions (Windows-1252/MacRoman) often spit out encoding errors, turning accents into unreadable gibberish.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art1.feature"><strong>L'action du programme :</strong><br><br>CleanMyCSV scanne le fichier pour détecter les anomalies d'encodage (ex: présence de caractères ``).<br>S'il détecte un format obsolète, il le convertit de force en <strong>UTF-8 standard</strong>, garantissant la préservation de tous les caractères spéciaux et accents internationaux.<br><br>Exemple : <code>SociÃ©tÃ© de DÃ©mÃ©nagement</code> devient <code>Société de Déménagement</code></p>
+                    <p data-i18n="manual.art1.feature"><strong>How we fix it:</strong><br><br>CleanMyCSV scans your file to detect encoding anomalies (e.g., weird `` characters).<br>If an outdated format is detected, it force-converts everything to <strong>clean UTF-8</strong>, ensuring all special characters and international accents are perfectly preserved.<br><br>Example: <code>SociÃ©tÃ© de DÃ©mÃ©nagement</code> becomes <code>Société de Déménagement</code>.</p>
                 </div>
             </article>
 
             <article id="separateurs" class="doc-article">
-                <h2 data-i18n="manual.art2.title">2. Détection Intelligente des Délimiteurs (Séparateurs)</h2>
-                <p data-i18n="manual.art2.p">Un fichier CSV mal formaté regroupe souvent toutes les données dans une seule colonne. Cela se produit lorsque le logiciel cible n'utilise pas le même séparateur que le fichier source.</p>
+                <h2 data-i18n="manual.art2.title">2. Smart Delimiter Detection</h2>
+                <p data-i18n="manual.art2.p">Poorly formatted CSVs often dump all data into a single column. This happens when the target software expects a different separator than the source file.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art2.feature"><strong>L'action du programme :</strong><br>L'algorithme analyse un échantillon de vos données (jusqu'à 10 000 caractères) et calcule un score de probabilité pour identifier le séparateur exact. Il gère parfaitement les virgules intégrées dans des champs de texte (ex: adresses) sans provoquer de décalage de colonnes.<br><br><strong>Formats supportés nativement :</strong><br>Point-virgule (;), Virgule (,), Tabulation (\t), et Barre verticale (|).</p>
+                    <p data-i18n="manual.art2.feature"><strong>How we fix it:</strong><br>The algorithm parses a data sample (up to 10,000 characters) and calculates a probability score to pinpoint the exact delimiter. It seamlessly handles commas embedded inside text fields (like addresses) without breaking your columns.<br><br><strong>Natively supported formats:</strong><br>Semicolon (;), Comma (,), Tab (\t), and Pipe (|).</p>
                 </div>
             </article>
 
             <article id="normalisation" class="doc-article">
-                <h2 data-i18n="manual.art3.title">3. Normalisation Typographique (Noms et Codes Postaux)</h2>
-                <p data-i18n="manual.art3.p">La consistance visuelle et technique des textes est indispensable pour une base de données client saine.</p>
+                <h2 data-i18n="manual.art3.title">3. Typographical Normalization (Names & Zip Codes)</h2>
+                <p data-i18n="manual.art3.p">Visual and technical consistency in text fields is non-negotiable for a healthy customer database.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art3.feature"><strong>Noms Propres (Proper Case) :</strong> L'outil harmonise la casse des noms et prénoms. Il gère intelligemment les particules complexes (De, Du, Des, Le, La, Van, Von) et les préfixes anglo-saxons (Mc, O').<br><br>Exemple : <code>mcdonald O'neil</code> devient <code>McDonald O'Neil</code>.<br><br><strong>Restauration des Codes Postaux :</strong> Les tableurs comme Excel ont tendance à considérer les codes postaux comme des nombres, supprimant ainsi les zéros initiaux (très courant pour les codes postaux français ou internationaux). CleanMyCSV détecte cette anomalie et restaure le zéro manquant pour garantir la longueur légale du code.<br><br>Exemple : <code>7500</code> devient <code>07500</code>.</p>
+                    <p data-i18n="manual.art3.feature"><strong>Proper Case (Names):</strong> The engine harmonizes name capitalization. It smartly handles complex particles (De, Du, Des, Le, La, Van, Von) and Anglo-Saxon prefixes (Mc, O').<br><br>Example: <code>mcdonald O'neil</code> becomes <code>McDonald O'Neil</code>.<br><br><strong>Zip Code Restoration:</strong> Spreadsheets like Excel love to treat zip codes as numbers, stripping away leading zeros (a huge headache for international or US East Coast zip codes). CleanMyCSV catches this and restores the missing zero to match legal lengths.<br><br>Example: <code>7500</code> becomes <code>07500</code>.</p>
                 </div>
             </article>
 
             <article id="telephone" class="doc-article">
-                <h2 data-i18n="manual.art4.title">4. Normalisation des Téléphones (Standard International)</h2>
-                <p data-i18n="manual.art4.p">Le moteur détecte automatiquement les colonnes liées aux téléphones (Tel, Mobile, WhatsApp, etc.) grâce à des expressions régulières strictes et applique un formatage intelligent.</p>
+                <h2 data-i18n="manual.art4.title">4. International Phone Normalization</h2>
+                <p data-i18n="manual.art4.p">The engine automatically spots phone-related columns (Mobile, WhatsApp, etc.) using strict regex and applies smart formatting.</p>
     
                 <div class="feature-card">
                     <ul class="faq-list">
-                        <li data-i18n="manual.art4.feat1"><strong>Conversion indicatifs :</strong> Remplacement des <code>00</code> et <code>(0)</code> par le standard <code>+</code>.</li>
-                        <li data-i18n="manual.art4.feat2"><strong>Gestion des doublons :</strong> Si une case contient <code>Num1 / Num2</code>, seul le premier est conservé pour garantir un import CRM sans erreur.</li>
-                        <li data-i18n="manual.art4.feat3"><strong>Sécurité Anti-ID (SIRET/EAN) :</strong> Les suites alphanumériques de plus de 13 caractères sans séparateur sont ignorées pour protéger vos identifiants métiers.</li>
+                        <li data-i18n="manual.art4.feat1"><strong>Country codes:</strong> Replaces <code>00</code> and <code>(0)</code> with the standard <code>+</code> format.</li>
+                        <li data-i18n="manual.art4.feat2"><strong>Duplicate handling:</strong> If a cell contains <code>Num1 / Num2</code>, only the first one is kept for a clean CRM import.</li>
+                        <li data-i18n="manual.art4.feat3"><strong>ID Protection:</strong> Alphanumeric strings over 13 characters without separators are ignored to protect your business IDs (SSN, EIN, etc.).</li>
                     </ul>
                 </div>
                 <div class="code-item-wrapper">
-                        <span class="label" data-i18n="manual.art4.code_label">Exemple du Rapport JSON (Téléphones)</span>
+                        <span class="label" data-i18n="manual.art4.code_label">JSON Report Example (Phones)</span>
                         <div class="code-content"><pre>
 {
     "column": "Telephone",
@@ -153,24 +160,24 @@
             </article>
 
             <article id="nombres" class="doc-article">
-                <h2 data-i18n="manual.art5.title">5. Extraction et Formatage des Données Financières (Montants et Devises)</h2>
-                <p data-i18n="manual.art5.p">Les colonnes de prix contenant des symboles monétaires ou des espaces sont lues comme du "texte" par les logiciels d'analyse, ce qui empêche tout calcul mathématique.</p>
+                <h2 data-i18n="manual.art5.title">5. Extracting & Formatting Financial Data</h2>
+                <p data-i18n="manual.art5.p">Price columns packed with currency symbols or spaces are read as "text" by analytics tools, breaking all your math.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art5.feature"><strong>L'action du programme :</strong></p>
+                    <p data-i18n="manual.art5.feature"><strong>How we fix it:</strong></p>
                     <ul class="faq-list">
-                        <li data-i18n="manual.art5.feat1">1. Il détecte la présence de symboles monétaires ($, €, £, ¥) ou de codes (EUR, USD, GBP, JPY, CAD, AUD, CHF, SEK).</li>
-                        <li data-i18n="manual.art5.feat2">2. Il extrait cette devise pour l'isoler de la donnée. (Note : selon la structure du fichier, cela peut créer une nouvelle colonne "Devise" distincte).</li>
-                        <li data-i18n="manual.art5.feat3">3. Il nettoie le montant de tout espace ou séparateur de milliers inapproprié, et unifie le séparateur décimal en un format mathématique pur (point).</li>
+                        <li data-i18n="manual.art5.feat1">1. Detects currency symbols ($, €, £, ¥) or ISO codes (EUR, USD, GBP, JPY, CAD, AUD, CHF, SEK).</li>
+                        <li data-i18n="manual.art5.feat2">2. Extracts the currency to isolate it. (Note: depending on the file layout, this may create a brand new "Currency" column).</li>
+                        <li data-i18n="manual.art5.feat3">3. Strips the amount of any spaces or rogue thousand separators, standardizing the decimal mark into a clean, math-ready format (dot).</li>
                     </ul>
                 </div>
                 <div class="before-after-example">
                     <div class="code-item-wrapper">
-                        <span class="label" data-i18n="manual.art5.label_before">Avant</span>
+                        <span class="label" data-i18n="manual.art5.label_before">Before</span>
                         <div class="code-content"><pre>1 250,50 € | $ 45.00</pre></div>
                     </div>
                     <div class="code-item-wrapper">
-                        <span class="label" data-i18n="manual.art5.label_after">Après (Prêt pour calculs)</span>
-                        <div class="code-content"><pre>Montant;Devise
+                        <span class="label" data-i18n="manual.art5.label_after">After (Math-ready)</span>
+                        <div class="code-content"><pre>Amount;Currency
 1250.50;EUR
 45.00;USD</pre></div>
                     </div>
@@ -178,62 +185,62 @@
             </article>
 
             <article id="dates" class="doc-article">
-                <h2 data-i18n="manual.art6.title">6. Standardisation Internationale des Dates (Format ISO 8601)</h2>
-                <p data-i18n="manual.art6.p">Les conflits de formats de dates faussent les tris et les automatisations.</p>
+                <h2 data-i18n="manual.art6.title">6. International Date Standardization (ISO 8601)</h2>
+                <p data-i18n="manual.art6.p">Date format conflicts destroy sorting and automations.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art6.feature"><strong>L'action du programme :</strong> Le script identifie les différents formats de dates, y compris les formats mixtes, les dates textuelles ("Jan 1, 2024") et les numéros de série Excel (ex: 45292). Il convertit ensuite l'intégralité de ces données au format de base de données standard international : AAAA-MM-JJ.</p>
+                    <p data-i18n="manual.art6.feature"><strong>How we fix it:</strong> The script sniffs out various date formats—including mixed formats, text dates ("Jan 1, 2024"), and Excel serial numbers (e.g., 45292). It then converts everything into the universal database standard: YYYY-MM-DD.</p>
                 </div>
             </article>
 
             <article id="regionale" class="doc-article">
-                <h2 data-i18n="manual.art7.title">7. Adaptation Régionale : Algorithmes de Nettoyage (FR vs US)</h2>
-                <p data-i18n="manual.art7.p">Les standards de formatage des données varient drastiquement entre l'Europe et l'Amérique du Nord. Un outil de nettoyage générique risque de corrompre vos montants financiers ou de mal interpréter la structure de votre fichier.</p>
+                <h2 data-i18n="manual.art7.title">7. Regional Adaptation: FR vs. US Logic</h2>
+                <p data-i18n="manual.art7.p">Data formatting standards differ wildly between Europe and North America. A generic cleaning tool will corrupt your financial amounts or misread your file structure.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art7.feature"><strong>L'action du programme :</strong> CleanMyCSV intègre un double moteur de traitement. Avant l'exécution, vous définissez le contexte de vos données (Logique FR ou US).<br><br><strong>Impact sur la donnée :</strong></p>
+                    <p data-i18n="manual.art7.feature"><strong>How we fix it:</strong> CleanMyCSV runs on a dual-engine setup. Before processing, you define your data context (FR or US Logic).<br><br><strong>Impact on your data:</strong></p>
                     <ul class="faq-list">
-                        <li data-i18n="manual.art7.feat1"><strong>Les Nombres :</strong> En mode Français, le programme comprend que l'espace sépare les milliers et la virgule marque les décimales (<code>1 250,50</code> devient <code>1250.50</code>). En mode US, il interprète correctement la virgule comme séparateur de milliers (<code>1,250.50</code> devient <code>1250.50</code>).</li>
-                        <li data-i18n="manual.art7.feat2"><strong>Les Séparateurs :</strong> L'algorithme ajuste ses probabilités de détection, privilégiant le point-virgule (;) pour les fichiers FR et la virgule (,) pour les fichiers US.</li>
+                        <li data-i18n="manual.art7.feat1"><strong>Numbers:</strong> In FR mode, the engine knows spaces separate thousands and commas mark decimals (<code>1 250,50</code> becomes <code>1250.50</code>). In US mode, it correctly reads the comma as a thousand separator (<code>1,250.50</code> becomes <code>1250.50</code>).</li>
+                        <li data-i18n="manual.art7.feat2"><strong>Separators:</strong> The algorithm tweaks its detection weights, favoring semicolons (;) for FR files and commas (,) for US files.</li>
                     </ul>
                 </div>
             </article>
 
             <article id="nettoyage" class="doc-article">
-                <h2 data-i18n="manual.art8.title">8. Optimisation Structurelle : Lignes Vides et Doublons</h2>
-                <p data-i18n="manual.art8.p">Un fichier lourd ralentit vos systèmes. Le nettoyage des données superflues est effectué à la volée.</p>
+                <h2 data-i18n="manual.art8.title">8. Structural Optimization: Empty Rows & Duplicates</h2>
+                <p data-i18n="manual.art8.p">Bloated files slow down your systems. We clean up the dead weight on the fly.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art8.feature"><strong>Lignes 100% vides :</strong> Toute ligne ne contenant aucune valeur utile est ignorée et supprimée du fichier de sortie.<br><br><strong>Dédoublonnage strict :</strong> Le programme compare l'intégralité des lignes. Si deux lignes (ou plus) sont rigoureusement identiques sur toutes leurs colonnes, une seule est conservée.</p>
+                    <p data-i18n="manual.art8.feature"><strong>100% blank rows:</strong> Any row without meaningful data is ignored and dropped from the output.<br><br><strong>Strict deduplication:</strong> The engine runs a full-row comparison. If two or more rows are identical across all columns, only one survives.</p>
                 </div>
             </article>
 
             <article id="securite" class="doc-article">
-                <h2 data-i18n="manual.art9.title">9. Sécurité des Données et Prévention des Injections (XSS)</h2>
-                <p data-i18n="manual.art9.p">L'importation de fichiers externes représente un risque de sécurité (injections de scripts).</p>
+                <h2 data-i18n="manual.art9.title">9. Data Security & XSS Prevention</h2>
+                <p data-i18n="manual.art9.p">Importing external files is a massive security risk (script injections).</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art9.feature"><strong>L'action du programme :</strong><br>Avant restitution, une fonction de "Sanitization" chirurgicale est appliquée. Les caractères sensibles utilisés dans le code informatique <code>(&lt;, &gt;, &amp;, ", ', /)</code> sont convertis en entités HTML inoffensives. Cela garantit que votre fichier CSV ne peut pas exécuter de code malveillant s'il est importé dans votre CRM ou sur un affichage web.</p>
+                    <p data-i18n="manual.art9.feature"><strong>How we fix it:</strong><br>Before outputting, we apply surgical sanitization. Sensitive coding characters <code>(&lt;, &gt;, &amp;, ", ', /)</code> are converted into harmless HTML entities. This guarantees your CSV can't execute malicious code when imported into your CRM or displayed on a web dashboard.</p>
                 </div>
             </article>
 
             <article id="rapport" class="doc-article">
-                <h2 data-i18n="manual.art10.title">10. Audit et Traçabilité (Le Rapport JSON)</h2>
-                <p data-i18n="manual.art10.p">La transparence est totale. Vous ne confiez pas vos données à une "boîte noire".</p>
+                <h2 data-i18n="manual.art10.title">10. Audit Trail (The JSON Report)</h2>
+                <p data-i18n="manual.art10.p">Total transparency. You aren't feeding your data into a black box.</p>
                 <div class="feature-card">
-                    <p data-i18n="manual.art10.feature"><strong>L'action du programme :</strong> Chaque modification effectuée par CleanMyCSV est consignée. En plus de votre fichier propre, l'outil génère un rapport d'audit exhaustif (disponible en téléchargement).<br><br><strong>Ce que contient le rapport :</strong> Le nombre exact de lignes traitées, le nombre de colonnes, et le détail ligne par ligne de la valeur Avant et de la valeur Après correction, avec le motif exact de la modification (jusqu'à 1000 détails affichés pour préserver les performances).</p>
+                    <p data-i18n="manual.art10.feature"><strong>How we fix it:</strong> Every tweak CleanMyCSV makes is logged. Alongside your clean file, the tool generates an exhaustive audit report (ready for download).<br><br><strong>What's inside:</strong> The exact row count, column count, and a line-by-line breakdown of the 'Before' and 'After' values, complete with the exact reason for the change (capped at 1,000 details to keep things lightning fast).</p>
                 </div>
                 <div class="code-item-wrapper mt-20">
-                    <span class="label" data-i18n="manual.art10.label_report">Exemple de rapport</span>
+                    <span class="label" data-i18n="manual.art10.label_report">Report Example</span>
                     <div class="code-content">
 <pre>[
   {
-    "column": "Code Postal",
+    "column": "Zip Code",
     "before": "6100",
     "after": "06100",
-    "reason": "Code postal corrigé (ajout du 0 initial)"
+    "reason": "Zip code fixed"
   },
   {
     "column": "Email",
-    "before": "Jean. Dupont @ Gmail. Com",
-    "after": "jean.dupont@gmail.com",
-    "reason": "email auto-corrigé"
+    "before": "John. Doe @ Gmail. Com",
+    "after": "john.doe@gmail.com",
+    "reason": "Email auto-fixed"
   }
 ]</pre>
                     </div>
@@ -241,8 +248,8 @@
             </article>
 
             <div class="final-cta-docs">
-                <h3 data-i18n="manual.cta.title">Donnez à vos données la qualité qu'elles méritent.</h3>
-                <button class="cta-button last-cta js-open-modal" data-i18n="manual.cta.btn">Nettoyer mon fichier maintenant</button>
+                <h3 data-i18n="manual.cta.title">Give your data the quality it deserves.</h3>
+                <button class="cta-button last-cta js-open-modal" data-i18n="manual.cta.btn">Clean my file now</button>
             </div>
         </section>
     </div>
@@ -254,27 +261,27 @@
                 
                 <div class="footer-links-wrapper">
                     <div class="footer-link-group">
-                        <h4 data-i18n="footer.product_title">Produit</h4>
-                        <a href="index.html#pricing" data-i18n="nav.pricing">Tarifs</a>
+                        <h4 data-i18n="footer.product_title">Product</h4>
+                        <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
                         <a href="manual.html" data-i18n="nav.docs">Documentation</a>
                         <a href="faq.html" data-i18n="nav.faq">FAQ</a>
                         <a href="https://cleanmycsv.instatus.com" target="_blank" rel="noopener noreferrer" class="status-link">
-                            <span class="status-dot">●</span><span data-i18n="footer.status"> Statut du système</span>
+                            <span class="status-dot">●</span><span data-i18n="footer.status"> System Status</span>
                         </a>
                     </div>
                     
                     <div class="footer-link-group">
-                        <h4 data-i18n="footer.legal_title">Légal & Support</h4>
-                        <a href="cgu.html" data-i18n="footer.cgu">CGU / CGV</a>
-                        <a href="legal.html" data-i18n="footer.legal">Mentions Légales</a>
-                        <a href="security.html" data-i18n="footer.security">Confidentialité</a>
+                        <h4 data-i18n="footer.legal_title">Legal & Support</h4>
+                        <a href="cgu.html" data-i18n="footer.cgu">Terms of Service</a>
+                        <a href="legal.html" data-i18n="footer.legal">Legal Notice</a>
+                        <a href="security.html" data-i18n="footer.security">Privacy Policy</a>
                         <a href="contact.html">Contact</a>
                     </div>
                 </div>
 
                 <div class="footer-left">
                     <span class="footer-logo">CLEANMYCSV</span>
-                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. Tous droits réservés.</p>
+                    <p class="copyright" data-i18n="footer.copy">&copy; 2026 CleanMyCSV. All rights reserved.</p>
                 </div>
 
             </div>

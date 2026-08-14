@@ -391,7 +391,7 @@
     },
     "sect4": {
       "title": "4. Prix et Modalités de paiement (CGV)",
-      "p": "Les prix de nos offres sont indiqués en euros (€). En tant qu'Entreprise Individuelle, la TVA est non applicable (article 293 B du CGI). Le paiement est exigible immédiatement à la commande. Les transactions sont entièrement traitées et sécurisées par Stripe. L'éditeur ne stocke aucune donnée bancaire."
+      "p": "Les prix de nos offres sont indiqués en dollars ($) ou en euros (€) selon l'affichage du site. En tant qu'Entreprise Individuelle, la TVA est non applicable (article 293 B du CGI). Le paiement est exigible immédiatement à la commande. Les transactions sont entièrement traitées et sécurisées par Stripe. L'éditeur ne stocke aucune donnée bancaire."
     },
     "sect5":{
       "title": "5. Livraison du service",
@@ -459,7 +459,7 @@
       "title": "3. Services Tiers et Sécurité",
       "intro": "Pour assurer le bon fonctionnement de CleanMyCSV, nous utilisons des partenaires de confiance :",
       "li1": "<strong>Stripe :</strong> Vos données de paiement sont traitées exclusivement par Stripe. CleanMyCSV n'a jamais accès à vos numéros de carte bancaire (certification PCI-DSS).",
-      "li2": "<strong>Vercel Analytics :</strong> Nous mesurons l'audience de manière anonymisée. Aucune donnée permettant de vous identifier personnellement n'est collectée via cet outil.",
+      "li2": "<strong>Vercel Analytics et Umami Cloud:</strong> Nous mesurons l'audience de manière anonymisée. Aucune donnée permettant de vous identifier personnellement n'est collectée via cet outil.",
       "li3": "<strong>Google Cloud Storage :</strong> Vos fichiers sont isolés dans des compartiments (buckets) privés et chiffrés."
     },
     "sect4": {
