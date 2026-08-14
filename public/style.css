@@ -204,18 +204,15 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
    ========================================== */
 .use-cases-section { margin: 40px auto 30px auto; }
 .use-cases-accordion {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--dark-box); border: var(--dark-border);
     border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
 }
-.use-cases-accordion[open] {
-    background: rgba(20, 20, 30, 0.6); border-color: rgba(168, 85, 247, 0.3);
-}
+.use-cases-accordion[open] { background: var(--dark-box); border-color: var(--dark-border); }
 .use-cases-summary {
     padding: 16px 20px; font-size: 0.95rem; font-weight: 700;
-    color: #e0e0e0; cursor: pointer; display: flex;
+    color: var(--light-text-color); cursor: pointer; display: flex;
     justify-content: space-between; align-items: center;
-    list-style: none; /* Supprime le triangle natif du navigateur */ user-select: none;
+    list-style: none; user-select: none;
 }
 .use-cases-summary::-webkit-details-marker { display: none; }
 .use-cases-summary span i {  margin-right: 10px; }
@@ -224,21 +221,21 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 }
 .use-cases-accordion[open] .use-cases-summary .accordion-arrow {
     transform: rotate(180deg);
-    color: #a855f7;
+    color: var(--first-color);
 }
 .use-cases-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 10px; padding: 16px 20px 20px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid var(--medium-border);
 }
 .use-cases-grid a {
     display: flex; align-items: center; gap: 10px; padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px;
-    color: #b0b0c0; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;
+    background: var(--dark-bg);
+    border: 1px solid var(--medium-border); border-radius: 8px;
+    color: var(--light-text-color); font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;
 }
-.use-cases-grid i { color: #a855f7; font-size: 0.9rem; width: 16px; text-align: center; }
-.use-case-grid:hover {
+.use-cases-grid i { color: var(--first-color); font-size: 0.9rem; width: 16px; text-align: center; }
+.use-case-grid a:hover {
     background: rgba(168, 85, 247, 0.15);
     border-color: rgba(168, 85, 247, 0.4);
     color: #ffffff;
