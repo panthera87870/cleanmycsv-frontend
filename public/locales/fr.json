@@ -92,6 +92,22 @@
         "desc": "Votre accès est prêt. Nous venons de vous envoyer un <strong>lien magique</strong> par email. <br><br>Cliquez simplement sur le lien dans l'email pour revenir sur le site et nettoyer vos fichiers.",
         "spam_notice": "(N'oubliez pas de vérifier vos courriers indésirables / spams)"
     },
+  "usecases": {
+    "title": "Explorer nos Solutions et Cas d'Usages Dédiés",
+    "shopify": "Correcteur CSV Shopify",
+    "accents": "Réparez les Accents Cassés",
+    "zeros": "Restaurez les Zéros Postaux",
+    "hubspot": "Import CRM HubSpot",
+    "klaviyo": "Formatage Klaviyo SMS",
+    "coldemail": "Listes de Leads Cold Email",
+    "delimiter": "Convertir Point-Virgule en Virgule",
+    "phone": "Normalisateur Téléphones E.164",
+    "security": "Sécurité Injection CSV",
+    "salesforce": "Salesforce Data Loader",
+    "airtable": "Import Airtable & Notion",
+    "woocommerce": "Importateur WooCommerce",
+    "date": "Format de Dates ISO 8601"
+  },
 
   "index": {
     "meta": {

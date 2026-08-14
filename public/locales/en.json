@@ -92,6 +92,22 @@
   "desc": "Your access is ready. We just sent you a <strong>magic link</strong> by email. <br><br>Simply click the link in the email to return to the site and clean your files.",
   "spam_notice": "(Don't forget to check your spam/junk folder)"
   },
+  "usecases": {
+    "title": "Explore Specific CSV Solutions & Use Cases",
+    "shopify": "Shopify CSV Fixer",
+    "accents": "Fix Broken Accents (UTF-8)",
+    "zeros": "Restore ZIP Code Zeros",
+    "hubspot": "HubSpot CRM Import",
+    "klaviyo": "Klaviyo SMS & List Fix",
+    "coldemail": "Cold Email Lead Lists",
+    "delimiter": "Convert Semicolon to Comma",
+    "phone": "Phone E.164 Normalizer",
+    "security": "CSV Injection Security",
+    "salesforce": "Salesforce Data Loader",
+    "airtable": "Airtable & Notion Fix",
+    "woocommerce": "WooCommerce CSV Importer",
+    "date": "ISO 8601 Date Format"
+  },
 
   "index": {
     "meta": {
