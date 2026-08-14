@@ -206,6 +206,8 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 .use-cases-accordion {
     background: var(--dark-box); border: var(--dark-border);
     border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
+    box-shadow: var(--glow-effect);
+
 }
 .use-cases-accordion[open] { background: var(--dark-box); border-color: var(--dark-border); }
 .use-cases-summary {
@@ -235,12 +237,6 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
     color: var(--light-text-color); font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;
 }
 .use-cases-grid i { color: var(--first-color); font-size: 0.9rem; width: 16px; text-align: center; }
-.a:hover {
-    background: rgba(168, 85, 247, 0.15);
-    border-color: rgba(168, 85, 247, 0.4);
-    color: #ffffff;
-    transform: translateY(-2px);
-}
 
 /* 8. SECTIONS DE CONTENU (LANDING & PAGES)
    ============================================== */
