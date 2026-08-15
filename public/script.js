@@ -221,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
         alert("Payment successful! Your offer is active."); 
     }
+    initPremiumBanner();
 });
 
 const modalElement = document.getElementById('upload-modal');
@@ -299,7 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('i18nReady', () => {
-    initPremiumBanner();
     if (modalElement.classList.contains('visible') && document.getElementById('upload-form')) {
         resetModal();
     }
