@@ -103,37 +103,49 @@ function initPremiumBanner() {
 
     if (now > expDate) {
         localStorage.removeItem('mycsv_token'); 
+        const existingBanner = document.getElementById('premium-banner');
+        if (existingBanner) existingBanner.remove();
         return;
     }
 
-    const banner = document.createElement('div');
-    banner.className = 'premium-banner animate-fade-in';
-    
-    const textSpan = document.createElement('span');
-    banner.appendChild(textSpan);
+    // Vérifie si la bannière existe déjà pour éviter les doublons
+    let banner = document.getElementById('premium-banner');
+    let textSpan;
 
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'premium-banner-close';
-    closeBtn.innerHTML = '&times;';
-    closeBtn.setAttribute('aria-label', 'Close banner');
-    closeBtn.onclick = () => {
-        banner.classList.add('hidden-banner');
-        localStorage.setItem('hide_premium_banner', 'true'); 
-    };
-    banner.appendChild(closeBtn);
+    if (!banner) {
+        banner = document.createElement('div');
+        banner.id = 'premium-banner';
+        banner.className = 'premium-banner animate-fade-in';
+        
+        textSpan = document.createElement('span');
+        textSpan.id = 'premium-banner-text';
+        banner.appendChild(textSpan);
 
-    const stickyWrapper = document.querySelector('.sticky-wrapper');
-    if (stickyWrapper) {
-        stickyWrapper.insertBefore(banner, stickyWrapper.firstChild);
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'premium-banner-close';
+        closeBtn.innerHTML = '&times;';
+        closeBtn.setAttribute('aria-label', 'Close banner');
+        closeBtn.onclick = () => {
+            banner.classList.add('hidden-banner');
+            localStorage.setItem('hide_premium_banner', 'true'); 
+        };
+        banner.appendChild(closeBtn);
+
+        const stickyWrapper = document.querySelector('.sticky-wrapper');
+        if (stickyWrapper) {
+            stickyWrapper.insertBefore(banner, stickyWrapper.firstChild);
+        } else {
+            document.body.insertBefore(banner, document.body.firstChild);
+        }
     } else {
-        document.body.insertBefore(banner, document.body.firstChild);
+        textSpan = document.getElementById('premium-banner-text');
     }
 
+    // Détection dynamique de la langue actuelle à chaque mise à jour
     const currentLang = document.documentElement.lang || 'en';
     const isFr = currentLang === 'fr';
     const plan = payload.plan; 
 
-    // Dictionnaire intégré pour s'affranchir des bugs de chargement i18n
     const texts = {
         fr: {
             plan1: "✅ <strong>Pass Express Actif</strong> - Valide jusqu'au ",
@@ -160,7 +172,9 @@ function initPremiumBanner() {
     const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     const formattedDate = expDate.toLocaleDateString(localeString, options);
 
-    let intervalId = null;
+    // Nettoyage de l'ancien intervalle s'il existe pour éviter les conflits
+    let intervalId = banner.dataset.intervalId;
+    if (intervalId) clearInterval(Number(intervalId));
 
     const updateBanner = () => {
         const timeRemainingMs = expDate.getTime() - new Date().getTime();
@@ -168,7 +182,6 @@ function initPremiumBanner() {
         if (timeRemainingMs <= 0) {
             textSpan.innerHTML = langDict.expired;
             localStorage.removeItem('mycsv_token');
-            if(intervalId) clearInterval(intervalId);
             return;
         }
 
@@ -186,21 +199,25 @@ function initPremiumBanner() {
             const s = String(seconds).padStart(2, '0');
             
             textSpan.innerHTML = `${langDict.urgent} ${h}h ${m}m ${s}s`;
-            
-            if (!intervalId) {
-                intervalId = setInterval(updateBanner, 1000);
-            }
         } else {
+            banner.style.background = ""; // Retour au dégradé normal
             textSpan.innerHTML = `${standardPrefix} ${formattedDate}`;
-            
-            if (!intervalId) {
-                intervalId = setInterval(updateBanner, 60000);
-            }
         }
     };
 
     updateBanner();
+    
+    // Actualisation chaque seconde pour le minuteur et la réactivité de la langue
+    const newInterval = setInterval(updateBanner, 1000);
+    banner.dataset.intervalId = newInterval;
 }
+
+// Écouteur global pour relancer la mise à jour de la bannière dès qu'on clique sur FR ou EN
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.lang-btn')) {
+        setTimeout(initPremiumBanner, 50); // Petit délai pour laisser le temps au DOM de basculer la langue
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Gestion du retour Stripe (sauvegarde du token)
