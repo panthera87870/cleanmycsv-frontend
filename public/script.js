@@ -130,9 +130,8 @@ function initPremiumBanner() {
         document.body.insertBefore(banner, document.body.firstChild);
     }
 
-    // --- Remplace : const t = window.t || ((k) => k); ---
-    // --- Par cette fonction robuste : ---
-    const t = (key) => {
+    // Fonction de traduction blindée avec repli (fallback)
+    const t = (key, fallback) => {
         if (window.translations && window.currentLang) {
             const keys = key.split('.');
             let val = window.translations[window.currentLang];
@@ -141,7 +140,7 @@ function initPremiumBanner() {
             }
             if (typeof val === 'string') return val;
         }
-        return window.t ? window.t(key) : key;
+        return window.t ? window.t(key) : fallback;
     };
 
     const currentLang = window.currentLang || document.documentElement.lang || 'en';
@@ -221,7 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
         alert("Payment successful! Your offer is active."); 
     }
-    initPremiumBanner();
+    if (window.translations) {
+        initPremiumBanner();
+    } else {
+        document.addEventListener('i18nReady', () => {
+            initPremiumBanner();
+        }, { once: true });
+    }
 });
 
 const modalElement = document.getElementById('upload-modal');
