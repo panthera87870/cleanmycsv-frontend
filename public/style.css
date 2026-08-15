@@ -182,10 +182,10 @@ p  { font-size: var(--p-size); margin-bottom: var(--spacing-global); text-align:
 .trust-badges { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
 .badge-item {
     display: flex; align-items: center; gap: 8px;
-    background: rgba(var(--dark-bg-rgb), 0.2); /* Fond semi-transparent élégant */
+    background: rgba(var(--dark-bg-rgb), 0.3); /* Fond semi-transparent élégant */
     padding: 8px 16px; border-radius: var(--radius-global);
     font-size: 0.9rem; font-weight: 500;
-    color: var(--dark-text-color);
+    color: var(--light-text-color);
     border: 1px solid rgba(var(--dark-border-rgb), 0.1); 
 }
 .badge-item i { color: var(--third-color); font-size: 1.1rem; }
