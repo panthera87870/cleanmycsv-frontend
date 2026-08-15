@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
         alert("Payment successful! Your offer is active."); 
     }
-    initPremiumBanner();
+    setTimeout(initPremiumBanner, 100);
 });
 
 const modalElement = document.getElementById('upload-modal');
