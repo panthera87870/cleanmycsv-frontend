@@ -142,24 +142,27 @@ function initPremiumBanner() {
     }
 
     // Détection dynamique de la langue actuelle à chaque mise à jour
-    const currentLang = document.documentElement.lang || 'en';
+    // Détection élargie et prioritaire de la langue active
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    const currentLang = langParam || window.currentLang || document.documentElement.lang || 'en';
     const isFr = currentLang === 'fr';
-    const plan = payload.plan; 
+    const plan = payload.plan;
 
     const texts = {
         fr: {
-            plan1: "✅ <strong>Pass Express Actif</strong> - Valide jusqu'au ",
-            plan2: "✅ <strong>Pass Campagne Actif</strong> - Valide jusqu'au ",
-            plan3: "✅ <strong>Pass Annuel Pro Actif</strong> - Valide jusqu'au ",
-            urgent: "⚠️ <strong>Fin imminente</strong> - Votre accès expire dans : ",
-            expired: "⏳ Votre Pass a expiré."
+            plan1: "<strong>Pass Express Actif</strong> - Valide jusqu'au ",
+            plan2: "<strong>Pass Campagne Actif</strong> - Valide jusqu'au ",
+            plan3: "<strong>Pass Annuel Pro Actif</strong> - Valide jusqu'au ",
+            urgent: "<strong>Fin imminente</strong> - Votre accès expire dans : ",
+            expired: "Votre Pass a expiré."
         },
         en: {
-            plan1: "✅ <strong>Express Pass Active</strong> - Valid until ",
-            plan2: "✅ <strong>Campaign Pass Active</strong> - Valid until ",
-            plan3: "✅ <strong>Pro Annual Pass Active</strong> - Valid until ",
-            urgent: "⚠️ <strong>Ending Soon</strong> - Access expires in: ",
-            expired: "⏳ Your Pass has expired."
+            plan1: "<strong>Express Pass Active</strong> - Valid until ",
+            plan2: "<strong>Campaign Pass Active</strong> - Valid until ",
+            plan3: "<strong>Pro Annual Pass Active</strong> - Valid until ",
+            urgent: "<strong>Ending Soon</strong> - Access expires in: ",
+            expired: "Your Pass has expired."
         }
     };
 
