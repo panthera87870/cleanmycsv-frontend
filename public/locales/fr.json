@@ -108,6 +108,13 @@
     "woocommerce": "Importateur WooCommerce",
     "date": "Format de Dates ISO 8601"
   },
+  "banner": {
+    "plan1_prefix": "<strong>Pass Express Actif</strong> - Valide jusqu'au ",
+    "plan2_prefix": "<strong>Pass Campagne Actif</strong> - Valide jusqu'au ",
+    "plan3_prefix": "<strong>Pass Annuel Pro Actif</strong> - Valide jusqu'au ",
+    "urgent_prefix": "<strong>Fin imminente</strong> - Votre accès expire dans : ",
+    "expired": "Votre Pass a expiré."
+  },
 
   "index": {
     "meta": {

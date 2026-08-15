@@ -71,6 +71,130 @@ const sanitize = (str) => {
     return String(str).replace(reg, (match) => map[match]);
 };
 
+// --- PREMIUM BANNER LOGIC ---
+
+// Décoder un JWT côté client (sans librairie)
+function decodeJWT(token) {
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    } catch (e) {
+        console.error("Error decoding token", e);
+        return null;
+    }
+}
+
+// Initialiser et afficher la bannière
+function initPremiumBanner() {
+    const token = localStorage.getItem('mycsv_token');
+    if (!token) return;
+
+    const isHidden = localStorage.getItem('hide_premium_banner') === 'true';
+    if (isHidden) return;
+
+    const payload = decodeJWT(token);
+    if (!payload || !payload.exp) return;
+
+    const expDate = new Date(payload.exp * 1000);
+    const now = new Date();
+
+    if (now > expDate) {
+        localStorage.removeItem('mycsv_token'); 
+        return;
+    }
+
+    const banner = document.createElement('div');
+    banner.className = 'premium-banner animate-fade-in';
+    
+    const textSpan = document.createElement('span');
+    banner.appendChild(textSpan);
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'premium-banner-close';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.setAttribute('aria-label', 'Close banner');
+    closeBtn.onclick = () => {
+        banner.classList.add('hidden-banner');
+        localStorage.setItem('hide_premium_banner', 'true'); 
+    };
+    banner.appendChild(closeBtn);
+
+    const stickyWrapper = document.querySelector('.sticky-wrapper');
+    if (stickyWrapper) {
+        stickyWrapper.insertBefore(banner, stickyWrapper.firstChild);
+    } else {
+        document.body.insertBefore(banner, document.body.firstChild);
+    }
+
+    const t = window.t || ((k) => k);
+    const currentLang = document.documentElement.lang || 'en';
+    const isFr = currentLang === 'fr';
+    const plan = payload.plan; 
+
+    // Détermination du préfixe classique selon le plan
+    let standardPrefix = t('banner.plan1_prefix');
+    if (plan === 'plan2') standardPrefix = t('banner.plan2_prefix');
+    if (plan === 'plan3') standardPrefix = t('banner.plan3_prefix');
+
+    // Configuration de la date formatée
+    const localeString = isFr ? 'fr-FR' : 'en-US';
+    // Pour le pass 24h, l'heure est importante. Pour les pass longs, on garde aussi l'heure pour plus de précision.
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const formattedDate = expDate.toLocaleDateString(localeString, options);
+
+    let intervalId = null;
+
+    const updateBanner = () => {
+        const timeRemainingMs = expDate.getTime() - new Date().getTime();
+        
+        // Expiration
+        if (timeRemainingMs <= 0) {
+            textSpan.innerHTML = t('banner.expired');
+            localStorage.removeItem('mycsv_token');
+            if(intervalId) clearInterval(intervalId);
+            return;
+        }
+
+        const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
+
+        if (timeRemainingMs <= TWO_HOURS_MS) {
+            // MODE URGENT (Dernières 2 heures)
+            banner.style.background = "linear-gradient(90deg, #e1001b, #ed4b5e)"; // Style alerte rouge
+            
+            const hours = Math.floor((timeRemainingMs / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((timeRemainingMs / 1000 / 60) % 60);
+            const seconds = Math.floor((timeRemainingMs / 1000) % 60);
+            
+            const h = String(hours).padStart(2, '0');
+            const m = String(minutes).padStart(2, '0');
+            const s = String(seconds).padStart(2, '0');
+            
+            // Format dynamique : "⚠️ Fin imminente - Votre accès expire dans : 01h 45m 30s"
+            textSpan.innerHTML = `${t('banner.urgent_prefix')} ${h}h ${m}m ${s}s`;
+            
+            // S'assurer que le minuteur est lancé si on vient de basculer
+            if (!intervalId) {
+                intervalId = setInterval(updateBanner, 1000);
+            }
+        } else {
+            // MODE STANDARD (Plus de 2 heures)
+            textSpan.innerHTML = `${standardPrefix} ${formattedDate}`;
+            
+            // Si on est à plus de 2 heures, on vérifie seulement toutes les minutes
+            if (!intervalId) {
+                intervalId = setInterval(updateBanner, 60000);
+            }
+        }
+    };
+
+    // Premier appel
+    updateBanner();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Gestion du retour Stripe (sauvegarde du token)
     const urlParams = new URLSearchParams(window.location.search);
@@ -78,9 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (token) {
         localStorage.setItem('mycsv_token', token); 
+        // NOUVEAU: On force la réapparition de la bannière si l'utilisateur rachète un pass
+        localStorage.removeItem('hide_premium_banner'); 
+        
         window.history.replaceState({}, document.title, window.location.pathname);
         alert("Payment successful! Your offer is active."); 
     }
+
+    // NOUVEAU : On lance la bannière si un token est présent
+    initPremiumBanner();
 });
 
 const modalElement = document.getElementById('upload-modal');
