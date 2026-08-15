@@ -130,10 +130,23 @@ function initPremiumBanner() {
         document.body.insertBefore(banner, document.body.firstChild);
     }
 
-    const t = window.t || ((k) => k);
-    const currentLang = document.documentElement.lang || 'en';
+    // --- Remplace : const t = window.t || ((k) => k); ---
+    // --- Par cette fonction robuste : ---
+    const t = (key) => {
+        if (window.translations && window.currentLang) {
+            const keys = key.split('.');
+            let val = window.translations[window.currentLang];
+            for (const k of keys) {
+                if (val !== undefined && val !== null) val = val[k];
+            }
+            if (typeof val === 'string') return val;
+        }
+        return window.t ? window.t(key) : key;
+    };
+
+    const currentLang = window.currentLang || document.documentElement.lang || 'en';
     const isFr = currentLang === 'fr';
-    const plan = payload.plan; 
+    const plan = payload.plan;
 
     // Détermination du préfixe classique selon le plan
     let standardPrefix = t('banner.plan1_prefix');
@@ -208,9 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
         alert("Payment successful! Your offer is active."); 
     }
-
-    // NOUVEAU : On lance la bannière si un token est présent
-    initPremiumBanner();
 });
 
 const modalElement = document.getElementById('upload-modal');
@@ -289,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('i18nReady', () => {
+    initPremiumBanner();
     if (modalElement.classList.contains('visible') && document.getElementById('upload-form')) {
         resetModal();
     }
