@@ -108,13 +108,6 @@
     "woocommerce": "WooCommerce CSV Importer",
     "date": "ISO 8601 Date Format"
   },
-  "banner": {
-    "plan1_prefix": "<strong>Express Pass Active</strong> - Valid until ",
-    "plan2_prefix": "<strong>Campaign Pass Active</strong> - Valid until ",
-    "plan3_prefix": "<strong>Pro Annual Pass Active</strong> - Valid until ",
-    "urgent_prefix": "<strong>Ending Soon</strong> - Access expires in: ",
-    "expired": "Your Pass has expired."
-  },
 
   "index": {
     "meta": {

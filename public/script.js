@@ -88,7 +88,6 @@ function decodeJWT(token) {
     }
 }
 
-// Initialiser et afficher la bannière
 function initPremiumBanner() {
     const token = localStorage.getItem('mycsv_token');
     if (!token) return;
@@ -130,31 +129,34 @@ function initPremiumBanner() {
         document.body.insertBefore(banner, document.body.firstChild);
     }
 
-    // Fonction de traduction blindée avec repli (fallback)
-    const t = (key, fallback) => {
-        if (window.translations && window.currentLang) {
-            const keys = key.split('.');
-            let val = window.translations[window.currentLang];
-            for (const k of keys) {
-                if (val !== undefined && val !== null) val = val[k];
-            }
-            if (typeof val === 'string') return val;
+    const currentLang = document.documentElement.lang || 'en';
+    const isFr = currentLang === 'fr';
+    const plan = payload.plan; 
+
+    // Dictionnaire intégré pour s'affranchir des bugs de chargement i18n
+    const texts = {
+        fr: {
+            plan1: "✅ <strong>Pass Express Actif</strong> - Valide jusqu'au ",
+            plan2: "✅ <strong>Pass Campagne Actif</strong> - Valide jusqu'au ",
+            plan3: "✅ <strong>Pass Annuel Pro Actif</strong> - Valide jusqu'au ",
+            urgent: "⚠️ <strong>Fin imminente</strong> - Votre accès expire dans : ",
+            expired: "⏳ Votre Pass a expiré."
+        },
+        en: {
+            plan1: "✅ <strong>Express Pass Active</strong> - Valid until ",
+            plan2: "✅ <strong>Campaign Pass Active</strong> - Valid until ",
+            plan3: "✅ <strong>Pro Annual Pass Active</strong> - Valid until ",
+            urgent: "⚠️ <strong>Ending Soon</strong> - Access expires in: ",
+            expired: "⏳ Your Pass has expired."
         }
-        return window.t ? window.t(key) : fallback;
     };
 
-    const currentLang = window.currentLang || document.documentElement.lang || 'en';
-    const isFr = currentLang === 'fr';
-    const plan = payload.plan;
+    const langDict = texts[isFr ? 'fr' : 'en'];
+    let standardPrefix = langDict.plan1;
+    if (plan === 'plan2') standardPrefix = langDict.plan2;
+    if (plan === 'plan3') standardPrefix = langDict.plan3;
 
-    // Détermination du préfixe classique selon le plan
-    let standardPrefix = t('banner.plan1_prefix');
-    if (plan === 'plan2') standardPrefix = t('banner.plan2_prefix');
-    if (plan === 'plan3') standardPrefix = t('banner.plan3_prefix');
-
-    // Configuration de la date formatée
     const localeString = isFr ? 'fr-FR' : 'en-US';
-    // Pour le pass 24h, l'heure est importante. Pour les pass longs, on garde aussi l'heure pour plus de précision.
     const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     const formattedDate = expDate.toLocaleDateString(localeString, options);
 
@@ -163,9 +165,8 @@ function initPremiumBanner() {
     const updateBanner = () => {
         const timeRemainingMs = expDate.getTime() - new Date().getTime();
         
-        // Expiration
         if (timeRemainingMs <= 0) {
-            textSpan.innerHTML = t('banner.expired');
+            textSpan.innerHTML = langDict.expired;
             localStorage.removeItem('mycsv_token');
             if(intervalId) clearInterval(intervalId);
             return;
@@ -174,8 +175,7 @@ function initPremiumBanner() {
         const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
 
         if (timeRemainingMs <= TWO_HOURS_MS) {
-            // MODE URGENT (Dernières 2 heures)
-            banner.style.background = "linear-gradient(90deg, #e1001b, #ed4b5e)"; // Style alerte rouge
+            banner.style.background = "linear-gradient(90deg, #e1001b, #ed4b5e)";
             
             const hours = Math.floor((timeRemainingMs / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((timeRemainingMs / 1000 / 60) % 60);
@@ -185,25 +185,20 @@ function initPremiumBanner() {
             const m = String(minutes).padStart(2, '0');
             const s = String(seconds).padStart(2, '0');
             
-            // Format dynamique : "⚠️ Fin imminente - Votre accès expire dans : 01h 45m 30s"
-            textSpan.innerHTML = `${t('banner.urgent_prefix')} ${h}h ${m}m ${s}s`;
+            textSpan.innerHTML = `${langDict.urgent} ${h}h ${m}m ${s}s`;
             
-            // S'assurer que le minuteur est lancé si on vient de basculer
             if (!intervalId) {
                 intervalId = setInterval(updateBanner, 1000);
             }
         } else {
-            // MODE STANDARD (Plus de 2 heures)
             textSpan.innerHTML = `${standardPrefix} ${formattedDate}`;
             
-            // Si on est à plus de 2 heures, on vérifie seulement toutes les minutes
             if (!intervalId) {
                 intervalId = setInterval(updateBanner, 60000);
             }
         }
     };
 
-    // Premier appel
     updateBanner();
 }
 
@@ -220,13 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
         alert("Payment successful! Your offer is active."); 
     }
-    if (window.translations) {
-        initPremiumBanner();
-    } else {
-        document.addEventListener('i18nReady', () => {
-            initPremiumBanner();
-        }, { once: true });
-    }
+    initPremiumBanner();
 });
 
 const modalElement = document.getElementById('upload-modal');
