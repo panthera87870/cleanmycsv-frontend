@@ -523,6 +523,11 @@ async function handleFormSubmit(e) {
         if (token) fetchOptions.headers['X-Access-Token'] = token;
         
         const response = await fetch(`${form.action}?lang=${selectedLogic}`, fetchOptions);
+        // --- NOUVEAU : Récupération et mise à jour automatique du token glissé dans les headers ---
+        const refreshedToken = response.headers.get('X-Refreshed-Token');
+        if (refreshedToken) {
+            localStorage.setItem('mycsv_token', refreshedToken);
+        }
         const data = await response.json();
 
         if (!response.ok) {
